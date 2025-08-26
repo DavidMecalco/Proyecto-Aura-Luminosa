@@ -4,55 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velas Starlight | Elegancia y Belleza</title>
-    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige-almond': '#F6F1E9',
+                        'dark-green': '#2D3E33',
+                        'warm-cream': '#EDE6DA',
+                        'sage-green': '#3A5A40',
+                        'leaf-green': '#A3B18A',
+                        'gray-sand': '#D6CEC3',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-PndW5QzT/K+B13l1lM6X/016t53b5l2v20b7q3p2/8j2m12y3s2o20a2o3/w2B/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
 
-    <header class="header">
+    <header class="bg-white p-4 flex justify-between items-center shadow-md">
         <div class="logo">
-            <h1>Velas Starlight</h1>
+            <a href="index.html">
+                <img src="images/logo.png" alt="Velas Starlight Logo" class="max-h-12 w-auto block">
+            </a>
         </div>
         <nav class="nav">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="pages/productos.html">Productos</a></li>
-                <li><a href="pages/contacto.html">Contacto</a></li>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+                <li><a href="pages/productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag"></i> <span>Productos</span></a></li>
+                <li><a href="pages/contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone"></i> <span>Contacto</span></a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="main-content">
-        <section class="hero">
-            <div class="hero-text">
-                <h2>Crea tu ambiente perfecto.</h2>
-                <p>Descubre nuestra colección de velas artesanales y productos de belleza.</p>
-                <a href="pages/productos.html" class="cta-button">Ver productos</a>
-            </div>
+    <main class="max-w-6xl mx-auto p-8">
+        <section class="text-center p-16 bg-white rounded-lg shadow-lg">
+            <h2 class="text-5xl font-serif font-bold text-sage-green mb-4">Crea tu ambiente perfecto.</h2>
+            <p class="text-lg text-dark-green mb-8 max-w-2xl mx-auto">Descubre nuestra colección de velas artesanales y productos de belleza.</p>
+            <a href="pages/productos.html" class="inline-block bg-sage-green text-white py-3 px-8 rounded-full font-bold uppercase tracking-wide hover:bg-leaf-green transition-colors">Ver productos</a>
         </section>
 
-        <section class="products-preview">
-            <h3>Nuestros productos más populares</h3>
-            <div class="product-grid">
-                <div class="product-item">
-                    <h4>Vela de Lavanda</h4>
-                    <p>$15.00</p>
+        <section class="mt-12 text-center">
+            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8">Nuestros productos más populares</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <img src="images/vela-lavanda.jpg" alt="Vela de Lavanda" class="w-full h-auto rounded-md mb-4">
+                    <h4 class="text-xl font-semibold text-dark-green">Vela de Lavanda</h4>
+                    <p class="text-gray-600 mt-2">$15.00</p>
                 </div>
-                <div class="product-item">
-                    <h4>Vela de Sándalo</h4>
-                    <p>$18.00</p>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <img src="images/vela-sandalo.jpg" alt="Vela de Sándalo" class="w-full h-auto rounded-md mb-4">
+                    <h4 class="text-xl font-semibold text-dark-green">Vela de Sándalo</h4>
+                    <p class="text-gray-600 mt-2">$18.00</p>
                 </div>
-                <div class="product-item">
-                    <h4>Kit de Belleza</h4>
-                    <p>$35.00</p>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <img src="images/kit-belleza.jpg" alt="Kit de Belleza" class="w-full h-auto rounded-md mb-4">
+                    <h4 class="text-xl font-semibold text-dark-green">Kit de Belleza</h4>
+                    <p class="text-gray-600 mt-2">$35.00</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="text-center bg-dark-green text-white p-6 mt-12">
         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
     </footer>
 
