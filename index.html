@@ -20,68 +20,184 @@
                         'gray-sand': '#D6CEC3',
                     },
                     fontFamily: {
-                        sans: ['Lato', 'sans-serif'],
+                        sans: ['Poppins', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
                     },
                 }
             }
         }
     </script>
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-PndW5QzT/K+B13l1lM6X/016t53b5l2v20b7q3p2/8j2m12y3s2o20a2o3/w2B/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
 
+
+    <div id="promo-message" class="fixed bottom-4 right-4 bg-sage-green text-white p-6 rounded-lg shadow-xl max-w-sm z-50 transform transition-transform duration-300 ease-out scale-100">
+        <button id="close-message" class="absolute top-2 right-3 text-white text-lg font-bold hover:text-gray-200 transition-colors">&times;</button>
+        <div class="text-center">
+            <h4 class="text-2xl font-serif font-bold mb-2">¡Oferta Especial!</h4>
+            <p class="text-lg mb-2">10% de descuento en tu primera compra.</p>
+            <p class="text-xl font-bold uppercase tracking-wide bg-dark-green px-4 py-2 rounded-md inline-block mt-2">1RAVELA</p>
+            <p class="mt-2 text-sm font-light">Usa este cupón al finalizar tu compra.</p>
+        </div>
+    </div>
+
+    <a href="https://wa.me/525564682112" class="fixed bottom-4 left-4 bg-leaf-green text-white text-3xl p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200 z-50" aria-label="Contáctanos por WhatsApp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <header class="bg-white p-4 flex justify-between items-center shadow-md">
-        <div class="logo">
+        <div class="logo" data-aos="fade-right">
             <a href="index.html">
                 <img src="images/logo.png" alt="Velas Starlight Logo" class="max-h-12 w-auto block">
             </a>
         </div>
-        <nav class="nav">
+        <nav class="nav" data-aos="fade-left">
             <ul class="flex space-x-6 items-center">
-                <li><a href="index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                <li><a href="pages/productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag"></i> <span>Productos</span></a></li>
-                <li><a href="pages/contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone"></i> <span>Contacto</span></a></li>
+                <li><a href="index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i> <span>Inicio</span></a></li>
+                <li><a href="pages/productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i> <span>Productos</span></a></li>
+                <li><a href="pages/contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i> <span>Contacto</span></a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="max-w-6xl mx-auto p-8">
-        <section class="text-center p-16 bg-white rounded-lg shadow-lg">
-            <h2 class="text-5xl font-serif font-bold text-sage-green mb-4">Crea tu ambiente perfecto.</h2>
-            <p class="text-lg text-dark-green mb-8 max-w-2xl mx-auto">Descubre nuestra colección de velas artesanales y productos de belleza.</p>
-            <a href="pages/productos.html" class="inline-block bg-sage-green text-white py-3 px-8 rounded-full font-bold uppercase tracking-wide hover:bg-leaf-green transition-colors">Ver productos</a>
+    <main>
+        <section class="relative h-[500px] flex items-center justify-center text-center bg-cover bg-center mx-[15%]" style="background-image: url('images/hero-banner.jpg');" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="absolute inset-0 bg-dark-green opacity-40"></div>
+            <div class="relative z-10 text-white p-8 rounded-lg">
+                <h1 class="text-7xl font-serif font-bold mb-4">Velas Starlight</h1>
+                <p class="text-2xl font-light mb-8 max-w-2xl mx-auto">Ilumina tu mundo con nuestra colección artesanal.</p>
+                <a href="pages/productos.html" class="inline-block bg-sage-green text-white py-4 px-10 rounded-full text-xl font-bold uppercase tracking-wide hover:bg-leaf-green transition-colors shadow-lg">Ver productos</a>
+            </div>
         </section>
 
-        <section class="mt-12 text-center">
+        <section class="mt-12 text-center p-8 bg-white rounded-lg shadow-md max-w-6xl mx-auto" data-aos="fade-up">
             <h3 class="text-3xl font-serif font-bold text-dark-green mb-8">Nuestros productos más populares</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <img src="images/vela-lavanda.jpg" alt="Vela de Lavanda" class="w-full h-auto rounded-md mb-4">
+                <div class="bg-warm-cream p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/vela-lavanda.jpg" alt="Vela de Lavanda" class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-semibold text-dark-green">Vela de Lavanda</h4>
                     <p class="text-gray-600 mt-2">$15.00</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <img src="images/vela-sandalo.jpg" alt="Vela de Sándalo" class="w-full h-auto rounded-md mb-4">
+                <div class="bg-warm-cream p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/vela-sandalo.jpg" alt="Vela de Sándalo" class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-semibold text-dark-green">Vela de Sándalo</h4>
                     <p class="text-gray-600 mt-2">$18.00</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <img src="images/kit-belleza.jpg" alt="Kit de Belleza" class="w-full h-auto rounded-md mb-4">
+                <div class="bg-warm-cream p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/kit-belleza.jpg" alt="Kit de Belleza" class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-semibold text-dark-green">Kit de Belleza</h4>
                     <p class="text-gray-600 mt-2">$35.00</p>
                 </div>
             </div>
         </section>
+
+        <section class="mt-12 p-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-lg shadow-md" data-aos="fade-up">
+            <div data-aos="fade-right">
+                <img src="images/about-us.jpg" alt="Persona creando una vela artesanal" class="w-full h-auto rounded-lg shadow-sm">
+            </div>
+            <div class="space-y-4" data-aos="fade-left">
+                <h3 class="text-3xl font-serif font-bold text-sage-green">Nuestra Historia</h3>
+                <p>En **Velas Starlight** fabricamos velas artesanales elaboradas con cera de soya y parafina de la más alta calidad. Cada pieza está hecha a mano, con amor y dedicación, utilizando aromas naturales y presentaciones únicas en forma, color y estilo.</p>
+                <p>Además, contamos con una línea de productos de belleza artesanal que incluye cremas, shampoos, jabones, mascarillas y mucho más, pensados para cuidar y consentir tu piel con ingredientes naturales y fragancias suaves.</p>
+                <p>Creamos experiencias sensoriales que transforman tus espacios y tu rutina de cuidado personal.</p>
+            </div>
+        </section>
+
+        <section class="mt-12 text-center p-8 max-w-6xl mx-auto" data-aos="fade-up">
+            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8">Lo que nuestros clientes dicen</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <h4 class="font-semibold text-lg text-dark-green">Sofía M.</h4>
+                    <div class="my-2 text-leaf-green">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-700 italic">"Las velas de sándalo son mi obsesión. El aroma es increíble y la calidad es insuperable. ¡El mejor regalo para mí misma!"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <h4 class="font-semibold text-lg text-dark-green">Carlos G.</h4>
+                    <div class="my-2 text-leaf-green">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-sm text-gray-700 italic">"Probé la crema de manos y es maravillosa. Mi piel se siente suave y el aroma es muy delicado. ¡Recomendado 100%!"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <h4 class="font-semibold text-lg text-dark-green">Ana L.</h4>
+                    <div class="my-2 text-leaf-green">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-700 italic">"La presentación de los productos es bellísima, se nota el cariño en cada paquete. ¡Son el regalo perfecto para cualquier ocasión!"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
+                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <h4 class="font-semibold text-lg text-dark-green">Javier P.</h4>
+                    <div class="my-2 text-leaf-green">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-700 italic">"La calidad de los materiales y los aromas naturales me han conquistado. No volveré a comprar velas en otro lugar. ¡Son únicas!"</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 text-center p-8 max-w-6xl mx-auto" data-aos="fade-up">
+            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8">Últimas del Blog</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-left" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/blog-vela.jpg" alt="Vela artesanal en un entorno relajante" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h4 class="font-semibold text-lg text-dark-green mb-2">5 Ritualitos de Relajación con Velas para Conectar Contigo Mismo</h4>
+                    <p class="text-sm text-gray-700">En medio del caos diario, regalarte unos minutos para reconectar con tu interior es un acto de amor propio. Las velas artesanales no solo decoran: son aliadas perfectas para crear atmósferas de calma, introspección y armonía. </p>
+                    <a href="pages/blog-1.html" class="mt-4 text-sage-green font-semibold hover:underline">Leer más</a>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-left" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/blog-belleza.jpg" alt="Productos de belleza naturales en exhibición" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h4 class="font-semibold text-lg text-dark-green mb-2">Cuidado Natural para tu Piel</h4>
+                    <p class="text-sm text-gray-700">Tu piel es el órgano más grande de tu cuerpo y también uno de los más sensibles. Cuidarla no solo tiene que ver con belleza, sino con bienestar.</p>
+                    <a href="pages/blog-2.html" class="mt-4 text-sage-green font-semibold hover:underline">Leer más</a>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-left" data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/blog-aroma.jpg" alt="Variedad de aromas naturales para velas" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h4 class="font-semibold text-lg text-dark-green mb-2">Cómo elegir la fragancia perfecta para tu hogar</h4>
+                    <p class="text-sm text-gray-700">Una guía completa para seleccionar el aroma que mejor se adapta a tu estado de ánimo y a cada rincón de tu casa...</p>
+                    <a href="#" class="mt-4 text-sage-green font-semibold hover:underline">Leer más</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="text-center bg-dark-green text-white p-6 mt-12">
+        <div class="flex flex-col justify-center items-center mb-4">
+            <div class="flex space-x-4 text-2xl">
+                <a href="https://www.instagram.com/velas_starlight/" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Instagram de Velas Starlight"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Facebook de Velas Starlight"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+        });
+
+        document.getElementById('close-message').addEventListener('click', function() {
+            document.getElementById('promo-message').style.transform = 'scale(0)';
+            setTimeout(() => {
+                document.getElementById('promo-message').style.display = 'none';
+            }, 300);
+        });
+    </script>
 </body>
 </html>
