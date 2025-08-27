@@ -48,13 +48,70 @@
         .text-leaf-green .far.fa-star {
             color: #A3B18A;
         }
+        
+               /* 💬 Estilos botón WhatsApp */
+        #whatsapp-button {
+            background-color: #25D366; /* Verde oficial */
+            color: white;
+            border-radius: 50%;
+            padding: 18px;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            position: fixed;       /* sigue flotando */
+            bottom: 1.5rem;        /* 24px */
+            right: 1.5rem;         /* 24px */
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        #whatsapp-button:hover {
+            background-color: #20b955;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+    
+        /* 🔄 Animación de latido */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+    
+        /* 💬 Globo de diálogo */
+        #whatsapp-button::after {
+            content: "Chatea con nosotros";
+            position: absolute;
+            right: 110%;   /* a la izquierda del botón */
+            top: 50%;      /* centrado verticalmente */
+            transform: translateY(-50%);
+            background-color: #25D366;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+    
+        #whatsapp-button:hover::after {
+            opacity: 1;
+        }
+        
     </style>
 </head>
 
 
 <body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
 
-    <div id="promo-message" class="fixed bottom-4 right-4 bg-sage-green text-white p-6 rounded-lg shadow-xl max-w-sm z-50 transform transition-transform duration-300 ease-out scale-100">
+    <div id="promo-message" class="fixed bottom-4 left-4 bg-sage-green text-white p-6 rounded-lg shadow-xl max-w-sm z-50 transform transition-transform duration-300 ease-out scale-100">
         <button id="close-message" class="absolute top-2 right-3 text-white text-lg font-bold hover:text-gray-200 transition-colors">&times;</button>
         <div class="text-center">
             <h4 class="text-2xl font-serif font-bold mb-2">¡Oferta Especial!</h4>
@@ -64,14 +121,15 @@
         </div>
     </div>
     
-    <a href="https://wa.me/525564682112" class="fixed bottom-4 left-4 bg-leaf-green text-white text-3xl p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200 z-50" aria-label="Contáctanos por WhatsApp" target="_blank">
+    <a href="https://wa.me/521234567890" id="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
-    </a>
+      </a>
+      
     
     <header class="bg-white p-4 flex justify-between items-center shadow-md">
         <div class="logo" data-aos="fade-right">
             <a href="index.html">
-                <img src="images/logo.png" alt="Velas Starlight Logo" class="max-h-12 w-auto block">
+                <img src="images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
             </a>
         </div>
         <nav class="nav" data-aos="fade-left">
@@ -84,8 +142,8 @@
     </header>
 
     <main>
-        <section class="relative h-[500px] flex items-center justify-center text-center bg-cover bg-center mx-[15%]" style="background-image: url('images/hero-banner.jpg');" data-aos="zoom-in" data-aos-duration="1500">
-            <div class="absolute inset-0 bg-dark-green opacity-40"></div>
+        <section class="relative h-[600px] flex items-center justify-center text-center bg-cover bg-center mx-[10%]" style="background-image: url('images/hero-banner.jpg');" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="absolute inset-0 bg-dark-green opacity-60"></div>
             <div class="relative z-10 text-white p-8 rounded-lg">
                 <h1 class="text-7xl font-serif font-bold mb-4">Velas Starlight</h1>
                 <p class="text-2xl font-light mb-8 max-w-2xl mx-auto">Ilumina tu mundo con nuestra colección artesanal.</p>
