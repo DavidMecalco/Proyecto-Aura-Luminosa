@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Velas Starlight</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige-almond': '#F6F1E9',
+                        'dark-green': '#2D3E33',
+                        'warm-cream': '#EDE6DA',
+                        'sage-green': '#3A5A40',
+                        'leaf-green': '#A3B18A',
+                        'gray-sand': '#D6CEC3',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-PndW5QzT/K+B13l1lM6X/016t53b5l2v20b7q3p2/8j2m12y3s2o20a2o3/w2B/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
+
+    <header class="bg-white p-4 flex justify-between items-center shadow-md">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-12 w-auto block">
+            </a>
+        </div>
+        <nav class="nav">
+            <ul class="flex space-x-6 items-center">
+                <li><a href="../index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i> <span>Inicio</span></a></li>
+                <li><a href="productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i> <span>Productos</span></a></li>
+                <li><a href="contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i> <span>Contacto</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-8 mt-8 bg-white rounded-lg shadow-lg">
+        <section data-aos="fade-up" class="text-center mb-8">
+            <h1 class="text-4xl font-serif font-bold text-dark-green mb-4">Contáctanos</h1>
+            <p class="text-lg text-gray-600 mb-8">Estamos aquí para ayudarte. Por favor, llena el siguiente formulario o usa la información de contacto.</p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-6 rounded-lg shadow-md bg-warm-cream">
+                <h2 class="text-2xl font-serif font-bold mb-4">Envíanos un Mensaje</h2>
+                <form action="#" method="POST" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sage-green focus:border-sage-green sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sage-green focus:border-sage-green sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-sage-green focus:border-sage-green sm:text-sm"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-sage-green text-white py-2 px-4 rounded-md font-bold hover:bg-leaf-green transition-colors">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="p-6 rounded-lg shadow-md bg-warm-cream flex flex-col justify-center">
+                <h2 class="text-2xl font-serif font-bold mb-4">Información de Contacto</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-phone text-sage-green"></i>
+                        <a href="tel:+525564682112" class="hover:underline">+52 55 6468 2112</a>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-envelope text-sage-green"></i>
+                        <a href="mailto:contacto@velasstarlight.com" class="hover:underline">contacto@velasstarlight.com</a>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-map-marker-alt text-sage-green"></i>
+                        <span>Ciudad de México, México</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-instagram text-sage-green"></i>
+                        <a href="https://www.instagram.com/velas_starlight/" target="_blank" class="hover:underline">@velas_starlight</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 p-8 max-w-4xl mx-auto rounded-lg shadow-lg bg-beige-almond" data-aos="fade-up">
+            <h2 class="text-3xl font-serif font-bold text-dark-green mb-8 text-center">Preguntas Frecuentes</h2>
+            
+            <div class="space-y-4">
+                <div class="border border-gray-300 rounded-md">
+                    <button class="w-full text-left p-4 bg-white hover:bg-gray-100 transition-colors flex justify-between items-center" onclick="toggleFAQ('faq1')">
+                        <span class="font-semibold text-lg">¿Hacen envíos a todo México?</span>
+                        <i id="icon-faq1" class="fas fa-chevron-down text-gray-500 transform transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq1" class="hidden p-4 text-gray-700 bg-white">
+                        Sí, realizamos envíos a toda la República Mexicana. El costo y tiempo de entrega varían según tu ubicación. Puedes consultarlo al momento de realizar tu compra.
+                    </div>
+                </div>
+                <div class="border border-gray-300 rounded-md">
+                    <button class="w-full text-left p-4 bg-white hover:bg-gray-100 transition-colors flex justify-between items-center" onclick="toggleFAQ('faq2')">
+                        <span class="font-semibold text-lg">¿Qué ingredientes usan en sus productos?</span>
+                        <i id="icon-faq2" class="fas fa-chevron-down text-gray-500 transform transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq2" class="hidden p-4 text-gray-700 bg-white">
+                        Nuestras velas están elaboradas con cera de soya y parafina de la más alta calidad. En los productos de belleza usamos ingredientes naturales como manteca de karité, aceites esenciales y extractos de plantas.
+                    </div>
+                </div>
+                <div class="border border-gray-300 rounded-md">
+                    <button class="w-full text-left p-4 bg-white hover:bg-gray-100 transition-colors flex justify-between items-center" onclick="toggleFAQ('faq3')">
+                        <span class="font-semibold text-lg">¿Qué opciones de pago aceptan?</span>
+                        <i id="icon-faq3" class="fas fa-chevron-down text-gray-500 transform transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq3" class="hidden p-4 text-gray-700 bg-white">
+                        Aceptamos pagos con tarjeta de crédito/débito (Visa, Mastercard, American Express), PayPal y transferencias bancarias.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="text-center bg-dark-green text-white p-6 mt-12">
+        <div class="flex flex-col justify-center items-center mb-4">
+            <div class="flex space-x-4 text-2xl">
+                <a href="https://www.instagram.com/velas_starlight/" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Instagram de Velas Starlight"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Facebook de Velas Starlight"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+        });
+
+        // Script para la funcionalidad de los acordeones de FAQ
+        function toggleFAQ(id) {
+            const element = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                element.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>

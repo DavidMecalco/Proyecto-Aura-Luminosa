@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velas Starlight | Elegancia y Belleza</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script>
         tailwind.config = {
             theme: {
@@ -27,15 +25,29 @@
             }
         }
     </script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-PndW5QzT/K+B13l1lM6X/016t53b5l2v20b7q3p2/8j2m12y3s2o20a2o3/w2B/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .nav ul li a i {
+            color: #2D3E33;
+        }
+
+        .nav ul li a:hover i {
+            color: #3A5A40;
+        }
+
+        .text-leaf-green .fa-star,
+        .text-leaf-green .fa-star-half-alt,
+        .text-leaf-green .fa-star-o,
+        .text-leaf-green .far.fa-star {
+            color: #A3B18A;
+        }
+    </style>
 </head>
 <body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
-
 
     <div id="promo-message" class="fixed bottom-4 right-4 bg-sage-green text-white p-6 rounded-lg shadow-xl max-w-sm z-50 transform transition-transform duration-300 ease-out scale-100">
         <button id="close-message" class="absolute top-2 right-3 text-white text-lg font-bold hover:text-gray-200 transition-colors">&times;</button>
@@ -46,7 +58,7 @@
             <p class="mt-2 text-sm font-light">Usa este cupón al finalizar tu compra.</p>
         </div>
     </div>
-
+    
     <a href="https://wa.me/525564682112" class="fixed bottom-4 left-4 bg-leaf-green text-white text-3xl p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-200 z-50" aria-label="Contáctanos por WhatsApp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -191,7 +203,6 @@
             once: true,
             duration: 800,
         });
-
         document.getElementById('close-message').addEventListener('click', function() {
             document.getElementById('promo-message').style.transform = 'scale(0)';
             setTimeout(() => {
