@@ -90,8 +90,13 @@
                 </select>
             </div>
         </div>
-    
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="product-list">
+
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div id="no-results-message" class="hidden col-span-full text-center p-8 bg-white rounded-lg shadow-md max-w-lg mx-auto">
+                <h3 class="text-2xl font-serif font-bold text-dark-green mb-4">¡Ups! No hay resultados.</h3>
+                <p class="text-gray-600">No encontramos productos que coincidan con tu búsqueda o filtros. Por favor, intenta con otra palabra clave o ajusta tus filtros.</p>
+            </div>
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="velas" data-price="15.00" data-aos="fade-up" data-aos-delay="100">
                 <img src="../images/vela-lavanda.jpg" alt="Vela de Lavanda" class="w-full h-64 object-cover">
                 <div class="p-6">
@@ -102,15 +107,63 @@
                         data-name="Vela de Lavanda"
                         data-image="../images/vela-lavanda.jpg"
                         data-description="Nuestra vela de lavanda está elaborada con cera de soya de la más alta calidad y aceites esenciales puros. Su aroma delicado y floral es perfecto para crear un ambiente relajante, ideal para meditar, leer o disfrutar de un baño. Cada vela es vertida a mano, asegurando una combustión limpia y duradera."
-                        data-options='[{"name":"Pequeña (100ml)", "price":"15.00"}, {"name":"Mediana (200ml)", "price":"25.00"}, {"name":"Grande (400ml)", "price":"40.00"}]'>
+                        data-options='[{"name":"Pequeña (100ml)", "price":"15.00"}, {"name":"Mediana (200ml)", "price":"25.00"}, {"name":"Grande (400ml)", "price":"40.00"}]'
+                        data-fragances='["Lavanda", "Eucalipto", "Vainilla", "Sándalo"]'>
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="velas" data-price="18.00" data-aos="fade-up" data-aos-delay="200">
+                <img src="../images/vela-sandalo.jpg" alt="Vela de Sándalo" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-dark-green mb-1">Vela de Sándalo</h3>
+                    <p class="text-sm text-gray-600 mb-2">Fragancia cálida y amaderada.</p>
+                    <p class="text-lg font-bold text-sage-green">$18.00</p>
+                    <button class="mt-4 w-full bg-sage-green text-white py-2 rounded-md font-bold hover:bg-leaf-green transition-colors view-product-btn" 
+                        data-name="Vela de Sándalo"
+                        data-image="../images/vela-sandalo.jpg"
+                        data-description="Nuestra vela de sándalo está elaborada con cera de soya de la más alta calidad y aceites esenciales puros. Su aroma delicado y floral es perfecto para crear un ambiente relajante, ideal para meditar, leer o disfrutar de un baño. Cada vela es vertida a mano, asegurando una combustión limpia y duradera."
+                        data-options='[{"name":"Pequeña (100ml)", "price":"18.00"}, {"name":"Mediana (200ml)", "price":"28.00"}, {"name":"Grande (400ml)", "price":"45.00"}]'
+                        data-fragances='["Sándalo", "Cedro", "Ambar", "Vainilla"]'>
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="kits" data-price="35.00" data-aos="fade-up" data-aos-delay="300">
+                <img src="../images/kit-belleza.jpg" alt="Kit de Belleza" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-dark-green mb-1">Kit de Belleza</h3>
+                    <p class="text-sm text-gray-600 mb-2">Regalo perfecto para el autocuidado.</p>
+                    <p class="text-lg font-bold text-sage-green">$35.00</p>
+                    <button class="mt-4 w-full bg-sage-green text-white py-2 rounded-md font-bold hover:bg-leaf-green transition-colors view-product-btn" 
+                        data-name="Kit de Belleza"
+                        data-image="../images/kit-belleza.jpg"
+                        data-description="Este kit es el regalo perfecto para quienes buscan una experiencia completa de bienestar. Incluye una vela aromática de tu elección, un jabón artesanal y una crema humectante, todos elaborados con ingredientes naturales y fragancias suaves."
+                        data-options='[{"name":"Kit Básico", "price":"35.00"}, {"name":"Kit Deluxe", "price":"50.00"}]'
+                        data-fragances='[]'>
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="belleza" data-price="8.00" data-aos="fade-up" data-aos-delay="400">
+                <img src="../images/blog-belleza.jpg" alt="Jabón artesanal de rosas" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-dark-green mb-1">Jabón Artesanal</h3>
+                    <p class="text-sm text-gray-600 mb-2">Limpieza suave y natural para tu piel.</p>
+                    <p class="text-lg font-bold text-sage-green">$8.00</p>
+                    <button class="mt-4 w-full bg-sage-green text-white py-2 rounded-md font-bold hover:bg-leaf-green transition-colors view-product-btn" 
+                        data-name="Jabón Artesanal"
+                        data-image="../images/blog-belleza.jpg"
+                        data-description="Nuestro jabón artesanal está elaborado con aceites naturales y extractos de plantas, sin sulfatos ni químicos agresivos. Proporciona una limpieza suave y profunda, dejando tu piel hidratada y con un aroma fresco y delicado. Ideal para uso diario en el rostro y el cuerpo."
+                        data-options='[{"name":"Rosas (100g)", "price":"8.00"}, {"name":"Lavanda (100g)", "price":"8.00"}]'
+                        data-fragances='["Rosas", "Lavanda", "Avena"]'>
                         Ver detalles
                     </button>
                 </div>
             </div>
         </div>
     </main>
-
-    <!-- Ventana Modal del Producto -->
 
     <div id="product-modal" class="fixed inset-0 bg-dark-green bg-opacity-75 hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-lg max-w-4xl w-full mx-auto overflow-hidden shadow-xl transform transition-transform scale-95 duration-300">
@@ -129,15 +182,17 @@
                     <div id="modal-options" class="space-y-4 mb-6">
                         </div>
                     
+                    <div id="modal-fragances" class="mb-6">
+                        <h3 class="font-semibold text-lg mb-2">Selecciona tu fragancia:</h3>
+                        <div class="flex flex-wrap gap-2">
+                            </div>
+                    </div>
+
                     <button class="w-full bg-sage-green text-white py-3 rounded-md font-bold hover:bg-leaf-green transition-colors">Añadir al carrito</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Fin de la ventana modal -->
-
-    <script src="../js/main.js"></script>
     
     <footer class="text-center bg-dark-green text-white p-6 mt-12">
         <div class="flex flex-col justify-center items-center mb-4">
@@ -149,6 +204,7 @@
         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="../js/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
