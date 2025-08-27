@@ -45,15 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         if (filteredProducts.length > 0) {
-            productCardsContainer.classList.remove('hidden');
             noResultsMessage.classList.add('hidden');
-            filteredProducts.forEach(card => {
-                card.style.display = 'block';
-            });
+            productCardsData.forEach(card => card.style.display = 'none');
+            filteredProducts.forEach(card => card.style.display = 'block');
         } else {
-            productCardsContainer.classList.add('hidden');
+            productCardsData.forEach(card => card.style.display = 'none');
             noResultsMessage.classList.remove('hidden');
         }
+        
     };
     
     const showModal = (product) => {
