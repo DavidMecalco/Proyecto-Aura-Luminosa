@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos | Velas Starlight</title>
-
+    <title>Velas Starlight | Elegancia y Belleza</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,12 +26,19 @@
             }
         }
     </script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Awesome actualizado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         .nav ul li a i {
             color: #2D3E33;
@@ -47,170 +54,267 @@
         .text-leaf-green .far.fa-star {
             color: #A3B18A;
         }
+
+        /* 💬 Estilos botón WhatsApp */
+        #whatsapp-button {
+            background-color: #25D366;
+            /* Verde oficial */
+            color: white;
+            border-radius: 50%;
+            padding: 18px;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            position: fixed;
+            /* sigue flotando */
+            bottom: 1.5rem;
+            /* 24px */
+            right: 1.5rem;
+            /* 24px */
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #whatsapp-button:hover {
+            background-color: #20b955;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 🔄 Animación de latido */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* 💬 Globo de diálogo */
+        #whatsapp-button::after {
+            content: "Chatea con nosotros";
+            position: absolute;
+            right: 110%;
+            /* a la izquierda del botón */
+            top: 50%;
+            /* centrado verticalmente */
+            transform: translateY(-50%);
+            background-color: #25D366;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #whatsapp-button:hover::after {
+            opacity: 1;
+        }
     </style>
 </head>
-<body class="bg-beige-almond text-dark-green font-sans leading-relaxed min-h-screen flex flex-col">
+
+
+<body class="bg-beige-almond text-dark-green font-sans min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <a href="https://wa.me/521234567890" id="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
 
     <header class="bg-white p-4 flex justify-between items-center shadow-md">
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-12 w-auto block">
+        <div class="logo" data-aos="fade-right">
+            <a href="index.html">
+                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
             </a>
         </div>
-        <nav class="nav">
+        <nav class="nav" data-aos="fade-left">
             <ul class="flex space-x-6 items-center">
-                <li><a href="../index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i> <span>Inicio</span></a></li>
-                <li><a href="productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i> <span>Productos</span></a></li>
-                <li><a href="contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i> <span>Contacto</span></a></li>
+                <li><a href="../index.html"
+                        class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i
+                            class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i>
+                        <span>Inicio</span></a></li>
+                <li><a href="/pages/productos.html"
+                        class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i
+                            class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i>
+                        <span>Productos</span></a></li>
+                <li><a href="/pages/contacto.html"
+                        class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i
+                            class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i>
+                        <span>Contacto</span></a></li>
             </ul>
         </nav>
     </header>
+    <main class="flex-1 max-w-7xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-serif font-bold text-center mb-10">Nuestros Productos</h1>
 
-    <main class="flex-grow max-w-6xl mx-auto p-8 mt-8">
-        <section data-aos="fade-up" class="text-center mb-8">
-            <h1 class="text-4xl font-serif font-bold text-dark-green mb-4">Nuestra Colección</h1>
-            <p class="text-lg text-gray-600 mb-8">Encuentra la vela o el producto de belleza perfecto para ti.</p>
-        </section>
-        
-        <div class="flex flex-col md:flex-row gap-8 mb-8">
-            <div class="w-full md:w-2/3">
-                <input type="text" id="search-input" placeholder="Buscar productos..." class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sage-green">
+        <!-- Barra de búsqueda y filtros -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+            <div class="relative w-full md:w-1/2">
+                <input id="search-input" type="text" placeholder="Buscar productos..."
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full shadow-sm focus:ring-2 focus:ring-sage-green focus:outline-none">
+                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
-            <div class="w-full md:w-1/3 flex items-center space-x-4">
-                <select id="category-filter" class="w-full p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sage-green">
+            <div class="flex space-x-4">
+                <select id="category-filter"
+                    class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-sage-green focus:outline-none">
                     <option value="all">Categoría</option>
-                    <option value="velas">Velas</option>
-                    <option value="belleza">Productos de belleza</option>
-                    <option value="kits">Kits</option>
+                    <option value="soya">Velas de Soya</option>
+                    <option value="parafina">Velas de Parafina</option>
+                    <option value="figura">Velas de Figura</option>
+                    <option value="kit">Kits</option>
                 </select>
-                <select id="price-filter" class="w-full p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sage-green">
-                    <option value="default">Precio</option>
-                    <option value="low-to-high">Más bajo a más alto</option>
-                    <option value="high-to-low">Más alto a más bajo</option>
+                <select id="price-filter"
+                    class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-sage-green focus:outline-none">
+                    <option value="default">Ordenar</option>
+                    <option value="low-to-high">Precio: Bajo a Alto</option>
+                    <option value="high-to-low">Precio: Alto a Bajo</option>
                 </select>
             </div>
         </div>
 
-        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <div id="no-results-message" class="hidden col-span-full text-center p-8 bg-white rounded-lg shadow-md max-w-lg mx-auto">
-                <h3 class="text-2xl font-serif font-bold text-dark-green mb-4">¡Ups! No hay resultados.</h3>
-                <p class="text-gray-600">No encontramos productos que coincidan con tu búsqueda o filtros. Por favor, intenta con otra palabra clave o ajusta tus filtros.</p>
-            </div>
+        <!-- Grid de productos -->
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="velas" data-price="15.00" data-aos="fade-up" data-aos-delay="100">
-                <img src="../images/vela-lavanda.jpg" alt="Vela de Lavanda" class="w-full h-64 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-dark-green mb-1">Vela de Lavanda</h3>
-                    <p class="text-sm text-gray-600 mb-2">Aroma relajante de lavanda natural.</p>
-                    <p class="text-lg font-bold text-sage-green">$15.00</p>
-                    <button class="mt-4 w-full bg-sage-green text-white py-2 rounded-md font-bold hover:bg-leaf-green transition-colors view-product-btn" 
-                        data-name="Vela de Lavanda"
-                        data-image="../images/vela-lavanda.jpg"
-                        data-description="Nuestra vela de lavanda está elaborada con cera de soya de la más alta calidad y aceites esenciales puros. Su aroma delicado y floral es perfecto para crear un ambiente relajante, ideal para meditar, leer o disfrutar de un baño. Cada vela es vertida a mano, asegurando una combustión limpia y duradera."
-                        data-options='[{"name":"Pequeña (100ml)", "price":"15.00"}, {"name":"Mediana (200ml)", "price":"25.00"}, {"name":"Grande (400ml)", "price":"40.00"}]'
-                        data-fragances='["Lavanda", "Eucalipto", "Vainilla", "Sándalo"]'>
-                        Ver detalles
-                    </button>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="velas" data-price="18.00" data-aos="fade-up" data-aos-delay="200">
-                <img src="../images/vela-sandalo.jpg" alt="Vela de Sándalo" class="w-full h-64 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-dark-green mb-1">Vela de Sándalo</h3>
-                    <p class="text-sm text-gray-600 mb-2">Fragancia cálida y amaderada.</p>
-                    <p class="text-lg font-bold text-sage-green">$18.00</p>
-                    <button class="mt-4 w-full bg-sage-green text-white py-2 rounded-md font-bold hover:bg-leaf-green transition-colors view-product-btn" 
-                        data-name="Vela de Sándalo"
-                        data-image="../images/vela-sandalo.jpg"
-                        data-description="Nuestra vela de sándalo está elaborada con cera de soya de la más alta calidad y aceites esenciales puros. Su aroma delicado y floral es perfecto para crear un ambiente relajante, ideal para meditar, leer o disfrutar de un baño. Cada vela es vertida a mano, asegurando una combustión limpia y duradera."
-                        data-options='[{"name":"Pequeña (100ml)", "price":"18.00"}, {"name":"Mediana (200ml)", "price":"28.00"}, {"name":"Grande (400ml)", "price":"45.00"}]'
-                        data-fragances='["Sándalo", "Cedro", "Ambar", "Vainilla"]'>
+            <!-- Producto ejemplo -->
+            <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
+                data-name="Vela de Soya" data-category="soya" data-price="15"
+                data-description="Aromas naturales en tamaños personalizables." data-image="../images/vela-soya.jpg"
+                data-options='[{"name":"Ch","price":10},{"name":"M","price":15},{"name":"G","price":20}]'
+                data-fragances='["Lavanda","Vainilla","Cítrico","Rosas"]'>
+                <!-- Badge categoría -->
+                <span
+                    class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Velas de Soya
+                </span>
+                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-56 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold text-dark-green">Vela de Soya</h3>
+                    <p class="text-gray-600 text-sm mb-2">Aromas naturales en tamaños personalizables.</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">$15.00</p>
+                    <button
+                        class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
                         Ver detalles
                     </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="kits" data-price="35.00" data-aos="fade-up" data-aos-delay="300">
-                <img src="../images/kit-belleza.jpg" alt="Kit de Belleza" class="w-full h-64 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-dark-green mb-1">Kit de Belleza</h3>
-                    <p class="text-sm text-gray-600 mb-2">Regalo perfecto para el autocuidado.</p>
-                    <p class="text-lg font-bold text-sage-green">$35.00</p>
-                    <button class="mt-4 w-full bg-sage-green text-white py-2 rounded-md font-bold hover:bg-leaf-green transition-colors view-product-btn" 
-                        data-name="Kit de Belleza"
-                        data-image="../images/kit-belleza.jpg"
-                        data-description="Este kit es el regalo perfecto para quienes buscan una experiencia completa de bienestar. Incluye una vela aromática de tu elección, un jabón artesanal y una crema humectante, todos elaborados con ingredientes naturales y fragancias suaves."
-                        data-options='[{"name":"Kit Básico", "price":"35.00"}, {"name":"Kit Deluxe", "price":"50.00"}]'
-                        data-fragances='[]'>
+            <!-- Aquí agregas más productos -->
+
+            <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
+                data-name="Vela de Parafina" data-category="parafina" data-price="15"
+                data-description="Aromas naturales en tamaños personalizables." data-image="../images/vela-parafina.jpg"
+                data-options='[{"name":"Ch","price":10},{"name":"M","price":15},{"name":"G","price":20}]'
+                data-fragances='["Lavanda","Vainilla","Cítrico","Rosas"]'>
+                <!-- Badge categoría -->
+                <span
+                    class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Velas de Parafina
+                </span>
+                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-56 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold text-dark-green">Vela de Parafina</h3>
+                    <p class="text-gray-600 text-sm mb-2">Aromas naturales en tamaños personalizables.</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">$70.00</p>
+                    <button
+                        class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
                         Ver detalles
                     </button>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="belleza" data-price="8.00" data-aos="fade-up" data-aos-delay="400">
-                <img src="../images/blog-belleza.jpg" alt="Jabón artesanal de rosas" class="w-full h-64 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-dark-green mb-1">Jabón Artesanal</h3>
-                    <p class="text-sm text-gray-600 mb-2">Limpieza suave y natural para tu piel.</p>
-                    <p class="text-lg font-bold text-sage-green">$8.00</p>
-                    <button class="mt-4 w-full bg-sage-green text-white py-2 rounded-md font-bold hover:bg-leaf-green transition-colors view-product-btn" 
-                        data-name="Jabón Artesanal"
-                        data-image="../images/blog-belleza.jpg"
-                        data-description="Nuestro jabón artesanal está elaborado con aceites naturales y extractos de plantas, sin sulfatos ni químicos agresivos. Proporciona una limpieza suave y profunda, dejando tu piel hidratada y con un aroma fresco y delicado. Ideal para uso diario en el rostro y el cuerpo."
-                        data-options='[{"name":"Rosas (100g)", "price":"8.00"}, {"name":"Lavanda (100g)", "price":"8.00"}]'
-                        data-fragances='["Rosas", "Lavanda", "Avena"]'>
+
+            <!-- Producto Jabon -->
+
+            <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
+                data-name="Jabón Artesanal" data-category="jabones" data-price="6"
+                data-description="Jabones naturales elaborados a mano con ingredientes puros y aromas únicos."
+                data-image="../images/jabon-artesanal.jpg"
+                data-options='[{"name":"Lavanda","price":6},{"name":"Frutos Rojos","price":7},{"name":"Miel","price":6},{"name":"Carbón Activado","price":8}]'>
+
+                <!-- Badge categoría -->
+                <span
+                    class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Jabones
+                </span>
+
+                <!-- Imagen -->
+                <img src="../images/jabon-artesanal.jpg" alt="Jabón Artesanal" class="w-full h-56 object-cover">
+
+                <!-- Contenido -->
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold text-dark-green">Jabón Artesanal</h3>
+                    <p class="text-gray-600 text-sm mb-2">Con ingredientes naturales y propiedades revitalizantes.</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">$6.00</p>
+                    <button
+                        class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
                         Ver detalles
                     </button>
                 </div>
             </div>
+
+
+
+
         </div>
+
+        <!-- Mensaje sin resultados -->
+        <p id="no-results-message" class="hidden text-center text-gray-600 mt-8">No se encontraron productos.</p>
     </main>
 
-    <div id="product-modal" class="fixed inset-0 bg-dark-green bg-opacity-75 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg max-w-4xl w-full mx-auto overflow-hidden shadow-xl transform transition-transform scale-95 duration-300">
-            <div class="flex justify-end p-4">
-                <button id="close-modal" class="text-gray-600 hover:text-dark-green text-3xl">&times;</button>
-            </div>
-            <div class="flex flex-col md:flex-row p-6 md:p-10">
-                <div class="w-full md:w-1/2">
-                    <img id="modal-image" src="" alt="Producto" class="w-full h-auto rounded-lg shadow-md">
-                </div>
-                <div class="w-full md:w-1/2 md:pl-10 mt-6 md:mt-0">
-                    <h2 id="modal-name" class="text-3xl font-serif font-bold text-dark-green mb-4"></h2>
-                    <p id="modal-price" class="text-2xl font-bold text-sage-green mb-4"></p>
-                    <p id="modal-description" class="text-gray-700 mb-6"></p>
-                    
-                    <div id="modal-options" class="space-y-4 mb-6">
-                        </div>
-                    
-                    <div id="modal-fragances" class="mb-6">
-                        <h3 class="font-semibold text-lg mb-2">Selecciona tu fragancia:</h3>
-                        <div class="flex flex-wrap gap-2">
-                            </div>
-                    </div>
+    <!-- Modal de producto -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl w-[90%] max-w-lg overflow-hidden relative animate-fadeIn">
 
-                    <button class="w-full bg-sage-green text-white py-3 rounded-md font-bold hover:bg-leaf-green transition-colors">Añadir al carrito</button>
-                </div>
+            <!-- Botón cerrar -->
+            <button id="close-modal"
+                class="absolute top-3 right-3 bg-dark-green text-white w-10 h-10 rounded-full flex items-center justify-center text-xl hover:bg-sage-green transition">
+                &times;
+            </button>
+
+            <!-- Imagen grande -->
+            <div class="w-full">
+                <img id="modal-image" src="" alt="Producto" class="w-full h-72 object-cover">
+            </div>
+
+            <div class="p-6 space-y-4">
+                <h2 id="modal-name" class="text-2xl font-bold text-dark-green"></h2>
+                <p id="modal-description" class="text-gray-700"></p>
+
+                <div id="modal-options" class="space-y-2"></div>
+                <div id="modal-fragances"></div>
+
+                <p class="text-lg font-bold text-dark-green">Precio: <span id="modal-price"></span></p>
+
+                <button
+                    class="w-full bg-sage-green text-white py-3 rounded-full hover:bg-leaf-green transition font-semibold shadow-lg">
+                    Agregar al carrito
+                </button>
             </div>
         </div>
     </div>
-    
+
+    <!-- Footer sticky -->
     <footer class="text-center bg-dark-green text-white p-6">
-        <div class="flex flex-col justify-center items-center mb-4">
-            <div class="flex space-x-4 text-2xl">
-                <a href="https://www.instagram.com/velas_starlight/" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Instagram de Velas Starlight"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Facebook de Velas Starlight"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </div>
         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="../js/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true,
-            duration: 800,
-        });
-    </script>
+    <script>AOS.init({ once: true, duration: 800 });</script>
+    <script src="../js/main.js"></script>
 </body>
+
 </html>
