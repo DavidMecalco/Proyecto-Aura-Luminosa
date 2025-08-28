@@ -20,6 +20,7 @@
 
 El proyecto sigue una estructura de carpetas estándar para sitios web estáticos de HTML, CSS y JavaScript.
 
+```bash
 mi-tienda-velas/
 ├── css/
 │   └── styles.css (No se utiliza activamente, el estilo es con Tailwind)
@@ -41,6 +42,8 @@ mi-tienda-velas/
 │   └── productos.html
 ├── index.html
 └── README.md
+```
+
 
 ## Tecnologías Utilizadas
 
@@ -54,9 +57,11 @@ mi-tienda-velas/
 
 Para ver el proyecto en funcionamiento, simplemente abre el archivo `index.html` en tu navegador web.
 
-cd mi-tienda-velas
-start index.html  # En Windows
-open index.html   # En macOS
+```bash
+    cd mi-tienda-velas
+    start index.html  # En Windows
+    open index.html   # En macOS
+```
 
 ## Contacto
 
