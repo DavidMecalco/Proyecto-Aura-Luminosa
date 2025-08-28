@@ -26,69 +26,86 @@
             }
         }
     </script>
-    
+
     <!-- Font Awesome actualizado -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         .nav ul li a i {
             color: #2D3E33;
         }
+
         .nav ul li a:hover i {
             color: #3A5A40;
         }
+
         .text-leaf-green .fa-star,
         .text-leaf-green .fa-star-half-alt,
         .text-leaf-green .fa-star-o,
         .text-leaf-green .far.fa-star {
             color: #A3B18A;
         }
-        
-         /* 💬 Botón WhatsApp ajustado */
-    #whatsapp-button {
-        background-color: #25D366;
-        color: white;
-        border-radius: 50%;
-        width: 64px;   /* 16 * 4 = 64px */
-        height: 64px;  /* círculo perfecto */
-        font-size: 32px; /* más grande el ícono */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        animation: pulse 2s infinite;
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
 
-    #whatsapp-button:hover {
-        background-color: #20b955;
-        transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    }
+        /* 💬 Botón WhatsApp ajustado */
+        #whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 64px;
+            /* 16 * 4 = 64px */
+            height: 64px;
+            /* círculo perfecto */
+            font-size: 32px;
+            /* más grande el ícono */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    /* 🔄 Animación latido */
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.08); }
-        100% { transform: scale(1); }
-    }
+        #whatsapp-button:hover {
+            background-color: #20b955;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Ajuste del globo */
-    #whatsapp-button::after {
-        font-size: 13px;
-    }
+        /* 🔄 Animación latido */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Ajuste del globo */
+        #whatsapp-button::after {
+            font-size: 13px;
+        }
     </style>
 </head>
-
 
 <body class="bg-beige-almond text-dark-green font-sans min-h-screen flex flex-col">
 
@@ -98,58 +115,90 @@
     </a>
 
 
-    <header class="bg-white p-4 flex justify-between items-center shadow-md">
-        <div class="logo" data-aos="fade-right">
-            <a href="index.html">
-                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
+    <header class="bg-white p-4 shadow-md">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+          <a href="../index.html">
+            <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
+          </a>
+      
+          <!-- Botón hamburguesa (solo móvil) -->
+          <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+      
+          <!-- Menú normal -->
+          <nav id="menu" class="hidden md:flex space-x-6 items-center">
+            <a href="../index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+              <i class="fas fa-home"></i><span>Inicio</span>
             </a>
+            <a href="pages/productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+              <i class="fas fa-shopping-bag"></i><span>Productos</span>
+            </a>
+            <a href="pages/contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+              <i class="fas fa-phone"></i><span>Contacto</span>
+            </a>
+          </nav>
         </div>
-        <nav class="nav" data-aos="fade-left">
-            <ul class="flex space-x-6 items-center">
-                <li><a href="../index.html"
-                        class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i
-                            class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i>
-                        <span>Inicio</span></a></li>
-                <li><a href="/pages/productos.html"
-                        class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i
-                            class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i>
-                        <span>Productos</span></a></li>
-                <li><a href="/pages/contacto.html"
-                        class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i
-                            class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i>
-                        <span>Contacto</span></a></li>
-            </ul>
-        </nav>
-    </header>
+      
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
+          <a href="../index.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+            <i class="fas fa-home"></i><span>Inicio</span>
+          </a>
+          <a href="pages/productos.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+            <i class="fas fa-shopping-bag"></i><span>Productos</span>
+          </a>
+          <a href="pages/contacto.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+            <i class="fas fa-phone"></i><span>Contacto</span>
+          </a>
+        </div>
+      </header>
+
+      <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+          document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+      </script>
+
+
     <main class="flex-1 max-w-7xl mx-auto px-6 py-12">
-        <h1 class="text-4xl font-serif font-bold text-center mb-10">Nuestros Productos</h1>
+        
+        <!-- Hero productos -->
+        <section class="relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+              <div class="rounded-3xl overflow-hidden bg-cover bg-center ring-1 ring-gray-200 shadow-lg"
+                   style="background-image:url('../images/hero-banner.png')">
+                <div class="bg-black/65">
+                  <div class="px-6 sm:px-10 py-14 md:py-20 text-center text-white">
+                    <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold">Nuestros Productos</h1>
+                    <p class="mt-3 md:mt-4 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+                      Aromas que abrazan y diseños que enamoran. Encuentra tu favorito ✨
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
 
         <!-- Barra de búsqueda y filtros -->
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
-            <div class="relative w-full md:w-1/2">
-                <input id="search-input" type="text" placeholder="Buscar productos..."
-                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full shadow-sm focus:ring-2 focus:ring-sage-green focus:outline-none">
-                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            </div>
-            <div class="flex space-x-4">
-                <select id="category-filter"
-                    class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-sage-green focus:outline-none">
-                    <option value="all">Todos</option>
-                    <option value="soya">Velas de Soya</option>
-                    <option value="parafina">Velas de Parafina</option>
-                    <option value="figura">Velas de Figura</option>
-                    <option value="kit">Kit Belleza</option>
-                    <option value="jabones">Jabones</option>
-                    <option value="cremas">Crema</option>
-                </select>
-                <select id="price-filter"
-                    class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-sage-green focus:outline-none">
-                    <option value="default">Ordenar</option>
-                    <option value="low-to-high">Precio: Bajo a Alto</option>
-                    <option value="high-to-low">Precio: Alto a Bajo</option>
-                </select>
-            </div>
+        <div class="flex flex-col sm:flex-row gap-3 w-full my-4">
+            <input id="search-input" type="text" placeholder="Buscar productos..." class="flex-1 px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
+            <select id="category-filter" class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
+                <option value="all">Todos</option>
+                <option value="soya">Velas de Soya</option>
+                <option value="parafina">Velas de Parafina</option>
+                <option value="figura">Velas de Figura</option>
+                <option value="kit">Kit Belleza</option>
+                <option value="jabones">Jabones</option>
+                <option value="cremas">Crema</option>
+            </select>
+            <select id="price-filter" class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
+                <option value="default">Ordenar</option>
+                <option value="low-to-high">Precio: Bajo a Alto</option>
+                <option value="high-to-low">Precio: Alto a Bajo</option>
+            </select>
         </div>
+        
 
         <!-- Grid de productos -->
         <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -165,7 +214,7 @@
                     class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
                     Velas de Soya
                 </span>
-                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-56 object-cover">
+                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-48 sm:h-56 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-semibold text-dark-green">Vela de Soya</h3>
                     <p class="text-gray-600 text-sm mb-2">Aromas naturales en tamaños personalizables.</p>
@@ -189,7 +238,7 @@
                     class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
                     Velas de Parafina
                 </span>
-                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-56 object-cover">
+                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-48 sm:h-56 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-semibold text-dark-green">Vela de Parafina</h3>
                     <p class="text-gray-600 text-sm mb-2">Aromas naturales en tamaños personalizables.</p>
@@ -216,7 +265,7 @@
                 </span>
 
                 <!-- Imagen -->
-                <img src="../images/jabon-artesanal.jpg" alt="Jabón Artesanal" class="w-full h-56 object-cover">
+                <img src="../images/jabon-artesanal.jpg" alt="Jabón Artesanal" class="w-full h-48 sm:h-56 object-cover">
 
                 <!-- Contenido -->
                 <div class="p-4 text-center">
@@ -245,7 +294,7 @@
 
                 <!-- Imagen -->
                 <img src="../images/kit-deluxe-belleza.jpg" alt="Kit Deluxe de Belleza"
-                    class="w-full h-56 object-cover">
+                    class="w-full h-48 sm:h-56 object-cover">
 
                 <!-- Contenido -->
                 <div class="p-4 text-center">
@@ -275,7 +324,7 @@
                 </span>
 
                 <!-- Imagen -->
-                <img src="../images/vela-flor.jpg" alt="Vela en forma de flor" class="w-full h-56 object-cover">
+                <img src="../images/vela-flor.jpg" alt="Vela en forma de flor" class="w-full h-48 sm:h-56 object-cover">
 
                 <!-- Contenido -->
                 <div class="p-4 text-center">
@@ -305,7 +354,7 @@
                 </span>
 
                 <!-- Imagen -->
-                <img src="../images/crema-corporal.jpg" alt="Crema Corporal" class="w-full h-56 object-cover">
+                <img src="../images/crema-corporal.jpg" alt="Crema Corporal" class="w-full h-48 sm:h-56 object-cover">
 
                 <!-- Contenido -->
                 <div class="p-4 text-center">
@@ -330,7 +379,7 @@
 
     <!-- Modal de producto -->
     <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-2xl shadow-xl w-[90%] max-w-lg overflow-hidden relative animate-fadeIn">
+        <div class="bg-white rounded-2xl shadow-xl w-[95%] sm:w-[90%] max-w-lg">
 
             <!-- Botón cerrar -->
             <button id="close-modal"
@@ -340,7 +389,7 @@
 
             <!-- Imagen grande -->
             <div class="w-full">
-                <img id="modal-image" src="" alt="Producto" class="w-full h-72 object-cover">
+                <img id="modal-image" src="" alt="Producto" class="w-full h-48 sm:h-56 object-cover">
             </div>
 
             <div class="p-6 space-y-4">

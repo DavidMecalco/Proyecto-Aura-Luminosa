@@ -26,151 +26,277 @@
             }
         }
     </script>
-    
+
     <!-- Font Awesome actualizado -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         .nav ul li a i {
             color: #2D3E33;
         }
+
         .nav ul li a:hover i {
             color: #3A5A40;
         }
+
         .text-leaf-green .fa-star,
         .text-leaf-green .fa-star-half-alt,
         .text-leaf-green .fa-star-o,
         .text-leaf-green .far.fa-star {
             color: #A3B18A;
         }
-        
-         /* 💬 Botón WhatsApp ajustado */
-    #whatsapp-button {
-        background-color: #25D366;
-        color: white;
-        border-radius: 50%;
-        width: 64px;   /* 16 * 4 = 64px */
-        height: 64px;  /* círculo perfecto */
-        font-size: 32px; /* más grande el ícono */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        animation: pulse 2s infinite;
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
 
-    #whatsapp-button:hover {
-        background-color: #20b955;
-        transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    }
+        /* 💬 Botón WhatsApp ajustado */
+        #whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 64px;
+            /* 16 * 4 = 64px */
+            height: 64px;
+            /* círculo perfecto */
+            font-size: 32px;
+            /* más grande el ícono */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    /* 🔄 Animación latido */
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.08); }
-        100% { transform: scale(1); }
-    }
+        #whatsapp-button:hover {
+            background-color: #20b955;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Ajuste del globo */
-    #whatsapp-button::after {
-        font-size: 13px;
-    }
+        /* 🔄 Animación latido */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Ajuste del globo */
+        #whatsapp-button::after {
+            font-size: 13px;
+        }
     </style>
 </head>
 
 
 <body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
 
-    <div id="promo-message" class="fixed bottom-4 left-4 bg-sage-green text-white p-6 rounded-lg shadow-xl max-w-sm z-50 transform transition-transform duration-300 ease-out scale-100">
-        <button id="close-message" class="absolute top-2 right-3 text-white text-lg font-bold hover:text-gray-200 transition-colors">&times;</button>
-        <div class="text-center">
-            <h4 class="text-2xl font-serif font-bold mb-2">¡Oferta Especial!</h4>
-            <p class="text-lg mb-2">10% de descuento en tu primera compra.</p>
-            <p class="text-xl font-bold uppercase tracking-wide bg-dark-green px-4 py-2 rounded-md inline-block mt-2">1RAVELA</p>
-            <p class="mt-2 text-sm font-light">Usa este cupón al finalizar tu compra.</p>
+    <!-- Popup Oferta Especial -->
+
+    <!-- Popup Oferta Especial -->
+    <div id="popup-oferta" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+        <div
+            class="bg-dark-green text-white rounded-xl shadow-2xl max-w-sm w-11/12 p-6 relative text-center animate-fade-in">
+
+            <!-- Botón de cerrar -->
+            <button id="close-popup" class="absolute top-3 right-3 text-white hover:text-gray-300 text-2xl font-bold">
+                &times;
+            </button>
+
+            <h2 class="text-2xl font-serif font-bold mb-4">¡Oferta Especial!</h2>
+            <p class="text-lg mb-4">10% de descuento en tu primera compra.</p>
+
+            <!-- Cupón -->
+            <div class="bg-white text-dark-green font-bold py-2 px-4 rounded-lg inline-block mb-3 shadow">
+                1RAVELA
+            </div>
+
+            <p class="text-sm text-gray-200">Usa este cupón al finalizar tu compra.</p>
         </div>
     </div>
-    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const popup = document.getElementById("popup-oferta");
+          const closeBtn = document.getElementById("close-popup");
+        
+          const popupShown = localStorage.getItem("popupShown");
+        
+          if (!popupShown) {
+            popup.classList.remove("hidden");
+          }
+        
+          closeBtn.addEventListener("click", () => {
+            popup.classList.add("hidden");
+            localStorage.setItem("popupShown", "true");
+          });
+        });
+        </script>
+
+
     <a href="https://wa.me/521234567890" id="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
-      </a>
-      
-    
-    <header class="bg-white p-4 flex justify-between items-center shadow-md">
-        <div class="logo" data-aos="fade-right">
+    </a>
+
+
+    <header class="bg-white p-4 shadow-md">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
             <a href="index.html">
                 <img src="images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
             </a>
+
+            <!-- Botón hamburguesa (solo móvil) -->
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menú normal -->
+            <nav id="menu" class="hidden md:flex space-x-6 items-center">
+                <a href="index.html"
+                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+                    <i class="fas fa-home"></i><span>Inicio</span>
+                </a>
+                <a href="pages/productos.html"
+                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+                    <i class="fas fa-shopping-bag"></i><span>Productos</span>
+                </a>
+                <a href="pages/contacto.html"
+                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+                    <i class="fas fa-phone"></i><span>Contacto</span>
+                </a>
+            </nav>
         </div>
-        <nav class="nav" data-aos="fade-left">
-            <ul class="flex space-x-6 items-center">
-                <li><a href="index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i> <span>Inicio</span></a></li>
-                <li><a href="pages/productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i> <span>Productos</span></a></li>
-                <li><a href="pages/contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i> <span>Contacto</span></a></li>
-            </ul>
-        </nav>
+
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
+            <a href="index.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+                <i class="fas fa-home"></i><span>Inicio</span>
+            </a>
+            <a href="pages/productos.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+                <i class="fas fa-shopping-bag"></i><span>Productos</span>
+            </a>
+            <a href="pages/contacto.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+                <i class="fas fa-phone"></i><span>Contacto</span>
+            </a>
+        </div>
     </header>
 
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
+        <a href="index.html" class="block text-dark-green hover:text-sage-green">Inicio</a>
+        <a href="pages/productos.html" class="block text-dark-green hover:text-sage-green">Productos</a>
+        <a href="pages/contacto.html" class="block text-dark-green hover:text-sage-green">Contacto</a>
+    </div>
+    </header>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+
+
     <main>
-        <section class="relative h-[600px] flex items-center justify-center text-center bg-cover bg-center mx-[10%]" style="background-image: url('images/hero-banner.jpg');">
-            <div class="absolute inset-0 bg-dark-green opacity-50"></div>
-            <div class="relative z-10 text-white p-8 rounded-lg">
-                <h1 class="text-7xl font-serif font-bold mb-4">Velas Starlight</h1>
-                <p class="text-2xl font-light mb-8 max-w-2xl mx-auto">Ilumina tu mundo con nuestra colección artesanal.</p>
+        <section
+            class="relative w-full h-[300px] sm:h-[400px] md:h-[600px] flex items-center justify-center text-center bg-cover bg-center"
+            style="background-image: url('images/hero-banner.png');">
+            <div class="absolute inset-0 bg-black opacity-65"></div>
+            <div class="relative z-10 text-white p-6 md:p-8 rounded-lg">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-4">Velas Starlight</h1>
+                <p class="text-base sm:text-lg md:text-2xl font-light mb-6 max-w-2xl mx-auto">
+                    Ilumina tu mundo con nuestra colección artesanal.
+                </p>
+            </div>
         </section>
+
 
         <section class="mt-12 text-center p-8 bg-white rounded-lg shadow-md max-w-6xl mx-auto" data-aos="fade-up">
             <h3 class="text-3xl font-serif font-bold text-dark-green mb-8">Nuestros productos más populares</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Producto 1 -->
-                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                    <span class="absolute top-4 left-4 bg-leaf-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">✨ Top #1 en ventas</span>
-                    <img src="images/vela-lavanda.jpg" alt="Vela de Lavanda" class="w-full h-48 object-cover rounded-md mb-4">
+                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <span
+                        class="absolute top-4 left-4 bg-leaf-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">✨
+                        Top #1 en ventas</span>
+                    <img src="images/vela-lavanda.jpg" alt="Vela de Lavanda"
+                        class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-semibold text-dark-green">Vela de Lavanda</h4>
                     <p class="text-gray-600 mt-2 italic">Relaja tus sentidos con aroma a lavanda.</p>
                     <p class="text-lg font-bold text-sage-green mt-2">$80.00</p>
-                    <a href="pages/productos.html" class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar ahora</a>
+                    <a href="pages/productos.html"
+                        class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar
+                        ahora</a>
                 </div>
                 <!-- Producto 2 -->
-                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                    <span class="absolute top-4 left-4 bg-sage-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">🔥 Más popular</span>
-                    <img src="images/vela-sandalo.jpg" alt="Vela de Sándalo" class="w-full h-48 object-cover rounded-md mb-4">
+                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <span
+                        class="absolute top-4 left-4 bg-sage-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">🔥
+                        Más popular</span>
+                    <img src="images/vela-sandalo.jpg" alt="Vela de Sándalo"
+                        class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-semibold text-dark-green">Vela de Sándalo</h4>
                     <p class="text-gray-600 mt-2 italic">Un toque cálido y elegante para tu hogar.</p>
                     <p class="text-lg font-bold text-sage-green mt-2">$75.00</p>
-                    <a href="pages/productos.html" class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar ahora</a>
+                    <a href="pages/productos.html"
+                        class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar
+                        ahora</a>
                 </div>
                 <!-- Producto 3 -->
-                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
-                    <span class="absolute top-4 left-4 bg-dark-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">⭐ Recomendado</span>
-                    <img src="images/kit-deluxe-belleza.jpg" alt="Kit de Belleza" class="w-full h-48 object-cover rounded-md mb-4">
+                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <span
+                        class="absolute top-4 left-4 bg-dark-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">⭐
+                        Recomendado</span>
+                    <img src="images/kit-deluxe-belleza.jpg" alt="Kit de Belleza"
+                        class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-semibold text-dark-green">Kit de Belleza</h4>
                     <p class="text-gray-600 mt-2 italic">Cuida tu piel con ingredientes naturales.</p>
                     <p class="text-lg font-bold text-sage-green mt-2">$450.00</p>
-                    <a href="pages/productos.html" class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar ahora</a>
+                    <a href="pages/productos.html"
+                        class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar
+                        ahora</a>
                 </div>
             </div>
-            </section>
+        </section>
 
-        <section class="mt-12 p-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-lg shadow-md" data-aos="fade-up">
+        <section
+            class="mt-12 p-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-lg shadow-md"
+            data-aos="fade-up">
             <div data-aos="fade-right">
-                <img src="images/about-us.jpg" alt="Persona creando una vela artesanal" class="w-full h-auto rounded-lg shadow-sm">
+                <img src="images/about-us.jpg" alt="Persona creando una vela artesanal"
+                    class="w-full h-auto rounded-lg shadow-sm">
             </div>
             <div class="space-y-4" data-aos="fade-left">
                 <h3 class="text-3xl font-serif font-bold text-sage-green">Nuestra Historia</h3>
-                <p>En Velas Starlight fabricamos velas artesanales elaboradas con cera de soya y parafina de la más alta calidad. Cada pieza está hecha a mano, con amor y dedicación, utilizando aromas naturales y presentaciones únicas en forma, color y estilo.</p>
-                <p>Además, contamos con una línea de productos de belleza artesanal que incluye cremas, shampoos, jabones, mascarillas y mucho más, pensados para cuidar y consentir tu piel con ingredientes naturales y fragancias suaves.</p>
+                <p>En Velas Starlight fabricamos velas artesanales elaboradas con cera de soya y parafina de la más alta
+                    calidad. Cada pieza está hecha a mano, con amor y dedicación, utilizando aromas naturales y
+                    presentaciones únicas en forma, color y estilo.</p>
+                <p>Además, contamos con una línea de productos de belleza artesanal que incluye cremas, shampoos,
+                    jabones, mascarillas y mucho más, pensados para cuidar y consentir tu piel con ingredientes
+                    naturales y fragancias suaves.</p>
                 <p>Creamos experiencias sensoriales que transforman tus espacios y tu rutina de cuidado personal.</p>
             </div>
         </section>
@@ -180,45 +306,65 @@
             <h3 class="text-3xl font-serif font-bold text-dark-green mb-12">💬 Lo que nuestros clientes dicen</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                 <!-- Testimonio 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <img src="images/cliente.png" alt="Cliente" class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/cliente.png" alt="Cliente"
+                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
                     <h4 class="font-semibold text-lg text-dark-green">Sofía M.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm text-gray-700 italic">“Las velas de sándalo son mi obsesión. El aroma es increíble y la calidad es insuperable.”</p>
+                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm text-gray-700 italic">“Las velas de sándalo son mi obsesión. El aroma es increíble
+                        y la calidad es insuperable.”</p>
                 </div>
                 <!-- Testimonio 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <img src="images/cliente.png" alt="Cliente" class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/cliente.png" alt="Cliente"
+                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
                     <h4 class="font-semibold text-lg text-dark-green">Carlos G.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="text-sm text-gray-700 italic">“Probé la crema de manos y es maravillosa. Mi piel se siente suave y el aroma es delicado.”</p>
+                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-sm text-gray-700 italic">“Probé la crema de manos y es maravillosa. Mi piel se siente
+                        suave y el aroma es delicado.”</p>
                 </div>
                 <!-- Testimonio 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <img src="images/cliente.png" alt="Cliente" class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/cliente.png" alt="Cliente"
+                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
                     <h4 class="font-semibold text-lg text-dark-green">Ana L.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                    <p class="text-sm text-gray-700 italic">“La presentación de los productos es bellísima, se nota el cariño en cada paquete.”</p>
+                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    <p class="text-sm text-gray-700 italic">“La presentación de los productos es bellísima, se nota el
+                        cariño en cada paquete.”</p>
                 </div>
                 <!-- Testimonio 4 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300" data-aos="fade-up" data-aos-delay="400">
-                    <img src="images/cliente.png" alt="Cliente" class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <img src="images/cliente.png" alt="Cliente"
+                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
                     <h4 class="font-semibold text-lg text-dark-green">Javier P.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm text-gray-700 italic">“La calidad de los materiales y los aromas naturales me han conquistado. ¡Son únicas!”</p>
+                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm text-gray-700 italic">“La calidad de los materiales y los aromas naturales me han
+                        conquistado. ¡Son únicas!”</p>
                 </div>
             </div>
         </section>
-        
+
         <section class="mt-12 p-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
             <h3 class="text-3xl font-serif font-bold text-dark-green mb-8 text-center">
                 Nuestros productos en acción
             </h3>
             <div class="relative w-full overflow-hidden rounded-lg shadow-lg">
                 <div id="carousel-inner" class="flex transition-transform duration-500 ease-in-out">
-                    <img src="images/galeria-1.jpg" alt="Velas Starlight en un ambiente acogedor" class="min-w-full h-80 object-cover">
-                    <img src="images/galeria-2.jpg" alt="Productos de belleza en un spa" class="min-w-full h-80 object-cover">
-                    <img src="images/galeria-3.png" alt="Velas aromáticas con flores" class="min-w-full h-80 object-cover">
+                    <img src="images/galeria-1.jpg" alt="Velas Starlight en un ambiente acogedor"
+                        class="min-w-full h-80 object-cover">
+                    <img src="images/galeria-2.jpg" alt="Productos de belleza en un spa"
+                        class="min-w-full h-80 object-cover">
+                    <img src="images/galeria-3.png" alt="Velas aromáticas con flores"
+                        class="min-w-full h-80 object-cover">
                 </div>
                 <button id="carousel-prev"
                     class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
@@ -230,7 +376,7 @@
                 </button>
             </div>
         </section>
-        
+
 
         <!-- Nueva sección de Blog mejorada -->
         <section class="mt-16 p-8 max-w-6xl mx-auto" data-aos="fade-up">
@@ -248,7 +394,8 @@
                         <h4 class="font-semibold text-xl text-dark-green mb-2">5 Ritualitos de Relajación con Velas</h4>
                         <p class="text-sm text-gray-700 flex-grow">Descubre cómo las velas artesanales pueden ayudarte a
                             reconectar contigo mismo y crear atmósferas de calma.</p>
-                        <a href="pages/blog-1.html" class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer
+                        <a href="pages/blog-1.html"
+                            class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer
                             más →</a>
                     </div>
                 </div>
@@ -263,9 +410,11 @@
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h4 class="font-semibold text-xl text-dark-green mb-2">Cuidado Natural para tu Piel</h4>
-                        <p class="text-sm text-gray-700 flex-grow">Tu piel merece lo mejor: conoce los secretos de una rutina de
+                        <p class="text-sm text-gray-700 flex-grow">Tu piel merece lo mejor: conoce los secretos de una
+                            rutina de
                             cuidado natural que resalta tu belleza.</p>
-                        <a href="pages/blog-2.html" class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer
+                        <a href="pages/blog-2.html"
+                            class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer
                             más →</a>
                     </div>
                 </div>
@@ -273,15 +422,19 @@
                 <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
                     data-aos="fade-up" data-aos-delay="300">
                     <div class="relative">
-                        <img src="images/blog-aroma.jpg" alt="Variedad de aromas naturales" class="w-full h-56 object-cover">
+                        <img src="images/blog-aroma.jpg" alt="Variedad de aromas naturales"
+                            class="w-full h-56 object-cover">
                         <span
                             class="absolute top-4 left-4 bg-dark-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Aromas</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h4 class="font-semibold text-xl text-dark-green mb-2">Cómo elegir la fragancia perfecta</h4>
-                        <p class="text-sm text-gray-700 flex-grow">Guía práctica para seleccionar el aroma que mejor se adapta a
+                        <p class="text-sm text-gray-700 flex-grow">Guía práctica para seleccionar el aroma que mejor se
+                            adapta a
                             tu estilo de vida y al ambiente de tu hogar.</p>
-                        <a href="#" class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer más →</a>
+                        <a href="pages/blog-3.html"
+                            class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer más
+                            →</a>
                     </div>
                 </div>
             </div>
@@ -292,8 +445,11 @@
     <footer class="text-center bg-dark-green text-white p-6 mt-12">
         <div class="flex flex-col justify-center items-center mb-4">
             <div class="flex space-x-4 text-2xl">
-                <a href="https://www.instagram.com/velas_starlight/" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Instagram de Velas Starlight"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Facebook de Velas Starlight"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/velas_starlight/" target="_blank"
+                    class="hover:text-gray-sand transition-colors" aria-label="Instagram de Velas Starlight"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="hover:text-gray-sand transition-colors"
+                    aria-label="Facebook de Velas Starlight"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
@@ -305,7 +461,7 @@
             once: true,
             duration: 800,
         });
-        document.getElementById('close-message').addEventListener('click', function() {
+        document.getElementById('close-message').addEventListener('click', function () {
             document.getElementById('promo-message').style.transform = 'scale(0)';
             setTimeout(() => {
                 document.getElementById('promo-message').style.display = 'none';
@@ -313,73 +469,74 @@
         });
     </script>
 
-<script>
-    (() => {
-      const carousel = document.getElementById('carousel-inner');
-      const prevBtn  = document.getElementById('carousel-prev');
-      const nextBtn  = document.getElementById('carousel-next');
-      const container = carousel ? carousel.parentElement : null;
-    
-      if (!carousel || !prevBtn || !nextBtn || !container) return;
-    
-      const slides = Array.from(carousel.querySelectorAll('img'));
-      let index = 0;
-      let timerId = null;
-    
-      const goTo = (i) => {
-        index = (i + slides.length) % slides.length;
-        const w = container.getBoundingClientRect().width;   // ancho visible
-        // Usa translate3d para un render más fluido
-        carousel.style.transform = `translate3d(${-index * w}px, 0, 0)`;
-      };
-    
-      const next = () => goTo(index + 1);
-      const prev = () => goTo(index - 1);
-    
-      const start = () => {
-        stop();
-        timerId = setInterval(next, 5000); // cada 5s
-      };
-      const stop = () => {
-        if (timerId) clearInterval(timerId);
-        timerId = null;
-      };
-    
-      // Controles
-      nextBtn.addEventListener('click', () => { next(); start(); });
-      prevBtn.addEventListener('click', () => { prev(); start(); });
-    
-      // Pausa autoplay sólo en dispositivos con mouse
-      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        container.addEventListener('mouseenter', stop);
-        container.addEventListener('mouseleave', start);
-      }
-    
-      // Mantener posición al redimensionar
-      window.addEventListener('resize', () => goTo(index));
-    
-      // Iniciar cuando haya medidas correctas
-      const ready = () => { goTo(index); start(); };
-    
-      if (slides[0] && slides[0].complete) {
-        // Espera un frame para asegurar layout
-        requestAnimationFrame(ready);
-      } else if (slides[0]) {
-        slides[0].addEventListener('load', ready, { once: true });
-      } else {
-        // Si no hay imágenes, salimos
-        return;
-      }
-    
-      // Opcional: pausar si el carrusel no está a la vista (ahorra recursos)
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(e => e.isIntersecting ? start() : stop());
-        }, { threshold: 0.3 });
-        io.observe(container);
-      }
-    })();
+    <script>
+        (() => {
+            const carousel = document.getElementById('carousel-inner');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            const container = carousel ? carousel.parentElement : null;
+
+            if (!carousel || !prevBtn || !nextBtn || !container) return;
+
+            const slides = Array.from(carousel.querySelectorAll('img'));
+            let index = 0;
+            let timerId = null;
+
+            const goTo = (i) => {
+                index = (i + slides.length) % slides.length;
+                const w = container.getBoundingClientRect().width;   // ancho visible
+                // Usa translate3d para un render más fluido
+                carousel.style.transform = `translate3d(${-index * w}px, 0, 0)`;
+            };
+
+            const next = () => goTo(index + 1);
+            const prev = () => goTo(index - 1);
+
+            const start = () => {
+                stop();
+                timerId = setInterval(next, 5000); // cada 5s
+            };
+            const stop = () => {
+                if (timerId) clearInterval(timerId);
+                timerId = null;
+            };
+
+            // Controles
+            nextBtn.addEventListener('click', () => { next(); start(); });
+            prevBtn.addEventListener('click', () => { prev(); start(); });
+
+            // Pausa autoplay sólo en dispositivos con mouse
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                container.addEventListener('mouseenter', stop);
+                container.addEventListener('mouseleave', start);
+            }
+
+            // Mantener posición al redimensionar
+            window.addEventListener('resize', () => goTo(index));
+
+            // Iniciar cuando haya medidas correctas
+            const ready = () => { goTo(index); start(); };
+
+            if (slides[0] && slides[0].complete) {
+                // Espera un frame para asegurar layout
+                requestAnimationFrame(ready);
+            } else if (slides[0]) {
+                slides[0].addEventListener('load', ready, { once: true });
+            } else {
+                // Si no hay imágenes, salimos
+                return;
+            }
+
+            // Opcional: pausar si el carrusel no está a la vista (ahorra recursos)
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(e => e.isIntersecting ? start() : stop());
+                }, { threshold: 0.3 });
+                io.observe(container);
+            }
+        })();
     </script>
-    
+
 </body>
+
 </html>

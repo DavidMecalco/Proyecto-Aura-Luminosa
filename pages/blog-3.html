@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo elegir la fragancia perfecta | Velas Starlight</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'beige-almond': '#F6F1E9',
+            'dark-green': '#2D3E33',
+            'warm-cream': '#EDE6DA',
+            'sage-green': '#3A5A40',
+            'leaf-green': '#A3B18A',
+            'gray-sand': '#D6CEC3',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/521234567890" id="whatsapp-button"
+    class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full w-14 h-14 flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform z-50">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Navbar -->
+  <header class="bg-white p-4 shadow-md">
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+      <a href="../index.html">
+        <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
+      </a>
+      <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="menu" class="hidden md:flex space-x-6 items-center">
+        <a href="../index.html" class="flex items-center space-x-2 hover:text-sage-green"><i class="fas fa-home"></i><span>Inicio</span></a>
+        <a href="productos.html" class="flex items-center space-x-2 hover:text-sage-green"><i class="fas fa-shopping-bag"></i><span>Productos</span></a>
+        <a href="contacto.html" class="flex items-center space-x-2 hover:text-sage-green"><i class="fas fa-phone"></i><span>Contacto</span></a>
+      </nav>
+    </div>
+    <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
+      <a href="../index.html" class="flex items-center space-x-2"><i class="fas fa-home"></i><span>Inicio</span></a>
+      <a href="productos.html" class="flex items-center space-x-2"><i class="fas fa-shopping-bag"></i><span>Productos</span></a>
+      <a href="contacto.html" class="flex items-center space-x-2"><i class="fas fa-phone"></i><span>Contacto</span></a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-8 mt-8 bg-white rounded-lg shadow-lg">
+    <article data-aos="fade-up">
+      <header class="text-center mb-8">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-dark-green mb-4">Cómo elegir la fragancia perfecta</h1>
+        <p class="text-sm text-gray-500 italic">Publicado el 28 de Agosto, 2025</p>
+        <img src="../images/blog-aroma.jpg  " alt="Velas aromáticas y fragancias" class="w-full h-auto rounded-lg my-8 shadow-md">
+      </header>
+
+      <div class="prose max-w-none text-lg">
+        <p>El aroma que elijas para tu hogar no es solo un detalle, sino una extensión de tu personalidad y estilo de vida. Una fragancia puede transformar un espacio, despertar emociones y acompañarte en tu día a día.</p>
+
+        <h2 class="text-2xl font-serif font-bold text-sage-green mt-8 mb-4">Fragancias para la relajación</h2>
+        <p>Si buscas crear un ambiente de calma y serenidad, las notas de lavanda, manzanilla o sándalo son ideales. Perfectas para usar en dormitorios o espacios de meditación.</p>
+
+        <h2 class="text-2xl font-serif font-bold text-sage-green mt-8 mb-4">Fragancias energizantes</h2>
+        <p>Para activar tu mente y mantenerte motivado, nada como los aromas cítricos: naranja, limón o toronja. Funcionan muy bien en áreas de trabajo o estudio.</p>
+
+        <h2 class="text-2xl font-serif font-bold text-sage-green mt-8 mb-4">Fragancias acogedoras</h2>
+        <p>Si quieres darle un toque cálido y hogareño a tu sala, apuesta por aromas dulces como la vainilla, canela o cacao. Son fragancias que invitan a compartir momentos.</p>
+
+        <h2 class="text-2xl font-serif font-bold text-sage-green mt-8 mb-4">Consejo final</h2>
+        <p>No existe una fragancia universal; lo importante es que el aroma te haga sentir bien y se adapte al momento. Experimenta con diferentes velas y encuentra tu aroma perfecto.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="text-center bg-dark-green text-white p-6 mt-12">
+    <div class="flex flex-col justify-center items-center mb-4">
+      <div class="flex space-x-4 text-2xl">
+        <a href="https://www.instagram.com/velas_starlight/" target="_blank" class="hover:text-gray-sand transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank" class="hover:text-gray-sand transition-colors"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+</body>
+</html>

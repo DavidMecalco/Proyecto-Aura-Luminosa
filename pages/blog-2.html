@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuidado Natural para tu Piel | Velas Starlight Blog</title>
-
+    <title>Velas Starlight | Elegancia y Belleza</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,29 +26,141 @@
             }
         }
     </script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-PndW5QzT/K+B13l1lM6X/016t53b5l2v20b7q3p2/8j2m12y3s2o20a2o3/w2B/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Awesome actualizado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .nav ul li a i {
+            color: #2D3E33;
+        }
+
+        .nav ul li a:hover i {
+            color: #3A5A40;
+        }
+
+        .text-leaf-green .fa-star,
+        .text-leaf-green .fa-star-half-alt,
+        .text-leaf-green .fa-star-o,
+        .text-leaf-green .far.fa-star {
+            color: #A3B18A;
+        }
+
+        /* 💬 Botón WhatsApp ajustado */
+        #whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 64px;
+            /* 16 * 4 = 64px */
+            height: 64px;
+            /* círculo perfecto */
+            font-size: 32px;
+            /* más grande el ícono */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #whatsapp-button:hover {
+            background-color: #20b955;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 🔄 Animación latido */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Ajuste del globo */
+        #whatsapp-button::after {
+            font-size: 13px;
+        }
+    </style>
 </head>
+
+
 <body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
 
-    <header class="bg-white p-4 flex justify-between items-center shadow-md">
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-12 w-auto block">
+    <!-- Navbar -->
+    <a href="https://wa.me/521234567890" id="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+
+    <header class="bg-white p-4 shadow-md">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+          <a href="../index.html">
+            <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
+          </a>
+      
+          <!-- Botón hamburguesa (solo móvil) -->
+          <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+      
+          <!-- Menú normal -->
+          <nav id="menu" class="hidden md:flex space-x-6 items-center">
+            <a href="../index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+              <i class="fas fa-home"></i><span>Inicio</span>
             </a>
+            <a href="/pages/productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+              <i class="fas fa-shopping-bag"></i><span>Productos</span>
+            </a>
+            <a href="/pages/contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
+              <i class="fas fa-phone"></i><span>Contacto</span>
+            </a>
+          </nav>
         </div>
-        <nav class="nav">
-            <ul class="flex space-x-6 items-center">
-                <li><a href="../index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i> <span>Inicio</span></a></li>
-                <li><a href="productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i> <span>Productos</span></a></li>
-                <li><a href="contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i> <span>Contacto</span></a></li>
-            </ul>
-        </nav>
-    </header>
+      
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
+          <a href="../index.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+            <i class="fas fa-home"></i><span>Inicio</span>
+          </a>
+          <a href="pages/productos.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+            <i class="fas fa-shopping-bag"></i><span>Productos</span>
+          </a>
+          <a href="pages/contacto.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
+            <i class="fas fa-phone"></i><span>Contacto</span>
+          </a>
+        </div>
+      </header>
+
+      <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+          document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+      </script>
+
 
     <main class="max-w-4xl mx-auto p-8 mt-8 bg-white rounded-lg shadow-lg">
         <article data-aos="fade-up">
