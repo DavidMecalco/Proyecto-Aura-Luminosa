@@ -20,6 +20,7 @@
 
 El proyecto sigue una estructura de carpetas estándar para sitios web estáticos de HTML, CSS y JavaScript.
 
+''' bash
 mi-tienda-velas/
 ├── css/
 │   └── styles.css (No se utiliza activamente, el estilo es con Tailwind)
@@ -41,6 +42,8 @@ mi-tienda-velas/
 │   └── productos.html
 ├── index.html
 └── README.md
+
+´´´
 
 ## Tecnologías Utilizadas
 
