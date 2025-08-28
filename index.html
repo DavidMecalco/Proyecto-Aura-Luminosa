@@ -188,7 +188,7 @@
             <h3 class="text-3xl font-serif font-bold text-dark-green mb-8">Lo que nuestros clientes dicen</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <img src="images/cliente.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
                     <h4 class="font-semibold text-lg text-dark-green">Sofía M.</h4>
                     <div class="my-2 text-leaf-green">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -196,7 +196,7 @@
                     <p class="text-sm text-gray-700 italic">"Las velas de sándalo son mi obsesión. El aroma es increíble y la calidad es insuperable. ¡El mejor regalo para mí misma!"</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <img src="images/cliente.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
                     <h4 class="font-semibold text-lg text-dark-green">Carlos G.</h4>
                     <div class="my-2 text-leaf-green">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
@@ -204,7 +204,7 @@
                     <p class="text-sm text-gray-700 italic">"Probé la crema de manos y es maravillosa. Mi piel se siente suave y el aroma es muy delicado. ¡Recomendado 100%!"</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <img src="images/cliente.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
                     <h4 class="font-semibold text-lg text-dark-green">Ana L.</h4>
                     <div class="my-2 text-leaf-green">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
@@ -212,13 +212,30 @@
                     <p class="text-sm text-gray-700 italic">"La presentación de los productos es bellísima, se nota el cariño en cada paquete. ¡Son el regalo perfecto para cualquier ocasión!"</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
-                    <img src="images/usuario.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
+                    <img src="images/cliente.png" alt="Foto de cliente" class="w-20 h-20 rounded-full object-cover mb-4 shadow-sm">
                     <h4 class="font-semibold text-lg text-dark-green">Javier P.</h4>
                     <div class="my-2 text-leaf-green">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
                     <p class="text-sm text-gray-700 italic">"La calidad de los materiales y los aromas naturales me han conquistado. No volveré a comprar velas en otro lugar. ¡Son únicas!"</p>
                 </div>
+            </div>
+        </section>
+        
+        <section class="mt-12 p-8 max-w-6xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
+            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8 text-center">Nuestros productos en acción</h3>
+            <div class="relative w-full overflow-hidden rounded-lg shadow-lg">
+                <div id="carousel-inner" class="flex transition-transform duration-500 ease-in-out">
+                    <img src="images/galeria-1.png" alt="Velas Starlight en un ambiente acogedor" class="min-w-full h-auto object-cover">
+                    <img src="images/galeria-2.png" alt="Productos de belleza en un spa" class="min-w-full h-auto object-cover">
+                    <img src="images/galeria-3.png" alt="Velas aromáticas con flores" class="min-w-full h-auto object-cover">
+                </div>
+                <button id="carousel-prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
+                    &#10094;
+                </button>
+                <button id="carousel-next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
+                    &#10095;
+                </button>
             </div>
         </section>
 
@@ -273,5 +290,74 @@
             }, 300);
         });
     </script>
+
+<script>
+    (() => {
+      const carousel = document.getElementById('carousel-inner');
+      const prevBtn  = document.getElementById('carousel-prev');
+      const nextBtn  = document.getElementById('carousel-next');
+      const container = carousel ? carousel.parentElement : null;
+    
+      if (!carousel || !prevBtn || !nextBtn || !container) return;
+    
+      const slides = Array.from(carousel.querySelectorAll('img'));
+      let index = 0;
+      let timerId = null;
+    
+      const goTo = (i) => {
+        index = (i + slides.length) % slides.length;
+        const w = container.getBoundingClientRect().width;   // ancho visible
+        // Usa translate3d para un render más fluido
+        carousel.style.transform = `translate3d(${-index * w}px, 0, 0)`;
+      };
+    
+      const next = () => goTo(index + 1);
+      const prev = () => goTo(index - 1);
+    
+      const start = () => {
+        stop();
+        timerId = setInterval(next, 5000); // cada 5s
+      };
+      const stop = () => {
+        if (timerId) clearInterval(timerId);
+        timerId = null;
+      };
+    
+      // Controles
+      nextBtn.addEventListener('click', () => { next(); start(); });
+      prevBtn.addEventListener('click', () => { prev(); start(); });
+    
+      // Pausa autoplay sólo en dispositivos con mouse
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        container.addEventListener('mouseenter', stop);
+        container.addEventListener('mouseleave', start);
+      }
+    
+      // Mantener posición al redimensionar
+      window.addEventListener('resize', () => goTo(index));
+    
+      // Iniciar cuando haya medidas correctas
+      const ready = () => { goTo(index); start(); };
+    
+      if (slides[0] && slides[0].complete) {
+        // Espera un frame para asegurar layout
+        requestAnimationFrame(ready);
+      } else if (slides[0]) {
+        slides[0].addEventListener('load', ready, { once: true });
+      } else {
+        // Si no hay imágenes, salimos
+        return;
+      }
+    
+      // Opcional: pausar si el carrusel no está a la vista (ahorra recursos)
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => e.isIntersecting ? start() : stop());
+        }, { threshold: 0.3 });
+        io.observe(container);
+      }
+    })();
+    </script>
+    
 </body>
 </html>
