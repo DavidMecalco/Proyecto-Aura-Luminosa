@@ -49,62 +49,43 @@
             color: #A3B18A;
         }
         
-               /* 💬 Estilos botón WhatsApp */
-        #whatsapp-button {
-            background-color: #25D366; /* Verde oficial */
-            color: white;
-            border-radius: 50%;
-            padding: 18px;
-            font-size: 28px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            position: fixed;       /* sigue flotando */
-            bottom: 1.5rem;        /* 24px */
-            right: 1.5rem;         /* 24px */
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    
-        #whatsapp-button:hover {
-            background-color: #20b955;
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-        }
-    
-        /* 🔄 Animación de latido */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
-        }
-    
-        /* 💬 Globo de diálogo */
-        #whatsapp-button::after {
-            content: "Chatea con nosotros";
-            position: absolute;
-            right: 110%;   /* a la izquierda del botón */
-            top: 50%;      /* centrado verticalmente */
-            transform: translateY(-50%);
-            background-color: #25D366;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-    
-        #whatsapp-button:hover::after {
-            opacity: 1;
-        }
-        
+         /* 💬 Botón WhatsApp ajustado */
+    #whatsapp-button {
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+        width: 64px;   /* 16 * 4 = 64px */
+        height: 64px;  /* círculo perfecto */
+        font-size: 32px; /* más grande el ícono */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        animation: pulse 2s infinite;
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #whatsapp-button:hover {
+        background-color: #20b955;
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 🔄 Animación latido */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+        100% { transform: scale(1); }
+    }
+
+    /* Ajuste del globo */
+    #whatsapp-button::after {
+        font-size: 13px;
+    }
     </style>
 </head>
 
@@ -142,13 +123,11 @@
     </header>
 
     <main>
-        <section class="relative h-[600px] flex items-center justify-center text-center bg-cover bg-center mx-[10%]" style="background-image: url('images/hero-banner2.jpg');" data-aos="zoom-in" data-aos-duration="1000">
+        <section class="relative h-[600px] flex items-center justify-center text-center bg-cover bg-center mx-[10%]" style="background-image: url('images/hero-banner.jpg');">
             <div class="absolute inset-0 bg-dark-green opacity-50"></div>
             <div class="relative z-10 text-white p-8 rounded-lg">
                 <h1 class="text-7xl font-serif font-bold mb-4">Velas Starlight</h1>
                 <p class="text-2xl font-light mb-8 max-w-2xl mx-auto">Ilumina tu mundo con nuestra colección artesanal.</p>
-                <a href="pages/productos.html" class="inline-block bg-sage-green text-white py-4 px-10 rounded-full text-xl font-bold uppercase tracking-wide hover:bg-leaf-green transition-colors shadow-lg">Ver productos</a>
-            </div>
         </section>
 
         <section class="mt-12 text-center p-8 bg-white rounded-lg shadow-md max-w-6xl mx-auto" data-aos="fade-up">
@@ -231,22 +210,27 @@
             </div>
         </section>
         
-        <section class="mt-12 p-8 max-w-6xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
-            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8 text-center">Nuestros productos en acción</h3>
+        <section class="mt-12 p-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
+            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8 text-center">
+                Nuestros productos en acción
+            </h3>
             <div class="relative w-full overflow-hidden rounded-lg shadow-lg">
                 <div id="carousel-inner" class="flex transition-transform duration-500 ease-in-out">
-                    <img src="images/galeria-1.png" alt="Velas Starlight en un ambiente acogedor" class="min-w-full h-auto object-cover">
-                    <img src="images/galeria-2.png" alt="Productos de belleza en un spa" class="min-w-full h-auto object-cover">
-                    <img src="images/galeria-3.png" alt="Velas aromáticas con flores" class="min-w-full h-auto object-cover">
+                    <img src="images/galeria-1.jpg" alt="Velas Starlight en un ambiente acogedor" class="min-w-full h-80 object-cover">
+                    <img src="images/galeria-2.jpg" alt="Productos de belleza en un spa" class="min-w-full h-80 object-cover">
+                    <img src="images/galeria-3.png" alt="Velas aromáticas con flores" class="min-w-full h-80 object-cover">
                 </div>
-                <button id="carousel-prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
+                <button id="carousel-prev"
+                    class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
                     &#10094;
                 </button>
-                <button id="carousel-next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
+                <button id="carousel-next"
+                    class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
                     &#10095;
                 </button>
             </div>
         </section>
+        
 
         <!-- Nueva sección de Blog mejorada -->
         <section class="mt-16 p-8 max-w-6xl mx-auto" data-aos="fade-up">
