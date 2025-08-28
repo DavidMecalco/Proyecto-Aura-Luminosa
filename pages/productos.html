@@ -172,11 +172,13 @@
             <div class="flex space-x-4">
                 <select id="category-filter"
                     class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-sage-green focus:outline-none">
-                    <option value="all">Categoría</option>
+                    <option value="all">Todos</option>
                     <option value="soya">Velas de Soya</option>
                     <option value="parafina">Velas de Parafina</option>
                     <option value="figura">Velas de Figura</option>
-                    <option value="kit">Kits</option>
+                    <option value="kit">Kit Belleza</option>
+                    <option value="jabones">Jabones</option>
+                    <option value="cremas">Crema</option>
                 </select>
                 <select id="price-filter"
                     class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-sage-green focus:outline-none">
@@ -194,7 +196,7 @@
             <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
                 data-name="Vela de Soya" data-category="soya" data-price="15"
                 data-description="Aromas naturales en tamaños personalizables." data-image="../images/vela-soya.jpg"
-                data-options='[{"name":"Ch","price":10},{"name":"M","price":15},{"name":"G","price":20}]'
+                data-options='[{"name":"Ch","price":60},{"name":"M","price":80},{"name":"G","price":120}]'
                 data-fragances='["Lavanda","Vainilla","Cítrico","Rosas"]'>
                 <!-- Badge categoría -->
                 <span
@@ -205,7 +207,7 @@
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-semibold text-dark-green">Vela de Soya</h3>
                     <p class="text-gray-600 text-sm mb-2">Aromas naturales en tamaños personalizables.</p>
-                    <p class="text-dark-green font-bold text-lg mb-3">$15.00</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">$60.00</p>
                     <button
                         class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
                         Ver detalles
@@ -243,7 +245,7 @@
                 data-name="Jabón Artesanal" data-category="jabones" data-price="6"
                 data-description="Jabones naturales elaborados a mano con ingredientes puros y aromas únicos."
                 data-image="../images/jabon-artesanal.jpg"
-                data-options='[{"name":"Lavanda","price":6},{"name":"Frutos Rojos","price":7},{"name":"Miel","price":6},{"name":"Carbón Activado","price":8}]'>
+                data-options='[{"name":"Lavanda","price":50},{"name":"Frutos Rojos","price":50},{"name":"Miel","price":50},{"name":"Carbón Activado","price":70}]'>
 
                 <!-- Badge categoría -->
                 <span
@@ -258,7 +260,96 @@
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-semibold text-dark-green">Jabón Artesanal</h3>
                     <p class="text-gray-600 text-sm mb-2">Con ingredientes naturales y propiedades revitalizantes.</p>
-                    <p class="text-dark-green font-bold text-lg mb-3">$6.00</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">$50.00</p>
+                    <button
+                        class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kit de Belleza delux -->
+
+            <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
+                data-name="Kit Deluxe de Belleza" data-category="kit" data-price="60"
+                data-description="Un set de lujo que incluye velas, jabones artesanales y aceites esenciales para consentirte."
+                data-image="../images/kit-deluxe-belleza.jpg" data-options='[{"name":"Deluxe","price":600}]'>
+
+                <!-- Badge categoría -->
+                <span
+                    class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Kit Belleza
+                </span>
+
+                <!-- Imagen -->
+                <img src="../images/kit-deluxe-belleza.jpg" alt="Kit Deluxe de Belleza"
+                    class="w-full h-56 object-cover">
+
+                <!-- Contenido -->
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold text-dark-green">Kit Deluxe de Belleza</h3>
+                    <p class="text-gray-600 text-sm mb-2">Incluye velas, jabones artesanales y aceites esenciales.</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">$600.00</p>
+                    <button
+                        class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vela con forma de flor -->
+
+            <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
+                data-name="Vela Flor" data-category="figura" data-price="15"
+                data-description="Vela artesanal en forma de flor, disponible en soya o parafina."
+                data-image="../images/vela-flor.jpg"
+                data-options='[{"name":"Soya","price":15},{"name":"Parafina","price":12}]'
+                data-fragances='["Lavanda","Rosas","Vainilla","Canela"]'>
+
+                <!-- Badge categoría -->
+                <span
+                    class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Velas de Figura
+                </span>
+
+                <!-- Imagen -->
+                <img src="../images/vela-flor.jpg" alt="Vela en forma de flor" class="w-full h-56 object-cover">
+
+                <!-- Contenido -->
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold text-dark-green">Vela Flor</h3>
+                    <p class="text-gray-600 text-sm mb-2">Disponible en soya o parafina con fragancias delicadas.</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">Desde $12.00</p>
+                    <button
+                        class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <!-- Crema -->
+
+            <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
+                data-name="Crema Corporal" data-category="cremas" data-price="10"
+                data-description="Crema corporal nutritiva e hidratante, disponible en diferentes tamaños y fórmulas."
+                data-image="../images/crema-corporal.jpg"
+                data-options='[{"name":"Chica (150 ml)","price":10},{"name":"Mediana (300 ml)","price":18},{"name":"Grande (500 ml)","price":25}]'
+                data-fragances='["Almendras","Rosas","Ácido Hialurónico"]'>
+
+                <!-- Badge categoría -->
+                <span
+                    class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Cremas
+                </span>
+
+                <!-- Imagen -->
+                <img src="../images/crema-corporal.jpg" alt="Crema Corporal" class="w-full h-56 object-cover">
+
+                <!-- Contenido -->
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold text-dark-green">Crema Corporal</h3>
+                    <p class="text-gray-600 text-sm mb-2">Nutritiva e hidratante, en varias presentaciones.</p>
+                    <p class="text-dark-green font-bold text-lg mb-3">Desde $10.00</p>
                     <button
                         class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
                         Ver detalles
