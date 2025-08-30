@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Políticas de la Tienda | Velas Starlight</title>
+    <title>Velas Starlight | Elegancia y Belleza</title>
 
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,73 +31,156 @@
             }
         }
     </script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-PndW5QzT/K+B13l1lM6X/016t53b5l2v20b7q3p2/8j2m12y3s2o20a2o3/w2B/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Awesome (solo 1 vez) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- AOS Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos Globales -->
     <style>
-        .nav ul li a i { color: #2D3E33; }
-        .nav ul li a:hover i { color: #3A5A40; }
-        .text-leaf-green .fa-star, .text-leaf-green .fa-star-half-alt, .text-leaf-green .fa-star-o, .text-leaf-green .far.fa-star { color: #A3B18A; }
+        /* Iconos del navbar */
+        .nav ul li a i {
+            color: #2D3E33;
+        }
+
+        .nav ul li a:hover i {
+            color: #3A5A40;
+        }
+
+        /* Estilo estrellas */
+        .text-leaf-green .fa-star,
+        .text-leaf-green .fa-star-half-alt,
+        .text-leaf-green .fa-star-o,
+        .text-leaf-green .far.fa-star {
+            color: #A3B18A;
+        }
     </style>
 </head>
+
 <body class="bg-beige-almond text-dark-green font-sans leading-relaxed">
 
-    <header class="bg-white p-4 flex justify-between items-center shadow-md">
-        <div class="logo">
+    <!-- Navbar -->
+    <header class="bg-white p-4 shadow-md">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
             <a href="../index.html">
-                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-12 w-auto block">
+                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
             </a>
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="menu" class="hidden md:flex space-x-6 items-center">
+                <a href="../index.html" class="flex items-center space-x-2 hover:text-sage-green"><i
+                        class="fas fa-home"></i><span>Inicio</span></a>
+                <a href="productos.html" class="flex items-center space-x-2 hover:text-sage-green"><i
+                        class="fas fa-shopping-bag"></i><span>Productos</span></a>
+                <a href="contacto.html" class="flex items-center space-x-2 hover:text-sage-green"><i
+                        class="fas fa-phone"></i><span>Contacto</span></a>
+            </nav>
         </div>
-        <nav class="nav">
-            <ul class="flex space-x-6 items-center">
-                <li><a href="../index.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-home text-dark-green hover:text-sage-green transition-colors"></i> <span>Inicio</span></a></li>
-                <li><a href="productos.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-shopping-bag text-dark-green hover:text-sage-green transition-colors"></i> <span>Productos</span></a></li>
-                <li><a href="contacto.html" class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors"><i class="fas fa-phone text-dark-green hover:text-sage-green transition-colors"></i> <span>Contacto</span></a></li>
-            </ul>
-        </nav>
+        <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
+            <a href="../index.html" class="flex items-center space-x-2"><i
+                    class="fas fa-home"></i><span>Inicio</span></a>
+            <a href="productos.html" class="flex items-center space-x-2"><i
+                    class="fas fa-shopping-bag"></i><span>Productos</span></a>
+            <a href="contacto.html" class="flex items-center space-x-2"><i
+                    class="fas fa-phone"></i><span>Contacto</span></a>
+        </div>
     </header>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
 
     <main class="max-w-4xl mx-auto p-8 mt-8 bg-white rounded-lg shadow-lg">
         <section data-aos="fade-up" class="text-center mb-8">
             <h1 class="text-4xl font-serif font-bold text-dark-green mb-4">Políticas de la Tienda</h1>
-            <p class="text-lg text-gray-600 mb-8">Información importante sobre envíos, devoluciones y términos de servicio.</p>
+            <p class="text-lg text-gray-600 mb-8">Información importante sobre envíos, devoluciones y términos de
+                servicio.</p>
         </section>
 
         <section class="space-y-8" data-aos="fade-up" data-aos-delay="100">
             <div>
                 <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">1. Política de Envíos y Entregas</h2>
-                <p class="text-gray-700">Realizamos envíos a toda la República Mexicana. El tiempo de procesamiento de tu pedido es de 1 a 2 días hábiles. El tiempo de entrega puede variar de 3 a 7 días hábiles, dependiendo de tu ubicación. Los costos de envío se calcularán al finalizar la compra.</p>
+                <p class="text-gray-700">Realizamos envíos a toda la República Mexicana. El tiempo de procesamiento de
+                    tu pedido es de 1 a 2 días hábiles. El tiempo de entrega puede variar de 3 a 7 días hábiles,
+                    dependiendo de tu ubicación. Los costos de envío se calcularán al finalizar la compra.</p>
             </div>
-            
+
             <div>
-                <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">2. Política de Cambios y Devoluciones</h2>
-                <p class="text-gray-700">Aceptamos cambios y devoluciones dentro de los 15 días posteriores a la recepción de tu pedido. El producto debe estar en perfectas condiciones y en su empaque original. Los gastos de envío por devolución corren por cuenta del cliente, a menos que el producto haya llegado dañado o incorrecto.</p>
+                <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">2. Política de Cambios y Devoluciones
+                </h2>
+                <p class="text-gray-700">Aceptamos cambios y devoluciones dentro de los 15 días posteriores a la
+                    recepción de tu pedido. El producto debe estar en perfectas condiciones y en su empaque original.
+                    Los gastos de envío por devolución corren por cuenta del cliente, a menos que el producto haya
+                    llegado dañado o incorrecto.</p>
             </div>
-            
+
             <div>
                 <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">3. Aviso de Privacidad</h2>
-                <p class="text-gray-700">En Velas Starlight, valoramos tu privacidad. Recopilamos tu nombre, dirección, correo electrónico y teléfono con el único fin de procesar y entregar tu pedido, así como para enviarte información relevante de tu compra. No compartimos tu información personal con terceros. Tus datos están seguros con nosotros.</p>
+                <p class="text-gray-700">En Velas Starlight, valoramos tu privacidad. Recopilamos tu nombre, dirección,
+                    correo electrónico y teléfono con el único fin de procesar y entregar tu pedido, así como para
+                    enviarte información relevante de tu compra. No compartimos tu información personal con terceros.
+                    Tus datos están seguros con nosotros.</p>
             </div>
 
             <div>
                 <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">4. Términos y Condiciones</h2>
-                <p class="text-gray-700">Al utilizar nuestro sitio web, aceptas nuestros términos y condiciones. Todo el contenido, incluyendo textos, imágenes y diseños, es propiedad de Velas Starlight y está protegido por derechos de autor. Nos reservamos el derecho de modificar los precios y la disponibilidad de los productos sin previo aviso.</p>
+                <p class="text-gray-700">Al utilizar nuestro sitio web, aceptas nuestros términos y condiciones. Todo el
+                    contenido, incluyendo textos, imágenes y diseños, es propiedad de Velas Starlight y está protegido
+                    por derechos de autor. Nos reservamos el derecho de modificar los precios y la disponibilidad de los
+                    productos sin previo aviso.</p>
             </div>
         </section>
     </main>
 
-    <footer class="text-center bg-dark-green text-white p-6 mt-12">
-        <div class="flex flex-col justify-center items-center mb-4">
-            <div class="flex space-x-4 text-2xl">
-                <a href="https://www.instagram.com/velas_starlight/" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Instagram de Velas Starlight"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" class="hover:text-gray-sand transition-colors" aria-label="Facebook de Velas Starlight"><i class="fab fa-facebook-f"></i></a>
+    <footer class="bg-dark-green text-white py-6">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Links -->
+            <div class="flex flex-col space-y-2">
+                <a href="politicas.html" class="hover:text-gray-sand transition">Políticas</a>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="flex space-x-6 md:justify-end">
+                <a href="https://wa.me/521234567890" target="_blank" aria-label="WhatsApp"
+                    class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/velas_starlight/" target="_blank" aria-label="Instagram"
+                    class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Facebook" class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Tiktok" class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-tiktok"></i>
+                </a>
             </div>
         </div>
-        <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+
+        <!-- Derechos reservados -->
+        <div class="text-center text-sm mt-6">
+            <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -101,5 +189,8 @@
             duration: 800,
         });
     </script>
+    <script src="../js/main.js"></script>
+
 </body>
+
 </html>

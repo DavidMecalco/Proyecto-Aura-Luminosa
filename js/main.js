@@ -196,4 +196,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicial
     filterProducts();
   });
+
+  // Antes: fallaba si no existe
+// document.getElementById('close-message').addEventListener('click', ...);
+
+// Después: seguro
+const closeBtn = document.getElementById('close-message');
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    const promo = document.getElementById('promo-message');
+    if (promo) {
+      promo.style.transform = 'scale(0)';
+      setTimeout(() => promo.style.display = 'none', 300);
+    }
+  });
+}
+
   
