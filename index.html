@@ -2,35 +2,6 @@
 <html lang="es">
 
 <head>
-    <title>Velas Starlight | Velas Aromáticas, Decorativas y de Belleza</title>
-
-    <meta name="description"
-        content="Velas Starlight ofrece velas aromáticas de soya, parafina y decorativas. También contamos con kits de belleza y fragancias únicas. Envíos a todo México.">
-
-    <meta name="keywords"
-        content="velas, velas aromáticas, velas de soya, velas decorativas, velas de parafina, velas de temporada, kits de belleza, fragancias para el hogar, Velas Starlight México">
-
-    <meta name="author" content="Velas Starlight">
-
-    <!-- Open Graph para Facebook -->
-    <meta property="og:title" content="Velas Starlight | Velas Aromáticas y Decorativas en México">
-    <meta property="og:description"
-        content="Descubre nuestras velas aromáticas de soya, velas decorativas y kits de belleza. Diseños únicos con fragancias exclusivas. Envíos a todo México.">
-    <meta property="og:image" content="https://velasstarlight.com/images/hero-banner.png">
-    <meta property="og:url" content="https://velasstarlight.com/">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Velas Starlight | Velas Aromáticas y Decorativas">
-    <meta name="twitter:description"
-        content="Velas aromáticas de soya y decorativas con diseños únicos. Compra online y recibe en todo México.">
-    <meta name="twitter:image" content="https://velasstarlight.com/images/hero-banner.png">
-
-    <!-- Indexación -->
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://velasstarlight.com/">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velas Starlight | Elegancia y Belleza</title>
@@ -86,77 +57,169 @@
         .nav ul li a:hover i {
             color: #3A5A40;
         }
-
-        /* Estilo estrellas */
-        .text-leaf-green .fa-star,
-        .text-leaf-green .fa-star-half-alt,
-        .text-leaf-green .fa-star-o,
-        .text-leaf-green .far.fa-star {
-            color: #A3B18A;
-        }
     </style>
 </head>
 
+<body class="bg-beige-almond text-dark-green font-sans">
 
-<body class="bg-beige-almond text-dark-green font-sans min-h-screen flex flex-col">
-
-    <header class="bg-white p-4 shadow-md">
-        <div class="flex justify-between items-center max-w-6xl mx-auto">
-            <a href="../index.html">
-                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
+    <!-- 🔝 Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo -->
+            <a href="index.html">
+                <img src="/images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
             </a>
 
-            <!-- Botón hamburguesa (solo móvil) -->
-            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
+            <!-- Links Desktop -->
+            <nav class="hidden md:flex space-x-8 font-medium text-dark-green items-center">
+                <a href="index.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-home mr-1"></i>Inicio
+                </a>
+                <a href="/pages/productos.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-cube mr-1"></i>Productos
+                </a>
+                <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-phone mr-1"></i>Contacto
+                </a>
 
-            <!-- Menú normal -->
-            <nav id="menu" class="hidden md:flex space-x-6 items-center">
-                <a href="/index.html"
-                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
-                    <i class="fas fa-home"></i><span>Inicio</span>
-                </a>
-                <a href="/pages/productos.html"
-                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
-                    <i class="fas fa-shopping-bag"></i><span>Productos</span>
-                </a>
-                <a href="/pages/contacto.html"
-                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
-                    <i class="fas fa-phone"></i><span>Contacto</span>
+                <!-- Carrito Desktop -->
+                <a href="carrito.html" class="relative hover:text-sage-green">
+                    <i class="fa fa-shopping-cart text-xl"></i>
+                    <span id="cart-count"
+                        class="absolute -top-3 -right-3 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                        0
+                    </span>
                 </a>
             </nav>
+
+            <!-- Botón menú móvil -->
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+                <i class="fa fa-bars"></i>
+            </button>
         </div>
 
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
-            <a href="../index.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
-                <i class="fas fa-home"></i><span>Inicio</span>
+        <!-- Menú móvil mejorado -->
+        <div id="mobile-menu"
+            class="hidden flex-col bg-white shadow-lg absolute top-16 left-0 w-full px-6 py-6 space-y-6 transform transition-all duration-300 ease-in-out">
+
+            <a href="index.html" class="hover:text-sage-green flex items-center text-lg">
+                <i class="fa fa-home mr-2 text-sage-green"></i> Inicio
             </a>
-            <a href="/pages/productos.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
-                <i class="fas fa-shopping-bag"></i><span>Productos</span>
+
+            <a href="/pages/productos.html" class="hover:text-sage-green flex items-center text-lg">
+                <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
             </a>
-            <a href="/pages/contacto.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
-                <i class="fas fa-phone"></i><span>Contacto</span>
+
+            <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center text-lg">
+                <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
+            </a>
+
+            <!-- Carrito móvil -->
+            <a href="carrito.html" class="relative flex items-center text-lg hover:text-sage-green">
+                <i class="fa fa-shopping-cart text-xl mr-2 text-sage-green"></i> Carrito
+                <span id="cart-count-mobile"
+                    class="absolute -top-2 left-20 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    0
+                </span>
             </a>
         </div>
     </header>
 
     <script>
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('opacity-100');
+        });
+    </script>
+
+
+    <!-- 🎁 Modal de Promoción -->
+    <div id="promo-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div
+            class="relative bg-white rounded-2xl shadow-2xl max-w-md w-[90%] md:w-[400px] p-8 text-center animate-fade-in">
+
+            <!-- Botón cerrar -->
+            <button onclick="document.getElementById('promo-modal').classList.add('hidden')"
+                class="absolute top-3 right-3 text-dark-green hover:text-sage-green text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Encabezado -->
+            <h2 class="text-3xl font-serif font-bold text-dark-green mb-4">🎉 ¡Bienvenido!</h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Obtén <span class="font-bold text-sage-green">10% de descuento</span> en tu primera compra.
+            </p>
+
+            <!-- Código -->
+            <div class="bg-sage-green text-white font-bold py-3 px-6 rounded-lg shadow-md text-xl mb-4">
+                DESCUETO 10
+            </div>
+
+            <!-- Nota -->
+            <p class="text-sm text-gray-500">
+                Usa este cupón al finalizar tu compra 🛒
+            </p>
+        </div>
+    </div>
+
+    <!-- 🔄 Animación -->
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+    </style>
+
+    <!-- JS para mostrar al cargar -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("promo-modal");
+
+            // Mostrar modal automáticamente al cargar
+            setTimeout(() => {
+                modal.classList.remove("hidden");
+            }, 1000); // 1 segundo después de cargar la página
+
+            // Si quieres que solo se muestre una vez por usuario
+            // descomenta el siguiente bloque:
+
+            if (!localStorage.getItem("promoShown")) {
+                setTimeout(() => {
+                    modal.classList.remove("hidden");
+                }, 1000);
+                localStorage.setItem("promoShown", "true");
+            }
         });
     </script>
 
 
     <main>
+        <!-- Hero Section -->
         <section
-            class="relative w-full h-[250px] sm:h-[400px] md:h-[600px] flex items-center justify-center text-center bg-cover bg-center"
-            style="background-image: url('images/hero-banner.png');">
-            <div class="absolute inset-0 bg-black opacity-65"></div>
-            <div class="relative z-10 text-white p-4 sm:p-6 md:p-8 rounded-lg">
-                <h1 class="text-3xl sm:text-5xl md:text-7xl font-serif font-bold mb-4">Velas Starlight</h1>
-                <p class="text-sm sm:text-lg md:text-2xl font-light mb-6 max-w-xl sm:max-w-2xl mx-auto">
+            class="relative bg-cover bg-center h-[70vh] flex items-center justify-center text-center px-6 pt-20 md:pt-24"
+            style="background-image: url('/images/galeria-1.jpg')">
+
+            <!-- Overlay verde oscuro con transparencia -->
+            <div class="absolute inset-0 bg-gradient-to-b from-dark-green/70 to-dark-green/80"></div>
+
+            <!-- Contenido -->
+            <div class="relative z-10 p-6">
+                <h1 class="text-4xl md:text-6xl font-serif text-white mb-4">Velas Starlight</h1>
+                <p class="text-lg md:text-xl text-gray-200 font-light">
                     Ilumina tu mundo con nuestra colección artesanal.
                 </p>
             </div>
@@ -522,7 +585,8 @@
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Links -->
             <div class="flex flex-col space-y-2">
-                <a href="politicas.html" class="hover:text-gray-sand transition">Políticas</a>
+                <a href="/pages/politicas.html530296
+                " class="hover:text-gray-sand transition">Políticas</a>
             </div>
 
             <!-- Redes sociales -->
@@ -630,7 +694,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ once: true, duration: 800 });</script>
     <script src="../js/main.js"></script>
-
 
 
 </body>

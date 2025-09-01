@@ -212,4 +212,76 @@ if (closeBtn) {
   });
 }
 
+let cart = [];
+const cartButton = document.getElementById("cart-button");
+const cartSidebar = document.getElementById("cart-sidebar");
+const closeCart = document.getElementById("close-cart");
+const cartItems = document.getElementById("cart-items");
+const cartCount = document.getElementById("cart-count");
+const cartTotal = document.getElementById("cart-total");
+
+// Abrir carrito
+cartButton.addEventListener("click", () => {
+  cartSidebar.classList.remove("translate-x-full");
+});
+
+// Cerrar carrito
+closeCart.addEventListener("click", () => {
+  cartSidebar.classList.add("translate-x-full");
+});
+
+// Agregar producto al carrito
+function addToCart(product) {
+  const existing = cart.find(item => item.name === product.name && item.option === product.option && item.fragance === product.fragance);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  updateCart();
+}
+
+// Actualizar carrito
+function updateCart() {
+  cartItems.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    total += item.price * item.quantity;
+
+    const div = document.createElement("div");
+    div.classList = "flex justify-between items-center border-b pb-2";
+    div.innerHTML = `
+      <div>
+        <p class="font-semibold">${item.name}</p>
+        <p class="text-sm text-gray-500">${item.option || ""} ${item.fragance || ""}</p>
+        <p class="text-sm text-gray-600">${item.quantity} x $${item.price.toFixed(2)}</p>
+      </div>
+      <button class="text-red-500 hover:text-red-700" onclick="removeFromCart('${item.name}', '${item.option}', '${item.fragance}')">&times;</button>
+    `;
+    cartItems.appendChild(div);
+  });
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = `<p class="text-gray-500 text-sm">Tu carrito está vacío.</p>`;
+  }
+
+  cartCount.textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
+  cartTotal.textContent = `$${total.toFixed(2)}`;
+}
+
+// Eliminar producto
+function removeFromCart(name, option, fragance) {
+  cart = cart.filter(item => !(item.name === name && item.option === option && item.fragance === fragance));
+  updateCart();
+}
+
+
+function updateCartCount(count) {
+  document.getElementById('cart-count').textContent = count;
+  document.getElementById('cart-count-mobile').textContent = count;
+}
+
   

@@ -57,372 +57,329 @@
         .nav ul li a:hover i {
             color: #3A5A40;
         }
-
-        /* Estilo estrellas */
-        .text-leaf-green .fa-star,
-        .text-leaf-green .fa-star-half-alt,
-        .text-leaf-green .fa-star-o,
-        .text-leaf-green .far.fa-star {
-            color: #A3B18A;
-        }
     </style>
 </head>
 
+<body class="bg-beige-almond text-dark-green font-sans">
 
-<body class="bg-beige-almond text-dark-green font-sans min-h-screen flex flex-col">
-
-    <header class="bg-white p-4 shadow-md">
-        <div class="flex justify-between items-center max-w-6xl mx-auto">
-            <a href="../index.html">
-                <img src="../images/logo.png" alt="Velas Starlight Logo" class="max-h-14 w-auto block">
+    <!-- 🔝 Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo -->
+            <a href="index.html">
+                <img src="/images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
             </a>
 
-            <!-- Botón hamburguesa (solo móvil) -->
-            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
+            <!-- Links Desktop -->
+            <nav class="hidden md:flex space-x-8 font-medium text-dark-green items-center">
+                <a href="index.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-home mr-1"></i>Inicio
+                </a>
+                <a href="/pages/productos.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-cube mr-1"></i>Productos
+                </a>
+                <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-phone mr-1"></i>Contacto
+                </a>
 
-            <!-- Menú normal -->
-            <nav id="menu" class="hidden md:flex space-x-6 items-center">
-                <a href="/index.html"
-                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
-                    <i class="fas fa-home"></i><span>Inicio</span>
-                </a>
-                <a href="/pages/productos.html"
-                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
-                    <i class="fas fa-shopping-bag"></i><span>Productos</span>
-                </a>
-                <a href="/pages/contacto.html"
-                    class="uppercase tracking-wide font-medium text-sm flex items-center space-x-2 hover:text-sage-green transition-colors">
-                    <i class="fas fa-phone"></i><span>Contacto</span>
+                <!-- Carrito Desktop -->
+                <a href="carrito.html" class="relative hover:text-sage-green">
+                    <i class="fa fa-shopping-cart text-xl"></i>
+                    <span id="cart-count"
+                        class="absolute -top-3 -right-3 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                        0
+                    </span>
                 </a>
             </nav>
+
+            <!-- Botón menú móvil -->
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+                <i class="fa fa-bars"></i>
+            </button>
         </div>
 
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden flex-col space-y-4 p-4 bg-white md:hidden">
-            <a href="../index.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
-                <i class="fas fa-home"></i><span>Inicio</span>
+        <!-- Menú móvil mejorado -->
+        <div id="mobile-menu"
+            class="hidden flex-col bg-white shadow-lg absolute top-16 left-0 w-full px-6 py-6 space-y-6 transform transition-all duration-300 ease-in-out">
+
+            <a href="index.html" class="hover:text-sage-green flex items-center text-lg">
+                <i class="fa fa-home mr-2 text-sage-green"></i> Inicio
             </a>
-            <a href="/pages/productos.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
-                <i class="fas fa-shopping-bag"></i><span>Productos</span>
+
+            <a href="/pages/productos.html" class="hover:text-sage-green flex items-center text-lg">
+                <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
             </a>
-            <a href="/pages/contacto.html" class="flex items-center space-x-2 text-dark-green hover:text-sage-green">
-                <i class="fas fa-phone"></i><span>Contacto</span>
+
+            <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center text-lg">
+                <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
+            </a>
+
+            <!-- Carrito móvil -->
+            <a href="carrito.html" class="relative flex items-center text-lg hover:text-sage-green">
+                <i class="fa fa-shopping-cart text-xl mr-2 text-sage-green"></i> Carrito
+                <span id="cart-count-mobile"
+                    class="absolute -top-2 left-20 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    0
+                </span>
             </a>
         </div>
     </header>
 
     <script>
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('opacity-100');
         });
     </script>
 
-    <body class="bg-beige-almond text-dark-green font-sans min-h-screen flex flex-col">
 
-        <main class="flex-1 max-w-7xl mx-auto px-6 py-12">
+    <!-- 🎁 Modal de Promoción -->
+    <div id="promo-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div
+            class="relative bg-white rounded-2xl shadow-2xl max-w-md w-[90%] md:w-[400px] p-8 text-center animate-fade-in">
 
-            <!-- Hero productos -->
-            <section class="relative">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-                    <div class="rounded-3xl overflow-hidden bg-cover bg-center ring-1 ring-gray-200 shadow-lg"
-                        style="background-image:url('../images/hero-banner.png')">
-                        <div class="bg-black/65">
-                            <div class="px-6 sm:px-10 py-14 md:py-20 text-center text-white">
-                                <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold">Nuestros Productos
-                                </h1>
-                                <p class="mt-3 md:mt-4 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-                                    Aromas que abrazan y diseños que enamoran. Encuentra tu favorito ✨
-                                </p>
-                            </div>
+            <!-- Botón cerrar -->
+            <button onclick="document.getElementById('promo-modal').classList.add('hidden')"
+                class="absolute top-3 right-3 text-dark-green hover:text-sage-green text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Encabezado -->
+            <h2 class="text-3xl font-serif font-bold text-dark-green mb-4">🎉 ¡Bienvenido!</h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Obtén <span class="font-bold text-sage-green">10% de descuento</span> en tu primera compra.
+            </p>
+
+            <!-- Código -->
+            <div class="bg-sage-green text-white font-bold py-3 px-6 rounded-lg shadow-md text-xl mb-4">
+                DESCUETO 10
+            </div>
+
+            <!-- Nota -->
+            <p class="text-sm text-gray-500">
+                Usa este cupón al finalizar tu compra 🛒
+            </p>
+        </div>
+    </div>
+
+    <!-- 🔄 Animación -->
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+    </style>
+
+    <!-- JS para mostrar al cargar -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("promo-modal");
+
+            // Mostrar modal automáticamente al cargar
+            setTimeout(() => {
+                modal.classList.remove("hidden");
+            }, 1000); // 1 segundo después de cargar la página
+
+            // Si quieres que solo se muestre una vez por usuario
+            // descomenta el siguiente bloque:
+
+            if (!localStorage.getItem("promoShown")) {
+                setTimeout(() => {
+                    modal.classList.remove("hidden");
+                }, 1000);
+                localStorage.setItem("promoShown", "true");
+            }
+        });
+    </script>
+
+    <!-- 📦 Productos -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero productos -->
+        <section class="relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+                <div class="rounded-3xl overflow-hidden bg-cover bg-center ring-1 ring-gray-200 shadow-lg"
+                    style="background-image:url('../images/hero-banner.png')">
+                    <div class="bg-dark-green/70">
+                        <div class="px-6 sm:px-10 py-14 md:py-20 text-center text-white">
+                            <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold">Nuestros Productos
+                            </h1>
+                            <p class="mt-3 md:mt-4 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+                                Aromas que abrazan y diseños que enamoran. Encuentra tu favorito ✨
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- Barra de búsqueda y filtros -->
-            <div class="flex flex-col sm:flex-row gap-3 w-full my-4">
-                <input id="search-input" type="text" placeholder="Buscar productos..."
-                    class="flex-1 px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
-                <select id="category-filter"
-                    class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
-                    <option value="all">Todos</option>
-                    <option value="soya">Velas de Soya</option>
-                    <option value="parafina">Velas de Parafina</option>
-                    <option value="figura">Velas de Figura</option>
-                    <option value="kit">Kit Belleza</option>
-                    <option value="jabones">Jabones</option>
-                    <option value="cremas">Crema</option>
-                </select>
-                <select id="price-filter"
-                    class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
-                    <option value="default">Ordenar</option>
-                    <option value="low-to-high">Precio: Bajo a Alto</option>
-                    <option value="high-to-low">Precio: Alto a Bajo</option>
-                </select>
             </div>
+        </section>
 
+        <!-- Barra de búsqueda y filtros -->
+        <div class="flex flex-col sm:flex-row gap-3 w-full my-4">
+            <input id="search-input" type="text" placeholder="Buscar productos..."
+                class="flex-1 px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
+            <select id="category-filter"
+                class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
+                <option value="all">Todos</option>
+                <option value="soya">Velas de Soya</option>
+                <option value="parafina">Velas de Parafina</option>
+                <option value="figura">Velas de Figura</option>
+                <option value="kit">Kit Belleza</option>
+                <option value="jabones">Jabones</option>
+                <option value="cremas">Crema</option>
+            </select>
+            <select id="price-filter"
+                class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
+                <option value="default">Ordenar</option>
+                <option value="low-to-high">Precio: Bajo a Alto</option>
+                <option value="high-to-low">Precio: Alto a Bajo</option>
+            </select>
+        </div>
 
-            <!-- Grid de productos -->
-            <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Producto ejemplo -->
-                <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
-                    data-name="Vela de Soya" data-category="soya" data-price="15"
-                    data-description="Aromas naturales en tamaños personalizables." data-image="../images/vela-soya.jpg"
-                    data-options='[{"name":"Ch","price":60},{"name":"M","price":80},{"name":"G","price":120}]'
-                    data-fragances='["Lavanda","Vainilla","Cítrico","Rosas"]'>
-                    <!-- Badge categoría -->
-                    <span
-                        class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                        Velas de Soya
-                    </span>
-                    <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-48 sm:h-56 object-cover">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-dark-green">Vela de Soya</h3>
-                        <p class="text-gray-600 text-sm mb-2">Aromas naturales en tamaños personalizables.</p>
-                        <p class="text-dark-green font-bold text-lg mb-3">$60.00</p>
-                        <button
-                            class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Aquí agregas más productos -->
-
-                <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
-                    data-name="Vela de Parafina" data-category="parafina" data-price="15"
-                    data-description="Aromas naturales en tamaños personalizables."
-                    data-image="../images/vela-parafina.jpg"
-                    data-options='[{"name":"Ch","price":10},{"name":"M","price":15},{"name":"G","price":20}]'
-                    data-fragances='["Lavanda","Vainilla","Cítrico","Rosas"]'>
-                    <!-- Badge categoría -->
-                    <span
-                        class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                        Velas de Parafina
-                    </span>
-                    <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-48 sm:h-56 object-cover">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-dark-green">Vela de Parafina</h3>
-                        <p class="text-gray-600 text-sm mb-2">Aromas naturales en tamaños personalizables.</p>
-                        <p class="text-dark-green font-bold text-lg mb-3">$70.00</p>
-                        <button
-                            class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Producto Jabon -->
-
-                <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
-                    data-name="Jabón Artesanal" data-category="jabones" data-price="6"
-                    data-description="Jabones naturales elaborados a mano con ingredientes puros y aromas únicos."
-                    data-image="../images/jabon-artesanal.jpg"
-                    data-options='[{"name":"Lavanda","price":50},{"name":"Frutos Rojos","price":50},{"name":"Miel","price":50},{"name":"Carbón Activado","price":70}]'>
-
-                    <!-- Badge categoría -->
-                    <span
-                        class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                        Jabones
-                    </span>
-
-                    <!-- Imagen -->
-                    <img src="../images/jabon-artesanal.jpg" alt="Jabón Artesanal"
-                        class="w-full h-48 sm:h-56 object-cover">
-
-                    <!-- Contenido -->
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-dark-green">Jabón Artesanal</h3>
-                        <p class="text-gray-600 text-sm mb-2">Con ingredientes naturales y propiedades revitalizantes.
-                        </p>
-                        <p class="text-dark-green font-bold text-lg mb-3">$50.00</p>
-                        <button
-                            class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Kit de Belleza delux -->
-
-                <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
-                    data-name="Kit Deluxe de Belleza" data-category="kit" data-price="60"
-                    data-description="Un set de lujo que incluye velas, jabones artesanales y aceites esenciales para consentirte."
-                    data-image="../images/kit-deluxe-belleza.jpg" data-options='[{"name":"Deluxe","price":600}]'>
-
-                    <!-- Badge categoría -->
-                    <span
-                        class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                        Kit Belleza
-                    </span>
-
-                    <!-- Imagen -->
-                    <img src="../images/kit-deluxe-belleza.jpg" alt="Kit Deluxe de Belleza"
-                        class="w-full h-48 sm:h-56 object-cover">
-
-                    <!-- Contenido -->
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-dark-green">Kit Deluxe de Belleza</h3>
-                        <p class="text-gray-600 text-sm mb-2">Incluye velas, jabones artesanales y aceites esenciales.
-                        </p>
-                        <p class="text-dark-green font-bold text-lg mb-3">$600.00</p>
-                        <button
-                            class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Vela con forma de flor -->
-
-                <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
-                    data-name="Vela Flor" data-category="figura" data-price="15"
-                    data-description="Vela artesanal en forma de flor, disponible en soya o parafina."
-                    data-image="../images/vela-flor.jpg"
-                    data-options='[{"name":"Soya","price":15},{"name":"Parafina","price":12}]'
-                    data-fragances='["Lavanda","Rosas","Vainilla","Canela"]'>
-
-                    <!-- Badge categoría -->
-                    <span
-                        class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                        Velas de Figura
-                    </span>
-
-                    <!-- Imagen -->
-                    <img src="../images/vela-flor.jpg" alt="Vela en forma de flor"
-                        class="w-full h-48 sm:h-56 object-cover">
-
-                    <!-- Contenido -->
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-dark-green">Vela Flor</h3>
-                        <p class="text-gray-600 text-sm mb-2">Disponible en soya o parafina con fragancias delicadas.
-                        </p>
-                        <p class="text-dark-green font-bold text-lg mb-3">Desde $12.00</p>
-                        <button
-                            class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Crema -->
-
-                <div class="product-card relative bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"
-                    data-name="Crema Corporal" data-category="cremas" data-price="10"
-                    data-description="Crema corporal nutritiva e hidratante, disponible en diferentes tamaños y fórmulas."
-                    data-image="../images/crema-corporal.jpg"
-                    data-options='[{"name":"Chica (150 ml)","price":10},{"name":"Mediana (300 ml)","price":18},{"name":"Grande (500 ml)","price":25}]'
-                    data-fragances='["Almendras","Rosas","Ácido Hialurónico"]'>
-
-                    <!-- Badge categoría -->
-                    <span
-                        class="absolute top-3 left-3 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                        Cremas
-                    </span>
-
-                    <!-- Imagen -->
-                    <img src="../images/crema-corporal.jpg" alt="Crema Corporal"
-                        class="w-full h-48 sm:h-56 object-cover">
-
-                    <!-- Contenido -->
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-dark-green">Crema Corporal</h3>
-                        <p class="text-gray-600 text-sm mb-2">Nutritiva e hidratante, en varias presentaciones.</p>
-                        <p class="text-dark-green font-bold text-lg mb-3">Desde $10.00</p>
-                        <button
-                            class="view-product-btn bg-sage-green text-white px-4 py-2 rounded-full hover:bg-leaf-green transition">
-                            Ver detalles
-                        </button>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-            <!-- Mensaje sin resultados -->
-            <p id="no-results-message" class="hidden text-center text-gray-600 mt-8">No se encontraron productos.</p>
-        </main>
-
-        <!-- Modal de producto -->
-        <div id="product-modal"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-            <div class="bg-white rounded-2xl shadow-xl w-[95%] sm:w-[90%] max-w-lg">
-
-                <!-- Botón cerrar -->
-                <button id="close-modal"
-                    class="absolute top-3 right-3 bg-dark-green text-white w-10 h-10 rounded-full flex items-center justify-center text-xl hover:bg-sage-green transition">
-                    &times;
-                </button>
-
-                <!-- Imagen grande -->
-                <div class="w-full">
-                    <img id="modal-image" src="" alt="Producto" class="w-full h-48 sm:h-56 object-cover">
-                </div>
-
-                <div class="p-6 space-y-4">
-                    <h2 id="modal-name" class="text-2xl font-bold text-dark-green"></h2>
-                    <p id="modal-description" class="text-gray-700"></p>
-
-                    <div id="modal-options" class="space-y-2"></div>
-                    <div id="modal-fragances"></div>
-
-                    <p class="text-lg font-bold text-dark-green">Precio: <span id="modal-price"></span></p>
-
+        <!-- Producto -->
+        <main class="p-8">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-sm">
+                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-56 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-bold">Vela de Soya</h2>
+                    <p class="text-gray-600">Aromas naturales personalizables</p>
+                    <p class="text-dark-green font-bold mt-2">$120</p>
                     <button
-                        class="w-full bg-sage-green text-white py-3 rounded-full hover:bg-leaf-green transition font-semibold shadow-lg">
-                        Agregar al carrito
+                        class="open-modal mt-4 w-full bg-sage-green text-white py-2 rounded-lg hover:bg-dark-green transition">Ver
+                        más</button>
+                </div>
+            </div>
+        </main>
+<!-- Modal -->
+<div id="modal-producto"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-2xl shadow-lg w-full max-w-2xl p-6 relative overflow-y-auto max-h-[90vh]">
+
+        <!-- Botón cerrar -->
+        <button id="close-modal"
+            class="absolute top-3 right-3 z-10 bg-dark-green text-white rounded-full p-2 shadow hover:bg-sage-green transition">
+            <i class="fas fa-times"></i>
+        </button>
+
+                <!-- Imagen con zoom -->
+                <div class="relative">
+                    <img src="../images/vela-soya.jpg" alt="Vela de Soya"
+                        class="w-full h-64 object-cover rounded-lg cursor-pointer"
+                        onclick="openImage('../images/vela-soya.jpg')">
+                    <button onclick="openImage('../images/vela-soya.jpg')"
+                        class="absolute bottom-2 right-2 bg-dark-green text-white px-3 py-1 text-sm rounded-lg shadow-md hover:bg-sage-green transition">
+                        Ver imagen
                     </button>
                 </div>
+
+                <!-- Título y descripción -->
+                <h2 class="text-2xl font-serif font-bold text-center mt-4">Vela de Soya</h2>
+                <p class="text-gray-600 text-center mb-6">Elegante vela de soya con fragancias naturales.</p>
+
+                <!-- Opciones -->
+                <div class="space-y-6">
+                    <!-- Tamaño -->
+                    <div>
+                        <h3 class="font-semibold mb-2">Selecciona el tamaño:</h3>
+                        <div class="flex gap-6">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="tamano" value="chica" class="accent-sage-green" checked>
+                                <span>Chica $120</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="tamano" value="mediana" class="accent-sage-green">
+                                <span>Mediana $180</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="tamano" value="grande" class="accent-sage-green">
+                                <span>Grande $250</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Fragancia -->
+                    <div>
+                        <h3 class="font-semibold mb-2">Selecciona tu fragancia:</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="fragancia" value="lavanda" class="accent-sage-green" checked>
+                                <span>Lavanda</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="fragancia" value="vainilla" class="accent-sage-green">
+                                <span>Vainilla</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="fragancia" value="coco" class="accent-sage-green">
+                                <span>Coco</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="fragancia" value="frutos-rojos" class="accent-sage-green">
+                                <span>Frutos Rojos</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Precio y botón -->
+                <p class="text-lg font-bold mt-6">Precio: <span id="precio">$120</span></p>
+                <button class="w-full bg-dark-green text-white py-3 rounded-xl mt-4 hover:bg-sage-green transition">
+                    Agregar al carrito
+                </button>
+            </div>
+        </div>
+        <!-- Modal Imagen -->
+        <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
+            <div class="relative rounded-xl shadow-lg p-4 max-w-3xl w-[90%]">
+
+                <!-- Botón cerrar -->
+                <button onclick="closeImage()"
+                    class="absolute top-2 right-2 z-10 bg-dark-green text-white rounded-full p-2 shadow hover:bg-sage-green transition">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- Imagen -->
+                <img id="image-modal-img" src="" alt="Vista ampliada"
+                    class="w-full max-h-[80vh] object-contain rounded-lg">
             </div>
         </div>
 
-
-        <footer class="bg-dark-green text-white py-6">
-            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Links -->
-                <div class="flex flex-col space-y-2">
-                    <a href="politicas.html" class="hover:text-gray-sand transition">Políticas</a>
-                </div>
-
-                <!-- Redes sociales -->
-                <div class="flex space-x-6 md:justify-end">
-                    <a href="https://wa.me/521234567890" target="_blank" aria-label="WhatsApp"
-                        class="hover:text-gray-sand transition text-xl">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="https://www.instagram.com/velas_starlight/" target="_blank" aria-label="Instagram"
-                        class="hover:text-gray-sand transition text-xl">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" target="_blank" aria-label="Facebook" class="hover:text-gray-sand transition text-xl">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" target="_blank" aria-label="Tiktok" class="hover:text-gray-sand transition text-xl">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Derechos reservados -->
-            <div class="text-center text-sm mt-6">
-                <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
-            </div>
-        </footer>
-
-
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-            AOS.init({
-                once: true,
-                duration: 800,
+            const modal = document.getElementById("modal-producto");
+            const openButtons = document.querySelectorAll(".open-modal");
+            const closeBtn = document.getElementById("close-modal");
+
+            openButtons.forEach(btn => {
+                btn.addEventListener("click", () => modal.classList.remove("hidden"));
             });
+
+            closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+
+            function openImage(src) {
+                const imageModal = document.getElementById("image-modal");
+                const imageModalImg = document.getElementById("image-modal-img");
+                imageModal.classList.remove("hidden");
+                imageModalImg.src = src;
+            }
+
+            function closeImage() {
+                document.getElementById("image-modal").classList.add("hidden");
+            }
         </script>
         <script src="../js/main.js"></script>
-    </body>
+</body>
 
 </html>
