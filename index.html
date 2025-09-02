@@ -72,18 +72,24 @@
 
             <!-- Links Desktop -->
             <nav class="hidden md:flex space-x-8 font-medium text-dark-green items-center">
-                <a href="index.html" class="hover:text-sage-green flex items-center">
+                <a href="index.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
                     <i class="fa fa-home mr-1"></i>Inicio
                 </a>
-                <a href="/pages/productos.html" class="hover:text-sage-green flex items-center">
+                <a href="pages/productos.html"
+                    class="hover:text-sage-green flex items-center transition-colors duration-300">
                     <i class="fa fa-cube mr-1"></i>Productos
                 </a>
-                <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center">
+                <a href="pages/blog.html"
+                    class="hover:text-sage-green flex items-center transition-colors duration-300">
+                    <i class="fa fa-blog mr-1"></i>Blog
+                </a>
+                <a href="pages/contacto.html"
+                    class="hover:text-sage-green flex items-center transition-colors duration-300">
                     <i class="fa fa-phone mr-1"></i>Contacto
                 </a>
 
                 <!-- Carrito Desktop -->
-                <a href="carrito.html" class="relative hover:text-sage-green">
+                <a href="pages/carrito.html" class="relative hover:text-sage-green transition-colors duration-300">
                     <i class="fa fa-shopping-cart text-xl"></i>
                     <span id="cart-count"
                         class="absolute -top-3 -right-3 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
@@ -100,38 +106,99 @@
 
         <!-- Menú móvil mejorado -->
         <div id="mobile-menu"
-            class="hidden flex-col bg-white shadow-lg absolute top-16 left-0 w-full px-6 py-6 space-y-6 transform transition-all duration-300 ease-in-out">
+            class="hidden md:hidden bg-white shadow-xl border-t border-gray-100 absolute top-full left-0 w-full transform transition-all duration-300 ease-in-out opacity-0 translate-y-2">
 
-            <a href="index.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-home mr-2 text-sage-green"></i> Inicio
-            </a>
+            <div class="px-6 py-4 space-y-1">
+                <a href="index.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-home mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Inicio</span>
+                </a>
 
-            <a href="/pages/productos.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
-            </a>
+                <a href="pages/productos.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-cube mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Productos</span>
+                </a>
 
-            <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
-            </a>
+                <a href="pages/blog.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-blog mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Blog</span>
+                </a>
 
-            <!-- Carrito móvil -->
-            <a href="carrito.html" class="relative flex items-center text-lg hover:text-sage-green">
-                <i class="fa fa-shopping-cart text-xl mr-2 text-sage-green"></i> Carrito
-                <span id="cart-count-mobile"
-                    class="absolute -top-2 left-20 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                    0
-                </span>
-            </a>
+                <a href="pages/contacto.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-phone mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Contacto</span>
+                </a>
+
+                <!-- Separador -->
+                <div class="border-t border-gray-200 my-2"></div>
+
+                <!-- Carrito móvil -->
+                <a href="pages/carrito.html"
+                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <div class="flex items-center">
+                        <i
+                            class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="font-medium">Carrito</span>
+                    </div>
+                    <span id="cart-count-mobile"
+                        class="bg-sage-green text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">
+                        0
+                    </span>
+                </a>
+            </div>
         </div>
     </header>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuToggle.querySelector('i');
 
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('opacity-100');
+            const isHidden = mobileMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                // Mostrar menú
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                }, 10);
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                // Ocultar menú
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            }
         });
     </script>
 
@@ -208,372 +275,1139 @@
 
 
     <main>
-        <!-- Hero Section -->
-        <section
-            class="relative bg-cover bg-center h-[70vh] flex items-center justify-center text-center px-6 pt-20 md:pt-24"
-            style="background-image: url('/images/galeria-1.jpg')">
+        <!-- Hero Section Rediseñado -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
+            <!-- Background con parallax -->
+            <div class="absolute inset-0 bg-gradient-to-br from-beige-almond via-warm-cream to-gray-sand">
+                <div class="absolute inset-0 bg-gradient-to-r from-dark-green/20 to-sage-green/30"></div>
+            </div>
 
-            <!-- Overlay verde oscuro con transparencia -->
-            <div class="absolute inset-0 bg-gradient-to-b from-dark-green/40 to-dark-green/80"></div>
+            <!-- Elementos decorativos flotantes -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-20 left-10 w-32 h-32 bg-sage-green/10 rounded-full blur-xl animate-pulse">
+                </div>
+                <div
+                    class="absolute bottom-32 right-16 w-48 h-48 bg-leaf-green/10 rounded-full blur-2xl animate-pulse delay-1000">
+                </div>
+                <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-warm-cream/20 rounded-full blur-lg animate-bounce">
+                </div>
+            </div>
 
-            <!-- Contenido -->
-            <div class="relative z-10 p-6">
-                <h1 class="text-4xl md:text-6xl font-serif text-white mb-4">Velas Starlight</h1>
-                <p class="text-lg md:text-xl text-gray-200 font-light">
-                    Ilumina tu mundo con nuestra colección artesanal.
-                </p>
+            <!-- Contenido principal -->
+            <div class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-20 text-center">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+                    <!-- Texto principal -->
+                    <div class="space-y-8" data-aos="fade-right">
+                        <div class="space-y-4">
+                            <span
+                                class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold">
+                                ✨ Artesanía Premium
+                            </span>
+                            <h1 class="text-5xl md:text-7xl font-serif font-bold text-dark-green leading-tight">
+                                Velas
+                                <span class="text-sage-green block">Starlight</span>
+                            </h1>
+                            <p class="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                                Ilumina tu mundo con nuestra colección artesanal de velas y productos de belleza natural
+                            </p>
+                        </div>
+
+                        <!-- Botones de acción -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="pages/productos.html"
+                                class="bg-sage-green text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-dark-green transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <i class="fas fa-shopping-bag mr-2"></i>
+                                Explorar Productos
+                            </a>
+                            <a href="#about"
+                                class="border-2 border-sage-green text-sage-green px-8 py-4 rounded-full font-semibold text-lg hover:bg-sage-green hover:text-white transition-all duration-300">
+                                <i class="fas fa-heart mr-2"></i>
+                                Nuestra Historia
+                            </a>
+                        </div>
+
+                        <!-- Estadísticas -->
+                        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-sage-green">500+</div>
+                                <div class="text-sm text-gray-600">Clientes Felices</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-sage-green">100%</div>
+                                <div class="text-sm text-gray-600">Natural</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-sage-green">24h</div>
+                                <div class="text-sm text-gray-600">Envío Rápido</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Imagen hero -->
+                    <div class="relative" data-aos="fade-left">
+                        <div class="relative">
+                            <!-- Imagen principal -->
+                            <div
+                                class="relative z-10 bg-white rounded-3xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                                <img src="images/galeria-1.jpg" alt="Velas Starlight"
+                                    class="w-full h-96 object-cover rounded-2xl">
+
+                                <!-- Badge flotante -->
+                                <div
+                                    class="absolute -top-4 -right-4 bg-sage-green text-white px-6 py-3 rounded-full shadow-lg">
+                                    <div class="text-sm font-semibold">Artesanal</div>
+                                    <div class="text-xs opacity-90">100% Natural</div>
+                                </div>
+                            </div>
+
+                            <!-- Elementos decorativos -->
+                            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-leaf-green/20 rounded-full blur-xl">
+                            </div>
+                            <div class="absolute -top-6 -right-6 w-24 h-24 bg-sage-green/20 rounded-full blur-lg"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll indicator -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <div class="w-6 h-10 border-2 border-sage-green rounded-full flex justify-center">
+                        <div class="w-1 h-3 bg-sage-green rounded-full mt-2 animate-pulse"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
 
-        <section class="mt-12 text-center p-8 bg-white rounded-lg shadow-md max-w-6xl mx-auto" data-aos="fade-up">
-            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8">Nuestros productos más populares</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Producto 1 -->
-                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl"
-                    data-aos="fade-up" data-aos-delay="100">
+        <!-- Sección de Productos Populares Rediseñada -->
+        <section class="py-20 bg-white" data-aos="fade-up">
+            <div class="max-w-6xl mx-auto px-6">
+
+                <!-- Header de sección -->
+                <div class="text-center mb-16">
                     <span
-                        class="absolute top-4 left-4 bg-leaf-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">✨
-                        Top #1 en ventas</span>
-                    <img src="images/vela-lavanda.jpg" alt="Vela de Lavanda"
-                        class="w-full h-48 object-cover rounded-md mb-4">
-                    <h4 class="text-xl font-semibold text-dark-green">Vela de Lavanda</h4>
-                    <p class="text-gray-600 mt-2 italic">Relaja tus sentidos con aroma a lavanda.</p>
-                    <p class="text-lg font-bold text-sage-green mt-2">$80.00</p>
-                    <a href="pages/productos.html"
-                        class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar
-                        ahora</a>
+                        class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        🌟 Bestsellers
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-green mb-6">
+                        Productos Más Populares
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Descubre los favoritos de nuestros clientes, elaborados con amor y los mejores ingredientes
+                        naturales
+                    </p>
                 </div>
-                <!-- Producto 2 -->
-                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <span
-                        class="absolute top-4 left-4 bg-sage-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">🔥
-                        Más popular</span>
-                    <img src="images/vela-sandalo.jpg" alt="Vela de Sándalo"
-                        class="w-full h-48 object-cover rounded-md mb-4">
-                    <h4 class="text-xl font-semibold text-dark-green">Vela de Sándalo</h4>
-                    <p class="text-gray-600 mt-2 italic">Un toque cálido y elegante para tu hogar.</p>
-                    <p class="text-lg font-bold text-sage-green mt-2">$75.00</p>
-                    <a href="pages/productos.html"
-                        class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar
-                        ahora</a>
-                </div>
-                <!-- Producto 3 -->
-                <div class="relative bg-warm-cream p-6 rounded-xl shadow-md flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl"
-                    data-aos="fade-up" data-aos-delay="300">
-                    <span
-                        class="absolute top-4 left-4 bg-dark-green text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">⭐
-                        Recomendado</span>
-                    <img src="images/kit-deluxe-belleza.jpg" alt="Kit de Belleza"
-                        class="w-full h-48 object-cover rounded-md mb-4">
-                    <h4 class="text-xl font-semibold text-dark-green">Kit de Belleza</h4>
-                    <p class="text-gray-600 mt-2 italic">Cuida tu piel con ingredientes naturales.</p>
-                    <p class="text-lg font-bold text-sage-green mt-2">$450.00</p>
-                    <a href="pages/productos.html"
-                        class="mt-4 bg-sage-green hover:bg-leaf-green text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Comprar
-                        ahora</a>
-                </div>
-            </div>
-        </section>
 
-        <!-- Productos de temporada -->
+                <!-- Grid de productos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
 
-        <section class="py-16 bg-beige-almond" data-aos="fade-up">
-            <h2 class="text-3xl font-serif font-bold text-dark-green mb-8 text-center">
-                Velas de Temporada ✨
-            </h2>
+                    <!-- Producto 1 - Destacado -->
+                    <div class="relative group" data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full flex flex-col">
 
-            <div class="relative overflow-hidden">
-                <!-- Cinta animada -->
-                <div class="flex space-x-6 animate-marquee">
+                            <!-- Badge especial -->
+                            <div
+                                class="absolute -top-4 left-6 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                <i class="fas fa-crown mr-1"></i>
+                                #1 Bestseller
+                            </div>
 
-                    <!-- Producto 1 -->
-                    <div class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                        <span
-                            class="absolute top-2 right-2 bg-sage-green text-white text-xs px-3 py-1 rounded-full shadow">2x1</span>
-                        <img src="images/vela-panmuerto.jpg" alt="Vela Pan de Muerto"
-                            class="w-32 h-32 object-cover mb-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-dark-green">Vela Pan de Muerto</h3>
-                        <p class="text-gray-600 text-sm text-center">Aroma dulce tradicional de temporada.</p>
+                            <!-- Imagen del producto -->
+                            <div class="relative mb-6 overflow-hidden rounded-2xl">
+                                <img src="images/vela-lavanda.jpg" alt="Vela de Lavanda"
+                                    class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+
+                            <!-- Información del producto -->
+                            <div class="space-y-4 flex-grow flex flex-col">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-2xl font-serif font-bold text-dark-green">Vela de Lavanda</h3>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-gray-600 leading-relaxed">
+                                    Relaja tus sentidos con el aroma natural de lavanda francesa. Perfecta para momentos
+                                    de meditación.
+                                </p>
+
+                                <!-- Características -->
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">Relajante</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">100%
+                                        Natural</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">50h
+                                        duración</span>
+                                </div>
+
+                                <!-- Precio y botón -->
+                                <div class="flex items-center justify-between pt-4 mt-auto">
+                                    <div class="text-3xl font-bold text-sage-green">$80.00</div>
+                                    <a href="pages/productos.html"
+                                        class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:from-purple-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                        <i class="fas fa-cart-plus mr-2"></i>
+                                        Comprar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Producto 2 -->
-                    <div class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                        <span
-                            class="absolute top-2 right-2 bg-red-500 text-white text-xs px-3 py-1 rounded-full shadow">Oferta</span>
-                        <img src="images/vela-cempasuchil.jpg" alt="Vela Flor de Cempasúchil"
-                            class="w-32 h-32 object-cover mb-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-dark-green">Flor de Cempasúchil</h3>
-                        <p class="text-gray-600 text-sm text-center">Fragancia floral vibrante y espiritual.</p>
+                    <div class="relative group" data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full flex flex-col">
+
+                            <!-- Badge -->
+                            <div
+                                class="absolute -top-4 left-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                <i class="fas fa-fire mr-1"></i>
+                                Más Popular
+                            </div>
+
+                            <!-- Imagen del producto -->
+                            <div class="relative mb-6 overflow-hidden rounded-2xl">
+                                <img src="images/vela-sandalo.jpg" alt="Vela de Sándalo"
+                                    class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+
+                            <!-- Información del producto -->
+                            <div class="space-y-4 flex-grow flex flex-col">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-2xl font-serif font-bold text-dark-green">Vela de Sándalo</h3>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-gray-600 leading-relaxed">
+                                    Un toque cálido y elegante para tu hogar. Aroma exótico que transforma cualquier
+                                    espacio.
+                                </p>
+
+                                <!-- Características -->
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-medium">Elegante</span>
+                                    <span
+                                        class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-medium">Cera
+                                        de Soya</span>
+                                    <span
+                                        class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-medium">45h
+                                        duración</span>
+                                </div>
+
+                                <!-- Precio y botón -->
+                                <div class="flex items-center justify-between pt-4 mt-auto">
+                                    <div class="text-3xl font-bold text-sage-green">$75.00</div>
+                                    <a href="pages/productos.html"
+                                        class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:from-amber-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                        <i class="fas fa-cart-plus mr-2"></i>
+                                        Comprar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Producto 3 -->
-                    <div class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                        <span
-                            class="absolute top-2 right-2 bg-orange-500 text-white text-xs px-3 py-1 rounded-full shadow">Edición
-                            limitada</span>
-                        <img src="images/vela-calavera.jpg" alt="Vela Calavera"
-                            class="w-32 h-32 object-cover mb-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-dark-green">Calavera</h3>
-                        <p class="text-gray-600 text-sm text-center">Decoración perfecta para tu altar.</p>
+                    <div class="relative group" data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full flex flex-col">
+
+                            <!-- Badge -->
+                            <div
+                                class="absolute -top-4 left-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                                <i class="fas fa-gift mr-1"></i>
+                                Kit Completo
+                            </div>
+
+                            <!-- Imagen del producto -->
+                            <div class="relative mb-6 overflow-hidden rounded-2xl">
+                                <img src="images/kit-deluxe-belleza.jpg" alt="Kit de Belleza"
+                                    class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+
+                            <!-- Información del producto -->
+                            <div class="space-y-4 flex-grow flex flex-col">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-2xl font-serif font-bold text-dark-green">Kit de Belleza</h3>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <p class="text-gray-600 leading-relaxed">
+                                    Cuida tu piel con ingredientes 100% naturales. Kit completo para una rutina de
+                                    belleza perfecta.
+                                </p>
+
+                                <!-- Características -->
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-medium">5
+                                        Productos</span>
+                                    <span
+                                        class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-medium">Orgánico</span>
+                                    <span
+                                        class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-medium">Cruelty
+                                        Free</span>
+                                </div>
+
+                                <!-- Precio y botón -->
+                                <div class="flex items-center justify-between pt-4 mt-auto">
+                                    <div>
+                                        <div class="text-sm text-gray-500 line-through">$550.00</div>
+                                        <div class="text-3xl font-bold text-sage-green">$450.00</div>
+                                    </div>
+                                    <a href="pages/productos.html"
+                                        class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-full font-semibold hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                        <i class="fas fa-cart-plus mr-2"></i>
+                                        Comprar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <!-- Call to action -->
+            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="400">
+                <a href="pages/productos.html"
+                    class="inline-flex items-center bg-sage-green text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-dark-green transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <i class="fas fa-eye mr-2"></i>
+                    Ver Todos los Productos
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Sección Nuestra Historia Rediseñada -->
+        <section id="about" class="py-20 bg-gradient-to-br from-beige-almond to-warm-cream" data-aos="fade-up">
+            <div class="max-w-6xl mx-auto px-6">
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                    <!-- Imagen con elementos decorativos -->
+                    <div class="relative" data-aos="fade-right">
+                        <div class="relative">
+                            <!-- Imagen principal -->
+                            <div
+                                class="relative z-10 bg-white rounded-3xl shadow-2xl p-6 transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+                                <img src="images/about-us.jpg" alt="Persona creando una vela artesanal"
+                                    class="w-full h-96 object-cover rounded-2xl">
+                            </div>
+
+                            <!-- Elementos decorativos -->
+                            <div class="absolute -top-8 -right-8 w-32 h-32 bg-sage-green/20 rounded-full blur-xl"></div>
+                            <div class="absolute -bottom-8 -left-8 w-40 h-40 bg-leaf-green/15 rounded-full blur-2xl">
+                            </div>
+
+                            <!-- Stats flotantes -->
+                            <div
+                                class="absolute -top-4 -left-4 bg-white rounded-2xl shadow-xl p-4 transform rotate-12 z-30 hover:rotate-6 transition-transform duration-300">
+                                <div class="text-2xl font-bold text-sage-green">5+</div>
+                                <div class="text-xs text-gray-600">Años de experiencia</div>
+                            </div>
+
+                            <div
+                                class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-4 transform -rotate-12 z-30 hover:-rotate-6 transition-transform duration-300">
+                                <div class="text-2xl font-bold text-sage-green">100%</div>
+                                <div class="text-xs text-gray-600">Artesanal</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Producto 4 -->
-                    <div class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                        <img src="images/vela-fantasma.jpg" alt="Vela Fantasma"
-                            class="w-32 h-32 object-cover mb-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-dark-green">Fantasma</h3>
-                        <p class="text-gray-600 text-sm text-center">Aroma fresco, ideal para Halloween.</p>
-                    </div>
+                    <!-- Contenido -->
+                    <div class="space-y-8" data-aos="fade-left">
 
-                    <!-- Producto 5 -->
-                    <div class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                        <span
-                            class="absolute top-2 right-2 bg-yellow-500 text-white text-xs px-3 py-1 rounded-full shadow">Nuevo</span>
-                        <img src="images/vela-edicion.jpg" alt="Vela Especial"
-                            class="w-32 h-32 object-cover mb-4 rounded-lg">
-                        <h3 class="text-lg font-bold text-dark-green">Especial Otoño</h3>
-                        <p class="text-gray-600 text-sm text-center">Fragancias cálidas de la temporada.</p>
-                    </div>
+                        <!-- Header -->
+                        <div class="space-y-4">
+                            <span
+                                class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold">
+                                💚 Nuestra Pasión
+                            </span>
+                            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-green leading-tight">
+                                Creando Momentos
+                                <span class="text-sage-green">Especiales</span>
+                            </h2>
+                        </div>
 
-                    <!-- 🔁 Contenido duplicado para animación infinita fluida -->
-                    <div class="flex space-x-6">
-                        <!-- Copiamos los mismos productos -->
-                        <div
-                            class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                            <span
-                                class="absolute top-2 right-2 bg-sage-green text-white text-xs px-3 py-1 rounded-full shadow">2x1</span>
-                            <img src="images/vela-panmuerto.jpg" alt="Vela Pan de Muerto"
-                                class="w-32 h-32 object-cover mb-4 rounded-lg">
-                            <h3 class="text-lg font-bold text-dark-green">Vela Pan de Muerto</h3>
-                            <p class="text-gray-600 text-sm text-center">Aroma dulce tradicional de temporada.</p>
+                        <!-- Descripción -->
+                        <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                            <p>
+                                En <strong class="text-sage-green">Velas Starlight</strong> fabricamos velas artesanales
+                                elaboradas con cera de soya y parafina de la más alta calidad. Cada pieza está hecha a
+                                mano, con amor y dedicación, utilizando aromas naturales y presentaciones únicas en
+                                forma, color y estilo.
+                            </p>
+                            <p>
+                                Además, contamos con una línea de productos de belleza artesanal que incluye cremas,
+                                shampoos, jabones, mascarillas y mucho más, pensados para cuidar y consentir tu piel con
+                                ingredientes naturales y fragancias suaves.
+                            </p>
+                            <p class="font-semibold text-dark-green">
+                                Creamos experiencias sensoriales que transforman tus espacios y tu rutina de cuidado
+                                personal.
+                            </p>
                         </div>
-                        <div
-                            class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                            <span
-                                class="absolute top-2 right-2 bg-red-500 text-white text-xs px-3 py-1 rounded-full shadow">Oferta</span>
-                            <img src="images/vela-cempasuchil.jpg" alt="Vela Flor de Cempasúchil"
-                                class="w-32 h-32 object-cover mb-4 rounded-lg">
-                            <h3 class="text-lg font-bold text-dark-green">Flor de Cempasúchil</h3>
-                            <p class="text-gray-600 text-sm text-center">Fragancia floral vibrante y espiritual.</p>
+
+                        <!-- Características destacadas -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div
+                                class="bg-white/70 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                <div
+                                    class="w-12 h-12 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-leaf text-sage-green text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold text-dark-green mb-2">100% Natural</h4>
+                                <p class="text-sm text-gray-600">Ingredientes orgánicos y sostenibles</p>
+                            </div>
+
+                            <div
+                                class="bg-white/70 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                <div
+                                    class="w-12 h-12 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-hand-sparkles text-sage-green text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold text-dark-green mb-2">Artesanal</h4>
+                                <p class="text-sm text-gray-600">Hecho a mano con dedicación</p>
+                            </div>
+
+                            <div
+                                class="bg-white/70 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                <div
+                                    class="w-12 h-12 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-heart text-sage-green text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold text-dark-green mb-2">Con Amor</h4>
+                                <p class="text-sm text-gray-600">Cada producto tiene nuestra pasión</p>
+                            </div>
+
+                            <div
+                                class="bg-white/70 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                <div
+                                    class="w-12 h-12 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-spa text-sage-green text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold text-dark-green mb-2">Bienestar</h4>
+                                <p class="text-sm text-gray-600">Para tu cuerpo y mente</p>
+                            </div>
                         </div>
-                        <div
-                            class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                            <span
-                                class="absolute top-2 right-2 bg-orange-500 text-white text-xs px-3 py-1 rounded-full shadow">Edición
-                                limitada</span>
-                            <img src="images/vela-calavera.jpg" alt="Vela Calavera"
-                                class="w-32 h-32 object-cover mb-4 rounded-lg">
-                            <h3 class="text-lg font-bold text-dark-green">Calavera</h3>
-                            <p class="text-gray-600 text-sm text-center">Decoración perfecta para tu altar.</p>
-                        </div>
-                        <div
-                            class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                            <img src="images/vela-fantasma.jpg" alt="Vela Fantasma"
-                                class="w-32 h-32 object-cover mb-4 rounded-lg">
-                            <h3 class="text-lg font-bold text-dark-green">Fantasma</h3>
-                            <p class="text-gray-600 text-sm text-center">Aroma fresco, ideal para Halloween.</p>
-                        </div>
-                        <div
-                            class="relative min-w-[250px] bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
-                            <span
-                                class="absolute top-2 right-2 bg-yellow-500 text-white text-xs px-3 py-1 rounded-full shadow">Nuevo</span>
-                            <img src="images/vela-edicion.jpg" alt="Vela Especial"
-                                class="w-32 h-32 object-cover mb-4 rounded-lg">
-                            <h3 class="text-lg font-bold text-dark-green">Especial Otoño</h3>
-                            <p class="text-gray-600 text-sm text-center">Fragancias cálidas de la temporada.</p>
+
+                        <!-- Call to action -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="pages/productos.html"
+                                class="bg-sage-green text-white px-6 py-3 rounded-full font-semibold hover:bg-dark-green transition-all duration-300 transform hover:scale-105 text-center">
+                                <i class="fas fa-shopping-bag mr-2"></i>
+                                Ver Productos
+                            </a>
+                            <a href="pages/contacto.html"
+                                class="border-2 border-sage-green text-sage-green px-6 py-3 rounded-full font-semibold hover:bg-sage-green hover:text-white transition-all duration-300 text-center">
+                                <i class="fas fa-envelope mr-2"></i>
+                                Contáctanos
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 🎨 Animaciones -->
-        <style>
-            @keyframes marquee {
-                0% {
-                    transform: translateX(0);
-                }
-
-                100% {
-                    transform: translateX(-100%);
-                    /* antes era -50% */
-                }
-            }
-
-            .animate-marquee {
-                display: flex;
-                width: max-content;
-                animation: marquee 80s linear infinite;
-                will-change: transform;
-                /* optimiza animación */
-            }
-        </style>
-
-        <style>
-            html,
-            body {
-                overflow-x: hidden;
-                /* evita scroll horizontal */
-            }
-        </style>
-
-
-
-        <section
-            class="mt-12 p-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-lg shadow-md"
+        <!-- Sección de Testimonios Rediseñada -->
+        <section class="py-20 bg-gradient-to-br from-beige-almond via-warm-cream to-gray-sand relative overflow-hidden"
             data-aos="fade-up">
-            <div data-aos="fade-right">
-                <img src="images/about-us.jpg" alt="Persona creando una vela artesanal"
-                    class="w-full h-auto rounded-lg shadow-sm">
+
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-20 left-10 w-40 h-40 bg-sage-green/5 rounded-full blur-3xl animate-pulse">
+                </div>
+                <div
+                    class="absolute bottom-32 right-16 w-56 h-56 bg-leaf-green/5 rounded-full blur-3xl animate-pulse delay-1000">
+                </div>
+                <div class="absolute top-1/2 left-1/3 w-32 h-32 bg-warm-cream/10 rounded-full blur-2xl animate-bounce">
+                </div>
             </div>
-            <div class="space-y-4" data-aos="fade-left">
-                <h3 class="text-3xl font-serif font-bold text-sage-green">Nuestra Historia</h3>
-                <p>En Velas Starlight fabricamos velas artesanales elaboradas con cera de soya y parafina de la más alta
-                    calidad. Cada pieza está hecha a mano, con amor y dedicación, utilizando aromas naturales y
-                    presentaciones únicas en forma, color y estilo.</p>
-                <p>Además, contamos con una línea de productos de belleza artesanal que incluye cremas, shampoos,
-                    jabones, mascarillas y mucho más, pensados para cuidar y consentir tu piel con ingredientes
-                    naturales y fragancias suaves.</p>
-                <p>Creamos experiencias sensoriales que transforman tus espacios y tu rutina de cuidado personal.</p>
-            </div>
+
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        💬 Testimonios
+                    </span>
+                    <h2 class="text-4xl md:text-6xl font-serif font-bold text-dark-green mb-6 leading-tight">
+                        Lo que Dicen Nuestros
+                        <span class="text-sage-green block">Clientes Felices</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Miles de clientes satisfechos avalan la calidad excepcional de nuestros productos artesanales y
+                        el amor que ponemos en cada detalle
+                    </p>
+                </div>
+                <!-- Grid de testimonios rediseñado -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Testimonio 1 - Sofía -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="bg-gradient-to-br from-purple-50 via-white to-indigo-50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:rotate-1 border border-purple-100/50">
+
+                            <!-- Decoración superior -->
+                            <div
+                                class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                            </div>
+
+                            <!-- Quote icon -->
+                            <div
+                                class="absolute -top-3 -left-3 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                                <i class="fas fa-quote-left text-white text-xs"></i>
+                            </div>
+
+                            <!-- Avatar con gradiente -->
+                            <div class="relative mb-6 flex justify-center">
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg ring-4 ring-purple-100 group-hover:ring-purple-200 transition-all duration-300">
+                                    S
+                                </div>
+                                <div
+                                    class="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+
+                            <!-- Rating con animación -->
+                            <div class="flex justify-center mb-4 space-x-1">
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-75"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-150"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-225"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-300"></i>
+                            </div>
+
+                            <!-- Testimonio -->
+                            <blockquote class="text-gray-700 text-center leading-relaxed mb-6 italic font-medium">
+                                "Las velas de sándalo son mi obsesión. El aroma es increíble y la calidad es
+                                insuperable."
+                            </blockquote>
+
+                            <!-- Info del cliente -->
+                            <div class="text-center border-t border-purple-100 pt-4">
+                                <h4 class="font-bold text-dark-green text-lg">Sofía Martínez</h4>
+                                <p class="text-purple-600 text-sm font-medium">Cliente VIP</p>
+                                <div class="flex items-center justify-center mt-2 text-xs text-gray-500">
+                                    <i class="fas fa-calendar mr-1"></i>
+                                    <span>Cliente desde 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 2 - Carlos -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:-rotate-1 border border-emerald-100/50">
+
+                            <!-- Decoración superior -->
+                            <div
+                                class="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                            </div>
+
+                            <!-- Quote icon -->
+                            <div
+                                class="absolute -top-3 -right-3 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg">
+                                <i class="fas fa-quote-left text-white text-xs"></i>
+                            </div>
+
+                            <!-- Avatar con gradiente -->
+                            <div class="relative mb-6 flex justify-center">
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg ring-4 ring-emerald-100 group-hover:ring-emerald-200 transition-all duration-300">
+                                    C
+                                </div>
+                                <div
+                                    class="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i class="fas fa-shopping-bag text-white text-xs"></i>
+                                </div>
+                            </div>
+
+                            <!-- Rating con animación -->
+                            <div class="flex justify-center mb-4 space-x-1">
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-75"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-150"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-225"></i>
+                                <i
+                                    class="fas fa-star-half-alt text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-300"></i>
+                            </div>
+
+                            <!-- Testimonio -->
+                            <blockquote class="text-gray-700 text-center leading-relaxed mb-6 italic font-medium">
+                                "Probé la crema de manos y es maravillosa. Mi piel se siente suave y el aroma es
+                                delicado."
+                            </blockquote>
+
+                            <!-- Info del cliente -->
+                            <div class="text-center border-t border-emerald-100 pt-4">
+                                <h4 class="font-bold text-dark-green text-lg">Carlos García</h4>
+                                <p class="text-emerald-600 text-sm font-medium">Comprador Frecuente</p>
+                                <div class="flex items-center justify-center mt-2 text-xs text-gray-500">
+                                    <i class="fas fa-redo mr-1"></i>
+                                    <span>15 compras realizadas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 - Ana -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            class="bg-gradient-to-br from-rose-50 via-white to-pink-50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:rotate-1 border border-rose-100/50">
+
+                            <!-- Decoración superior -->
+                            <div
+                                class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                            </div>
+
+                            <!-- Quote icon -->
+                            <div
+                                class="absolute -top-3 -left-3 w-8 h-8 bg-rose-500 rounded-full flex items-center justify-center shadow-lg">
+                                <i class="fas fa-quote-left text-white text-xs"></i>
+                            </div>
+
+                            <!-- Avatar con gradiente -->
+                            <div class="relative mb-6 flex justify-center">
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg ring-4 ring-rose-100 group-hover:ring-rose-200 transition-all duration-300">
+                                    A
+                                </div>
+                                <div
+                                    class="absolute -bottom-2 -right-2 w-6 h-6 bg-purple-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i class="fas fa-heart text-white text-xs"></i>
+                                </div>
+                            </div>
+
+                            <!-- Rating con animación -->
+                            <div class="flex justify-center mb-4 space-x-1">
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-75"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-150"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-225"></i>
+                                <i
+                                    class="far fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-300"></i>
+                            </div>
+
+                            <!-- Testimonio -->
+                            <blockquote class="text-gray-700 text-center leading-relaxed mb-6 italic font-medium">
+                                "La presentación de los productos es bellísima, se nota el cariño en cada paquete."
+                            </blockquote>
+
+                            <!-- Info del cliente -->
+                            <div class="text-center border-t border-rose-100 pt-4">
+                                <h4 class="font-bold text-dark-green text-lg">Ana López</h4>
+                                <p class="text-rose-600 text-sm font-medium">Amante del Diseño</p>
+                                <div class="flex items-center justify-center mt-2 text-xs text-gray-500">
+                                    <i class="fas fa-palette mr-1"></i>
+                                    <span>Especialista en estética</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 4 - Javier -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="400">
+                        <div
+                            class="bg-gradient-to-br from-amber-50 via-white to-orange-50 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:-rotate-1 border border-amber-100/50">
+
+                            <!-- Decoración superior -->
+                            <div
+                                class="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                            </div>
+
+                            <!-- Quote icon -->
+                            <div
+                                class="absolute -top-3 -right-3 w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center shadow-lg">
+                                <i class="fas fa-quote-left text-white text-xs"></i>
+                            </div>
+
+                            <!-- Avatar con gradiente -->
+                            <div class="relative mb-6 flex justify-center">
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg ring-4 ring-amber-100 group-hover:ring-amber-200 transition-all duration-300">
+                                    J
+                                </div>
+                                <div
+                                    class="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i class="fas fa-star text-white text-xs"></i>
+                                </div>
+                            </div>
+
+                            <!-- Rating con animación -->
+                            <div class="flex justify-center mb-4 space-x-1">
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-75"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-150"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-225"></i>
+                                <i
+                                    class="fas fa-star text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200 delay-300"></i>
+                            </div>
+
+                            <!-- Testimonio -->
+                            <blockquote class="text-gray-700 text-center leading-relaxed mb-6 italic font-medium">
+                                "La calidad de los materiales y los aromas naturales me han conquistado. ¡Son únicas!"
+                            </blockquote>
+
+                            <!-- Info del cliente -->
+                            <div class="text-center border-t border-amber-100 pt-4">
+                                <h4 class="font-bold text-dark-green text-lg">Javier Pérez</h4>
+                                <p class="text-amber-600 text-sm font-medium">Cliente Fiel</p>
+                                <div class="flex items-center justify-center mt-2 text-xs text-gray-500">
+                                    <i class="fas fa-medal mr-1"></i>
+                                    <span>Cliente desde 2022</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </section>
 
-        <!-- Sección Opiniones de Clientes mejorada -->
-        <section class="mt-16 text-center p-8 max-w-6xl mx-auto" data-aos="fade-up">
-            <h3 class="text-3xl font-serif font-bold text-dark-green mb-12">💬 Lo que nuestros clientes dicen</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <!-- Testimonio 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
-                    data-aos="fade-up" data-aos-delay="100">
-                    <img src="/images/usuario.png" alt="Cliente"
-                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
-                    <h4 class="font-semibold text-lg text-dark-green">Sofía M.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm text-gray-700 italic">“Las velas de sándalo son mi obsesión. El aroma es increíble
-                        y la calidad es insuperable.”</p>
+        <!-- Sección de Galería Moderna -->
+        <section class="py-20 bg-white" data-aos="fade-up">
+            <div class="max-w-6xl mx-auto px-6">
+
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        📸 Galería
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-green mb-6">
+                        Nuestros Productos en Acción
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Descubre cómo nuestros productos transforman espacios y crean momentos especiales
+                    </p>
                 </div>
-                <!-- Testimonio 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <img src="/images/usuario.png" alt="Cliente"
-                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
-                    <h4 class="font-semibold text-lg text-dark-green">Carlos G.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+
+                <!-- Grid de Galería -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Imagen 1 - Destacada -->
+                    <div class="lg:col-span-2 lg:row-span-2" data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="relative group h-full min-h-[400px] rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500">
+                            <img src="images/galeria-1.jpg" alt="Velas Starlight en un ambiente acogedor"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+
+                            <!-- Overlay con información -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+
+                            <!-- Contenido superpuesto -->
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <div class="space-y-3">
+                                    <span
+                                        class="inline-block bg-sage-green/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold">
+                                        <i class="fas fa-home mr-2"></i>Ambiente Acogedor
+                                    </span>
+                                    <h3 class="text-2xl font-serif font-bold">Velas Starlight en Casa</h3>
+                                    <p class="text-gray-200 leading-relaxed">
+                                        Nuestras velas artesanales crean la atmósfera perfecta para momentos de
+                                        relajación y bienestar en tu hogar.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Botón de zoom -->
+                            <div
+                                class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button
+                                    class="gallery-zoom-btn w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-sm text-gray-700 italic">“Probé la crema de manos y es maravillosa. Mi piel se siente
-                        suave y el aroma es delicado.”</p>
+
+                    <!-- Imagen 2 -->
+                    <div class="relative" data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            class="relative group h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+                            <img src="images/galeria-2.jpg" alt="Productos de belleza en un spa"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+
+                            <!-- Overlay -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+
+                            <!-- Contenido -->
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <span
+                                    class="inline-block bg-rose-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold mb-2">
+                                    <i class="fas fa-spa mr-1"></i>Spa & Belleza
+                                </span>
+                                <h4 class="text-lg font-serif font-bold">Productos de Belleza Natural</h4>
+                                <p class="text-gray-200 text-sm">Cuidado artesanal para tu piel</p>
+                            </div>
+
+                            <!-- Icono de zoom -->
+                            <div
+                                class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button
+                                    class="gallery-zoom-btn w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-colors">
+                                    <i class="fas fa-search-plus text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Imagen 3 -->
+                    <div class="relative" data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            class="relative group h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+                            <img src="images/galeria-3.png" alt="Velas aromáticas con flores"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+
+                            <!-- Overlay -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+
+                            <!-- Contenido -->
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <span
+                                    class="inline-block bg-amber-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold mb-2">
+                                    <i class="fas fa-leaf mr-1"></i>Aromaterapia
+                                </span>
+                                <h4 class="text-lg font-serif font-bold">Velas Aromáticas</h4>
+                                <p class="text-gray-200 text-sm">Fragancias naturales y flores</p>
+                            </div>
+
+                            <!-- Icono de zoom -->
+                            <div
+                                class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button
+                                    class="gallery-zoom-btn w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-colors">
+                                    <i class="fas fa-search-plus text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Testimonio 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
-                    data-aos="fade-up" data-aos-delay="300">
-                    <img src="/images/usuario.png" alt="Cliente"
-                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
-                    <h4 class="font-semibold text-lg text-dark-green">Ana L.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                    <p class="text-sm text-gray-700 italic">“La presentación de los productos es bellísima, se nota el
-                        cariño en cada paquete.”</p>
-                </div>
-                <!-- Testimonio 4 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transform hover:-translate-y-1 transition duration-300"
+
+                <!-- Stats de la galería -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200"
                     data-aos="fade-up" data-aos-delay="400">
-                    <img src="/images/usuario.png" alt="Cliente"
-                        class="w-20 h-20 rounded-full object-cover mb-4 border-sage-green">
-                    <h4 class="font-semibold text-lg text-dark-green">Javier P.</h4>
-                    <div class="my-2 text-leaf-green text-lg"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm text-gray-700 italic">“La calidad de los materiales y los aromas naturales me han
-                        conquistado. ¡Son únicas!”</p>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-camera text-sage-green text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-sage-green mb-2">50+</div>
+                        <div class="text-sm text-gray-600">Fotos de Clientes</div>
+                    </div>
+
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-home text-sage-green text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-sage-green mb-2">200+</div>
+                        <div class="text-sm text-gray-600">Hogares Transformados</div>
+                    </div>
+
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-heart text-sage-green text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-sage-green mb-2">1000+</div>
+                        <div class="text-sm text-gray-600">Momentos Especiales</div>
+                    </div>
+
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-star text-sage-green text-2xl"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-sage-green mb-2">5.0</div>
+                        <div class="text-sm text-gray-600">Rating Promedio</div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-gradient-to-r from-sage-green to-dark-green rounded-3xl p-8 text-white">
+                        <h3 class="text-2xl font-serif font-bold mb-4">¿Quieres ser parte de nuestra galería?</h3>
+                        <p class="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
+                            Comparte tus fotos usando nuestros productos con el hashtag #VelasStarlight y podrías
+                            aparecer en nuestra galería
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="pages/productos.html"
+                                class="bg-white text-sage-green px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-shopping-bag mr-2"></i>
+                                Comprar Ahora
+                            </a>
+                            <a href="https://www.instagram.com/velas_starlight/" target="_blank"
+                                class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-sage-green transition-all duration-300">
+                                <i class="fab fa-instagram mr-2"></i>
+                                Síguenos en Instagram
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="mt-12 p-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
-            <h3 class="text-3xl font-serif font-bold text-dark-green mb-8 text-center">
-                Nuestros productos en acción
-            </h3>
-            <div class="relative w-full overflow-hidden rounded-lg shadow-lg">
-                <div id="carousel-inner" class="flex transition-transform duration-500 ease-in-out">
-                    <img src="images/galeria-1.jpg" alt="Velas Starlight en un ambiente acogedor"
-                        class="min-w-full h-80 object-cover">
-                    <img src="images/galeria-2.jpg" alt="Productos de belleza en un spa"
-                        class="min-w-full h-80 object-cover">
-                    <img src="images/galeria-3.png" alt="Velas aromáticas con flores"
-                        class="min-w-full h-80 object-cover">
-                </div>
-                <button id="carousel-prev"
-                    class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
-                    &#10094;
-                </button>
-                <button id="carousel-next"
-                    class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-colors text-dark-green text-2xl">
-                    &#10095;
-                </button>
-            </div>
-        </section>
 
+        <!-- Sección de Blog Rediseñada -->
+        <section class="py-20 bg-gradient-to-br from-beige-almond to-warm-cream" data-aos="fade-up">
+            <div class="max-w-6xl mx-auto px-6">
 
-        <!-- Nueva sección de Blog mejorada -->
-        <section class="mt-16 p-8 max-w-6xl mx-auto" data-aos="fade-up">
-            <h3 class="text-3xl font-serif font-bold text-dark-green mb-12 text-center">📰 Últimas del Blog</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Post 1 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-                    data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative">
-                        <img src="images/blog-vela.jpg" alt="Vela artesanal" class="w-full h-56 object-cover">
-                        <span
-                            class="absolute top-4 left-4 bg-sage-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Bienestar</span>
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        📰 Blog
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-green mb-6">
+                        Últimas del Blog
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Consejos, tips y secretos sobre bienestar, belleza natural y aromaterapia
+                    </p>
+                </div>
+
+                <!-- Grid de artículos -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <!-- Artículo Principal -->
+                    <div class="lg:col-span-2" data-aos="fade-up" data-aos-delay="100">
+                        <article
+                            class="bg-white rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500">
+
+                            <!-- Imagen destacada -->
+                            <div class="relative h-80 overflow-hidden">
+                                <img src="images/blog-vela.jpg" alt="Rituales de Relajación"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+
+                                <!-- Badge -->
+                                <div class="absolute top-6 left-6">
+                                    <span
+                                        class="bg-purple-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                        <i class="fas fa-spa mr-2"></i>Bienestar
+                                    </span>
+                                </div>
+
+                                <!-- Fecha -->
+                                <div
+                                    class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm text-dark-green px-3 py-2 rounded-full text-sm font-medium">
+                                    26 Ago 2025
+                                </div>
+                            </div>
+
+                            <!-- Contenido -->
+                            <div class="p-8">
+                                <h3
+                                    class="text-3xl font-serif font-bold text-dark-green mb-4 group-hover:text-sage-green transition-colors">
+                                    5 Ritualitos de Relajación con Velas para Conectar Contigo Mismo
+                                </h3>
+
+                                <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                                    Descubre cómo las velas artesanales pueden ayudarte a reconectar contigo mismo y
+                                    crear atmósferas de calma, introspección y armonía en tu día a día.
+                                </p>
+
+                                <!-- Meta info -->
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                        <span><i class="fas fa-clock mr-1"></i>5 min lectura</span>
+                                        <span><i class="fas fa-eye mr-1"></i>1.2k vistas</span>
+                                    </div>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <!-- CTA -->
+                                <a href="pages/blog-1.html"
+                                    class="inline-flex items-center bg-sage-green text-white px-6 py-3 rounded-full font-semibold hover:bg-dark-green transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-book-open mr-2"></i>
+                                    Leer Artículo Completo
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </article>
                     </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h4 class="font-semibold text-xl text-dark-green mb-2">5 Ritualitos de Relajación con Velas</h4>
-                        <p class="text-sm text-gray-700 flex-grow">Descubre cómo las velas artesanales pueden ayudarte a
-                            reconectar contigo mismo y crear atmósferas de calma.</p>
-                        <a href="pages/blog-1.html"
-                            class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer
-                            más →</a>
+
+                    <!-- Artículos Secundarios -->
+                    <div class="space-y-8">
+
+                        <!-- Artículo 2 -->
+                        <article
+                            class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                            data-aos="fade-up" data-aos-delay="200">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="images/blog-belleza.jpg" alt="Cuidado Natural"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                <div class="absolute top-4 left-4">
+                                    <span
+                                        class="bg-rose-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        <i class="fas fa-heart mr-1"></i>Belleza
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6">
+                                <h4
+                                    class="text-xl font-serif font-bold text-dark-green mb-3 hover:text-sage-green transition-colors">
+                                    Cuidado Natural para tu Piel
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                    4 Tips para una rutina artesanal y consciente que nutre tu piel sin saturarla.
+                                </p>
+
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-gray-500">26 Ago • 4 min</span>
+                                    <a href="pages/blog-2.html"
+                                        class="text-rose-500 font-semibold hover:text-rose-600 transition-colors text-sm">
+                                        Leer más <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Artículo 3 -->
+                        <article
+                            class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                            data-aos="fade-up" data-aos-delay="300">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="images/blog-aroma.jpg" alt="Fragancias Perfectas"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                <div class="absolute top-4 left-4">
+                                    <span
+                                        class="bg-amber-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        <i class="fas fa-leaf mr-1"></i>Aromas
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6">
+                                <h4
+                                    class="text-xl font-serif font-bold text-dark-green mb-3 hover:text-sage-green transition-colors">
+                                    Cómo elegir la fragancia perfecta
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                    Guía práctica para seleccionar el aroma que mejor se adapta a tu estilo de vida.
+                                </p>
+
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-gray-500">28 Ago • 3 min</span>
+                                    <a href="pages/blog-3.html"
+                                        class="text-amber-500 font-semibold hover:text-amber-600 transition-colors text-sm">
+                                        Leer más <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
-                <!-- Post 2 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative">
-                        <img src="images/blog-belleza.jpg" alt="Productos de belleza naturales"
-                            class="w-full h-56 object-cover">
-                        <span
-                            class="absolute top-4 left-4 bg-leaf-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Belleza</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h4 class="font-semibold text-xl text-dark-green mb-2">Cuidado Natural para tu Piel</h4>
-                        <p class="text-sm text-gray-700 flex-grow">Tu piel merece lo mejor: conoce los secretos de una
-                            rutina de
-                            cuidado natural que resalta tu belleza.</p>
-                        <a href="pages/blog-2.html"
-                            class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer
-                            más →</a>
-                    </div>
-                </div>
-                <!-- Post 3 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-                    data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative">
-                        <img src="images/blog-aroma.jpg" alt="Variedad de aromas naturales"
-                            class="w-full h-56 object-cover">
-                        <span
-                            class="absolute top-4 left-4 bg-dark-green text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Aromas</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h4 class="font-semibold text-xl text-dark-green mb-2">Cómo elegir la fragancia perfecta</h4>
-                        <p class="text-sm text-gray-700 flex-grow">Guía práctica para seleccionar el aroma que mejor se
-                            adapta a
-                            tu estilo de vida y al ambiente de tu hogar.</p>
-                        <a href="pages/blog-3.html"
-                            class="mt-4 inline-block text-sage-green font-semibold hover:underline">Leer más
-                            →</a>
+
+                <!-- Newsletter Signup -->
+                <div class="mt-16 bg-white rounded-3xl shadow-2xl p-8 text-center" data-aos="fade-up"
+                    data-aos-delay="400">
+                    <div class="max-w-2xl mx-auto">
+                        <div
+                            class="w-16 h-16 bg-sage-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-envelope text-sage-green text-2xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-serif font-bold text-dark-green mb-4">
+                            Suscríbete a nuestro Newsletter
+                        </h3>
+                        <p class="text-gray-600 mb-8">
+                            Recibe tips exclusivos, ofertas especiales y las últimas novedades sobre bienestar y belleza
+                            natural
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                            <input type="email" placeholder="Tu email aquí..."
+                                class="flex-1 px-4 py-3 border-2 border-gray-200 rounded-full focus:outline-none focus:border-sage-green transition-colors">
+                            <button
+                                class="bg-sage-green text-white px-6 py-3 rounded-full font-semibold hover:bg-dark-green transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Suscribirse
+                            </button>
+                        </div>
+
+                        <p class="text-xs text-gray-500 mt-4">
+                            No spam, solo contenido valioso. Puedes cancelar en cualquier momento.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -581,36 +1415,141 @@
 
     </main>
 
-    <footer class="bg-dark-green text-white py-6">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Links -->
-            <div class="flex flex-col space-y-2">
-                <a href="/pages/politicas.html530296
-                " class="hover:text-gray-sand transition">Políticas</a>
-            </div>
-
-            <!-- Redes sociales -->
-            <div class="flex space-x-6 md:justify-end">
-                <a href="https://wa.me/521234567890" target="_blank" aria-label="WhatsApp"
-                    class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.instagram.com/velas_starlight/" target="_blank" aria-label="Instagram"
-                    class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" target="_blank" aria-label="Facebook" class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" target="_blank" aria-label="Tiktok" class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-tiktok"></i>
-                </a>
+    <!-- Footer Rediseñado -->
+    <footer class="bg-gradient-to-br from-dark-green via-dark-green to-sage-green text-white relative overflow-hidden">
+        <!-- Elementos decorativos -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-48 h-48 bg-sage-green rounded-full blur-3xl"></div>
+            <div
+                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-leaf-green rounded-full blur-3xl">
             </div>
         </div>
 
-        <!-- Derechos reservados -->
-        <div class="text-center text-sm mt-6">
-            <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+        <div class="relative z-10">
+            <!-- Contenido principal del footer -->
+            <div class="container mx-auto px-6 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Logo y descripción -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <img src="images/logo.png" alt="Velas Starlight"
+                                class="h-12 w-auto filter brightness-0 invert">
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold">Velas Starlight</h3>
+                                <p class="text-sage-green/80 text-sm">Artesanía Premium</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed max-w-md">
+                            Creamos experiencias sensoriales únicas con velas artesanales y productos de belleza
+                            natural, elaborados con amor y dedicación para iluminar tu mundo.
+                        </p>
+
+
+                    </div>
+
+                    <!-- Enlaces rápidos -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold mb-4 text-white">Enlaces Rápidos</h4>
+                        <ul class="space-y-3">
+                            <li><a href="index.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-home mr-2 group-hover:scale-110 transition-transform duration-300"></i>Inicio
+                                </a></li>
+                            <li><a href="pages/productos.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-cube mr-2 group-hover:scale-110 transition-transform duration-300"></i>Productos
+                                </a></li>
+                            <li><a href="pages/blog.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-blog mr-2 group-hover:scale-110 transition-transform duration-300"></i>Blog
+                                </a></li>
+                            <li><a href="pages/contacto.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
+                                </a></li>
+                            <li><a href="pages/politicas.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-shield-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>Políticas
+                                </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contacto y redes sociales -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold mb-4 text-white">Conecta con Nosotros</h4>
+
+                        <!-- Información de contacto -->
+                        <div class="space-y-3 text-gray-300">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa fa-envelope text-white"></i>
+                                <span>ventas@velasstarlight.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa fa-phone text-white"></i>
+                                <span>5564682112</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa fa-map-marker-alt text-white"></i>
+                                <span>123 Artisan Street, Ciudad</span>
+                            </div>
+                        </div>
+
+                        <!-- Redes sociales -->
+                        <div class="pt-4">
+                            <h5 class="font-medium mb-3">Síguenos</h5>
+                            <div class="flex space-x-4">
+                                <a href="https://wa.me/5564682112" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-whatsapp text-lg group-hover:text-white"></i>
+                                </a>
+                                <a href="https://www.instagram.com/velas_starlight/" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-instagram text-lg group-hover:text-white"></i>
+                                </a>
+                                <a href="#" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-facebook-f text-lg group-hover:text-white"></i>
+                                </a>
+                                <a href="#" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-tiktok text-lg group-hover:text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Línea divisoria -->
+            <div class="border-t border-white/20"></div>
+
+            <!-- Copyright y enlaces legales -->
+            <div class="container mx-auto px-6 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-gray-300 text-sm">
+                        <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-300">
+                        <a href="pages/politicas.html" class="hover:text-white transition-colors duration-300">Términos
+                            y Condiciones</a>
+                        <span class="text-gray-500">|</span>
+                        <a href="pages/politicas.html" class="hover:text-white transition-colors duration-300">Política
+                            de Privacidad</a>
+                        <span class="text-gray-500">|</span>
+                        <span class="flex items-center space-x-1">
+                            <i class="fa fa-heart text-red-400"></i>
+                            <span>Hecho con amor</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -691,8 +1630,113 @@
         })();
     </script>
 
+    <!-- Modal para ver imágenes en tamaño completo -->
+    <div id="image-modal"
+        class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="relative max-w-6xl max-h-full">
+            <!-- Botón cerrar -->
+            <button id="close-modal" class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+
+            <!-- Imagen -->
+            <img id="modal-image" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+
+            <!-- Información de la imagen -->
+            <div id="modal-info"
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 rounded-b-lg">
+                <h3 id="modal-title" class="text-xl font-serif font-bold mb-2"></h3>
+                <p id="modal-description" class="text-gray-200"></p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ once: true, duration: 800 });</script>
+
+    <!-- Script para funcionalidad de galería -->
+    <script>
+        // Funcionalidad del modal de imágenes
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const closeModal = document.getElementById('close-modal');
+
+            // Datos de las imágenes
+            const imageData = {
+                'images/galeria-1.jpg': {
+                    title: 'Velas Starlight en un Ambiente Acogedor',
+                    description: 'Nuestras velas artesanales crean la atmósfera perfecta para momentos de relajación y bienestar en tu hogar.'
+                },
+                'images/galeria-2.jpg': {
+                    title: 'Productos de Belleza Natural',
+                    description: 'Línea completa de productos de belleza artesanal con ingredientes naturales para el cuidado de tu piel.'
+                },
+                'images/galeria-3.png': {
+                    title: 'Velas Aromáticas con Flores',
+                    description: 'Fragancias naturales combinadas con elementos florales para crear experiencias sensoriales únicas.'
+                }
+            };
+
+            // Función para abrir modal
+            function openModal(imageSrc) {
+                const data = imageData[imageSrc] || { title: 'Imagen de Galería', description: 'Productos Velas Starlight' };
+
+                modalImage.src = imageSrc;
+                modalImage.alt = data.title;
+                modalTitle.textContent = data.title;
+                modalDescription.textContent = data.description;
+
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+
+                // Animación de entrada
+                setTimeout(() => {
+                    modal.classList.add('opacity-100');
+                }, 10);
+            }
+
+            // Función para cerrar modal
+            function closeModalFunc() {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Event listeners para botones de zoom
+            document.querySelectorAll('.gallery-zoom-btn').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const imageContainer = this.closest('.relative');
+                    const image = imageContainer.querySelector('img');
+                    const imageSrc = image.src;
+
+                    openModal(imageSrc);
+                });
+            });
+
+            // Cerrar modal
+            closeModal.addEventListener('click', closeModalFunc);
+
+            // Cerrar modal al hacer clic fuera de la imagen
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    closeModalFunc();
+                }
+            });
+
+            // Cerrar modal con tecla Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModalFunc();
+                }
+            });
+        });
+    </script>
+
     <script src="../js/main.js"></script>
 
 

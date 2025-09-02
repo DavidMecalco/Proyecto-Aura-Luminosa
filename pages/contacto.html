@@ -35,7 +35,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
 
   <!-- AOS Animations -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
@@ -67,23 +67,26 @@
     <div class="container mx-auto flex justify-between items-center py-4 px-6">
       <!-- Logo -->
       <a href="../index.html">
-        <img src="/images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
+        <img src="../images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
       </a>
 
       <!-- Links Desktop -->
       <nav class="hidden md:flex space-x-8 font-medium text-dark-green items-center">
-        <a href="../index.html" class="hover:text-sage-green flex items-center">
+        <a href="../index.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
           <i class="fa fa-home mr-1"></i>Inicio
         </a>
-        <a href="/pages/productos.html" class="hover:text-sage-green flex items-center">
+        <a href="productos.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
           <i class="fa fa-cube mr-1"></i>Productos
         </a>
-        <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center">
+        <a href="blog.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
+          <i class="fa fa-blog mr-1"></i>Blog
+        </a>
+        <a href="contacto.html" class="text-sage-green flex items-center transition-colors duration-300">
           <i class="fa fa-phone mr-1"></i>Contacto
         </a>
 
         <!-- Carrito Desktop -->
-        <a href="carrito.html" class="relative hover:text-sage-green">
+        <a href="carrito.html" class="relative hover:text-sage-green transition-colors duration-300">
           <i class="fa fa-shopping-cart text-xl"></i>
           <span id="cart-count"
             class="absolute -top-3 -right-3 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
@@ -99,29 +102,33 @@
     </div>
 
     <!-- Menú móvil mejorado -->
-    <div id="mobile-menu"
-      class="hidden flex-col bg-white shadow-lg absolute top-16 left-0 w-full px-6 py-6 space-y-6 transform transition-all duration-300 ease-in-out">
-
-      <a href="../index.html" class="hover:text-sage-green flex items-center text-lg">
-        <i class="fa fa-home mr-2 text-sage-green"></i> Inicio
-      </a>
-
-      <a href="/pages/productos.html" class="hover:text-sage-green flex items-center text-lg">
-        <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
-      </a>
-
-      <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center text-lg">
-        <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
-      </a>
-
-      <!-- Carrito móvil -->
-      <a href="carrito.html" class="relative flex items-center text-lg hover:text-sage-green">
-        <i class="fa fa-shopping-cart text-xl mr-2 text-sage-green"></i> Carrito
-        <span id="cart-count-mobile"
-          class="absolute -top-2 left-20 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-          0
-        </span>
-      </a>
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl border-t border-gray-100 absolute top-full left-0 w-full transform transition-all duration-300 ease-in-out opacity-0 translate-y-2">
+      <div class="px-6 py-4 space-y-1">
+        <a href="../index.html" class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+          <i class="fa fa-home mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+          <span class="font-medium">Inicio</span>
+        </a>
+        <a href="productos.html" class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+          <i class="fa fa-cube mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+          <span class="font-medium">Productos</span>
+        </a>
+        <a href="blog.html" class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+          <i class="fa fa-blog mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+          <span class="font-medium">Blog</span>
+        </a>
+        <a href="contacto.html" class="flex items-center px-4 py-3 text-sage-green bg-sage-green/10 rounded-lg transition-all duration-200 group">
+          <i class="fa fa-phone mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+          <span class="font-medium">Contacto</span>
+        </a>
+        <div class="border-t border-gray-200 my-2"></div>
+        <a href="carrito.html" class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+          <div class="flex items-center">
+            <i class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+            <span class="font-medium">Carrito</span>
+          </div>
+          <span id="cart-count-mobile" class="bg-sage-green text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">0</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -138,132 +145,732 @@
 
 
 
+  <!-- ========================================
+       ESTILOS PERSONALIZADOS
+       ======================================== -->
   <style>
-    .page-content {
-      padding-top: 8rem;
-      /* ajusta según la altura real de tu header */
+    /* Animaciones personalizadas */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Gradientes personalizados */
+    .gradient-bg {
+      background: linear-gradient(135deg, #2D3E33 0%, #3A5A40 100%);
+    }
+
+    .gradient-card {
+      background: linear-gradient(135deg, #F6F1E9 0%, #EDE6DA 100%);
+    }
+
+    /* Efectos hover */
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Iconos animados */
+    .icon-bounce {
+      transition: transform 0.3s ease;
+    }
+
+    .icon-bounce:hover {
+      transform: scale(1.1);
     }
   </style>
 
-  <main class="page-content max-w-4xl mx-auto sm:p-8 bg-white rounded-lg shadow-lg">
-    <!-- 📄 Contenido -->
+  <!-- ========================================
+       CONTENIDO PRINCIPAL
+       ======================================== -->
+  <main class="pt-20">
 
-    <section class="text-center mb-8">
-      <h1 class="text-3xl sm:text-4xl font-serif font-bold text-dark-green mb-4">Contáctanos</h1>
-      <p class="text-base sm:text-lg text-gray-600">Estamos aquí para ayudarte. Llena el siguiente formulario o usa la
-        información de contacto.</p>
-    </section>
-
-    <!-- 📨 Formulario + Info -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-      <!-- Formulario -->
-      <div class="p-6 rounded-lg shadow-md bg-warm-cream">
-        <h2 class="text-2xl sm:text-3xl font-serif font-bold mb-6 text-center">Envíanos un Mensaje</h2>
-        <form action="#" method="POST" class="space-y-4 sm:space-y-6">
-          <div>
-            <label for="name" class="block text-sm font-medium">Nombre</label>
-            <input type="text" id="name" name="name"
-              class="mt-1 w-full p-3 border rounded-lg focus:ring-sage-green focus:border-sage-green">
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium">Email</label>
-            <input type="email" id="email" name="email"
-              class="mt-1 w-full p-3 border rounded-lg focus:ring-sage-green focus:border-sage-green">
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-medium">Mensaje</label>
-            <textarea id="message" name="message" rows="4"
-              class="mt-1 w-full p-3 border rounded-lg focus:ring-sage-green focus:border-sage-green"></textarea>
-          </div>
-          <button type="submit"
-            class="w-full bg-sage-green text-white py-3 rounded-lg font-bold hover:bg-leaf-green transition">Enviar</button>
-        </form>
-      </div>
-
-      <!-- Info -->
-      <div class="p-6 rounded-lg shadow-md bg-warm-cream flex flex-col justify-center">
-        <h2 class="text-xl sm:text-2xl font-serif font-bold mb-4">Información de Contacto</h2>
-        <div class="space-y-4 text-sm sm:text-base">
-          <div class="flex items-center space-x-3"><i class="fas fa-phone text-sage-green"></i><a
-              href="tel:+525564682112">+52 55 6468 2112</a></div>
-          <div class="flex items-center space-x-3"><i class="fas fa-envelope text-sage-green"></i><a
-              href="mailto:contacto@velasstarlight.com">contacto@velasstarlight.com</a></div>
-          <div class="flex items-center space-x-3"><i class="fas fa-map-marker-alt text-sage-green"></i><span>Ciudad de
-              México, México</span></div>
-          <div class="flex items-center space-x-3"><i class="fab fa-instagram text-sage-green"></i><a
-              href="https://www.instagram.com/velas_starlight/" target="_blank">@velas_starlight</a></div>
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
+    <section class="gradient-bg text-white py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <div class="animate-fade-in-up">
+          <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6">
+            <i class="fas fa-envelope mr-4"></i>
+            Contáctanos
+          </h1>
+          <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+            Estamos aquí para hacer realidad tus ideas. Desde pedidos personalizados hasta eventos especiales,
+            creamos la atmósfera perfecta para cada ocasión.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="mt-10 sm:mt-12 p-6 sm:p-8 bg-beige-almond rounded-lg shadow-lg">
-      <h2 class="text-2xl sm:text-3xl font-serif font-bold mb-6 text-center">Preguntas Frecuentes</h2>
-      <div class="space-y-4 text-sm sm:text-base">
-        <div class="border rounded-md">
-          <button class="w-full flex justify-between p-4 bg-white hover:bg-gray-100" onclick="toggleFAQ('faq1')">
-            <span>¿Hacen envíos a todo México?</span><i id="icon-faq1" class="fas fa-chevron-down"></i>
-          </button>
-          <div id="faq1" class="hidden p-4 bg-white text-gray-700">Sí, enviamos a toda la República Mexicana.</div>
+    <!-- ========================================
+         SERVICIOS ESPECIALES
+         ======================================== -->
+    <section class="py-16 bg-beige-almond">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-dark-green mb-4">
+            Servicios Especiales
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Ofrecemos soluciones personalizadas para hacer de tu evento algo único e inolvidable
+          </p>
         </div>
-        <div class="border rounded-md">
-          <button class="w-full flex justify-between p-4 bg-white hover:bg-gray-100" onclick="toggleFAQ('faq2')">
-            <span>¿Qué ingredientes usan?</span><i id="icon-faq2" class="fas fa-chevron-down"></i>
-          </button>
-          <div id="faq2" class="hidden p-4 bg-white text-gray-700">Usamos cera de soya, parafina, aceites esenciales y
-            extractos naturales.</div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Eventos Corporativos -->
+          <div class="gradient-card rounded-xl p-8 hover-lift text-center">
+            <div class="bg-sage-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 icon-bounce">
+              <i class="fas fa-building text-white text-2xl"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-dark-green mb-4">Eventos Corporativos</h3>
+            <p class="text-gray-600 mb-6">
+              Velas personalizadas para conferencias, inauguraciones, regalos empresariales y eventos de networking.
+            </p>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li>✨ Diseños con logo empresarial</li>
+              <li>🎁 Empaques corporativos</li>
+              <li>📦 Entregas programadas</li>
+            </ul>
+          </div>
+
+          <!-- Bodas y Celebraciones -->
+          <div class="gradient-card rounded-xl p-8 hover-lift text-center">
+            <div class="bg-sage-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 icon-bounce">
+              <i class="fas fa-heart text-white text-2xl"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-dark-green mb-4">Bodas & Celebraciones</h3>
+            <p class="text-gray-600 mb-6">
+              Crea la atmósfera perfecta para bodas, quinceañeras, aniversarios y celebraciones especiales.
+            </p>
+            <ul class="text-sm text-gray-700 space-y-2">
+              <li>💒 Centros de mesa únicos</li>
+              <li>🌸 Fragancias personalizadas</li>
+              <li>💝 Recuerdos para invitados</li>
+            </ul>
+          </div>
+
+          <!-- Descuentos por Mayoreo -->
+          <div class="gradient-card rounded-xl p-8 hover-lift text-center border-2 border-sage-green">
+            <div class="bg-sage-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 icon-bounce">
+              <i class="fas fa-percentage text-white text-2xl"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-dark-green mb-4">Descuentos por Mayoreo</h3>
+            <p class="text-gray-600 mb-6">
+              Obtén precios especiales en compras grandes. Perfecto para revendedores y eventos masivos.
+            </p>
+            <div class="bg-white rounded-lg p-4 mb-4">
+              <div class="text-sm text-gray-700 space-y-1">
+                <p><strong>50-99 piezas:</strong> 10% descuento</p>
+                <p><strong>100-199 piezas:</strong> 15% descuento</p>
+                <p><strong>200+ piezas:</strong> 20% descuento</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="border rounded-md">
-          <button class="w-full flex justify-between p-4 bg-white hover:bg-gray-100" onclick="toggleFAQ('faq3')">
-            <span>¿Qué opciones de pago aceptan?</span><i id="icon-faq3" class="fas fa-chevron-down"></i>
-          </button>
-          <div id="faq3" class="hidden p-4 bg-white text-gray-700">Tarjeta, PayPal y transferencias bancarias.</div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         FORMULARIO DE CONTACTO Y INFO
+         ======================================== -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+          <!-- Formulario de Contacto -->
+          <div class="gradient-card rounded-xl p-8 hover-lift">
+            <h2 class="font-serif text-2xl font-bold text-dark-green mb-6 text-center">
+              <i class="fas fa-paper-plane mr-2"></i>
+              Envíanos tu Consulta
+            </h2>
+
+            <form id="contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="block text-sm font-semibold text-dark-green mb-2">
+                    <i class="fas fa-user mr-1"></i>Nombre Completo
+                  </label>
+                  <input type="text" id="name" name="name" required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-semibold text-dark-green mb-2">
+                    <i class="fas fa-phone mr-1"></i>Teléfono
+                  </label>
+                  <input type="tel" id="phone" name="phone"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                </div>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-semibold text-dark-green mb-2">
+                  <i class="fas fa-envelope mr-1"></i>Correo Electrónico
+                </label>
+                <input type="email" id="email" name="email" required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+              </div>
+
+              <div>
+                <label for="event-type" class="block text-sm font-semibold text-dark-green mb-2">
+                  <i class="fas fa-calendar-alt mr-1"></i>Tipo de Evento/Consulta
+                </label>
+                <select id="event-type" name="event-type"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                  <option value="">Selecciona una opción</option>
+                  <option value="boda">Boda</option>
+                  <option value="corporativo">Evento Corporativo</option>
+                  <option value="quinceañera">Quinceañera</option>
+                  <option value="aniversario">Aniversario</option>
+                  <option value="mayoreo">Compra por Mayoreo</option>
+                  <option value="personalizado">Producto Personalizado</option>
+                  <option value="general">Consulta General</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="quantity" class="block text-sm font-semibold text-dark-green mb-2">
+                  <i class="fas fa-cubes mr-1"></i>Cantidad Aproximada (opcional)
+                </label>
+                <input type="number" id="quantity" name="quantity" min="1"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-semibold text-dark-green mb-2">
+                  <i class="fas fa-comment mr-1"></i>Mensaje Detallado
+                </label>
+                <textarea id="message" name="message" rows="5" required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition"
+                  placeholder="Cuéntanos sobre tu evento, fechas, preferencias de fragancias, colores, etc."></textarea>
+              </div>
+
+              <button type="submit"
+                class="w-full gradient-bg text-white py-4 rounded-lg font-bold hover:opacity-90 transition flex items-center justify-center">
+                <i class="fas fa-paper-plane mr-2"></i>
+                Enviar Consulta
+              </button>
+            </form>
+          </div>
+
+          <!-- Información de Contacto -->
+          <div class="space-y-8">
+
+            <!-- Datos de Contacto -->
+            <div class="gradient-card rounded-xl p-8 hover-lift">
+              <h3 class="font-serif text-xl font-bold text-dark-green mb-6">
+                <i class="fas fa-address-book mr-2"></i>
+                Información de Contacto
+              </h3>
+
+              <div class="space-y-4">
+                <div class="flex items-center space-x-4 p-3 bg-white rounded-lg">
+                  <div class="bg-sage-green w-10 h-10 rounded-full flex items-center justify-center">
+                    <i class="fas fa-phone text-white"></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-dark-green">Teléfono</p>
+                    <a href="tel:+525564682112" class="text-sage-green hover:underline">+52 55 6468 2112</a>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-4 p-3 bg-white rounded-lg">
+                  <div class="bg-sage-green w-10 h-10 rounded-full flex items-center justify-center">
+                    <i class="fas fa-envelope text-white"></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-dark-green">Email Empresarial</p>
+                    <a href="mailto:ventas@velasstarlight.com"
+                      class="text-sage-green hover:underline">ventas@velasstarlight.com</a>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-4 p-3 bg-white rounded-lg">
+                  <div class="bg-sage-green w-10 h-10 rounded-full flex items-center justify-center">
+                    <i class="fab fa-whatsapp text-white"></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-dark-green">WhatsApp Business</p>
+                    <a href="https://wa.me/525564682112" target="_blank" class="text-sage-green hover:underline">Enviar
+                      mensaje</a>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-4 p-3 bg-white rounded-lg">
+                  <div class="bg-sage-green w-10 h-10 rounded-full flex items-center justify-center">
+                    <i class="fab fa-instagram text-white"></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-dark-green">Instagram</p>
+                    <a href="https://www.instagram.com/velas_starlight/" target="_blank"
+                      class="text-sage-green hover:underline">@velas_starlight</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Horarios de Atención -->
+            <div class="gradient-card rounded-xl p-8 hover-lift">
+              <h3 class="font-serif text-xl font-bold text-dark-green mb-6">
+                <i class="fas fa-clock mr-2"></i>
+                Horarios de Atención
+              </h3>
+
+              <div class="space-y-3">
+                <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                  <span class="font-semibold text-dark-green">Lunes - Viernes</span>
+                  <span class="text-sage-green">9:00 AM - 7:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                  <span class="font-semibold text-dark-green">Sábados</span>
+                  <span class="text-sage-green">10:00 AM - 5:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                  <span class="font-semibold text-dark-green">Domingos</span>
+                  <span class="text-gray-500">Cerrado</span>
+                </div>
+              </div>
+
+              <div class="mt-6 p-4 bg-sage-green bg-opacity-10 rounded-lg">
+                <p class="text-sm text-dark-green">
+                  <i class="fas fa-info-circle mr-2"></i>
+                  <strong>Respuesta garantizada:</strong> Contestamos todas las consultas en menos de 24 horas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         PREGUNTAS FRECUENTES
+         ======================================== -->
+    <section class="py-16 bg-beige-almond">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-dark-green mb-4">
+            Preguntas Frecuentes
+          </h2>
+          <p class="text-lg text-gray-600">
+            Resolvemos las dudas más comunes sobre nuestros productos y servicios
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition"
+              onclick="toggleFAQ('faq1')">
+              <span class="font-semibold text-dark-green">¿Qué descuentos ofrecen por mayoreo?</span>
+              <i id="icon-faq1" class="fas fa-chevron-down text-sage-green transition-transform"></i>
+            </button>
+            <div id="faq1" class="hidden px-6 pb-6 text-gray-700">
+              <p>Ofrecemos descuentos escalonados: 10% para 50-99 piezas, 15% para 100-199 piezas, y 20% para 200+
+                piezas. Los descuentos se aplican automáticamente según la cantidad total del pedido.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition"
+              onclick="toggleFAQ('faq2')">
+              <span class="font-semibold text-dark-green">¿Hacen velas personalizadas para eventos?</span>
+              <i id="icon-faq2" class="fas fa-chevron-down text-sage-green transition-transform"></i>
+            </button>
+            <div id="faq2" class="hidden px-6 pb-6 text-gray-700">
+              <p>¡Sí! Creamos velas personalizadas con colores, fragancias y diseños específicos. Podemos incluir logos,
+                nombres, fechas especiales y empaques personalizados. El tiempo de producción es de 7-14 días
+                dependiendo de la cantidad.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition"
+              onclick="toggleFAQ('faq3')">
+              <span class="font-semibold text-dark-green">¿Cuál es el pedido mínimo para eventos?</span>
+              <i id="icon-faq3" class="fas fa-chevron-down text-sage-green transition-transform"></i>
+            </button>
+            <div id="faq3" class="hidden px-6 pb-6 text-gray-700">
+              <p>Para eventos corporativos y celebraciones, el pedido mínimo es de 25 piezas. Para bodas y quinceañeras
+                ofrecemos paquetes especiales desde 50 piezas con diseños exclusivos.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition"
+              onclick="toggleFAQ('faq4')">
+              <span class="font-semibold text-dark-green">¿Qué métodos de pago aceptan?</span>
+              <i id="icon-faq4" class="fas fa-chevron-down text-sage-green transition-transform"></i>
+            </button>
+            <div id="faq4" class="hidden px-6 pb-6 text-gray-700">
+              <p>Aceptamos tarjetas de crédito/débito, PayPal, transferencias bancarias y pagos en efectivo. Para
+                pedidos grandes ofrecemos planes de pago y facturación empresarial.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition"
+              onclick="toggleFAQ('faq5')">
+              <span class="font-semibold text-dark-green">¿Hacen envíos a toda la República?</span>
+              <i id="icon-faq5" class="fas fa-chevron-down text-sage-green transition-transform"></i>
+            </button>
+            <div id="faq5" class="hidden px-6 pb-6 text-gray-700">
+              <p>Sí, enviamos a toda la República Mexicana. Los envíos son gratuitos para pedidos mayores a $1,000 MXN.
+                Para eventos, coordinamos entregas programadas en la fecha que necesites.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         LLAMADA A LA ACCIÓN
+         ======================================== -->
+    <section class="gradient-bg text-white py-16">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">
+          ¿Listo para crear algo especial?
+        </h2>
+        <p class="text-xl mb-8 opacity-90">
+          Contáctanos hoy y hagamos realidad la atmósfera perfecta para tu evento
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/525564682112" target="_blank"
+            class="bg-white text-dark-green px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center">
+            <i class="fab fa-whatsapp mr-2 text-green-500"></i>
+            WhatsApp Directo
+          </a>
+          <a href="mailto:ventas@velasstarlight.com"
+            class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-dark-green transition flex items-center justify-center">
+            <i class="fas fa-envelope mr-2"></i>
+            Enviar Email
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-dark-green text-white py-6">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Links -->
-      <div class="flex flex-col space-y-2">
-        <a href="politicas.html" class="hover:text-gray-sand transition">Políticas</a>
-      </div>
-
-      <!-- Redes sociales -->
-      <div class="flex space-x-6 md:justify-end">
-        <a href="https://wa.me/521234567890" target="_blank" aria-label="WhatsApp"
-          class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://www.instagram.com/velas_starlight/" target="_blank" aria-label="Instagram"
-          class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" target="_blank" aria-label="Facebook" class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" target="_blank" aria-label="Tiktok" class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-tiktok"></i>
-        </a>
-      </div>
+  <!-- Footer Rediseñado -->
+  <footer class="bg-gradient-to-br from-dark-green via-dark-green to-sage-green text-white relative overflow-hidden">
+    <!-- Elementos decorativos -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-48 h-48 bg-sage-green rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-leaf-green rounded-full blur-3xl"></div>
     </div>
 
-    <!-- Derechos reservados -->
-    <div class="text-center text-sm mt-6">
-      <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+    <div class="relative z-10">
+      <!-- Contenido principal del footer -->
+      <div class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Logo y descripción -->
+          <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center space-x-3">
+              <img src="../images/logo.png" alt="Velas Starlight" class="h-12 w-auto filter brightness-0 invert">
+              <div>
+                <h3 class="text-2xl font-serif font-bold">Velas Starlight</h3>
+                <p class="text-sage-green/80 text-sm">Artesanía Premium</p>
+              </div>
+            </div>
+            <p class="text-gray-300 leading-relaxed max-w-md">
+              Creamos experiencias sensoriales únicas con velas artesanales y productos de belleza natural, elaborados con amor y dedicación para iluminar tu mundo.
+            </p>
+            
+            <!-- Newsletter -->
+            <div class="space-y-3">
+              <h4 class="font-semibold text-lg">Suscríbete a nuestro newsletter</h4>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input type="email" placeholder="Tu correo electrónico" 
+                  class="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-sage-green focus:border-transparent">
+                <button class="bg-sage-green hover:bg-sage-green/80 px-6 py-2 rounded-lg font-semibold transition-colors duration-300">
+                  Suscribirse
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enlaces rápidos -->
+          <div class="space-y-4">
+            <h4 class="text-lg font-semibold mb-4 text-white">Enlaces Rápidos</h4>
+            <ul class="space-y-3">
+              <li><a href="../index.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                <i class="fa fa-home mr-2 group-hover:scale-110 transition-transform duration-300"></i>Inicio
+              </a></li>
+              <li><a href="productos.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                <i class="fa fa-cube mr-2 group-hover:scale-110 transition-transform duration-300"></i>Productos
+              </a></li>
+              <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                <i class="fa fa-blog mr-2 group-hover:scale-110 transition-transform duration-300"></i>Blog
+              </a></li>
+              <li><a href="contacto.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                <i class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
+              </a></li>
+              <li><a href="politicas.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                <i class="fa fa-shield-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>Políticas
+              </a></li>
+            </ul>
+          </div>
+
+          <!-- Contacto y redes sociales -->
+          <div class="space-y-4">
+            <h4 class="text-lg font-semibold mb-4 text-white">Conecta con Nosotros</h4>
+            
+            <!-- Información de contacto -->
+            <div class="space-y-3 text-gray-300">
+              <div class="flex items-center space-x-3">
+                <i class="fa fa-envelope text-white"></i>
+                <span>ventas@velasstarlight.com</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fa fa-phone text-white"></i>
+                <span>5564682112</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fa fa-map-marker-alt text-white"></i>
+                <span>123 Artisan Street, Ciudad</span>
+              </div>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="pt-4">
+              <h5 class="font-medium mb-3">Síguenos</h5>
+              <div class="flex space-x-4">
+                <a href="https://wa.me/5564682112" target="_blank" 
+                  class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-whatsapp text-lg group-hover:text-white"></i>
+                </a>
+                <a href="https://www.instagram.com/velas_starlight/" target="_blank" 
+                  class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-instagram text-lg group-hover:text-white"></i>
+                </a>
+                <a href="#" target="_blank" 
+                  class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-facebook-f text-lg group-hover:text-white"></i>
+                </a>
+                <a href="#" target="_blank" 
+                  class="w-10 h-10 bg-white/10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-tiktok text-lg group-hover:text-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Línea divisoria -->
+      <div class="border-t border-white/20"></div>
+
+      <!-- Copyright y enlaces legales -->
+      <div class="container mx-auto px-6 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="text-gray-300 text-sm">
+            <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+          </div>
+          <div class="flex items-center space-x-6 text-sm text-gray-300">
+            <a href="politicas.html" class="hover:text-white transition-colors duration-300">Términos y Condiciones</a>
+            <span class="text-gray-500">|</span>
+            <a href="politicas.html" class="hover:text-white transition-colors duration-300">Política de Privacidad</a>
+            <span class="text-gray-500">|</span>
+            <span class="flex items-center space-x-1">
+              <i class="fa fa-heart text-red-400"></i>
+              <span>Hecho con amor</span>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
 
+  <!-- ========================================
+       JAVASCRIPT FUNCIONALIDAD
+       ======================================== -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Sistema de integración de email -->
+  <script src="../js/email-integration.js"></script>
+
+  <!-- Sistema de contacto -->
+  <script src="../js/contact-system.js"></script>
   <script>
+    // Inicializar AOS
     AOS.init({
       once: true,
       duration: 800,
     });
+
+    /**
+     * Función para toggle de FAQ
+     */
+    function toggleFAQ(faqId) {
+      const faqContent = document.getElementById(faqId);
+      const icon = document.getElementById(`icon-${faqId}`);
+
+      if (faqContent.classList.contains('hidden')) {
+        faqContent.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        faqContent.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    /**
+     * Manejo del formulario de contacto
+     */
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Obtener datos del formulario
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+
+      // Validar campos requeridos
+      if (!data.name || !data.email || !data.message) {
+        showNotification('Por favor completa todos los campos requeridos', 'error');
+        return;
+      }
+
+      // Simular envío (aquí integrarías con tu servicio de email)
+      showNotification('Enviando mensaje...', 'info');
+
+      // Simular delay de envío
+      setTimeout(() => {
+        // Crear enlace mailto con los datos
+        const subject = encodeURIComponent(`Consulta de ${data.name} - ${data['event-type'] || 'General'}`);
+        const body = encodeURIComponent(`
+Nombre: ${data.name}
+Teléfono: ${data.phone || 'No proporcionado'}
+Email: ${data.email}
+Tipo de evento: ${data['event-type'] || 'No especificado'}
+Cantidad: ${data.quantity || 'No especificada'}
+
+Mensaje:
+${data.message}
+
+---
+Enviado desde el formulario de contacto de Velas Starlight
+        `);
+
+        const mailtoLink = `mailto:contacto@velasstarlight.com?subject=${subject}&body=${body}`;
+
+        // Abrir cliente de email
+        window.location.href = mailtoLink;
+
+        // Mostrar mensaje de éxito
+        showNotification('¡Mensaje preparado! Se abrirá tu cliente de email.', 'success');
+
+        // Limpiar formulario
+        this.reset();
+      }, 1000);
+    });
+
+    /**
+     * Función para mostrar notificaciones
+     */
+    function showNotification(message, type = 'info') {
+      // Remover notificación existente
+      const existing = document.querySelector('.notification');
+      if (existing) {
+        existing.remove();
+      }
+
+      // Crear nueva notificación
+      const notification = document.createElement('div');
+      notification.className = 'notification fixed top-24 right-6 z-50 px-6 py-4 rounded-lg shadow-lg text-white transform transition-all duration-300 translate-x-full max-w-sm';
+
+      // Colores según el tipo
+      const styles = {
+        success: 'bg-green-500',
+        error: 'bg-red-500',
+        info: 'bg-blue-500',
+        warning: 'bg-yellow-500'
+      };
+
+      notification.classList.add(styles[type] || styles.info);
+
+      // Iconos según el tipo
+      const icons = {
+        success: 'check-circle',
+        error: 'exclamation-triangle',
+        info: 'info-circle',
+        warning: 'exclamation-triangle'
+      };
+
+      notification.innerHTML = `
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-${icons[type] || icons.info} text-lg"></i>
+          <span>${message}</span>
+        </div>
+      `;
+
+      document.body.appendChild(notification);
+
+      // Animar entrada
+      setTimeout(() => {
+        notification.classList.remove('translate-x-full');
+      }, 100);
+
+      // Remover después de 5 segundos
+      setTimeout(() => {
+        notification.classList.add('translate-x-full');
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }, 5000);
+    }
+
+    /**
+     * Animaciones al hacer scroll
+     */
+    window.addEventListener('scroll', function () {
+      const elements = document.querySelectorAll('.hover-lift');
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('animate-fade-in-up');
+        }
+      });
+    });
+
+    /**
+     * Efecto de typing en el hero
+     */
+    document.addEventListener('DOMContentLoaded', function () {
+      const heroText = document.querySelector('section h1');
+      if (heroText) {
+        heroText.style.opacity = '0';
+        setTimeout(() => {
+          heroText.style.opacity = '1';
+          heroText.classList.add('animate-fade-in-up');
+        }, 500);
+      }
+    });
   </script>
+
+  <script src="../js/contact-system.js"></script>
   <script src="../js/main.js"></script>
+  </script>
 
 </body>
 
