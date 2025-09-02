@@ -1,71 +1,279 @@
-# Velas Starlight
+# 📋 Documentación - Página de Productos
 
-## Descripción del Proyecto
+## 🎯 Descripción General
+La página de productos de Velas Starlight es una aplicación web interactiva que permite a los usuarios explorar, filtrar y ver detalles de los productos disponibles. Incluye funcionalidades de búsqueda, filtrado por categoría y precio, y un modal detallado para cada producto.
 
-**Velas Starlight** es un e-commerce minimalista y elegante, especializado en la venta de velas artesanales y productos de belleza hechos con ingredientes naturales. El sitio web está diseñado para ofrecer una experiencia de usuario fluida, centrada en el producto y en la filosofía de la marca: el autocuidado y el bienestar.
+## 🏗️ Estructura del Archivo
 
-## Características Principales
+### 1. **HEAD - Configuración y Recursos**
+```html
+<head>
+    <!-- Configuración básica -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velas Starlight | Elegancia y Belleza</title>
+    
+    <!-- Tailwind CSS personalizado -->
+    <!-- Font Awesome para iconos -->
+    <!-- Google Fonts -->
+    <!-- Estilos personalizados -->
+</head>
+```
 
-* **Diseño Elegante y Minimalista**: Utiliza una paleta de colores sofisticada y tipografías limpias para transmitir la esencia de la marca.
-* **Página de Productos Dinámica**: Incluye filtros por categoría y precio, así como una barra de búsqueda funcional.
-* **Modal de Detalles de Producto**: Al hacer clic en "Ver detalles", se abre una ventana emergente que muestra información extendida, opciones de tamaño y fragancia.
-* **Blog Integrado**: Una sección en la página de inicio que enlaza a artículos con consejos y rituales de bienestar.
-* **Sección de Reseñas**: Muestra testimonios de clientes con fotos y calificaciones, para generar confianza.
-* **Carrusel de Imágenes**: Una galería interactiva para mostrar los productos en diferentes ambientes.
-* **Formulario de Contacto**: Un formulario para que los clientes puedan comunicarse fácilmente, con una sección de FAQ para resolver dudas comunes.
-* **Botón de WhatsApp Flotante**: Un acceso directo a la comunicación por WhatsApp para asistencia inmediata.
-* **Políticas de la Tienda**: Páginas dedicadas a las políticas de envío, devoluciones y privacidad.
+**Recursos incluidos:**
+- **Tailwind CSS**: Framework CSS con configuración personalizada de colores
+- **Font Awesome 6.5.1**: Librería de iconos
+- **Google Fonts**: Poppins (sans-serif) y Playfair Display (serif)
+- **AOS**: Librería para animaciones al hacer scroll
 
-## Estructura del Proyecto
+### 2. **HEADER - Navegación**
+```html
+<header class="bg-white shadow-md fixed w-full z-50">
+    <!-- Logo -->
+    <!-- Navegación desktop -->
+    <!-- Menú móvil hamburguesa -->
+</header>
+```
 
-El proyecto sigue una estructura de carpetas estándar para sitios web estáticos de HTML, CSS y JavaScript.
+**Características:**
+- **Responsive**: Navegación diferente para desktop y móvil
+- **Fixed**: Header fijo en la parte superior
+- **Carrito**: Icono con contador de productos
+- **Menú móvil**: Desplegable con animaciones
 
-```bash
-mi-tienda-velas/
-├── css/
-│   └── styles.css (No se utiliza activamente, el estilo es con Tailwind)
-├── js/
-│   └── main.js
-├── images/
-│   ├── logo.png
-│   ├── hero-banner.jpg
-│   ├── favicon.png
-│   ├── blog-vela.jpg
-│   ├── blog-belleza.jpg
-│   ├── ... (imágenes de productos)
-│   └── ... (imágenes de galería y clientes)
+### 3. **MAIN - Contenido Principal**
+
+#### 3.1 Sección Hero
+```html
+<section class="relative">
+    <!-- Imagen de fondo con overlay -->
+    <!-- Título y descripción -->
+</section>
+```
+
+#### 3.2 Filtros
+```html
+<div class="bg-white shadow-md rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Campo de búsqueda -->
+    <!-- Selector de categoría -->
+    <!-- Selector de precio -->
+</div>
+```
+
+#### 3.3 Grid de Productos
+```html
+<div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- Las tarjetas se generan dinámicamente -->
+</div>
+```
+
+### 4. **MODAL - Detalles del Producto**
+```html
+<div id="product-modal" class="hidden fixed inset-0 bg-black bg-opacity-50">
+    <!-- Imagen con zoom -->
+    <!-- Información del producto -->
+    <!-- Selectores de opciones -->
+    <!-- Control de cantidad -->
+    <!-- Botón agregar al carrito -->
+</div>
+```
+
+### 5. **FOOTER - Pie de página**
+```html
+<footer class="bg-dark-green text-white py-6">
+    <!-- Enlaces -->
+    <!-- Redes sociales -->
+    <!-- Derechos reservados -->
+</footer>
+```
+
+## 🎨 Sistema de Colores
+
+| Color | Código | Uso |
+|-------|--------|-----|
+| `beige-almond` | #F6F1E9 | Fondo principal |
+| `dark-green` | #2D3E33 | Texto y botones principales |
+| `sage-green` | #3A5A40 | Hover y acentos |
+| `warm-cream` | #EDE6DA | Fondos secundarios |
+| `leaf-green` | #A3B18A | Elementos decorativos |
+| `gray-sand` | #D6CEC3 | Texto secundario |
+
+## 💻 JavaScript - Funcionalidades
+
+### 1. **Datos de Productos**
+```javascript
+const products = [
+    {
+        title: "Nombre del producto",
+        category: "Categoría",
+        description: "Descripción detallada",
+        image: "ruta/imagen.jpg",
+        types: ["Soya", "Parafina"],
+        sizes: [{ label: "50 gr", price: 75 }],
+        fragrances: ["Fragancia1", "Fragancia2"]
+    }
+];
+```
+
+**Estructura de cada producto:**
+- `title`: Nombre del producto
+- `category`: Categoría para filtrado
+- `description`: Descripción completa
+- `image`: Ruta de la imagen
+- `types`: Tipos disponibles (Soya/Parafina)
+- `sizes`: Array de tamaños con precios
+- `fragrances`: Array de fragancias disponibles
+
+### 2. **Función de Renderizado**
+```javascript
+function renderProducts(productsToRender = products) {
+    // 1. Obtener referencias DOM
+    // 2. Limpiar contenido previo
+    // 3. Verificar si hay productos
+    // 4. Crear tarjetas dinámicamente
+    // 5. Agregar event listeners
+}
+```
+
+**Proceso:**
+1. **Validación**: Verifica que el contenedor existe
+2. **Limpieza**: Elimina contenido previo
+3. **Generación**: Crea HTML para cada producto
+4. **Eventos**: Agrega listeners para botones "Ver detalles"
+5. **Inserción**: Agrega tarjetas al DOM
+
+### 3. **Sistema de Filtros**
+```javascript
+function filterProducts() {
+    // 1. Obtener valores de filtros
+    // 2. Aplicar filtros simultáneamente
+    // 3. Renderizar resultados
+}
+```
+
+**Tipos de filtro:**
+- **Búsqueda**: Por título y descripción (case-insensitive)
+- **Categoría**: Filtro exacto por categoría
+- **Precio**: Por rangos de precio basados en precio mínimo
+
+### 4. **Modal de Producto**
+```javascript
+function openModal(product) {
+    // 1. Establecer información básica
+    // 2. Generar opciones dinámicamente
+    // 3. Configurar event listeners
+    // 4. Mostrar modal
+}
+```
+
+**Funcionalidades del modal:**
+- **Zoom**: Ampliar/reducir imagen del producto
+- **Selección**: Tipo, tamaño y fragancia
+- **Cantidad**: Control de cantidad con botones +/-
+- **Precio dinámico**: Se actualiza según el tamaño seleccionado
+
+## 📱 Responsive Design
+
+### Breakpoints
+- **Mobile**: < 768px (1 columna)
+- **Tablet**: 768px - 1024px (2 columnas)
+- **Desktop**: > 1024px (4 columnas)
+
+### Adaptaciones
+- **Header**: Menú hamburguesa en móvil
+- **Grid**: Columnas adaptativas
+- **Modal**: Layout vertical en móvil, horizontal en desktop
+- **Filtros**: Stack vertical en móvil
+
+## 🔧 Event Listeners
+
+### Inicialización
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+    renderProducts();
+    // Configurar filtros
+    searchInput.addEventListener("input", filterProducts);
+    categorySelect.addEventListener("change", filterProducts);
+    priceSelect.addEventListener("change", filterProducts);
+});
+```
+
+### Modal
+- **Abrir**: Click en "Ver detalles"
+- **Cerrar**: Click en botón X
+- **Zoom**: Botones +/- para imagen
+- **Cantidad**: Botones +/- para cantidad
+- **Selección**: Click en opciones de tipo y tamaño
+
+### Menú Móvil
+- **Toggle**: Click en botón hamburguesa
+
+## 🎯 Funcionalidades Principales
+
+### ✅ Implementadas
+1. **Renderizado dinámico** de productos
+2. **Filtros en tiempo real** (búsqueda, categoría, precio)
+3. **Modal interactivo** con opciones de producto
+4. **Zoom de imágenes** en modal
+5. **Control de cantidad** con validación
+6. **Responsive design** completo
+7. **Navegación móvil** con menú hamburguesa
+
+### 🔄 Posibles Mejoras
+1. **Carrito de compras** funcional
+2. **Persistencia** de filtros en URL
+3. **Lazy loading** de imágenes
+4. **Animaciones** con AOS
+5. **Paginación** para muchos productos
+6. **Ordenamiento** (precio, nombre, popularidad)
+7. **Favoritos** y wishlist
+8. **Comparación** de productos
+
+## 🐛 Debugging
+
+### Console Logs Incluidos
+- `🔥 Iniciando renderProducts`: Inicio del renderizado
+- `✅ Elemento grid encontrado`: Validación DOM
+- `🛍️ Creando tarjeta X`: Creación de cada tarjeta
+- `🎉 Renderizado completado`: Finalización exitosa
+- `❌ No se encontró elemento`: Errores de DOM
+
+### Problemas Comunes
+1. **Productos no se muestran**: Verificar console.log y DOM
+2. **Filtros no funcionan**: Revisar IDs de elementos
+3. **Modal no abre**: Verificar event listeners
+4. **Imágenes no cargan**: Verificar rutas relativas
+
+## 📁 Estructura de Archivos
+```
+proyecto/
 ├── pages/
-│   ├── blog-1.html
-│   ├── blog-2.html
-│   ├── contacto.html
-│   ├── politicas.html
-│   └── productos.html
-├── index.html
-└── README.md
+│   ├── productos.html          # Archivo principal
+│   └── productos-documentado.html  # Versión documentada
+├── images/
+│   ├── vela-starlight-*.jpeg   # Imágenes de productos
+│   ├── hero-banner.png         # Imagen hero
+│   └── logo.png               # Logo
+├── css/                       # Estilos adicionales
+├── js/                        # Scripts adicionales
+└── DOCUMENTACION_PRODUCTOS.md  # Esta documentación
 ```
 
+## 🚀 Deployment
 
-## Tecnologías Utilizadas
+### Requisitos
+- Servidor web (Apache, Nginx, etc.)
+- Soporte para archivos estáticos
+- HTTPS recomendado para producción
 
-* **HTML5**: Para la estructura y el contenido de las páginas.
-* **Tailwind CSS**: Un framework "utility-first" para el diseño y estilizado de la interfaz.
-* **JavaScript (Vanilla JS)**: Para la interactividad de la página, como filtros, búsqueda y la ventana modal.
-* **AOS (Animate On Scroll)**: Una librería ligera para animaciones elegantes al hacer scroll.
-* **Font Awesome**: Para los iconos de la navegación, redes sociales y estrellas de reseñas.
+### Optimizaciones
+- Minificar CSS/JS
+- Optimizar imágenes (WebP, compresión)
+- Configurar cache headers
+- CDN para recursos estáticos
 
-## Uso del Proyecto
+---
 
-Para ver el proyecto en funcionamiento, simplemente abre el archivo `index.html` en tu navegador web.
-
-```bash
-    cd mi-tienda-velas
-    start index.html  # En Windows
-    open index.html   # En macOS
-```
-
-## Contacto
-
-Si tienes alguna pregunta o sugerencia, no dudes en contactarme:
-
-* **Instagram**: [velas_starlight](https://www.instagram.com/velas_starlight/)
-* **Teléfono**: +52 55 6468 2112
+**Autor**: Kiro AI Assistant  
+**Fecha**: Febrero 2025  
+**Versión**: 1.0
