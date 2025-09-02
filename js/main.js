@@ -1,287 +1,148 @@
-// /js/productos.js
 document.addEventListener('DOMContentLoaded', () => {
-    // ====== SELECTORES ======
-    const searchInput      = document.getElementById('search-input');
-    const categoryFilter   = document.getElementById('category-filter');
-    const priceFilter      = document.getElementById('price-filter');
-    const cardsContainer   = document.getElementById('product-list');
-    const cards            = Array.from(cardsContainer?.querySelectorAll('.product-card') || []);
-  
-    const modal            = document.getElementById('product-modal');
-    const closeModalBtn    = document.getElementById('close-modal');
-    const modalName        = document.getElementById('modal-name');
-    const modalImage       = document.getElementById('modal-image');
-    const modalDescription = document.getElementById('modal-description');
-    const modalPrice       = document.getElementById('modal-price');
-    const modalOptions     = document.getElementById('modal-options');
-    const modalFragances   = document.getElementById('modal-fragances');
-    const noResultsMessage = document.getElementById('no-results-message');
-  
-    if (!cardsContainer || cards.length === 0) return; // nada que hacer si no hay grilla
-  
-    // ====== HELPERS ======
-    const normalize = (s = '') => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
-  
-    const showCards = (list) => {
-      // ocultar todo
-      cards.forEach(c => c.classList.add('hidden'));
-      // mostrar solo filtrados
-      list.forEach(c => c.classList.remove('hidden'));
-    };
-  
-    const applySortAndReflow = (list) => {
-      // Reordenar DOM para que el orden visual coincida con el sort
-      list.forEach(c => cardsContainer.appendChild(c));
-    };
-  
-    // ====== FILTRO ======
-    const filterProducts = () => {
-      const searchTerm = normalize(searchInput?.value || '');
-      const category   = categoryFilter?.value || 'all';
-      const priceOrder = priceFilter?.value || 'default';
-  
-      let result = [...cards];
-  
-      // 1) Búsqueda por nombre/descr
+  const searchInput = document.getElementById('search-input');
+  const categoryFilter = document.getElementById('category-filter');
+  const priceFilter = document.getElementById('price-filter');
+  const productCardsContainer = document.getElementById('product-list');
+  const productCardsData = Array.from(productCardsContainer.querySelectorAll('.product-card'));
+
+  const modal = document.getElementById('product-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+
+  const modalName = document.getElementById('modal-title');
+  const modalImage = document.getElementById('modal-img-main');
+  const modalDescription = document.getElementById('modal-description');
+  const modalPrice = document.getElementById('modal-price');
+  const modalOptions = document.getElementById('modal-options');
+  const modalFragances = document.getElementById('modal-fragances');
+  const noResultsMessage = document.getElementById('no-results-message');
+
+  // Funcionalidad de búsqueda y filtro
+  const filterProducts = () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      const category = categoryFilter.value;
+      const priceOrder = priceFilter.value;
+
+      productCardsData.forEach(card => card.style.display = 'none');
+      noResultsMessage.classList.add('hidden');
+
+      let filteredProducts = productCardsData;
+
       if (searchTerm) {
-        result = result.filter(card => {
-          const name = normalize(card.dataset.name || '');
-          const desc = normalize(card.dataset.description || '');
-          return name.includes(searchTerm) || desc.includes(searchTerm);
-        });
+          filteredProducts = filteredProducts.filter(card => {
+              const title = card.querySelector('h2').textContent.toLowerCase();
+              const description = card.querySelector('p').textContent.toLowerCase();
+              return title.includes(searchTerm) || description.includes(searchTerm);
+          });
       }
-  
-      // 2) Categoría
+
       if (category !== 'all') {
-        result = result.filter(card => (card.dataset.category || '') === category);
+          filteredProducts = filteredProducts.filter(card => card.dataset.category === category);
       }
-  
-      // 3) Orden por precio
+
       if (priceOrder === 'low-to-high') {
-        result.sort((a, b) => (parseFloat(a.dataset.price) || 0) - (parseFloat(b.dataset.price) || 0));
+          filteredProducts.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
       } else if (priceOrder === 'high-to-low') {
-        result.sort((a, b) => (parseFloat(b.dataset.price) || 0) - (parseFloat(a.dataset.price) || 0));
+          filteredProducts.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
       }
-  
-      // 4) Mostrar/Ocultar + reflow
-      if (result.length === 0) {
-        showCards([]);
-        noResultsMessage?.classList.remove('hidden');
+
+      if (filteredProducts.length > 0) {
+          productCardsContainer.classList.remove('hidden');
+          noResultsMessage.classList.add('hidden');
+          filteredProducts.forEach(card => {
+              card.style.display = 'block';
+          });
       } else {
-        noResultsMessage?.classList.add('hidden');
-        showCards(result);
-        applySortAndReflow(result);
+          productCardsContainer.classList.add('hidden');
+          noResultsMessage.classList.remove('hidden');
       }
-    };
-  
-    // ====== MODAL ======
-    const openModal = () => {
-      modal?.classList.remove('hidden');
-      document.documentElement.style.overflow = 'hidden'; // bloquear scroll
-    };
-    const closeModal = () => {
-      modal?.classList.add('hidden');
-      document.documentElement.style.overflow = '';
-    };
-  
-    const currency = (n) => `$${Number(n).toFixed(2)}`;
-  
-    const renderOptions = (options = []) => {
+  };
+
+  // Funcionalidad de la ventana modal
+  const showModal = (product) => {
+      modalName.textContent = product.dataset.name;
+      modalImage.src = product.dataset.image;
+      modalDescription.textContent = product.dataset.description;
+
+      const options = JSON.parse(product.dataset.options);
       modalOptions.innerHTML = '';
-      if (!options.length) return;
-  
-      options.forEach((opt, i) => {
-        const id = `opt-${String(opt.name).replace(/\s+/g,'-')}`;
-        const row = document.createElement('div');
-        row.className = 'flex items-center gap-2 py-1';
-        row.innerHTML = `
-          <input type="radio" name="product-option" id="${id}" class="text-sage-green focus:ring-sage-green" ${i===0 ? 'checked' : ''} data-price="${opt.price}">
-          <label for="${id}" class="text-gray-800">${opt.name}</label>
-          <span class="ml-auto text-dark-green font-semibold">${currency(opt.price)}</span>
-        `;
-        modalOptions.appendChild(row);
+      options.forEach(option => {
+          const optionDiv = document.createElement('div');
+          optionDiv.innerHTML = `<div class="flex items-center space-x-2"><input type="radio" name="product-option" id="${option.name.replace(/\s/g, '-')}" class="text-sage-green focus:ring-sage-green" checked><label for="${option.name.replace(/\s/g, '-')}" class="text-gray-800">${option.name}</label><span class="ml-auto text-dark-green font-semibold">$${option.price}</span></div>`;
+          modalOptions.appendChild(optionDiv);
       });
-  
-      // precio inicial
-      const first = modalOptions.querySelector('input[name="product-option"]:checked');
-      if (first) modalPrice.textContent = currency(first.dataset.price);
-  
-      // escuchar cambios para actualizar precio
-      modalOptions.addEventListener('change', (e) => {
-        if (e.target && e.target.name === 'product-option') {
-          modalPrice.textContent = currency(e.target.dataset.price);
-        }
-      }, { once: true });
-    };
-  
-    const renderFragances = (fragances = []) => {
+      modalPrice.textContent = `$${options[0].price}`;
+
       modalFragances.innerHTML = '';
-      if (!fragances.length) return;
-  
-      const title = document.createElement('h3');
-      title.className = 'font-semibold text-lg mb-2';
-      title.textContent = 'Selecciona tu fragancia:';
-      modalFragances.appendChild(title);
-  
-      const wrap = document.createElement('div');
-      wrap.className = 'flex flex-wrap gap-2';
-      fragances.forEach((f, i) => {
-        const id = `frag-${String(f).replace(/\s+/g,'-')}`;
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = 'product-fragance';
-        input.id = id;
-        input.className = 'hidden peer';
-        if (i === 0) input.checked = true;
-  
-        const label = document.createElement('label');
-        label.htmlFor = id;
-        label.className = 'px-4 py-2 bg-white text-dark-green rounded-full border border-gray-300 cursor-pointer peer-checked:bg-sage-green peer-checked:text-white peer-checked:border-sage-green transition-colors duration-200';
-        label.textContent = f;
-  
-        wrap.appendChild(input);
-        wrap.appendChild(label);
-      });
-      modalFragances.appendChild(wrap);
-    };
-  
-    const showModal = (card) => {
-      if (!card) return;
-  
-      // Datos desde data-*
-      const name        = card.dataset.name || '';
-      const img         = card.dataset.image || '';
-      const description = card.dataset.description || '';
-      const options     = card.dataset.options ? JSON.parse(card.dataset.options) : [];
-      const fragances   = card.dataset.fragances ? JSON.parse(card.dataset.fragances) : [];
-  
-      // Pinta modal
-      modalName.textContent        = name;
-      modalImage.src               = img;
-      modalImage.alt               = name;
-      modalDescription.textContent = description;
-  
-      renderOptions(options);
-      renderFragances(fragances);
-  
-      openModal();
-    };
-  
-    // ====== EVENTOS ======
-    // Abrir modal (delegado)
-    document.body.addEventListener('click', (e) => {
-      const btn = e.target.closest('.view-product-btn');
-      if (btn) {
-        const card = btn.closest('.product-card');
-        showModal(card);
+      const fragancesData = product.dataset.fragances ? JSON.parse(product.dataset.fragances) : [];
+      if (fragancesData.length > 0) {
+          const fragancesTitle = document.createElement('h3');
+          fragancesTitle.classList.add('font-semibold', 'mb-2');
+          fragancesTitle.textContent = "Selecciona tu fragancia:";
+          modalFragances.appendChild(fragancesTitle);
+
+          const fragancesContainer = document.createElement('div');
+          fragancesContainer.classList.add('flex', 'flex-wrap', 'gap-2');
+          fragancesData.forEach((fragance, index) => {
+              const fraganceRadio = document.createElement('input');
+              fraganceRadio.type = 'radio';
+              fraganceRadio.name = 'product-fragance';
+              fraganceRadio.id = `fragance-${fragance.replace(/\s/g, '-')}`;
+              fraganceRadio.classList.add('hidden', 'peer');
+              if (index === 0) fraganceRadio.checked = true;
+
+              const fraganceLabel = document.createElement('label');
+              fraganceLabel.setAttribute('for', `fragance-${fragance.replace(/\s/g, '-')}`);
+              fraganceLabel.classList.add('px-4', 'py-2', 'bg-white', 'text-dark-green', 'rounded-full', 'border', 'border-gray-300', 'cursor-pointer', 'peer-checked:bg-sage-green', 'peer-checked:text-white', 'peer-checked:border-sage-green', 'transition-colors', 'duration-200');
+              fraganceLabel.textContent = fragance;
+              fragancesContainer.appendChild(fraganceRadio);
+              fragancesContainer.appendChild(fraganceLabel);
+          });
+          modalFragances.appendChild(fragancesContainer);
+      } else {
+          modalFragances.innerHTML = '';
       }
-    });
-  
-    // Cerrar modal por botón
-    closeModalBtn?.addEventListener('click', closeModal);
-    // Cerrar modal clic fuera del contenido
-    modal?.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    // Cerrar con Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-    });
-  
-    // Filtros
-    searchInput?.addEventListener('input', filterProducts);
-    categoryFilter?.addEventListener('change', filterProducts);
-    priceFilter?.addEventListener('change', filterProducts);
-  
-    // Inicial
-    filterProducts();
+
+      modal.classList.remove('hidden');
+  };
+
+  // Delegación de eventos para los botones "Ver detalles"
+  document.body.addEventListener('click', (e) => {
+      if (e.target.classList.contains('open-modal')) {
+          const productCard = e.target.closest('.product-card');
+          if (productCard) {
+              showModal(productCard);
+          }
+      }
   });
 
-  // Antes: fallaba si no existe
-// document.getElementById('close-message').addEventListener('click', ...);
-
-// Después: seguro
-const closeBtn = document.getElementById('close-message');
-if (closeBtn) {
-  closeBtn.addEventListener('click', () => {
-    const promo = document.getElementById('promo-message');
-    if (promo) {
-      promo.style.transform = 'scale(0)';
-      setTimeout(() => promo.style.display = 'none', 300);
-    }
+  closeModalBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
   });
-}
 
-let cart = [];
-const cartButton = document.getElementById("cart-button");
-const cartSidebar = document.getElementById("cart-sidebar");
-const closeCart = document.getElementById("close-cart");
-const cartItems = document.getElementById("cart-items");
-const cartCount = document.getElementById("cart-count");
-const cartTotal = document.getElementById("cart-total");
+  // Event listeners para filtros y búsqueda
+  searchInput.addEventListener('input', filterProducts);
+  categoryFilter.addEventListener('change', filterProducts);
+  priceFilter.addEventListener('change', filterProducts);
 
-// Abrir carrito
-cartButton.addEventListener("click", () => {
-  cartSidebar.classList.remove("translate-x-full");
+  // Llamada inicial para mostrar todos los productos al cargar
+  filterProducts();
 });
 
-// Cerrar carrito
-closeCart.addEventListener("click", () => {
-  cartSidebar.classList.add("translate-x-full");
+// Lógica para los modales de imagen
+function openImage(src) {
+  const imageModal = document.getElementById("image-modal");
+  const imageModalImg = document.getElementById("image-modal-img");
+  imageModal.classList.remove("hidden");
+  imageModalImg.src = src;
+}
+function closeImage() {
+  document.getElementById("image-modal").classList.add("hidden");
+}
+
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuToggle.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+  mobileMenu.classList.toggle('opacity-100');
 });
-
-// Agregar producto al carrito
-function addToCart(product) {
-  const existing = cart.find(item => item.name === product.name && item.option === product.option && item.fragance === product.fragance);
-
-  if (existing) {
-    existing.quantity++;
-  } else {
-    cart.push({ ...product, quantity: 1 });
-  }
-
-  updateCart();
-}
-
-// Actualizar carrito
-function updateCart() {
-  cartItems.innerHTML = "";
-  let total = 0;
-
-  cart.forEach(item => {
-    total += item.price * item.quantity;
-
-    const div = document.createElement("div");
-    div.classList = "flex justify-between items-center border-b pb-2";
-    div.innerHTML = `
-      <div>
-        <p class="font-semibold">${item.name}</p>
-        <p class="text-sm text-gray-500">${item.option || ""} ${item.fragance || ""}</p>
-        <p class="text-sm text-gray-600">${item.quantity} x $${item.price.toFixed(2)}</p>
-      </div>
-      <button class="text-red-500 hover:text-red-700" onclick="removeFromCart('${item.name}', '${item.option}', '${item.fragance}')">&times;</button>
-    `;
-    cartItems.appendChild(div);
-  });
-
-  if (cart.length === 0) {
-    cartItems.innerHTML = `<p class="text-gray-500 text-sm">Tu carrito está vacío.</p>`;
-  }
-
-  cartCount.textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
-  cartTotal.textContent = `$${total.toFixed(2)}`;
-}
-
-// Eliminar producto
-function removeFromCart(name, option, fragance) {
-  cart = cart.filter(item => !(item.name === name && item.option === option && item.fragance === fragance));
-  updateCart();
-}
-
-
-function updateCartCount(count) {
-  document.getElementById('cart-count').textContent = count;
-  document.getElementById('cart-count-mobile').textContent = count;
-}
-
-  

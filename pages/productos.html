@@ -134,252 +134,440 @@
             mobileMenu.classList.toggle('opacity-100');
         });
     </script>
-
-
-    <!-- 🎁 Modal de Promoción -->
-    <div id="promo-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div
-            class="relative bg-white rounded-2xl shadow-2xl max-w-md w-[90%] md:w-[400px] p-8 text-center animate-fade-in">
-
-            <!-- Botón cerrar -->
-            <button onclick="document.getElementById('promo-modal').classList.add('hidden')"
-                class="absolute top-3 right-3 text-dark-green hover:text-sage-green text-2xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <!-- Encabezado -->
-            <h2 class="text-3xl font-serif font-bold text-dark-green mb-4">🎉 ¡Bienvenido!</h2>
-            <p class="text-lg text-gray-700 mb-6">
-                Obtén <span class="font-bold text-sage-green">10% de descuento</span> en tu primera compra.
-            </p>
-
-            <!-- Código -->
-            <div class="bg-sage-green text-white font-bold py-3 px-6 rounded-lg shadow-md text-xl mb-4">
-                DESCUETO 10
-            </div>
-
-            <!-- Nota -->
-            <p class="text-sm text-gray-500">
-                Usa este cupón al finalizar tu compra 🛒
-            </p>
-        </div>
-    </div>
-
-    <!-- 🔄 Animación -->
-    <style>
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.4s ease-out;
-        }
-    </style>
-
-    <!-- JS para mostrar al cargar -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const modal = document.getElementById("promo-modal");
-
-            // Mostrar modal automáticamente al cargar
-            setTimeout(() => {
-                modal.classList.remove("hidden");
-            }, 1000); // 1 segundo después de cargar la página
-
-            // Si quieres que solo se muestre una vez por usuario
-            // descomenta el siguiente bloque:
-
-            if (!localStorage.getItem("promoShown")) {
-                setTimeout(() => {
-                    modal.classList.remove("hidden");
-                }, 1000);
-                localStorage.setItem("promoShown", "true");
-            }
-        });
-    </script>
-
     <!-- 📦 Productos -->
-    <main class="container mx-auto px-6 py-12">
-
-        <!-- Hero productos -->
-        <section class="relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-                <div class="rounded-3xl overflow-hidden bg-cover bg-center ring-1 ring-gray-200 shadow-lg"
-                    style="background-image:url('../images/hero-banner.png')">
-                    <div class="bg-dark-green/70">
-                        <div class="px-6 sm:px-10 py-14 md:py-20 text-center text-white">
-                            <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold">Nuestros Productos
-                            </h1>
-                            <p class="mt-3 md:mt-4 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-                                Aromas que abrazan y diseños que enamoran. Encuentra tu favorito ✨
-                            </p>
+    <main class="flex-1">
+        <section class="pt-20 px-6 max-w-7xl mx-auto">
+            <!-- Hero productos -->
+            <section class="relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+                    <div class="rounded-3xl overflow-hidden bg-cover bg-center ring-1 ring-gray-200 shadow-lg"
+                        style="background-image:url('../images/hero-banner.png')">
+                        <div class="bg-dark-green/70">
+                            <div class="px-6 sm:px-10 py-14 md:py-20 text-center text-white">
+                                <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold">Nuestros Productos
+                                </h1>
+                                <p class="mt-3 md:mt-4 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+                                    Aromas que abrazan y diseños que enamoran. Encuentra tu favorito ✨
+                                </p>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </section>
+            <!-- Filtros -->
+            <div class="bg-white shadow-md rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                <!-- Buscador -->
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="Buscar producto..."
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green transition">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <!-- Categorías -->
+                <div class="relative">
+                    <select id="category-filter"
+                        class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green transition appearance-none">
+                        <option value="">Todas las categorías</option>
+                        <option value="velas">Velas</option>
+                        <option value="belleza">Belleza</option>
+                    </select>
+                    <i class="fas fa-tags absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <!-- Precios -->
+                <div class="relative">
+                    <select id="price-filter"
+                        class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green transition appearance-none">
+                        <option value="">Todos los precios</option>
+                        <option value="0-100">$0 - $100</option>
+                        <option value="101-200">$101 - $200</option>
+                        <option value="201-300">$201 - $300</option>
+                    </select>
+                    <i class="fas fa-dollar-sign absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
                 </div>
             </div>
         </section>
 
-        <!-- Barra de búsqueda y filtros -->
-        <div class="flex flex-col sm:flex-row gap-3 w-full my-4">
-            <input id="search-input" type="text" placeholder="Buscar productos..."
-                class="flex-1 px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
-            <select id="category-filter"
-                class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
-                <option value="all">Todos</option>
-                <option value="soya">Velas de Soya</option>
-                <option value="parafina">Velas de Parafina</option>
-                <option value="figura">Velas de Figura</option>
-                <option value="kit">Kit Belleza</option>
-                <option value="jabones">Jabones</option>
-                <option value="cremas">Crema</option>
-            </select>
-            <select id="price-filter"
-                class="px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sage-green outline-none">
-                <option value="default">Ordenar</option>
-                <option value="low-to-high">Precio: Bajo a Alto</option>
-                <option value="high-to-low">Precio: Alto a Bajo</option>
-            </select>
+        <section class="max-w-6xl mx-auto px-6 py-12">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Aquí se insertarán los productos dinámicamente con JS -->
+            </div>
+
+            <!-- Mensaje de no resultados -->
+            <div id="no-results" class="hidden text-center text-gray-500 font-medium mt-8">
+                ❌ No se encontraron productos relacionados.
+            </div>
+        </section>
+    </main>
+
+    <!-- 🔻 Footer -->
+    <footer class="bg-dark-green text-white py-6">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Links -->
+            <div class="flex flex-col space-y-2">
+                <a href="/pages/politicas.html530296
+                    " class="hover:text-gray-sand transition">Políticas</a>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="flex space-x-6 md:justify-end">
+                <a href="https://wa.me/521234567890" target="_blank" aria-label="WhatsApp"
+                    class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/velas_starlight/" target="_blank" aria-label="Instagram"
+                    class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Facebook" class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Tiktok" class="hover:text-gray-sand transition text-xl">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
         </div>
 
-        <!-- Producto -->
-        <main class="p-8">
-            <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-sm">
-                <img src="../images/vela-soya.jpg" alt="Vela de Soya" class="w-full h-56 object-cover">
-                <div class="p-4">
-                    <h2 class="text-xl font-bold">Vela de Soya</h2>
-                    <p class="text-gray-600">Aromas naturales personalizables</p>
-                    <p class="text-dark-green font-bold mt-2">$120</p>
-                    <button
-                        class="open-modal mt-4 w-full bg-sage-green text-white py-2 rounded-lg hover:bg-dark-green transition">Ver
-                        más</button>
+        <!-- Derechos reservados -->
+        <div class="text-center text-sm mt-6">
+            <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="product-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+        <div
+            class="bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto relative flex flex-col md:flex-row">
+
+            <!-- Botón cerrar -->
+            <button id="close-modal" class="absolute top-4 right-4 z-50 bg-white/90 rounded-full w-12 h-12 flex items-center justify-center 
+           text-gray-700 hover:text-red-500 text-3xl font-bold shadow-md">
+                &times;
+            </button>
+
+            <!-- Imagen -->
+            <div class="w-full md:w-1/2 flex items-center justify-center p-6 order-first md:order-last">
+                <div
+                    class="relative overflow-hidden rounded-lg border bg-gray-50 flex items-center justify-center max-h-[400px]">
+                    <img id="modal-image" src="img/vela1.jpg" alt="Producto"
+                        class="max-h-[300px] md:max-h-[400px] object-contain transform transition-transform duration-300 mx-auto">
+
+                    <!-- Controles de zoom -->
+                    <div class="absolute bottom-3 right-3 flex space-x-2">
+                        <button id="zoom-in" class="bg-dark-green text-white p-2 rounded">+</button>
+                        <button id="zoom-out" class="bg-dark-green text-white p-2 rounded hidden">-</button>
+                    </div>
                 </div>
             </div>
-        </main>
-<!-- Modal -->
-<div id="modal-producto"
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white rounded-2xl shadow-lg w-full max-w-2xl p-6 relative overflow-y-auto max-h-[90vh]">
 
-        <!-- Botón cerrar -->
-        <button id="close-modal"
-            class="absolute top-3 right-3 z-10 bg-dark-green text-white rounded-full p-2 shadow hover:bg-sage-green transition">
-            <i class="fas fa-times"></i>
-        </button>
+            <!-- Información del producto -->
+            <div class="w-full md:w-1/2 p-6">
+                <h2 id="modal-title" class="text-2xl font-bold mb-2">Vela</h2>
+                <p id="modal-description" class="text-gray-600 mb-2">Descripción del producto.</p>
+                <p id="modal-price" class="text-dark-green font-bold text-lg mb-4">$120 MXN</p>
 
-                <!-- Imagen con zoom -->
-                <div class="relative">
-                    <img src="../images/vela-soya.jpg" alt="Vela de Soya"
-                        class="w-full h-64 object-cover rounded-lg cursor-pointer"
-                        onclick="openImage('../images/vela-soya.jpg')">
-                    <button onclick="openImage('../images/vela-soya.jpg')"
-                        class="absolute bottom-2 right-2 bg-dark-green text-white px-3 py-1 text-sm rounded-lg shadow-md hover:bg-sage-green transition">
-                        Ver imagen
+                <!-- Tipos (ej. soya/parafina) -->
+                <div id="modal-types" class="mb-4">
+                    <label class="block font-semibold mb-2">Selecciona Tipo:</label>
+                    <div class="flex space-x-2" id="modal-type-options">
+                    </div>
+                </div>
+
+                <!-- Tamaños -->
+                <div id="modal-sizes" class="mb-4">
+                    <label class="block font-semibold mb-2">Selecciona Tamaño:</label>
+                    <div class="flex flex-col space-y-2" id="modal-size-options">
+                    </div>
+                </div>
+
+                <!-- Fragancias -->
+                <div class="mb-4">
+                    <label class="block font-semibold mb-2">Selecciona Fragancia:</label>
+                    <select id="modal-fragrance" class="w-full border rounded px-3 py-2">
+                        <option>Vainilla</option>
+                        <option>Lavanda</option>
+                        <option>Canela</option>
+                    </select>
+                </div>
+
+                <!-- Cantidad -->
+                <div class="mb-4">
+                    <label class="block font-semibold mb-2">Cantidad:</label>
+                    <div class="flex items-center space-x-2">
+                        <button id="decrease-qty" class="bg-dark-green text-white px-3 py-1 rounded">-</button>
+                        <input id="modal-quantity" type="number" value="1" min="1"
+                            class="w-16 text-center border rounded px-2 py-1">
+                        <button id="increase-qty" class="bg-dark-green text-white px-3 py-1 rounded">+</button>
+                    </div>
+                </div>
+
+                <!-- Botón agregar -->
+                <button
+                    class="bg-dark-green text-white px-6 py-2 rounded flex items-center gap-2 w-full justify-center">
+                    <i class="fas fa-cart-plus"></i> Agregar al Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        const products = [
+            {
+                title: "Vela",
+                description: "Aroma cálido inspirado en pan recién horneado, perfecta para Día de Muertos.",
+                image: "../images/vela-soya.jpg",
+                types: ["Soya", "Parafina"],
+                sizes: [
+                    { label: "50 gr", price: 75 },
+                    { label: "150 gr", price: 100 },
+                    { label: "220 gr", price: 150 },
+                    { label: "320 gr", price: 200 }
+                ],
+                fragrances: ["Lavanda", "Vainilla", "Canela", "Fresa", "Frutos Rojos", "Blue Berry", "Cereza", "Manzana-Canela", "Pitaya", "Rosas Especiales", "Flores Hawaianas", "Citricos", "Coco", "Menta",
+                    "Sandalo"]
+            }
+        ];
+
+        let currentScale = 1;
+
+        // Renderizar productos
+        function renderProducts() {
+            const grid = document.getElementById("product-grid");
+            grid.innerHTML = "";
+            products.forEach((product, index) => {
+                const card = document.createElement("div");
+                card.className = `
+                  bg-white 
+                  border border-gray-200 
+                  rounded-xl 
+                  shadow-md 
+                  hover:shadow-lg 
+                  transition 
+                  duration-300 
+                  p-4 
+                  flex flex-col 
+                  items-center
+                `;
+                card.setAttribute("data-name", product.title);
+                card.setAttribute("data-category", product.category || "vela");
+                card.setAttribute("data-price", product.sizes[0].price);
+
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" 
+                         class="w-full h-48 object-contain mb-4 rounded-md">
+                    <h3 class="font-bold text-lg text-gray-800 mb-1">${product.title}</h3>
+                    <p class="text-sm text-gray-600 text-center">${product.description}</p>
+                    <p class="font-semibold text-dark-green mt-2">$ ${product.sizes[0].price} MXN</p>
+                    <button class="mt-4 w-full bg-dark-green text-white font-medium px-4 py-2 rounded-lg hover:bg-sage-green transition ver-detalles">
+                        Ver detalles
                     </button>
-                </div>
+                `;
+                card.querySelector(".ver-detalles").addEventListener("click", (e) => {
+                    e.stopPropagation(); // 👈 evita que se dispare el click en toda la tarjeta
+                    openModal(product);
+                });
+                grid.appendChild(card);
+            });
+        }
+    </script>
 
-                <!-- Título y descripción -->
-                <h2 class="text-2xl font-serif font-bold text-center mt-4">Vela de Soya</h2>
-                <p class="text-gray-600 text-center mb-6">Elegante vela de soya con fragancias naturales.</p>
+    <script>
+        // ================== Variables globales ==================
+        let currentProduct = null;
+        let currentZoom = 1;
+        let scale = 1;
 
-                <!-- Opciones -->
-                <div class="space-y-6">
-                    <!-- Tamaño -->
-                    <div>
-                        <h3 class="font-semibold mb-2">Selecciona el tamaño:</h3>
-                        <div class="flex gap-6">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="tamano" value="chica" class="accent-sage-green" checked>
-                                <span>Chica $120</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="tamano" value="mediana" class="accent-sage-green">
-                                <span>Mediana $180</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="tamano" value="grande" class="accent-sage-green">
-                                <span>Grande $250</span>
-                            </label>
-                        </div>
-                    </div>
+        // ================== Modal ==================
 
-                    <!-- Fragancia -->
-                    <div>
-                        <h3 class="font-semibold mb-2">Selecciona tu fragancia:</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="fragancia" value="lavanda" class="accent-sage-green" checked>
-                                <span>Lavanda</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="fragancia" value="vainilla" class="accent-sage-green">
-                                <span>Vainilla</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="fragancia" value="coco" class="accent-sage-green">
-                                <span>Coco</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="fragancia" value="frutos-rojos" class="accent-sage-green">
-                                <span>Frutos Rojos</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+        // Abrir modal dinámico
+        const modal = document.getElementById("product-modal");
+        const closeModalBtn = document.getElementById("close-modal");
 
-                <!-- Precio y botón -->
-                <p class="text-lg font-bold mt-6">Precio: <span id="precio">$120</span></p>
-                <button class="w-full bg-dark-green text-white py-3 rounded-xl mt-4 hover:bg-sage-green transition">
-                    Agregar al carrito
-                </button>
-            </div>
-        </div>
-        <!-- Modal Imagen -->
-        <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
-            <div class="relative rounded-xl shadow-lg p-4 max-w-3xl w-[90%]">
+        const modalTitle = document.getElementById("modal-title");
+        const modalDescription = document.getElementById("modal-description");
+        const modalPrice = document.getElementById("modal-price");
+        const modalImage = document.getElementById("modal-image");
 
-                <!-- Botón cerrar -->
-                <button onclick="closeImage()"
-                    class="absolute top-2 right-2 z-10 bg-dark-green text-white rounded-full p-2 shadow hover:bg-sage-green transition">
-                    <i class="fas fa-times"></i>
-                </button>
+        const modalTypes = document.getElementById("modal-types");
+        const typeSection = document.getElementById("type-section");
 
-                <!-- Imagen -->
-                <img id="image-modal-img" src="" alt="Vista ampliada"
-                    class="w-full max-h-[80vh] object-contain rounded-lg">
-            </div>
-        </div>
+        const modalSizes = document.getElementById("modal-sizes");
+        const sizeSection = document.getElementById("size-section");
 
-        <script>
-            const modal = document.getElementById("modal-producto");
-            const openButtons = document.querySelectorAll(".open-modal");
-            const closeBtn = document.getElementById("close-modal");
+        const modalFragrance = document.getElementById("modal-fragrance");
+        const fragranceSection = document.getElementById("fragrance-section");
 
-            openButtons.forEach(btn => {
-                btn.addEventListener("click", () => modal.classList.remove("hidden"));
+        const quantityInput = document.getElementById("quantity");
+        const increaseBtn = document.getElementById("increase-qty");
+        const decreaseBtn = document.getElementById("decrease-qty");
+
+        const zoomInBtn = document.getElementById("zoom-in");
+        const zoomOutBtn = document.getElementById("zoom-out");
+
+        let zoomLevel = 1;
+        let selectedPrice = 0;
+
+        // Mostrar modal con datos de producto
+        // Abrir modal
+        function openModal(product) {
+            document.getElementById("modal-title").textContent = product.title;
+            document.getElementById("modal-description").textContent = product.description;
+            document.getElementById("modal-image").src = product.image;
+
+            // Tipos
+            const typeContainer = document.getElementById("modal-type-options");
+            typeContainer.innerHTML = "";
+            if (product.types) {
+                product.types.forEach((type, i) => {
+                    const btn = document.createElement("button");
+                    btn.className = `type-btn px-4 py-2 border rounded ${i === 0 ? "bg-dark-green text-white" : ""}`;
+                    btn.textContent = type;
+                    btn.addEventListener("click", () => {
+                        document.querySelectorAll(".type-btn").forEach(b => b.classList.remove("bg-dark-green", "text-white"));
+                        btn.classList.add("bg-dark-green", "text-white");
+                    });
+                    typeContainer.appendChild(btn);
+                });
+            }
+
+            // Tamaños
+            const sizeContainer = document.getElementById("modal-size-options");
+            sizeContainer.innerHTML = "";
+            if (product.sizes) {
+                product.sizes.forEach((size, i) => {
+                    const btn = document.createElement("button");
+                    btn.className = `size-btn px-3 py-2 border rounded text-left ${i === 0 ? "bg-dark-green text-white" : ""}`;
+                    btn.textContent = `${size.label} - $${size.price} MXN`;
+                    btn.addEventListener("click", () => {
+                        document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("bg-dark-green", "text-white"));
+                        btn.classList.add("bg-dark-green", "text-white");
+                        document.getElementById("modal-price").textContent = `$${size.price} MXN`;
+                    });
+                    sizeContainer.appendChild(btn);
+                });
+                // Precio inicial
+                document.getElementById("modal-price").textContent = `$${product.sizes[0].price} MXN`;
+            }
+
+            // Fragancias
+            const fragranceSelect = document.getElementById("modal-fragrance");
+            fragranceSelect.innerHTML = "";
+            if (product.fragrances) {
+                product.fragrances.forEach(f => {
+                    const option = document.createElement("option");
+                    option.textContent = f;
+                    fragranceSelect.appendChild(option);
+                });
+            }
+
+            // Reset cantidad
+            document.getElementById("modal-quantity").value = 1;
+
+            // Mostrar modal
+            document.getElementById("product-modal").classList.remove("hidden");
+
+            // Reset zoom
+            currentScale = 1;
+            document.getElementById("modal-image").style.transform = "scale(1)";
+            document.getElementById("zoom-out").classList.add("hidden");
+        }
+
+        // Cerrar modal
+        document.getElementById("close-modal").addEventListener("click", () => {
+            document.getElementById("product-modal").classList.add("hidden");
+        });
+
+        // Cantidad (+ y -)
+        document.getElementById("increase-qty").addEventListener("click", () => {
+            let qty = parseInt(document.getElementById("modal-quantity").value) || 1;
+            document.getElementById("modal-quantity").value = qty + 1;
+        });
+        document.getElementById("decrease-qty").addEventListener("click", () => {
+            let qty = parseInt(document.getElementById("modal-quantity").value) || 1;
+            if (qty > 1) document.getElementById("modal-quantity").value = qty - 1;
+        });
+
+
+        // Zoom IN
+        zoomInBtn.addEventListener("click", () => {
+            if (scale < 2) { // limite máximo de zoom
+                scale += 0.2;
+                modalImage.style.transform = `scale(${scale})`;
+                zoomOutBtn.classList.remove("hidden"); // mostrar el botón -
+            }
+        });
+
+        // Zoom OUT (restaurar imagen)
+        zoomOutBtn.addEventListener("click", () => {
+            scale = 1; // restaurar al tamaño original
+            modalImage.style.transform = "scale(1)";
+            zoomOutBtn.classList.add("hidden"); // ocultar el botón - otra vez
+        });
+
+
+
+        // Inicializar
+        renderProducts();
+
+    </script>
+
+    <script>
+        // 🔧 Menú móvil
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Filtros
+        const searchInput = document.getElementById("search-input");
+        const categorySelect = document.getElementById("category-filter");
+        const priceSelect = document.getElementById("price-filter");
+        const productCards = document.querySelectorAll("#product-grid > div"); // 👈 productos renderizados
+
+        function filterProducts() {
+            const search = searchInput.value.toLowerCase();
+            const category = categorySelect.value;
+            const price = priceSelect.value;
+
+            let visibleCount = 0;
+
+            productCards.forEach(product => {
+                const name = product.dataset.name.toLowerCase();
+                const cat = product.dataset.category;
+                const priceValue = parseInt(product.dataset.price);
+
+                let matches = true;
+
+                if (search && !name.includes(search)) matches = false;
+                if (category && category !== cat) matches = false;
+
+                if (price === "0-100" && (priceValue < 0 || priceValue > 100)) matches = false;
+                if (price === "101-200" && (priceValue < 101 || priceValue > 200)) matches = false;
+                if (price === "201-300" && (priceValue < 201 || priceValue > 300)) matches = false;
+
+                if (matches) {
+                    product.style.display = "block";
+                    visibleCount++;
+                } else {
+                    product.style.display = "none";
+                }
             });
 
-            closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+            // Mensaje de no resultados
+            document.getElementById("no-results").classList.toggle("hidden", visibleCount > 0);
+        }
 
-            function openImage(src) {
-                const imageModal = document.getElementById("image-modal");
-                const imageModalImg = document.getElementById("image-modal-img");
-                imageModal.classList.remove("hidden");
-                imageModalImg.src = src;
-            }
+        // Eventos
+        searchInput.addEventListener("input", filterProducts);
+        categorySelect.addEventListener("change", filterProducts);
+        priceSelect.addEventListener("change", filterProducts);
 
-            function closeImage() {
-                document.getElementById("image-modal").classList.add("hidden");
-            }
-        </script>
-        <script src="../js/main.js"></script>
+
+    </script>
+
 </body>
 
 </html>
