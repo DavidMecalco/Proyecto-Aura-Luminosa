@@ -104,9 +104,6 @@
                 <a href="productos.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
                     <i class="fa fa-cube mr-1"></i>Productos
                 </a>
-                <a href="blog.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
-                    <i class="fa fa-blog mr-1"></i>Blog
-                </a>
                 <a href="contacto.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
                     <i class="fa fa-phone mr-1"></i>Contacto
                 </a>
@@ -138,7 +135,6 @@
             <a href="productos.html" class="hover:text-sage-green flex items-center text-lg">
                 <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
             </a>
-
             <a href="contacto.html" class="hover:text-sage-green flex items-center text-lg">
                 <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
             </a>
@@ -185,117 +181,421 @@
             </div>
         </section>
 
-        <!-- Contenido del carrito -->
-        <section class="max-w-6xl mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-                <!-- ========================================
-                     LISTA DE PRODUCTOS EN EL CARRITO
-                     ======================================== -->
-                <div class="lg:col-span-2">
-                    <!-- Header de la lista -->
-                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-2xl font-bold text-dark-green">
-                                <i class="fas fa-list mr-2"></i>
-                                Productos en tu carrito
-                            </h2>
-                            <button id="clear-cart" class="text-red-500 hover:text-red-700 transition">
-                                <i class="fas fa-trash mr-1"></i>
-                                Vaciar carrito
-                            </button>
+        <!-- Indicador de pasos del checkout -->
+        <section class="max-w-6xl mx-auto px-6 py-8">
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div id="step-1" class="flex items-center space-x-2 step-indicator active">
+                            <div class="w-8 h-8 bg-sage-green text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                            <span class="font-semibold text-dark-green">Carrito</span>
                         </div>
-                        <p class="text-gray-600 mt-2">
-                            <span id="cart-items-count">0</span> productos seleccionados
-                        </p>
-                    </div>
-
-                    <!-- Lista de productos -->
-                    <div id="cart-items-container">
-                        <!-- Los productos se insertan aquí dinámicamente -->
-                    </div>
-
-                    <!-- Mensaje de carrito vacío -->
-                    <div id="empty-cart-message" class="bg-white rounded-xl shadow-md p-12 text-center">
-                        <i class="fas fa-shopping-cart text-6xl text-gray-300 mb-4"></i>
-                        <h3 class="text-2xl font-bold text-gray-500 mb-2">Tu carrito está vacío</h3>
-                        <p class="text-gray-400 mb-6">¡Agrega algunos productos para comenzar!</p>
-                        <a href="productos.html"
-                            class="bg-dark-green text-white px-6 py-3 rounded-lg hover:bg-sage-green transition inline-flex items-center">
-                            <i class="fas fa-cube mr-2"></i>
-                            Ver productos
-                        </a>
+                        <div class="w-8 h-0.5 bg-gray-300"></div>
+                        <div id="step-2" class="flex items-center space-x-2 step-indicator">
+                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                            <span class="font-semibold text-gray-500">Datos de Envío</span>
+                        </div>
+                        <div class="w-8 h-0.5 bg-gray-300"></div>
+                        <div id="step-3" class="flex items-center space-x-2 step-indicator">
+                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                            <span class="font-semibold text-gray-500">Pago</span>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- ========================================
-                     RESUMEN DE COMPRA
-                     ======================================== -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                        <h3 class="text-xl font-bold text-dark-green mb-6">
-                            <i class="fas fa-calculator mr-2"></i>
-                            Resumen de compra
-                        </h3>
-
-                        <!-- Desglose de precios -->
-                        <div class="space-y-4 mb-6">
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Subtotal:</span>
-                                <span id="subtotal" class="font-semibold">$0.00 MXN</span>
+        <!-- Contenido del carrito -->
+        <section class="max-w-6xl mx-auto px-6 pb-12">
+            
+            <!-- ========================================
+                 PASO 1: CARRITO DE COMPRAS
+                 ======================================== -->
+            <div id="cart-step" class="checkout-step">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Lista de productos -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-2xl font-bold text-dark-green">
+                                    <i class="fas fa-list mr-2"></i>
+                                    Productos en tu carrito
+                                </h2>
+                                <button id="clear-cart" class="text-red-500 hover:text-red-700 transition">
+                                    <i class="fas fa-trash mr-1"></i>
+                                    Vaciar carrito
+                                </button>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Envío:</span>
-                                <span id="shipping" class="font-semibold">$50.00 MXN</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Descuento:</span>
-                                <span id="discount" class="font-semibold text-green-600">-$0.00 MXN</span>
-                            </div>
-                            <hr class="border-gray-200">
-                            <div class="flex justify-between text-lg font-bold">
-                                <span>Total:</span>
-                                <span id="total" class="text-dark-green">$0.00 MXN</span>
-                            </div>
+                            <p class="text-gray-600 mt-2">
+                                <span id="cart-items-count">0</span> productos seleccionados
+                            </p>
                         </div>
 
-                        <!-- Código de descuento -->
-                        <div class="mb-6">
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Código de descuento
-                            </label>
-                            <div class="flex">
-                                <input type="text" id="discount-code" placeholder="Ingresa tu código"
-                                    class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-dark-green">
-                                <button id="apply-discount"
-                                    class="bg-dark-green text-white px-4 py-2 rounded-r-lg hover:bg-sage-green transition">
-                                    Aplicar
+                        <div id="cart-items-container">
+                            <!-- Los productos se insertan aquí dinámicamente -->
+                        </div>
+
+                        <!-- Mensaje de carrito vacío -->
+                        <div id="empty-cart-message" class="bg-white rounded-xl shadow-md p-12 text-center">
+                            <i class="fas fa-shopping-cart text-6xl text-gray-300 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-500 mb-2">Tu carrito está vacío</h3>
+                            <p class="text-gray-400 mb-6">¡Agrega algunos productos para comenzar!</p>
+                            <a href="productos.html"
+                                class="bg-dark-green text-white px-6 py-3 rounded-lg hover:bg-sage-green transition inline-flex items-center">
+                                <i class="fas fa-cube mr-2"></i>
+                                Ver productos
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resumen de compra -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
+                            <h3 class="text-xl font-bold text-dark-green mb-6">
+                                <i class="fas fa-calculator mr-2"></i>
+                                Resumen de compra
+                            </h3>
+
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Subtotal:</span>
+                                    <span id="subtotal" class="font-semibold">$0.00 MXN</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Envío:</span>
+                                    <span id="shipping" class="font-semibold">$50.00 MXN</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Descuento:</span>
+                                    <span id="discount" class="font-semibold text-green-600">-$0.00 MXN</span>
+                                </div>
+                                <hr class="border-gray-200">
+                                <div class="flex justify-between text-lg font-bold">
+                                    <span>Total:</span>
+                                    <span id="total" class="text-dark-green">$0.00 MXN</span>
+                                </div>
+                            </div>
+
+                            <!-- Código de descuento -->
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Código de descuento
+                                </label>
+                                <div class="flex">
+                                    <input type="text" id="discount-code" placeholder="Ingresa tu código"
+                                        class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-dark-green">
+                                    <button id="apply-discount"
+                                        class="bg-dark-green text-white px-4 py-2 rounded-r-lg hover:bg-sage-green transition">
+                                        Aplicar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <button id="continue-to-shipping"
+                                    class="w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition font-semibold">
+                                    <i class="fas fa-arrow-right mr-2"></i>
+                                    Continuar al envío
+                                </button>
+                                <a href="productos.html"
+                                    class="w-full bg-gray-100 text-dark-green py-3 rounded-lg hover:bg-gray-200 transition font-semibold text-center block">
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    Seguir comprando
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================
+                 PASO 2: DATOS DE ENVÍO
+                 ======================================== -->
+            <div id="shipping-step" class="checkout-step hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Formulario de datos -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-md p-8">
+                            <h2 class="text-2xl font-bold text-dark-green mb-6">
+                                <i class="fas fa-shipping-fast mr-2"></i>
+                                Información de Envío
+                            </h2>
+
+                            <form id="shipping-form" class="space-y-6">
+                                <!-- Datos personales -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            <i class="fas fa-user mr-1"></i>Nombre completo *
+                                        </label>
+                                        <input type="text" id="full-name" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            <i class="fas fa-envelope mr-1"></i>Correo electrónico *
+                                        </label>
+                                        <input type="email" id="email" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            <i class="fas fa-phone mr-1"></i>Teléfono *
+                                        </label>
+                                        <input type="tel" id="phone" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            <i class="fas fa-map-marker-alt mr-1"></i>Código postal *
+                                        </label>
+                                        <input type="text" id="postal-code" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                    </div>
+                                </div>
+
+                                <!-- Dirección -->
+                                <div>
+                                    <label class="block text-sm font-semibold text-dark-green mb-2">
+                                        <i class="fas fa-home mr-1"></i>Dirección completa *
+                                    </label>
+                                    <input type="text" id="address" required placeholder="Calle, número, colonia"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            <i class="fas fa-city mr-1"></i>Ciudad *
+                                        </label>
+                                        <input type="text" id="city" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            <i class="fas fa-flag mr-1"></i>Estado *
+                                        </label>
+                                        <select id="state" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                            <option value="">Selecciona tu estado</option>
+                                            <option value="CDMX">Ciudad de México</option>
+                                            <option value="MEX">Estado de México</option>
+                                            <option value="JAL">Jalisco</option>
+                                            <option value="NL">Nuevo León</option>
+                                            <option value="PUE">Puebla</option>
+                                            <option value="GTO">Guanajuato</option>
+                                            <option value="VER">Veracruz</option>
+                                            <option value="YUC">Yucatán</option>
+                                            <option value="CHIH">Chihuahua</option>
+                                            <option value="COAH">Coahuila</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Referencias -->
+                                <div>
+                                    <label class="block text-sm font-semibold text-dark-green mb-2">
+                                        <i class="fas fa-info-circle mr-1"></i>Referencias adicionales (opcional)
+                                    </label>
+                                    <textarea id="references" rows="3" placeholder="Entre qué calles, puntos de referencia, etc."
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition"></textarea>
+                                </div>
+
+                                <!-- Opciones de envío -->
+                                <div class="bg-gray-50 rounded-lg p-6">
+                                    <h3 class="text-lg font-bold text-dark-green mb-4">
+                                        <i class="fas fa-truck mr-2"></i>Opciones de Envío
+                                    </h3>
+                                    <div class="space-y-3">
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-white transition">
+                                            <input type="radio" name="shipping-method" value="standard" checked class="mr-3">
+                                            <div class="flex-1">
+                                                <div class="font-semibold">Envío Estándar (3-5 días hábiles)</div>
+                                                <div class="text-sm text-gray-600">Entrega en horario laboral</div>
+                                            </div>
+                                            <div class="font-bold text-sage-green">$50.00</div>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-white transition">
+                                            <input type="radio" name="shipping-method" value="express" class="mr-3">
+                                            <div class="flex-1">
+                                                <div class="font-semibold">Envío Express (1-2 días hábiles)</div>
+                                                <div class="text-sm text-gray-600">Entrega prioritaria</div>
+                                            </div>
+                                            <div class="font-bold text-sage-green">$120.00</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Resumen actualizado -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
+                            <h3 class="text-xl font-bold text-dark-green mb-6">
+                                <i class="fas fa-receipt mr-2"></i>
+                                Resumen del Pedido
+                            </h3>
+
+                            <div id="order-summary" class="space-y-4 mb-6">
+                                <!-- Se llena dinámicamente -->
+                            </div>
+
+                            <div class="space-y-3">
+                                <button id="continue-to-payment"
+                                    class="w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition font-semibold">
+                                    <i class="fas fa-credit-card mr-2"></i>
+                                    Continuar al pago
+                                </button>
+                                <button id="back-to-cart"
+                                    class="w-full bg-gray-100 text-dark-green py-3 rounded-lg hover:bg-gray-200 transition font-semibold">
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    Volver al carrito
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <!-- Botones de acción -->
-                        <div class="space-y-3">
-                            <button id="checkout-btn"
-                                class="w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition font-semibold">
+            <!-- ========================================
+                 PASO 3: PAGO
+                 ======================================== -->
+            <div id="payment-step" class="checkout-step hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Métodos de pago -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-md p-8">
+                            <h2 class="text-2xl font-bold text-dark-green mb-6">
                                 <i class="fas fa-credit-card mr-2"></i>
-                                Proceder al pago
-                            </button>
-                            <a href="productos.html"
-                                class="w-full bg-gray-100 text-dark-green py-3 rounded-lg hover:bg-gray-200 transition font-semibold text-center block">
-                                <i class="fas fa-arrow-left mr-2"></i>
-                                Seguir comprando
-                            </a>
-                        </div>
+                                Método de Pago
+                            </h2>
 
-                        <!-- Métodos de pago aceptados -->
-                        <div class="mt-6 pt-6 border-t border-gray-200">
-                            <p class="text-sm text-gray-600 mb-3">Métodos de pago aceptados:</p>
-                            <div class="flex space-x-2">
-                                <i class="fab fa-cc-visa text-2xl text-blue-600"></i>
-                                <i class="fab fa-cc-mastercard text-2xl text-red-500"></i>
-                                <i class="fab fa-cc-paypal text-2xl text-blue-500"></i>
-                                <i class="fas fa-university text-2xl text-gray-600"></i>
+                            <div class="space-y-4 mb-8">
+                                <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-sage-green transition">
+                                    <input type="radio" name="payment-method" value="card" checked class="mr-4">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-credit-card text-2xl text-sage-green"></i>
+                                        <div>
+                                            <div class="font-semibold">Tarjeta de Crédito/Débito</div>
+                                            <div class="text-sm text-gray-600">Visa, Mastercard, American Express</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-sage-green transition">
+                                    <input type="radio" name="payment-method" value="paypal" class="mr-4">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fab fa-paypal text-2xl text-blue-500"></i>
+                                        <div>
+                                            <div class="font-semibold">PayPal</div>
+                                            <div class="text-sm text-gray-600">Pago seguro con tu cuenta PayPal</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-sage-green transition">
+                                    <input type="radio" name="payment-method" value="transfer" class="mr-4">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-university text-2xl text-sage-green"></i>
+                                        <div>
+                                            <div class="font-semibold">Transferencia Bancaria</div>
+                                            <div class="text-sm text-gray-600">SPEI o transferencia tradicional</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Formulario de tarjeta -->
+                            <div id="card-form" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-semibold text-dark-green mb-2">
+                                        Número de tarjeta *
+                                    </label>
+                                    <input type="text" placeholder="1234 5678 9012 3456" maxlength="19"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            Fecha de vencimiento *
+                                        </label>
+                                        <input type="text" placeholder="MM/AA" maxlength="5"
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-dark-green mb-2">
+                                            CVV *
+                                        </label>
+                                        <input type="text" placeholder="123" maxlength="4"
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-dark-green mb-2">
+                                        Nombre del titular *
+                                    </label>
+                                    <input type="text" placeholder="Como aparece en la tarjeta"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
+                                </div>
+                            </div>
+
+                            <!-- Términos y condiciones -->
+                            <div class="mt-8 p-4 bg-gray-50 rounded-lg">
+                                <label class="flex items-start space-x-3 cursor-pointer">
+                                    <input type="checkbox" required class="mt-1">
+                                    <div class="text-sm text-gray-700">
+                                        Acepto los <a href="politicas.html" class="text-sage-green hover:underline">términos y condiciones</a> 
+                                        y la <a href="politicas.html" class="text-sage-green hover:underline">política de privacidad</a> 
+                                        de Velas Starlight.
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resumen final -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
+                            <h3 class="text-xl font-bold text-dark-green mb-6">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                Resumen Final
+                            </h3>
+
+                            <div id="final-summary" class="space-y-4 mb-6">
+                                <!-- Se llena dinámicamente -->
+                            </div>
+
+                            <div class="space-y-3">
+                                <button id="complete-order"
+                                    class="w-full bg-sage-green text-white py-4 rounded-lg hover:bg-dark-green transition font-bold text-lg">
+                                    <i class="fas fa-lock mr-2"></i>
+                                    Finalizar Compra
+                                </button>
+                                <button id="back-to-shipping"
+                                    class="w-full bg-gray-100 text-dark-green py-3 rounded-lg hover:bg-gray-200 transition font-semibold">
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    Volver a envío
+                                </button>
+                            </div>
+
+                            <!-- Seguridad -->
+                            <div class="mt-6 pt-6 border-t border-gray-200 text-center">
+                                <div class="flex items-center justify-center space-x-2 text-sm text-gray-600 mb-2">
+                                    <i class="fas fa-shield-alt text-green-500"></i>
+                                    <span>Pago 100% seguro</span>
+                                </div>
+                                <div class="flex justify-center space-x-3">
+                                    <i class="fab fa-cc-visa text-2xl text-blue-600"></i>
+                                    <i class="fab fa-cc-mastercard text-2xl text-red-500"></i>
+                                    <i class="fab fa-cc-paypal text-2xl text-blue-500"></i>
+                                    <i class="fas fa-university text-2xl text-gray-600"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -325,26 +625,12 @@
                     <div class="lg:col-span-2 space-y-6">
                         <div class="flex items-center space-x-3">
                             <img src="../images/logo.png" alt="Velas Starlight" class="h-12 w-auto filter brightness-0 invert">
-                            <div>
-                                <h3 class="text-2xl font-serif font-bold">Velas Starlight</h3>
-                                <p class="text-sage-green/80 text-sm">Artesanía Premium</p>
-                            </div>
+
                         </div>
                         <p class="text-gray-300 leading-relaxed max-w-md">
                             Creamos experiencias sensoriales únicas con velas artesanales y productos de belleza natural, elaborados con amor y dedicación para iluminar tu mundo.
                         </p>
-                        
-                        <!-- Newsletter -->
-                        <div class="space-y-3">
-                            <h4 class="font-semibold text-lg">Suscríbete a nuestro newsletter</h4>
-                            <div class="flex flex-col sm:flex-row gap-2">
-                                <input type="email" placeholder="Tu correo electrónico" 
-                                    class="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-sage-green focus:border-transparent">
-                                <button class="bg-sage-green hover:bg-sage-green/80 px-6 py-2 rounded-lg font-semibold transition-colors duration-300">
-                                    Suscribirse
-                                </button>
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- Enlaces rápidos -->
@@ -356,9 +642,6 @@
                             </a></li>
                             <li><a href="productos.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
                                 <i class="fa fa-cube mr-2 group-hover:scale-110 transition-transform duration-300"></i>Productos
-                            </a></li>
-                            <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
-                                <i class="fa fa-blog mr-2 group-hover:scale-110 transition-transform duration-300"></i>Blog
                             </a></li>
                             <li><a href="contacto.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
                                 <i class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
