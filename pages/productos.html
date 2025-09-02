@@ -165,32 +165,28 @@
                 </div>
 
                 <!-- Categorías -->
-                <div class="relative">
-                    <select id="category-filter"
-                        class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green transition appearance-none">
-                        <option value="">Todas las categorías</option>
-                        <option value="velas">Velas</option>
-                        <option value="belleza">Belleza</option>
-                    </select>
-                    <i class="fas fa-tags absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                </div>
+                <select id="category-filter"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green transition">
+                    <option value="all">Todas las categorías</option>
+                    <option value="Vela">Vela</option>
+                    <option value="decoracion">Decoración</option>
+                    <option value="belleza">Belleza</option>
+                </select>
 
-                <!-- Precios -->
-                <div class="relative">
-                    <select id="price-filter"
-                        class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green transition appearance-none">
-                        <option value="">Todos los precios</option>
-                        <option value="0-100">$0 - $100</option>
-                        <option value="101-200">$101 - $200</option>
-                        <option value="201-300">$201 - $300</option>
-                    </select>
-                    <i class="fas fa-dollar-sign absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                </div>
+                <!-- Precio -->
+                <select id="price-filter"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-green transition">
+                    <option value="all">Todos los precios</option>
+                    <option value="0-100">$0 - $100</option>
+                    <option value="101-200">$101 - $200</option>
+                    <option value="201+">$201+</option>
+                </select>
+
             </div>
         </section>
 
         <section class="max-w-6xl mx-auto px-6 py-12">
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Aquí se insertarán los productos dinámicamente con JS -->
             </div>
 
@@ -318,6 +314,7 @@
         const products = [
             {
                 title: "Flor Escondida",
+                category: "Vela",
                 description: "Una elegante vela con un diseño de flor de loto, perfecta para ambientar tu hogar con una sensación de paz y tranquilidad. Ideal para un momento de relajación o meditación.",
                 image: "../images/vela-starlight-rosas.jpeg",
                 types: ["Soya", "Parafina"],
@@ -328,6 +325,7 @@
             },
             {
                 title: "Ángel de la Calma",
+                category: "Vela",
                 description: "Una delicada vela con la figura de un angelito en su base, que brinda un aroma puro y etéreo. Perfecta para crear un ambiente celestial y sereno en cualquier espacio de tu hogar.",
                 image: "../images/vela-starlight-angeles.jpeg",
                 types: ["Soya", "Parafina"],
@@ -337,7 +335,8 @@
                 fragrances: ["Lavanda", "Vainilla", "Canela", "Fresa", "Frutos Rojos", "Blue Berry", "Cereza", "Manzana-Canela", "Pitaya", "Rosas Especiales", "Flores Hawaianas", "Citricos", "Coco", "Menta", "Sandalo"]
             },
             {
-                title: "Vela Starlight Pino Navideño",
+                title: "Vela Pino Navideño",
+                category: "Vela",
                 description: "Una vela con forma de pino navideño, perfecta para crear un ambiente festivo y acogedor durante las fiestas. Su aroma a pino te transportará a un bosque nevado.",
                 image: "../images/vela-starlight-pino.jpeg",
                 types: ["Soya", "Parafina"],
@@ -347,7 +346,8 @@
                 fragrances: ["Pino Fresco", "Canela", "Manzana-Canela", "Menta", "Sándalo"]
             },
             {
-                title: "Vela Starlight Muela",
+                title: "Vela Muela",
+                category: "Vela",
                 description: "Una vela con un diseño único en forma de muela, perfecta para celebrar a dentistas, estudiantes de odontología o a cualquier persona del sector. Ideal como regalo original para decorar un consultorio o simplemente para añadir un toque divertido a cualquier espacio.",
                 image: "../images/vela-starlight-muela.jpeg",
                 types: ["Soya", "Parafina"],
@@ -355,15 +355,46 @@
                     { label: "150 gr", price: 150 }
                 ],
                 fragrances: ["Menta", "Eucalipto", "Vainilla", "Lavanda", "Frutos Rojos"]
+            },
+            {
+                title: "Vela Flor de Cempasúchil",
+                category: "Vela",
+                description: "Celebra el Día de Muertos con esta hermosa vela en forma de flor de Cempasúchil, símbolo de la tradición. Ideal para altares y decoración festiva.",
+                image: "../images/vela-flor-cempasuchil.jpeg",
+                types: ["Soya", "Parafina"], // Asumiendo que es de parafina por la forma detallada
+                sizes: [
+                    { label: "50 gr", price: 80 }
+                ],
+                fragrances: ["Cempasúchil", "Incienso", "Copal"] // Sugerencias de fragancias temáticas
             }
         ];
         let currentScale = 1;
 
         // Renderizar productos
-        function renderProducts() {
+        function renderProducts(productsToRender = products) {
+            console.log("🔥 Iniciando renderProducts con", productsToRender.length, "productos");
+
             const grid = document.getElementById("product-grid");
+            const noResults = document.getElementById("no-results");
+
+            if (!grid) {
+                console.error("❌ No se encontró el elemento product-grid");
+                return;
+            }
+
+            console.log("✅ Elemento grid encontrado:", grid);
             grid.innerHTML = "";
-            products.forEach((product, index) => {
+
+            if (productsToRender.length === 0) {
+                console.log("⚠️ No hay productos para mostrar");
+                noResults.classList.remove("hidden");
+                return;
+            } else {
+                noResults.classList.add("hidden");
+            }
+
+            productsToRender.forEach((product, index) => {
+                console.log(`🛍️ Creando tarjeta ${index + 1}: ${product.title}`);
                 const card = document.createElement("div");
                 card.className = `
                   bg-white 
@@ -382,21 +413,45 @@
                 card.setAttribute("data-price", product.sizes[0].price);
 
                 card.innerHTML = `
-                    <img src="${product.image}" alt="${product.title}" 
-                         class="w-full h-56 object-cover rounded-t-xl">
-                    <h3 class="font-bold text-lg text-gray-800 my-4">${product.title}</h3>
-                    <p class="text-gray-500 mb-2 text-xs">${product.description}</p>
-                    <p class="text-dark-green font-bold text-lg mb-4 text-center">$ ${product.sizes[0].price} MXN</p>
-                    <button class="mt-4 w-full bg-dark-green text-white font-medium px-4 py-2 rounded-lg hover:bg-sage-green transition ver-detalles">
+                  <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
+                    <!-- Imagen -->
+                    <div class="relative">
+                      <img src="${product.image}" alt="${product.title}" class="w-full h-48 object-cover rounded-t-lg">
+                      <span class="absolute top-2 left-2 bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded">
+                        ${product.category || "General"}
+                      </span>
+                    </div>
+                
+                    <!-- Contenido -->
+                    <div class="p-4 flex flex-col flex-grow">
+                      <h3 class="font-bold text-lg mb-2 text-left">${product.title}</h3>
+                      <p class="text-gray-500 text-xs mb-2 text-justify flex-grow">
+                        ${product.description}
+                      </p>
+                      <p class="text-dark-green font-bold text-center text-lg mb-4">
+                        ${product.sizes && product.sizes.length > 0
+                        ? "$" + product.sizes[0].price + " MXN"
+                        : "Precio no disponible"}
+                      </p>
+                      <button class="ver-detalles bg-dark-green text-white w-full py-2 rounded-lg hover:bg-green-900">
                         Ver detalles
-                    </button>
+                      </button>
+                    </div>
+                  </div>
                 `;
+
+                // ⚡ Muy importante: ahora sí encuentra el botón correctamente
                 card.querySelector(".ver-detalles").addEventListener("click", (e) => {
-                    e.stopPropagation(); // 👈 evita que se dispare el click en toda la tarjeta
-                    openModal(product);
+                    e.stopPropagation();
+                    openModal(product); // 👈 esto abre el modal con la info del producto
                 });
+
+
                 grid.appendChild(card);
+                console.log(`✅ Tarjeta ${index + 1} agregada al grid`);
             });
+
+            console.log("🎉 Renderizado completado. Total de tarjetas:", productsToRender.length);
         }
     </script>
 
@@ -535,63 +590,95 @@
 
 
 
-        // Inicializar
-        renderProducts();
+
 
     </script>
 
     <script>
-        // 🔧 Menú móvil
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-
-        // Filtros
+        // -----------------------------
+        // 1) Referencias correctas
+        // -----------------------------
         const searchInput = document.getElementById("search-input");
         const categorySelect = document.getElementById("category-filter");
         const priceSelect = document.getElementById("price-filter");
-        const productCards = document.querySelectorAll("#product-grid > div"); // 👈 productos renderizados
+        const grid = document.getElementById("product-grid");
 
-        function filterProducts() {
-            const search = searchInput.value.toLowerCase();
-            const category = categorySelect.value;
-            const price = priceSelect.value;
-
-            let visibleCount = 0;
-
-            productCards.forEach(product => {
-                const name = product.dataset.name.toLowerCase();
-                const cat = product.dataset.category;
-                const priceValue = parseInt(product.dataset.price);
-
-                let matches = true;
-
-                if (search && !name.includes(search)) matches = false;
-                if (category && category !== cat) matches = false;
-
-                if (price === "0-100" && (priceValue < 0 || priceValue > 100)) matches = false;
-                if (price === "101-200" && (priceValue < 101 || priceValue > 200)) matches = false;
-                if (price === "201-300" && (priceValue < 201 || priceValue > 300)) matches = false;
-
-                if (matches) {
-                    product.style.display = "block";
-                    visibleCount++;
-                } else {
-                    product.style.display = "none";
-                }
-            });
-
-            // Mensaje de no resultados
-            document.getElementById("no-results").classList.toggle("hidden", visibleCount > 0);
+        // -----------------------------
+        // 2) Precio mínimo de un producto
+        //    (compat: sizes[] o price suelto)
+        // -----------------------------
+        function lowestPrice(product) {
+            if (Array.isArray(product.sizes) && product.sizes.length > 0) {
+                return Math.min(...product.sizes.map(s => Number(s.price)));
+            }
+            if (typeof product.price === "number") return product.price;
+            if (typeof product.price === "string") {
+                const n = product.price.match(/\d+(\.\d+)?/g);
+                return n ? Number(n[0]) : Infinity;
+            }
+            return Infinity;
         }
 
-        // Eventos
-        searchInput.addEventListener("input", filterProducts);
-        categorySelect.addEventListener("change", filterProducts);
-        priceSelect.addEventListener("change", filterProducts);
+        // -----------------------------
+        // 3) Filtro principal
+        // -----------------------------
+        function filterProducts() {
+            const searchText = document.getElementById("search-input").value.toLowerCase();
+            const category = document.getElementById("category-filter").value;
+            const priceRange = document.getElementById("price-filter").value;
 
+            const filteredProducts = products.filter(product => {
+                // Buscar por título o descripción
+                const matchesSearch =
+                    product.title.toLowerCase().includes(searchText) ||
+                    product.description.toLowerCase().includes(searchText);
 
+                // Categoría
+                const matchesCategory = category === "all" || product.category === category;
+
+                // Precio
+                let matchesPrice = true;
+                if (priceRange !== "all" && product.sizes && product.sizes.length > 0) {
+                    const minPrice = Math.min(...product.sizes.map(size => size.price));
+
+                    if (priceRange === "201+") {
+                        matchesPrice = minPrice >= 201;
+                    } else {
+                        const [min, max] = priceRange.split("-").map(v => parseInt(v, 10));
+                        matchesPrice = minPrice >= min && minPrice <= max;
+                    }
+                }
+
+                return matchesSearch && matchesCategory && matchesPrice;
+            });
+
+            renderProducts(filteredProducts);
+        }
+
+        // -----------------------------
+        // 4) Event Listeners para filtros
+        // -----------------------------
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("🚀 DOM cargado, iniciando aplicación");
+            console.log("📦 Array de productos:", products);
+
+            // Test simple: agregar un div de prueba
+            const testDiv = document.createElement("div");
+            testDiv.innerHTML = "<p style='color: red; font-size: 20px;'>🔥 JavaScript funcionando!</p>";
+            document.getElementById("product-grid").appendChild(testDiv);
+
+            // Renderizar productos iniciales
+            setTimeout(() => {
+                renderProducts();
+            }, 100);
+
+            // Agregar event listeners
+            document.getElementById("search-input").addEventListener("input", filterProducts);
+            document.getElementById("category-filter").addEventListener("change", filterProducts);
+            document.getElementById("price-filter").addEventListener("change", filterProducts);
+        });
     </script>
+
 
 </body>
 
