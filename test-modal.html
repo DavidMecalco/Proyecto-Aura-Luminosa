@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Modal Compacto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige-almond': '#F6F1E9',
+                        'dark-green': '#2D3E33',
+                        'warm-cream': '#EDE6DA',
+                        'sage-green': '#3A5A40',
+                        'leaf-green': '#A3B18A',
+                        'gray-sand': '#D6CEC3',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .price-badge {
+            background: linear-gradient(135deg, #3A5A40 0%, #2D3E33 100%);
+        }
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-beige-almond">
+    <div class="container mx-auto px-6 py-8">
+        <h1 class="text-3xl font-bold text-dark-green mb-8 text-center">Test - Modal Compacto</h1>
+        <p class="text-center text-gray-600 mb-8">
+            Modal más pequeño en desktop, descripción de zoom en lugar de botones
+        </p>
+        
+        <div class="text-center">
+            <button id="open-modal-btn" class="bg-sage-green text-white px-6 py-3 rounded-lg hover:bg-dark-green transition-colors">
+                <i class="fas fa-eye mr-2"></i>Abrir Modal de Prueba
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Producto -->
+    <div id="product-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0" id="modal-backdrop"></div>
+
+        <div class="flex min-h-screen items-center justify-center p-4">
+            <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl lg:max-w-3xl max-h-[90vh] overflow-y-auto">
+
+                <!-- Botón cerrar -->
+                <button id="close-modal"
+                    class="absolute top-4 right-4 z-10 bg-white/90 rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors shadow-lg">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <div class="flex flex-col lg:flex-row">
+
+                    <!-- Sección de imagen -->
+                    <div class="lg:w-1/2 bg-gradient-to-br from-beige-almond to-warm-cream p-6 flex items-center justify-center">
+                        <div class="relative">
+                            <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg cursor-zoom-in"
+                                id="image-container">
+                                <img id="modal-image" src="images/vela-starlight-rosas.jpeg" alt="Producto"
+                                    class="w-full h-64 lg:h-80 object-cover transition-transform duration-300"
+                                    style="transform-origin: center center;">
+
+                                <div class="absolute top-4 left-4">
+                                    <span class="bg-sage-green text-white px-3 py-1 rounded-full text-sm font-semibold">Vela</span>
+                                </div>
+
+                                <!-- Descripción de zoom -->
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <div class="bg-dark-green/80 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-center">
+                                        <p class="text-xs opacity-90">
+                                            <i class="fas fa-search-plus mr-1"></i>
+                                            Doble clic para hacer zoom
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Indicadores de calidad -->
+                            <div class="flex justify-center mt-4 space-x-4 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <i class="fas fa-leaf text-green-500 mr-1"></i>Natural
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-hand-sparkles text-blue-500 mr-1"></i>Artesanal
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-heart text-red-500 mr-1"></i>Hecho con amor
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección de información -->
+                    <div class="lg:w-1/2 p-6 overflow-y-auto max-h-[85vh]">
+
+                        <!-- Header del producto -->
+                        <div class="mb-6">
+                            <h2 class="font-serif text-3xl font-bold text-dark-green mb-3">Flor Escondida</h2>
+                            <p class="text-gray-600 leading-relaxed">Una elegante vela con un diseño de flor de loto, perfecta para ambientar tu hogar con una sensación de paz y tranquilidad.</p>
+                        </div>
+
+                        <!-- Precio destacado -->
+                        <div class="mb-6">
+                            <div class="price-badge inline-block text-white px-6 py-3 rounded-xl">
+                                <span class="text-sm opacity-90">Precio desde</span>
+                                <div class="text-2xl font-bold">$75 MXN</div>
+                            </div>
+                        </div>
+
+                        <!-- Tipos de cera -->
+                        <div class="mb-6">
+                            <label class="block font-semibold text-dark-green mb-3">
+                                <i class="fas fa-leaf mr-2"></i>Tipo de Cera:
+                            </label>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="px-4 py-2 border-2 border-sage-green bg-sage-green text-white rounded-xl font-semibold">Soya</button>
+                                <button class="px-4 py-2 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold">Parafina</button>
+                            </div>
+                        </div>
+
+                        <!-- Botón agregar al carrito -->
+                        <button class="w-full bg-gradient-to-r from-dark-green to-sage-green text-white py-4 px-6 rounded-xl hover:from-sage-green hover:to-dark-green transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-bold text-lg">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('open-modal-btn').addEventListener('click', function() {
+            document.getElementById('product-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('product-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        document.getElementById('modal-backdrop').addEventListener('click', function() {
+            document.getElementById('product-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Zoom con doble clic
+        let currentZoom = 1;
+        document.getElementById('modal-image').addEventListener('dblclick', function(e) {
+            e.preventDefault();
+            const img = this;
+            
+            if (currentZoom === 1) {
+                currentZoom = 2;
+                img.style.transform = 'scale(2)';
+                img.style.cursor = 'zoom-out';
+            } else {
+                currentZoom = 1;
+                img.style.transform = 'scale(1)';
+                img.style.cursor = 'zoom-in';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -54,6 +54,16 @@
          ESTILOS PERSONALIZADOS
          ======================================== -->
     <style>
+        /* Prevenir overflow horizontal */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         /* Estilos para iconos del navbar */
         .nav ul li a i {
             color: #2D3E33;
@@ -81,6 +91,170 @@
         .quantity-btn:hover {
             transform: scale(1.1);
         }
+
+        /* Contenedor de productos del carrito */
+        #cart-items-container {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Forzar que el checkout-step ocupe todo el ancho */
+        .checkout-step {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Asegurar que las tarjetas del carrito tengan margen adecuado */
+        .cart-item {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow: hidden;
+        }
+
+        /* Prevenir overflow en el contenido de las tarjetas */
+        .cart-item > * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Responsividad mejorada */
+        @media (max-width: 1024px) {
+            /* Forzar layout de columna única en tablets y móviles */
+            .checkout-step > div {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            
+            .checkout-step > div > div {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .lg\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Ajustar contenedor de productos en móvil */
+            #cart-items-container {
+                padding: 0;
+                margin: 0;
+                width: 100% !important;
+            }
+
+            /* Forzar ancho completo en móvil */
+            .checkout-step,
+            .checkout-step > div,
+            .checkout-step > div > div {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            /* Ajustar pasos del checkout en móvil */
+            .step-indicator {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .step-indicator span {
+                font-size: 0.75rem !important;
+                margin-top: 0.25rem !important;
+            }
+
+            /* Ocultar elementos decorativos en móvil */
+            .w-8.h-0\.5 {
+                display: none !important;
+            }
+
+            /* Asegurar que las tarjetas no se salgan en móvil */
+            .cart-item {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding: 1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Hacer el checkout más compacto */
+            .step-indicator .w-8 {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            /* Ajustar padding en móvil */
+            .px-6 {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+
+            /* Contenedor más compacto en móviles pequeños */
+            #cart-items-container {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* Tarjetas más compactas en móviles pequeños */
+            .cart-item {
+                padding: 0.75rem !important;
+                margin-bottom: 0.75rem !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+            }
+
+            /* Campo de código de descuento responsivo */
+            #discount-code {
+                min-width: 0 !important;
+                width: 100% !important;
+            }
+
+            #apply-discount {
+                flex-shrink: 0 !important;
+                width: 100% !important;
+            }
+
+            /* Forzar contenedor principal */
+            main section {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+
+            /* Eliminar cualquier margen que pueda estar causando el problema */
+            * {
+                margin-left: 0 !important;
+                margin-right: auto !important;
+            }
+
+            .cart-item * {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -90,7 +264,7 @@
          HEADER / NAVEGACIÓN
          ======================================== -->
     <header class="bg-white shadow-md fixed w-full z-50">
-        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 sm:px-6">
             <!-- Logo de la empresa -->
             <a href="../index.html">
                 <img src="../images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
@@ -119,34 +293,51 @@
             </nav>
 
             <!-- Botón hamburguesa para móvil -->
-            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
                 <i class="fa fa-bars"></i>
             </button>
         </div>
 
-        <!-- Menú móvil desplegable -->
+        <!-- Menú móvil mejorado -->
         <div id="mobile-menu"
-            class="hidden flex-col bg-white shadow-lg absolute top-16 left-0 w-full px-6 py-6 space-y-6 transform transition-all duration-300 ease-in-out">
+            class="hidden md:hidden bg-white shadow-xl border-t border-gray-100 absolute top-full left-0 w-full transform transition-all duration-300 ease-in-out opacity-0 translate-y-2">
 
-            <a href="../index.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-home mr-2 text-sage-green"></i> Inicio
-            </a>
+            <div class="px-6 py-4 space-y-1">
+                <a href="../index.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-home mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Inicio</span>
+                </a>
 
-            <a href="productos.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
-            </a>
-            <a href="contacto.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
-            </a>
+                <a href="productos.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-cube mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Productos</span>
+                </a>
+                <a href="contacto.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-phone mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Contacto</span>
+                </a>
 
-            <!-- Carrito en versión móvil -->
-            <a href="carrito.html" class="relative flex items-center text-lg hover:text-sage-green text-sage-green">
-                <i class="fa fa-shopping-cart text-xl mr-2 text-sage-green"></i> Carrito
-                <span id="cart-count-mobile"
-                    class="absolute -top-2 left-20 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                    0
-                </span>
-            </a>
+                <!-- Separador -->
+                <div class="border-t border-gray-200 my-2"></div>
+
+                <!-- Carrito móvil -->
+                <a href="carrito.html"
+                    class="flex items-center justify-between px-4 py-3 text-sage-green bg-sage-green/10 rounded-lg transition-all duration-200 group">
+                    <div class="flex items-center">
+                        <i
+                            class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="font-medium">Carrito</span>
+                    </div>
+                    <span id="cart-count-mobile"
+                        class="bg-sage-green text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">0</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -157,10 +348,45 @@
          */
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuToggle.querySelector('i');
 
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('opacity-100');
+            const isHidden = mobileMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                // Mostrar menú
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                }, 10);
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                // Ocultar menú
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            }
         });
     </script>
 
@@ -170,35 +396,35 @@
     <main class="flex-1 pt-20">
         <!-- Hero del carrito -->
         <section class="bg-gradient-to-r from-dark-green to-sage-green text-white py-16">
-            <div class="max-w-6xl mx-auto px-6 text-center">
-                <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">
-                    <i class="fas fa-shopping-cart mr-3"></i>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    <i class="fas fa-shopping-cart mr-2 sm:mr-3"></i>
                     Tu Carrito de Compras
                 </h1>
-                <p class="text-lg md:text-xl opacity-90">
+                <p class="text-base sm:text-lg md:text-xl opacity-90">
                     Revisa tus productos seleccionados y finaliza tu compra
                 </p>
             </div>
         </section>
 
         <!-- Indicador de pasos del checkout -->
-        <section class="max-w-6xl mx-auto px-6 py-8">
-            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div id="step-1" class="flex items-center space-x-2 step-indicator active">
-                            <div class="w-8 h-8 bg-sage-green text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
-                            <span class="font-semibold text-dark-green">Carrito</span>
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="bg-white rounded-xl shadow-md p-4 sm:p-6 mb-8">
+                <div class="flex items-center justify-center">
+                    <div class="flex items-center space-x-2 sm:space-x-4 overflow-x-auto">
+                        <div id="step-1" class="flex items-center space-x-1 sm:space-x-2 step-indicator active flex-shrink-0">
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 bg-sage-green text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">1</div>
+                            <span class="font-semibold text-dark-green text-xs sm:text-base hidden sm:inline">Carrito</span>
                         </div>
-                        <div class="w-8 h-0.5 bg-gray-300"></div>
-                        <div id="step-2" class="flex items-center space-x-2 step-indicator">
-                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">2</div>
-                            <span class="font-semibold text-gray-500">Datos de Envío</span>
+                        <div class="w-4 sm:w-8 h-0.5 bg-gray-300 flex-shrink-0"></div>
+                        <div id="step-2" class="flex items-center space-x-1 sm:space-x-2 step-indicator flex-shrink-0">
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">2</div>
+                            <span class="font-semibold text-gray-500 text-xs sm:text-base hidden sm:inline">Datos de Envío</span>
                         </div>
-                        <div class="w-8 h-0.5 bg-gray-300"></div>
-                        <div id="step-3" class="flex items-center space-x-2 step-indicator">
-                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
-                            <span class="font-semibold text-gray-500">Pago</span>
+                        <div class="w-4 sm:w-8 h-0.5 bg-gray-300 flex-shrink-0"></div>
+                        <div id="step-3" class="flex items-center space-x-1 sm:space-x-2 step-indicator flex-shrink-0">
+                            <div class="w-6 h-6 sm:w-8 sm:h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">3</div>
+                            <span class="font-semibold text-gray-500 text-xs sm:text-base hidden sm:inline">Pago</span>
                         </div>
                     </div>
                 </div>
@@ -206,15 +432,15 @@
         </section>
 
         <!-- Contenido del carrito -->
-        <section class="max-w-6xl mx-auto px-6 pb-12">
+        <section class="w-full max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 pb-12">
             
             <!-- ========================================
                  PASO 1: CARRITO DE COMPRAS
                  ======================================== -->
             <div id="cart-step" class="checkout-step">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="flex flex-col lg:grid lg:grid-cols-3 gap-4 lg:gap-8 w-full">
                     <!-- Lista de productos -->
-                    <div class="lg:col-span-2">
+                    <div class="w-full lg:col-span-2">
                         <div class="bg-white rounded-xl shadow-md p-6 mb-6">
                             <div class="flex items-center justify-between">
                                 <h2 class="text-2xl font-bold text-dark-green">
@@ -231,7 +457,7 @@
                             </p>
                         </div>
 
-                        <div id="cart-items-container">
+                        <div id="cart-items-container" class="space-y-4">
                             <!-- Los productos se insertan aquí dinámicamente -->
                         </div>
 
@@ -249,7 +475,7 @@
                     </div>
 
                     <!-- Resumen de compra -->
-                    <div class="lg:col-span-1">
+                    <div class="w-full lg:col-span-1">
                         <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
                             <h3 class="text-xl font-bold text-dark-green mb-6">
                                 <i class="fas fa-calculator mr-2"></i>
@@ -281,14 +507,17 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
                                     Código de descuento
                                 </label>
-                                <div class="flex">
-                                    <input type="text" id="discount-code" placeholder="Ingresa tu código"
-                                        class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-dark-green">
+                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-0">
+                                    <input type="text" id="discount-code" placeholder="Ej: NUEVOSITIO15"
+                                        class="flex-1 px-3 py-2 border border-gray-300 rounded-lg sm:rounded-l-lg sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-dark-green">
                                     <button id="apply-discount"
-                                        class="bg-dark-green text-white px-4 py-2 rounded-r-lg hover:bg-sage-green transition">
+                                        class="bg-dark-green text-white px-4 py-2 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-sage-green transition whitespace-nowrap">
                                         Aplicar
                                     </button>
                                 </div>
+                                <p class="text-xs text-gray-500 mt-1">
+                                    💡 Usa <strong>NUEVOSITIO15</strong> para obtener 15% de descuento
+                                </p>
                             </div>
 
                             <div class="space-y-3">
@@ -462,144 +691,80 @@
             </div>
 
             <!-- ========================================
-                 PASO 3: PAGO
+                 PASO 3: SITIO EN CONSTRUCCIÓN
                  ======================================== -->
             <div id="payment-step" class="checkout-step hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Métodos de pago -->
-                    <div class="lg:col-span-2">
-                        <div class="bg-white rounded-xl shadow-md p-8">
-                            <h2 class="text-2xl font-bold text-dark-green mb-6">
-                                <i class="fas fa-credit-card mr-2"></i>
-                                Método de Pago
+                <div class="max-w-4xl mx-auto">
+                    <!-- Mensaje de sitio en construcción -->
+                    <div class="bg-white rounded-xl shadow-md p-8 text-center mb-8">
+                        <div class="mb-6">
+                            <i class="fas fa-tools text-6xl text-yellow-500 mb-4"></i>
+                            <h2 class="text-3xl font-bold text-dark-green mb-4">
+                                ¡Sitio en Construcción!
                             </h2>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Estamos trabajando para ofrecerte la mejor experiencia de compra online. 
+                                Mientras tanto, puedes descargar tu cotización y contactarnos directamente.
+                            </p>
+                        </div>
 
-                            <div class="space-y-4 mb-8">
-                                <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-sage-green transition">
-                                    <input type="radio" name="payment-method" value="card" checked class="mr-4">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-credit-card text-2xl text-sage-green"></i>
-                                        <div>
-                                            <div class="font-semibold">Tarjeta de Crédito/Débito</div>
-                                            <div class="text-sm text-gray-600">Visa, Mastercard, American Express</div>
-                                        </div>
-                                    </div>
-                                </label>
+                        <!-- Información de pago actual -->
+                        <div class="bg-sage-green/10 rounded-lg p-6 mb-6">
+                            <h3 class="text-xl font-bold text-dark-green mb-3">
+                                <i class="fas fa-university mr-2"></i>
+                                Método de Pago Disponible
+                            </h3>
+                            <p class="text-gray-700 mb-2">
+                                Por el momento, solo aceptamos <strong>transferencias interbancarias</strong>.
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                Te enviaremos los datos bancarios junto con tu cotización.
+                            </p>
+                        </div>
+
+                        <!-- Botones de acción -->
+                        <div class="space-y-4">
+                            <button id="download-quote" 
+                                    class="w-full bg-dark-green text-white py-4 px-6 rounded-lg hover:bg-sage-green transition font-semibold text-lg">
+                                <i class="fas fa-download mr-2"></i>
+                                Descargar Cotización (PDF)
+                            </button>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <a href="mailto:ventas@velasstarlight.com?subject=Cotización%20de%20Velas%20Starlight&body=Hola,%0A%0AMe%20interesa%20realizar%20un%20pedido%20de%20velas.%20Adjunto%20mi%20cotización%20en%20PDF.%0A%0AGracias." 
+                                   class="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition font-semibold inline-flex items-center justify-center">
+                                    <i class="fas fa-envelope mr-2"></i>
+                                    Enviar por Email
+                                </a>
                                 
-                                <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-sage-green transition">
-                                    <input type="radio" name="payment-method" value="paypal" class="mr-4">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fab fa-paypal text-2xl text-blue-500"></i>
-                                        <div>
-                                            <div class="font-semibold">PayPal</div>
-                                            <div class="text-sm text-gray-600">Pago seguro con tu cuenta PayPal</div>
-                                        </div>
-                                    </div>
-                                </label>
-
-                                <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-sage-green transition">
-                                    <input type="radio" name="payment-method" value="transfer" class="mr-4">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-university text-2xl text-sage-green"></i>
-                                        <div>
-                                            <div class="font-semibold">Transferencia Bancaria</div>
-                                            <div class="text-sm text-gray-600">SPEI o transferencia tradicional</div>
-                                        </div>
-                                    </div>
-                                </label>
+                                <a href="https://wa.me/5255646821122?text=Hola%20Velas%20Starlight,%0A%0AMe%20interesa%20realizar%20un%20pedido%20de%20velas.%20He%20descargado%20mi%20cotización%20y%20me%20gustaría%20proceder%20con%20la%20compra.%0A%0A¿Podrían%20proporcionarme%20los%20datos%20bancarios%20para%20la%20transferencia?%0A%0AGracias." 
+                                   target="_blank"
+                                   class="bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-600 transition font-semibold inline-flex items-center justify-center">
+                                    <i class="fab fa-whatsapp mr-2"></i>
+                                    WhatsApp
+                                </a>
                             </div>
-
-                            <!-- Formulario de tarjeta -->
-                            <div id="card-form" class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-semibold text-dark-green mb-2">
-                                        Número de tarjeta *
-                                    </label>
-                                    <input type="text" placeholder="1234 5678 9012 3456" maxlength="19"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
-                                </div>
-                                
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-semibold text-dark-green mb-2">
-                                            Fecha de vencimiento *
-                                        </label>
-                                        <input type="text" placeholder="MM/AA" maxlength="5"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-semibold text-dark-green mb-2">
-                                            CVV *
-                                        </label>
-                                        <input type="text" placeholder="123" maxlength="4"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-semibold text-dark-green mb-2">
-                                        Nombre del titular *
-                                    </label>
-                                    <input type="text" placeholder="Como aparece en la tarjeta"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-sage-green transition">
-                                </div>
-                            </div>
-
-                            <!-- Términos y condiciones -->
-                            <div class="mt-8 p-4 bg-gray-50 rounded-lg">
-                                <label class="flex items-start space-x-3 cursor-pointer">
-                                    <input type="checkbox" required class="mt-1">
-                                    <div class="text-sm text-gray-700">
-                                        Acepto los <a href="politicas.html" class="text-sage-green hover:underline">términos y condiciones</a> 
-                                        y la <a href="politicas.html" class="text-sage-green hover:underline">política de privacidad</a> 
-                                        de Velas Starlight.
-                                    </div>
-                                </label>
-                            </div>
+                            
+                            <button id="back-to-shipping" 
+                                    class="w-full bg-gray-100 text-dark-green py-3 px-6 rounded-lg hover:bg-gray-200 transition font-semibold">
+                                <i class="fas fa-arrow-left mr-2"></i>
+                                Volver a Datos de Envío
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Resumen final -->
-                    <div class="lg:col-span-1">
-                        <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                            <h3 class="text-xl font-bold text-dark-green mb-6">
-                                <i class="fas fa-check-circle mr-2"></i>
-                                Resumen Final
-                            </h3>
-
-                            <div id="final-summary" class="space-y-4 mb-6">
-                                <!-- Se llena dinámicamente -->
-                            </div>
-
-                            <div class="space-y-3">
-                                <button id="complete-order"
-                                    class="w-full bg-sage-green text-white py-4 rounded-lg hover:bg-dark-green transition font-bold text-lg">
-                                    <i class="fas fa-lock mr-2"></i>
-                                    Finalizar Compra
-                                </button>
-                                <button id="back-to-shipping"
-                                    class="w-full bg-gray-100 text-dark-green py-3 rounded-lg hover:bg-gray-200 transition font-semibold">
-                                    <i class="fas fa-arrow-left mr-2"></i>
-                                    Volver a envío
-                                </button>
-                            </div>
-
-                            <!-- Seguridad -->
-                            <div class="mt-6 pt-6 border-t border-gray-200 text-center">
-                                <div class="flex items-center justify-center space-x-2 text-sm text-gray-600 mb-2">
-                                    <i class="fas fa-shield-alt text-green-500"></i>
-                                    <span>Pago 100% seguro</span>
-                                </div>
-                                <div class="flex justify-center space-x-3">
-                                    <i class="fab fa-cc-visa text-2xl text-blue-600"></i>
-                                    <i class="fab fa-cc-mastercard text-2xl text-red-500"></i>
-                                    <i class="fab fa-cc-paypal text-2xl text-blue-500"></i>
-                                    <i class="fas fa-university text-2xl text-gray-600"></i>
-                                </div>
-                            </div>
+                    <!-- Resumen del pedido para el paso de pago -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold text-dark-green mb-6">
+                            <i class="fas fa-receipt mr-2"></i>
+                            Resumen Final del Pedido
+                        </h3>
+                        <div id="final-order-summary">
+                            <!-- Se llena dinámicamente -->
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>
@@ -618,7 +783,7 @@
 
         <div class="relative z-10">
             <!-- Contenido principal del footer -->
-            <div class="container mx-auto px-6 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     
                     <!-- Logo y descripción -->
@@ -646,9 +811,7 @@
                             <li><a href="contacto.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
                                 <i class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
                             </a></li>
-                            <li><a href="politicas.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
-                                <i class="fa fa-shield-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>Políticas
-                            </a></li>
+
                         </ul>
                     </div>
 
@@ -665,10 +828,6 @@
                             <div class="flex items-center space-x-3">
                                 <i class="fa fa-phone text-white"></i>
                                 <span>5564682112</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fa fa-map-marker-alt text-white"></i>
-                                <span>123 Artisan Street, Ciudad</span>
                             </div>
                         </div>
 
@@ -702,13 +861,13 @@
             <div class="border-t border-white/20"></div>
 
             <!-- Copyright y enlaces legales -->
-            <div class="container mx-auto px-6 py-6">
+            <div class="mantainer mx-auto px-6 py-6">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <div class="text-gray-300 text-sm">
                         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
                     </div>
                     <div class="flex items-center space-x-6 text-sm text-gray-300">
-                        <a href="politicas.html" class="hover:text-white transition-colors duration-300">Términos y Condiciones</a>
+                        <a href="terminos.html" class="hover:text-white transition-colors duration-300">Términos y Condiciones</a>
                         <span class="text-gray-500">|</span>
                         <a href="politicas.html" class="hover:text-white transition-colors duration-300">Política de Privacidad</a>
                         <span class="text-gray-500">|</span>
@@ -723,9 +882,15 @@
     </footer>
 
     <!-- ========================================
-         JAVASCRIPT - SISTEMA DE CARRITO
+         JAVASCRIPT - SISTEMA DE CARRITO MEJORADO
          ======================================== -->
+    <script src="../js/cart-system.js"></script>
+    <script src="../js/carrito-fix.js"></script>
+    <script src="../js/carrito-integration.js"></script>
+    <script src="../js/pdf-generator-ultimate.js"></script>
     <script>
+        /*
+        // CÓDIGO ANTERIOR COMENTADO - REEMPLAZADO POR carrito-fix.js
         /**
          * Clase para manejar el carrito de compras
          */
@@ -735,9 +900,7 @@
                 this.shippingCost = 50;
                 this.discountAmount = 0;
                 this.discountCodes = {
-                    'BIENVENIDO': 10, // 10% de descuento
-                    'PRIMERA': 15,    // 15% de descuento
-                    'STARLIGHT': 20   // 20% de descuento
+                    'NUEVOSITIO15': 15    // 15% de descuento
                 };
                 this.init();
             }
@@ -828,7 +991,7 @@
              */
             createCartItemElement(item, index) {
                 const div = document.createElement('div');
-                div.className = 'cart-item bg-white rounded-xl shadow-md p-6 mb-4';
+                div.className = 'cart-item bg-white rounded-xl shadow-md p-4 sm:p-6 mb-4 mx-0 w-full';
 
                 div.innerHTML = `
                     <div class="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
@@ -942,7 +1105,7 @@
                     this.showNotification(`¡Descuento del ${percentage}% aplicado!`, 'success');
                     return true;
                 } else {
-                    this.showNotification('Código de descuento inválido', 'error');
+                    this.showNotification('Código inválido. Usa: NUEVOSITIO15 para 15% de descuento', 'error');
                     return false;
                 }
             }
@@ -979,9 +1142,18 @@
                     }
                 });
 
-                // Proceder al pago
-                document.getElementById('checkout-btn').addEventListener('click', () => {
-                    this.checkout();
+                // Continuar al envío
+                document.getElementById('continue-to-shipping').addEventListener('click', () => {
+                    this.proceedToShipping();
+                });
+
+                // Botones de navegación entre pasos
+                document.getElementById('continue-to-payment').addEventListener('click', () => {
+                    this.proceedToPayment();
+                });
+
+                document.getElementById('back-to-cart').addEventListener('click', () => {
+                    this.showStep('cart');
                 });
             }
 
@@ -1062,7 +1234,7 @@
         let cart;
         document.addEventListener('DOMContentLoaded', function () {
             console.log('🚀 Inicializando página de carrito');
-            cart = new ShoppingCart();
+            cart = new ImprovedShoppingCart();
             
             // Debug: Función para inspeccionar carrito
             window.debugCart = function() {
@@ -1081,6 +1253,7 @@
                 });
             };
         });
+        */
     </script>
 
 </body>

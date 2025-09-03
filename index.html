@@ -49,6 +49,17 @@
 
     <!-- Estilos Globales -->
     <style>
+        /* Prevenir overflow horizontal */
+        html,
+        body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         /* Iconos del navbar */
         .nav ul li a i {
             color: #2D3E33;
@@ -57,6 +68,35 @@
         .nav ul li a:hover i {
             color: #3A5A40;
         }
+
+        /* Responsividad mejorada */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .lg\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .md\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 
@@ -64,10 +104,10 @@
 
     <!-- 🔝 Header -->
     <header class="bg-white shadow-md fixed w-full z-50">
-        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 sm:px-6">
             <!-- Logo -->
             <a href="index.html">
-                <img src="/images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
+                <img src="images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
             </a>
 
             <!-- Links Desktop -->
@@ -95,7 +135,7 @@
             </nav>
 
             <!-- Botón menú móvil -->
-            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
                 <i class="fa fa-bars"></i>
             </button>
         </div>
@@ -130,7 +170,7 @@
 
                 <!-- Carrito móvil -->
                 <a href="pages/carrito.html"
-                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group bg-transparent">
                     <div class="flex items-center">
                         <i
                             class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
@@ -191,74 +231,312 @@
     </script>
 
 
-    <!-- 🎁 Modal de Promoción -->
-    <div id="promo-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div
-            class="relative bg-white rounded-2xl shadow-2xl max-w-md w-[90%] md:w-[400px] p-8 text-center animate-fade-in">
+    <!-- 🎁 Modal de Promoción Corregido -->
+    <div id="promo-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+        <div id="modal-content"
+            class="relative bg-gradient-to-br from-white via-beige-almond to-warm-cream rounded-3xl shadow-2xl max-w-lg w-[90%] md:w-[500px] overflow-hidden animate-modal-enter">
 
-            <!-- Botón cerrar -->
-            <button onclick="document.getElementById('promo-modal').classList.add('hidden')"
-                class="absolute top-3 right-3 text-dark-green hover:text-sage-green text-2xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <!-- Encabezado -->
-            <h2 class="text-3xl font-serif font-bold text-dark-green mb-4">🎉 ¡Bienvenido!</h2>
-            <p class="text-lg text-gray-700 mb-6">
-                Obtén <span class="font-bold text-sage-green">10% de descuento</span> en tu primera compra.
-            </p>
-
-            <!-- Código -->
-            <div class="bg-sage-green text-white font-bold py-3 px-6 rounded-lg shadow-md text-xl mb-4">
-                DESCUETO 10
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-sage-green/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-leaf-green/10 rounded-full blur-3xl"></div>
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-warm-cream/20 rounded-full blur-3xl">
+                </div>
             </div>
 
-            <!-- Nota -->
-            <p class="text-sm text-gray-500">
-                Usa este cupón al finalizar tu compra 🛒
-            </p>
+            <!-- Botón cerrar mejorado -->
+            <button type="button" onclick="closePromoModal()"
+                class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-dark-green hover:text-red-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <!-- Contenido del modal -->
+            <div class="relative z-10 p-8 text-center">
+
+                <!-- Icono principal -->
+                <div class="mb-6">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-sage-green to-leaf-green rounded-full shadow-lg mb-4">
+                        <i class="fas fa-gift text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <!-- Encabezado -->
+                <div class="mb-6">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-green mb-3">
+                        ¡Bienvenido a Velas Starlight!
+                    </h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Como regalo de bienvenida, obtén un
+                        <span class="font-bold text-sage-green text-xl">15% de descuento</span>
+                        en tu primera compra
+                    </p>
+                </div>
+
+                <!-- Código de descuento -->
+                <div class="mb-6">
+                    <div class="bg-white border-2 border-dashed border-sage-green rounded-2xl p-4 mb-3">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600 mb-2">Código de descuento:</p>
+                            <div
+                                class="bg-gradient-to-r from-sage-green to-leaf-green text-white font-bold py-3 px-6 rounded-xl shadow-lg text-2xl mb-2 relative overflow-hidden inline-block">
+                                <div class="absolute inset-0 bg-white/10 rounded-xl"></div>
+                                <div class="relative z-10 flex items-center justify-center space-x-2">
+                                    <i class="fas fa-sparkles"></i>
+                                    <span id="promo-code-text" class="select-all">NUEVOSITIO15</span>
+                                    <button type="button" onclick="copyPromoCode()"
+                                        class="ml-2 text-white/80 hover:text-white transition-colors"
+                                        title="Copiar código">
+                                        <i class="fas fa-copy text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500">
+                                <i class="fas fa-gift mr-1"></i>
+                                ¡Celebramos nuestro nuevo sitio web contigo!
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 text-center">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Válido por 30 días • Mínimo de compra $500
+                    </p>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="space-y-3">
+                    <a href="pages/productos.html" onclick="closePromoModal()"
+                        class="block w-full bg-gradient-to-r from-sage-green to-leaf-green text-white py-4 px-6 rounded-2xl font-semibold text-lg hover:from-dark-green hover:to-sage-green transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-shopping-bag mr-2"></i>
+                        Explorar Productos
+                    </a>
+                    <button type="button" onclick="closePromoModal()"
+                        class="block w-full text-gray-600 hover:text-dark-green py-2 font-medium transition-colors duration-300">
+                        Continuar navegando
+                    </button>
+                </div>
+
+                <!-- Características destacadas -->
+                <div class="mt-6 pt-6 border-t border-gray-200">
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="space-y-1">
+                            <div class="text-sage-green text-xl">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="text-xs text-gray-600 font-medium">100% Natural</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-sage-green text-xl">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <div class="text-xs text-gray-600 font-medium">Envío Gratis</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-sage-green text-xl">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="text-xs text-gray-600 font-medium">Artesanal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- 🔄 Animación -->
+    <!-- Estilos y animaciones mejoradas -->
     <style>
-        @keyframes fadeIn {
+        @keyframes modalEnter {
             from {
                 opacity: 0;
-                transform: scale(0.95);
+                transform: scale(0.9) translateY(20px);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1) translateY(0);
             }
         }
 
-        .animate-fade-in {
-            animation: fadeIn 0.4s ease-out;
+        @keyframes modalExit {
+            from {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+        }
+
+        .animate-modal-enter {
+            animation: modalEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .animate-modal-exit {
+            animation: modalExit 0.3s ease-in-out;
+        }
+
+        /* Efecto de brillo en el código - REMOVIDO para evitar que se vea blanco */
+
+        /* Alineación de precios en tarjetas de productos */
+        .product-price-container {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-end !important;
+            min-height: 60px !important;
+            align-items: flex-start !important;
+        }
+
+        .product-price-main {
+            font-size: 1.875rem !important;
+            font-weight: 700 !important;
+            color: #3A5A40 !important;
+            line-height: 1.2 !important;
+        }
+
+        .product-price-old {
+            font-size: 0.875rem !important;
+            color: #6B7280 !important;
+            text-decoration: line-through !important;
+            margin-bottom: 2px !important;
         }
     </style>
 
-    <!-- JS para mostrar al cargar -->
+    <!-- JavaScript mejorado para el modal -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        // Variables globales para el modal
+        let promoModalShown = false;
+
+        // Función para mostrar el modal
+        function showPromoModal() {
             const modal = document.getElementById("promo-modal");
-
-            // Mostrar modal automáticamente al cargar
-            setTimeout(() => {
+            if (modal && !promoModalShown) {
                 modal.classList.remove("hidden");
-            }, 1000); // 1 segundo después de cargar la página
+                promoModalShown = true;
+                console.log('Modal de promoción mostrado');
 
-            // Si quieres que solo se muestre una vez por usuario
-            // descomenta el siguiente bloque:
+                // Efecto shimmer removido para mantener el código siempre verde
+            }
+        }
 
-            if (!localStorage.getItem("promoShown")) {
+        // Función para cerrar el modal
+        function closePromoModal() {
+            console.log('Cerrando modal de promoción');
+            const modal = document.getElementById("promo-modal");
+            const modalContent = document.getElementById("modal-content");
+
+            if (modal && modalContent) {
+                // Agregar animación de salida
+                modalContent.classList.remove('animate-modal-enter');
+                modalContent.classList.add('animate-modal-exit');
+
+                // Ocultar modal después de la animación
                 setTimeout(() => {
-                    modal.classList.remove("hidden");
-                }, 1000);
-                localStorage.setItem("promoShown", "true");
+                    modal.classList.add("hidden");
+                    // Marcar como mostrado en localStorage
+                    localStorage.setItem("promoModalShown", "true");
+                    console.log('Modal cerrado y guardado en localStorage');
+                }, 300);
+            }
+        }
+
+        // Función para copiar el código promocional
+        function copyPromoCode() {
+            const code = "NUEVOSITIO10";
+
+            // Intentar copiar al portapapeles
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(() => {
+                    showCopyFeedback();
+                }).catch(() => {
+                    fallbackCopyCode(code);
+                });
+            } else {
+                fallbackCopyCode(code);
+            }
+        }
+
+        // Mostrar feedback visual al copiar
+        function showCopyFeedback() {
+            const button = event.target.closest('button');
+            if (button) {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check text-sm"></i>';
+                button.classList.add('text-green-300');
+
+                // Cambiar el fondo del código temporalmente en lugar del texto
+                const codeContainer = button.parentElement.parentElement;
+                const originalClasses = codeContainer.className;
+                codeContainer.className = originalClasses.replace('from-sage-green to-leaf-green', 'from-green-500 to-green-600');
+
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    button.classList.remove('text-green-300');
+                    codeContainer.className = originalClasses;
+                }, 1500);
+            }
+        }
+
+        // Fallback para copiar código
+        function fallbackCopyCode(code) {
+            // Crear elemento temporal para seleccionar texto
+            const textArea = document.createElement('textarea');
+            textArea.value = code;
+            document.body.appendChild(textArea);
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                showCopyFeedback();
+            } catch (err) {
+                alert('Código: ' + code + '\n\nCopia este código manualmente');
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        // Inicialización del modal
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log('Inicializando modal de promoción');
+
+            // Verificar si el modal ya se mostró anteriormente
+            const hasSeenModal = localStorage.getItem("promoModalShown");
+            console.log('Modal visto anteriormente:', hasSeenModal);
+
+            if (!hasSeenModal) {
+                // Mostrar modal después de 2 segundos
+                setTimeout(() => {
+                    showPromoModal();
+                }, 2000);
+            }
+
+            // Configurar event listeners
+            const modal = document.getElementById("promo-modal");
+            if (modal) {
+                // Cerrar modal al hacer clic fuera de él
+                modal.addEventListener('click', (e) => {
+                    if (e.target.id === 'promo-modal') {
+                        closePromoModal();
+                    }
+                });
+
+                // Cerrar modal con tecla Escape
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                        closePromoModal();
+                    }
+                });
             }
         });
+
+        // Función para resetear el modal (para testing)
+        function resetPromoModal() {
+            localStorage.removeItem("promoModalShown");
+            console.log('Modal reset - se mostrará en la próxima carga');
+        }
     </script>
 
 
@@ -282,8 +560,8 @@
             </div>
 
             <!-- Contenido principal -->
-            <div class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-20 text-center">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-20 text-center">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
                     <!-- Texto principal -->
                     <div class="space-y-8" data-aos="fade-right">
@@ -292,11 +570,13 @@
                                 class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold">
                                 ✨ Artesanía Premium
                             </span>
-                            <h1 class="text-5xl md:text-7xl font-serif font-bold text-dark-green leading-tight">
+                            <h1
+                                class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-dark-green leading-tight">
                                 Velas
                                 <span class="text-sage-green block">Starlight</span>
                             </h1>
-                            <p class="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                            <p
+                                class="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed max-w-lg mx-auto lg:mx-0">
                                 Ilumina tu mundo con nuestra colección artesanal de velas y productos de belleza natural
                             </p>
                         </div>
@@ -316,18 +596,18 @@
                         </div>
 
                         <!-- Estadísticas -->
-                        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+                        <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-8 border-t border-gray-200">
                             <div class="text-center">
-                                <div class="text-3xl font-bold text-sage-green">500+</div>
-                                <div class="text-sm text-gray-600">Clientes Felices</div>
+                                <div class="text-xl sm:text-2xl md:text-3xl font-bold text-sage-green">500+</div>
+                                <div class="text-xs sm:text-sm text-gray-600">Clientes Felices</div>
                             </div>
                             <div class="text-center">
-                                <div class="text-3xl font-bold text-sage-green">100%</div>
-                                <div class="text-sm text-gray-600">Natural</div>
+                                <div class="text-xl sm:text-2xl md:text-3xl font-bold text-sage-green">100%</div>
+                                <div class="text-xs sm:text-sm text-gray-600">Natural</div>
                             </div>
                             <div class="text-center">
-                                <div class="text-3xl font-bold text-sage-green">24h</div>
-                                <div class="text-sm text-gray-600">Envío Rápido</div>
+                                <div class="text-xl sm:text-2xl md:text-3xl font-bold text-sage-green">24h</div>
+                                <div class="text-xs sm:text-sm text-gray-600">Envío Rápido</div>
                             </div>
                         </div>
                     </div>
@@ -369,7 +649,7 @@
 
         <!-- Sección de Productos Populares Rediseñada -->
         <section class="py-20 bg-white" data-aos="fade-up">
-            <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <!-- Header de sección -->
                 <div class="text-center mb-16">
@@ -377,7 +657,7 @@
                         class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
                         🌟 Bestsellers
                     </span>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-green mb-6">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-dark-green mb-6">
                         Productos Más Populares
                     </h2>
                     <p class="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -442,7 +722,9 @@
 
                                 <!-- Precio y botón -->
                                 <div class="flex items-center justify-between pt-4 mt-auto">
-                                    <div class="text-3xl font-bold text-sage-green">$80.00</div>
+                                    <div class="product-price-container">
+                                        <div class="product-price-main">$80.00</div>
+                                    </div>
                                     <a href="pages/productos.html"
                                         class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-6 py-3 rounded-full font-semibold hover:from-purple-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
                                         <i class="fas fa-cart-plus mr-2"></i>
@@ -506,7 +788,9 @@
 
                                 <!-- Precio y botón -->
                                 <div class="flex items-center justify-between pt-4 mt-auto">
-                                    <div class="text-3xl font-bold text-sage-green">$75.00</div>
+                                    <div class="product-price-container">
+                                        <div class="product-price-main">$75.00</div>
+                                    </div>
                                     <a href="pages/productos.html"
                                         class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:from-amber-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
                                         <i class="fas fa-cart-plus mr-2"></i>
@@ -570,9 +854,9 @@
 
                                 <!-- Precio y botón -->
                                 <div class="flex items-center justify-between pt-4 mt-auto">
-                                    <div>
-                                        <div class="text-sm text-gray-500 line-through">$550.00</div>
-                                        <div class="text-3xl font-bold text-sage-green">$450.00</div>
+                                    <div class="product-price-container">
+                                        <div class="product-price-old">$550.00</div>
+                                        <div class="product-price-main">$450.00</div>
                                     </div>
                                     <a href="pages/productos.html"
                                         class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-full font-semibold hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
@@ -583,23 +867,18 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                </a>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
 
-            <!-- Call to action -->
-            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="400">
-                <a href="pages/productos.html"
-                    class="inline-flex items-center bg-sage-green text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-dark-green transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    <i class="fas fa-eye mr-2"></i>
-                    Ver Todos los Productos
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
+                </div>
+
+                <!-- Call to action -->
+                <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="400">
+                    <a href="pages/productos.html"
+                        class="inline-flex items-center bg-sage-green text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-dark-green transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-eye mr-2"></i>
+                        Ver Todos los Productos
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -609,7 +888,7 @@
 
         <!-- Sección Nuestra Historia Rediseñada -->
         <section id="about" class="py-20 bg-gradient-to-br from-beige-almond to-warm-cream" data-aos="fade-up">
-            <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -652,7 +931,8 @@
                                 class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold">
                                 💚 Nuestra Pasión
                             </span>
-                            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-green leading-tight">
+                            <h2
+                                class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-dark-green leading-tight">
                                 Creando Momentos
                                 <span class="text-sage-green">Especiales</span>
                             </h2>
@@ -761,7 +1041,8 @@
                         class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
                         💬 Testimonios
                     </span>
-                    <h2 class="text-4xl md:text-6xl font-serif font-bold text-dark-green mb-6 leading-tight">
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-dark-green mb-6 leading-tight">
                         Lo que Dicen Nuestros
                         <span class="text-sage-green block">Clientes Felices</span>
                     </h2>
@@ -1023,7 +1304,7 @@
                         class="inline-block bg-sage-green/10 text-sage-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
                         📸 Galería
                     </span>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-green mb-6">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-dark-green mb-6">
                         Nuestros Productos en Acción
                     </h2>
                     <p class="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -1035,9 +1316,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     <!-- Imagen 1 - Destacada -->
-                    <div class="lg:col-span-2 lg:row-span-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="md:col-span-2 lg:col-span-2 lg:row-span-2" data-aos="fade-up" data-aos-delay="100">
                         <div
-                            class="relative group h-full min-h-[400px] rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500">
+                            class="relative group h-full min-h-[300px] sm:min-h-[400px] rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500">
                             <img src="images/galeria-1.jpg" alt="Velas Starlight en un ambiente acogedor"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
@@ -1456,11 +1737,7 @@
                                     <i
                                         class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
                                 </a></li>
-                            <li><a href="pages/politicas.html"
-                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
-                                    <i
-                                        class="fa fa-shield-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>Políticas
-                                </a></li>
+
                         </ul>
                     </div>
 
@@ -1478,10 +1755,7 @@
                                 <i class="fa fa-phone text-white"></i>
                                 <span>5564682112</span>
                             </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fa fa-map-marker-alt text-white"></i>
-                                <span>123 Artisan Street, Ciudad</span>
-                            </div>
+
                         </div>
 
                         <!-- Redes sociales -->
@@ -1520,7 +1794,7 @@
                         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
                     </div>
                     <div class="flex items-center space-x-6 text-sm text-gray-300">
-                        <a href="pages/politicas.html" class="hover:text-white transition-colors duration-300">Términos
+                        <a href="pages/terminos.html" class="hover:text-white transition-colors duration-300">Términos
                             y Condiciones</a>
                         <span class="text-gray-500">|</span>
                         <a href="pages/politicas.html" class="hover:text-white transition-colors duration-300">Política

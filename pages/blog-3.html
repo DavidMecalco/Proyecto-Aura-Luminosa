@@ -93,45 +93,96 @@
       </nav>
 
       <!-- Botón menú móvil -->
-      <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+      <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
         <i class="fa fa-bars"></i>
       </button>
     </div>
 
     <!-- Menú móvil mejorado -->
     <div id="mobile-menu"
-      class="hidden flex-col bg-white shadow-lg absolute top-16 left-0 w-full px-6 py-6 space-y-6 transform transition-all duration-300 ease-in-out">
+      class="hidden md:hidden bg-white shadow-xl border-t border-gray-100 absolute top-full left-0 w-full transform transition-all duration-300 ease-in-out opacity-0 translate-y-2">
 
-      <a href="../index.html" class="hover:text-sage-green flex items-center text-lg">
-        <i class="fa fa-home mr-2 text-sage-green"></i> Inicio
-      </a>
+      <div class="px-6 py-4 space-y-1">
+        <a href="../index.html"
+          class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+          <i
+            class="fa fa-home mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+          <span class="font-medium">Inicio</span>
+        </a>
 
-      <a href="/pages/productos.html" class="hover:text-sage-green flex items-center text-lg">
-        <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
-      </a>
+        <a href="productos.html"
+          class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+          <i
+            class="fa fa-cube mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+          <span class="font-medium">Productos</span>
+        </a>
+        <a href="contacto.html"
+          class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+          <i
+            class="fa fa-phone mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+          <span class="font-medium">Contacto</span>
+        </a>
 
-      <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center text-lg">
-        <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
-      </a>
+        <!-- Separador -->
+        <div class="border-t border-gray-200 my-2"></div>
 
-      <!-- Carrito móvil -->
-      <a href="carrito.html" class="relative flex items-center text-lg hover:text-sage-green">
-        <i class="fa fa-shopping-cart text-xl mr-2 text-sage-green"></i> Carrito
-        <span id="cart-count-mobile"
-          class="absolute -top-2 left-20 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-          0
-        </span>
-      </a>
+        <!-- Carrito móvil -->
+        <a href="carrito.html"
+          class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group bg-transparent">
+          <div class="flex items-center">
+            <i
+              class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+            <span class="font-medium">Carrito</span>
+          </div>
+          <span id="cart-count-mobile"
+            class="bg-sage-green text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">0</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = menuToggle.querySelector('i');
 
     menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('opacity-100');
+      const isHidden = mobileMenu.classList.contains('hidden');
+
+      if (isHidden) {
+        // Mostrar menú
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+          mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+          mobileMenu.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        // Ocultar menú
+        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+        mobileMenu.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+          mobileMenu.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+          menuIcon.classList.remove('fa-times');
+          menuIcon.classList.add('fa-bars');
+        }
+      }
     });
   </script>
 
@@ -382,35 +433,126 @@
         </div>
     </section>
 
-  <footer class="bg-dark-green text-white py-6">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Links -->
-      <div class="flex flex-col space-y-2">
-        <a href="politicas.html" class="hover:text-gray-sand transition">Políticas</a>
-      </div>
-
-      <!-- Redes sociales -->
-      <div class="flex space-x-6 md:justify-end">
-        <a href="https://wa.me/521234567890" target="_blank" aria-label="WhatsApp"
-          class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://www.instagram.com/velas_starlight/" target="_blank" aria-label="Instagram"
-          class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" target="_blank" aria-label="Facebook" class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" target="_blank" aria-label="Tiktok" class="hover:text-gray-sand transition text-xl">
-          <i class="fab fa-tiktok"></i>
-        </a>
+  <!-- Footer Rediseñado -->
+  <footer class="bg-gradient-to-br from-dark-green via-dark-green to-sage-green text-white relative overflow-hidden">
+    <!-- Elementos decorativos -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-48 h-48 bg-sage-green rounded-full blur-3xl"></div>
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-leaf-green rounded-full blur-3xl">
       </div>
     </div>
 
-    <!-- Derechos reservados -->
-    <div class="text-center text-sm mt-6">
-      <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+    <div class="relative z-10">
+      <!-- Contenido principal del footer -->
+      <div class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <!-- Logo y descripción -->
+          <div class="lg:col-span-2 space-y-6">
+            <div class="flex items-center space-x-3">
+              <img src="../images/logo.png" alt="Velas Starlight"
+                class="h-12 w-auto filter brightness-0 invert">
+
+            </div>
+            <p class="text-gray-300 leading-relaxed max-w-md">
+              Creamos experiencias sensoriales únicas con velas artesanales y productos de belleza
+              natural, elaborados con amor y dedicación para iluminar tu mundo.
+            </p>
+
+
+          </div>
+
+          <!-- Enlaces rápidos -->
+          <div class="space-y-4">
+            <h4 class="text-lg font-semibold mb-4 text-white">Enlaces Rápidos</h4>
+            <ul class="space-y-3">
+              <li><a href="../index.html"
+                  class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                  <i
+                    class="fa fa-home mr-2 group-hover:scale-110 transition-transform duration-300"></i>Inicio
+                </a></li>
+              <li><a href="productos.html"
+                  class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                  <i
+                    class="fa fa-cube mr-2 group-hover:scale-110 transition-transform duration-300"></i>Productos
+                </a></li>
+
+              <li><a href="contacto.html"
+                  class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                  <i
+                    class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
+                </a></li>
+
+            </ul>
+          </div>
+
+          <!-- Contacto y redes sociales -->
+          <div class="space-y-4">
+            <h4 class="text-lg font-semibold mb-4 text-white">Conecta con Nosotros</h4>
+
+            <!-- Información de contacto -->
+            <div class="space-y-3 text-gray-300">
+              <div class="flex items-center space-x-3">
+                <i class="fa fa-envelope text-white"></i>
+                <span>ventas@velasstarlight.com</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fa fa-phone text-white"></i>
+                <span>5564682112</span>
+              </div>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="pt-4">
+              <h5 class="font-medium mb-3">Síguenos</h5>
+              <div class="flex space-x-4">
+                <a href="https://wa.me/5564682112" target="_blank"
+                  class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-whatsapp text-lg group-hover:text-white"></i>
+                </a>
+                <a href="https://www.instagram.com/velas_starlight/" target="_blank"
+                  class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-instagram text-lg group-hover:text-white"></i>
+                </a>
+                <a href="#" target="_blank"
+                  class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-facebook-f text-lg group-hover:text-white"></i>
+                </a>
+                <a href="#" target="_blank"
+                  class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                  <i class="fab fa-tiktok text-lg group-hover:text-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Línea divisoria -->
+      <div class="border-t border-white/20"></div>
+
+      <!-- Copyright y enlaces legales -->
+      <div class="container mx-auto px-6 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="text-gray-300 text-sm">
+            <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+          </div>
+          <div class="flex items-center space-x-6 text-sm text-gray-300">
+            <a href="terminos.html" class="hover:text-white transition-colors duration-300">Términos
+              y Condiciones</a>
+            <span class="text-gray-500">|</span>
+            <a href="politicas.html" class="hover:text-white transition-colors duration-300">Política
+              de Privacidad</a>
+            <span class="text-gray-500">|</span>
+            <span class="flex items-center space-x-1">
+              <i class="fa fa-heart text-red-400"></i>
+              <span>Hecho con amor</span>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 

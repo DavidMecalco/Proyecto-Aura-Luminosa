@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones | Velas Starlight</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige-almond': '#F6F1E9',
+                        'dark-green': '#2D3E33',
+                        'warm-cream': '#EDE6DA',
+                        'sage-green': '#3A5A40',
+                        'leaf-green': '#A3B18A',
+                        'gray-sand': '#D6CEC3',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos Globales -->
+    <style>
+        .nav ul li a i {
+            color: #2D3E33;
+        }
+
+        .nav ul li a:hover i {
+            color: #3A5A40;
+        }
+    </style>
+</head>
+
+<body class="bg-beige-almond text-dark-green font-sans">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo -->
+            <a href="../index.html">
+                <img src="/images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
+            </a>
+
+            <!-- Links Desktop -->
+            <nav class="hidden md:flex space-x-8 font-medium text-dark-green items-center">
+                <a href="../index.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-home mr-1"></i>Inicio
+                </a>
+                <a href="/pages/productos.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-cube mr-1"></i>Productos
+                </a>
+                <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center">
+                    <i class="fa fa-phone mr-1"></i>Contacto
+                </a>
+
+                <!-- Carrito Desktop -->
+                <a href="carrito.html" class="relative hover:text-sage-green">
+                    <i class="fa fa-shopping-cart text-xl"></i>
+                    <span id="cart-count"
+                        class="absolute -top-3 -right-3 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                        0
+                    </span>
+                </a>
+            </nav>
+
+            <!-- Botón menú móvil -->
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white shadow-xl border-t border-gray-100 absolute top-full left-0 w-full transform transition-all duration-300 ease-in-out opacity-0 translate-y-2">
+
+            <div class="px-6 py-4 space-y-1">
+                <a href="../index.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-home mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Inicio</span>
+                </a>
+
+                <a href="productos.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-cube mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Productos</span>
+                </a>
+                <a href="contacto.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-phone mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Contacto</span>
+                </a>
+
+                <!-- Separador -->
+                <div class="border-t border-gray-200 my-2"></div>
+
+                <!-- Carrito móvil -->
+                <a href="carrito.html"
+                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group bg-transparent">
+                    <div class="flex items-center">
+                        <i
+                            class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="font-medium">Carrito</span>
+                    </div>
+                    <span id="cart-count-mobile"
+                        class="bg-sage-green text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                }, 10);
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .page-content {
+            padding-top: 8rem;
+        }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="page-content bg-gradient-to-br from-sage-green to-dark-green text-white py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
+            <div class="mb-6">
+                <i class="fas fa-file-contract text-6xl text-beige-almond opacity-80"></i>
+            </div>
+            <h1 class="text-5xl font-serif font-bold mb-6">Términos y Condiciones</h1>
+            <p class="text-xl text-beige-almond/90 max-w-2xl mx-auto leading-relaxed">
+                Conoce los términos que rigen el uso de nuestros servicios y la compra de nuestros productos artesanales.
+            </p>
+            <div class="mt-8 text-sm text-beige-almond/70">
+                <p><i class="fas fa-calendar-alt mr-2"></i>Última actualización: 9 de febrero de 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-16">
+
+        <!-- Introducción -->
+        <section class="mb-12" data-aos="fade-up">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4 border-sage-green">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-4 flex items-center">
+                    <i class="fas fa-info-circle text-sage-green mr-3"></i>
+                    Introducción
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Bienvenido a <strong>Velas Starlight</strong>. Estos Términos y Condiciones regulan el uso de nuestro sitio web 
+                    y la compra de nuestros productos. Al acceder a nuestro sitio web o realizar una compra, aceptas estar sujeto 
+                    a estos términos.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    Si no estás de acuerdo con alguno de estos términos, te pedimos que no utilices nuestros servicios.
+                </p>
+            </div>
+        </section> 
+       <!-- Información de la Empresa -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-building text-sage-green mr-3"></i>
+                    Información de la Empresa
+                </h2>
+
+                <div class="bg-beige-almond/30 rounded-lg p-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-sage-green mb-3">Datos de la Empresa</h3>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start"><i class="fas fa-store text-sage-green mr-2 mt-1"></i><strong>Razón Social:</strong> Velas Starlight</li>
+                                <li class="flex items-start"><i class="fas fa-envelope text-sage-green mr-2 mt-1"></i><strong>Email:</strong> ventas@velasstarlight.com</li>
+                                <li class="flex items-start"><i class="fas fa-phone text-sage-green mr-2 mt-1"></i><strong>Teléfono:</strong> 5564682112</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-sage-green mb-3">Actividad Comercial</h3>
+                            <p class="text-gray-700 text-sm">
+                                Fabricación y venta de velas artesanales, productos de aromaterapia y artículos de decoración 
+                                para el hogar, elaborados con materiales naturales y de alta calidad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Uso del Sitio Web -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-globe text-sage-green mr-3"></i>
+                    Uso del Sitio Web
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="border-l-4 border-leaf-green pl-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-2">Uso Permitido</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Navegar y explorar nuestros productos</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Realizar compras para uso personal</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Contactar con nuestro servicio al cliente</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Compartir contenido en redes sociales</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-l-4 border-red-400 pl-6">
+                        <h3 class="text-lg font-semibold text-red-600 mb-2">Uso Prohibido</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start"><i class="fas fa-times text-red-500 mr-2 mt-1"></i>Usar el sitio para actividades ilegales</li>
+                            <li class="flex items-start"><i class="fas fa-times text-red-500 mr-2 mt-1"></i>Intentar acceder a áreas restringidas</li>
+                            <li class="flex items-start"><i class="fas fa-times text-red-500 mr-2 mt-1"></i>Copiar o reproducir contenido sin autorización</li>
+                            <li class="flex items-start"><i class="fas fa-times text-red-500 mr-2 mt-1"></i>Interferir con el funcionamiento del sitio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Productos y Precios -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-tags text-sage-green mr-3"></i>
+                    Productos y Precios
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-beige-almond/30 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-3 flex items-center">
+                            <i class="fas fa-candle-holder text-leaf-green mr-2"></i>
+                            Nuestros Productos
+                        </h3>
+                        <p class="text-gray-700 text-sm mb-3">
+                            Todos nuestros productos son artesanales y pueden presentar ligeras variaciones en color, 
+                            forma o tamaño que los hacen únicos.
+                        </p>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Velas aromáticas de soja natural</li>
+                            <li>• Velas decorativas personalizadas</li>
+                            <li>• Productos de aromaterapia</li>
+                            <li>• Accesorios para el hogar</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-beige-almond/30 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-3 flex items-center">
+                            <i class="fas fa-dollar-sign text-leaf-green mr-2"></i>
+                            Precios y Disponibilidad
+                        </h3>
+                        <p class="text-gray-700 text-sm mb-3">
+                            Los precios mostrados incluyen impuestos aplicables y están expresados en pesos mexicanos (MXN).
+                        </p>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Precios sujetos a cambios sin previo aviso</li>
+                            <li>• Disponibilidad limitada por stock</li>
+                            <li>• Ofertas válidas hasta agotar existencias</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proceso de Compra -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-shopping-cart text-sage-green mr-3"></i>
+                    Proceso de Compra
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-sage-green/10 to-leaf-green/10 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-dark-green mb-4">Pasos para Realizar tu Pedido</h3>
+                        <div class="grid md:grid-cols-4 gap-4">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-sage-green text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="font-bold">1</span>
+                                </div>
+                                <p class="text-sm text-gray-700">Selecciona productos</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-sage-green text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="font-bold">2</span>
+                                </div>
+                                <p class="text-sm text-gray-700">Revisa tu carrito</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-sage-green text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="font-bold">3</span>
+                                </div>
+                                <p class="text-sm text-gray-700">Completa tus datos</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-sage-green text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="font-bold">4</span>
+                                </div>
+                                <p class="text-sm text-gray-700">Confirma el pago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-dark-green mb-2 flex items-center">
+                                <i class="fas fa-credit-card text-sage-green mr-2"></i>
+                                Métodos de Pago
+                            </h4>
+                            <ul class="text-gray-700 text-sm space-y-1">
+                                <li>• Transferencia bancaria</li>
+                                <li>• Depósito en efectivo</li>
+                                <li>• Pago contra entrega (área metropolitana)</li>
+                            </ul>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-dark-green mb-2 flex items-center">
+                                <i class="fas fa-truck text-sage-green mr-2"></i>
+                                Envíos
+                            </h4>
+                            <ul class="text-gray-700 text-sm space-y-1">
+                                <li>• Envío nacional disponible</li>
+                                <li>• Tiempo de entrega: 3-7 días hábiles</li>
+                                <li>• Costo calculado según destino</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Política de Devoluciones -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="500">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-undo text-sage-green mr-3"></i>
+                    Política de Devoluciones
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="bg-warm-cream/50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-dark-green mb-4">Condiciones para Devoluciones</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-sage-green mb-2">Productos Elegibles</h4>
+                                <ul class="text-gray-700 text-sm space-y-1">
+                                    <li>• Productos sin usar ni encender</li>
+                                    <li>• En su empaque original</li>
+                                    <li>• Dentro de 7 días de la compra</li>
+                                    <li>• Con comprobante de compra</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-red-600 mb-2">Productos No Elegibles</h4>
+                                <ul class="text-gray-700 text-sm space-y-1">
+                                    <li>• Velas personalizadas</li>
+                                    <li>• Productos en oferta especial</li>
+                                    <li>• Artículos dañados por mal uso</li>
+                                    <li>• Productos aromáticos abiertos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-l-4 border-sage-green pl-6">
+                        <h4 class="font-semibold text-dark-green mb-2">Proceso de Devolución</h4>
+                        <ol class="text-gray-700 text-sm space-y-2">
+                            <li>1. Contacta nuestro servicio al cliente</li>
+                            <li>2. Proporciona número de pedido y motivo</li>
+                            <li>3. Recibe autorización de devolución</li>
+                            <li>4. Envía el producto en condiciones originales</li>
+                            <li>5. Recibe reembolso en 5-10 días hábiles</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Limitación de Responsabilidad -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="600">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-exclamation-triangle text-sage-green mr-3"></i>
+                    Limitación de Responsabilidad
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <h4 class="font-semibold text-dark-green mb-2">Uso Seguro de Productos</h4>
+                        <p class="text-gray-700 text-sm">
+                            Nuestras velas deben usarse siguiendo las instrucciones de seguridad. No nos hacemos responsables 
+                            por daños causados por uso inadecuado, negligencia o incumplimiento de las recomendaciones de seguridad.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-sage-green mb-2">Recomendaciones de Uso</h4>
+                            <ul class="text-gray-700 text-sm space-y-1">
+                                <li>• Nunca dejar velas encendidas sin supervisión</li>
+                                <li>• Mantener alejadas de materiales inflamables</li>
+                                <li>• Colocar sobre superficies estables y resistentes al calor</li>
+                                <li>• Cortar mecha a 1cm antes de encender</li>
+                            </ul>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-red-600 mb-2">Precauciones</h4>
+                            <ul class="text-gray-700 text-sm space-y-1">
+                                <li>• Mantener fuera del alcance de niños y mascotas</li>
+                                <li>• No mover velas encendidas</li>
+                                <li>• Apagar si la llama es muy alta</li>
+                                <li>• Discontinuar uso si el recipiente se agrieta</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Propiedad Intelectual -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="700">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-copyright text-sage-green mr-3"></i>
+                    Propiedad Intelectual
+                </h2>
+
+                <div class="bg-beige-almond/30 rounded-lg p-6">
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Todo el contenido de este sitio web, incluyendo pero no limitado a textos, imágenes, logotipos, 
+                        diseños y código, es propiedad de <strong>Velas Starlight</strong> y está protegido por las leyes 
+                        de propiedad intelectual.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-sage-green mb-2">Derechos Reservados</h4>
+                            <ul class="text-gray-700 text-sm space-y-1">
+                                <li>• Marca "Velas Starlight"</li>
+                                <li>• Diseños de productos</li>
+                                <li>• Fotografías de productos</li>
+                                <li>• Contenido del sitio web</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-sage-green mb-2">Uso Autorizado</h4>
+                            <p class="text-gray-700 text-sm">
+                                Puedes usar nuestro contenido únicamente para fines personales y no comerciales. 
+                                Cualquier otro uso requiere autorización escrita previa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto y Soporte -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="800">
+            <div class="bg-gradient-to-r from-sage-green to-dark-green text-white rounded-2xl p-8">
+                <h2 class="text-2xl font-serif font-bold mb-6 flex items-center">
+                    <i class="fas fa-headset text-beige-almond mr-3"></i>
+                    Contacto y Soporte
+                </h2>
+
+                <p class="text-beige-almond/90 mb-6 leading-relaxed">
+                    Si tienes preguntas sobre estos Términos y Condiciones o necesitas ayuda con tu pedido, 
+                    nuestro equipo está aquí para ayudarte.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-phone text-beige-almond text-xl"></i>
+                        <div>
+                            <p class="font-semibold">Teléfono</p>
+                            <p class="text-beige-almond/80">5564682112</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-envelope text-beige-almond text-xl"></i>
+                        <div>
+                            <p class="font-semibold">Email</p>
+                            <p class="text-beige-almond/80">ventas@velasstarlight.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-whatsapp text-beige-almond text-xl"></i>
+                        <div>
+                            <p class="font-semibold">WhatsApp</p>
+                            <p class="text-beige-almond/80">Atención inmediata</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-beige-almond/20">
+                    <p class="text-sm text-beige-almond/70">
+                        <i class="fas fa-clock mr-2"></i>
+                        Horario de atención: Lunes a Viernes de 9:00 AM a 6:00 PM
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modificaciones y Vigencia -->
+        <section data-aos="fade-up" data-aos-delay="900">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border-t-4 border-sage-green">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-4 flex items-center">
+                    <i class="fas fa-edit text-sage-green mr-3"></i>
+                    Modificaciones y Vigencia
+                </h2>
+
+                <div class="space-y-4">
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Velas Starlight</strong> se reserva el derecho de modificar estos Términos y Condiciones 
+                        en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación 
+                        en el sitio web.
+                    </p>
+
+                    <div class="bg-leaf-green/10 rounded-lg p-4">
+                        <h4 class="font-semibold text-dark-green mb-2">Aceptación de Cambios</h4>
+                        <p class="text-gray-700 text-sm">
+                            El uso continuado del sitio web después de la publicación de cambios constituye tu aceptación 
+                            de los nuevos términos. Te recomendamos revisar periódicamente esta página.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-beige-almond/20 rounded-lg">
+                            <p class="text-sm text-gray-600">
+                                <i class="fas fa-calendar-check text-sage-green mr-2"></i>
+                                <strong>Fecha de vigencia:</strong> 9 de febrero de 2025
+                            </p>
+                        </div>
+                        <div class="p-4 bg-beige-almond/20 rounded-lg">
+                            <p class="text-sm text-gray-600">
+                                <i class="fas fa-gavel text-sage-green mr-2"></i>
+                                <strong>Jurisdicción:</strong> México
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+        });
+    </script>
+    <script src="../js/main.js"></script>
+
+    <!-- Script para cargar el footer -->
+    <script>
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+
+</body>
+
+</html>

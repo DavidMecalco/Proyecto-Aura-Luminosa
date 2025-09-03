@@ -79,32 +79,41 @@ class ProductGenerator {
             </div>
 
             <div class="p-6">
-                <h3 class="font-serif text-xl font-bold text-dark-green mb-2">
+                <h3 class="font-serif text-xl font-bold text-dark-green mb-4">
                     ${product.title}
                 </h3>
                 
-                <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                    ${product.description}
-                </p>
+
                 
                 <!-- Precio -->
-                <div class="mb-4">
+                <div class="mb-3">
                     <div class="price-badge text-white px-4 py-2 rounded-lg inline-block">
                         <span class="text-sm opacity-90">desde</span>
                         <div class="text-lg font-bold">$${minPrice} MXN</div>
                     </div>
                 </div>
                 
-                <!-- Info adicional -->
-                <div class="space-y-2 text-xs text-gray-500 mb-4">
-                    <div class="flex justify-between">
-                        <span><i class="fas fa-palette mr-1"></i>${product.fragrances.length} fragancias</span>
-                        <span><i class="fas fa-weight mr-1"></i>${product.sizes.map(s => s.label).join(', ')}</span>
+                <!-- Tamaños disponibles -->
+                <div class="mb-3">
+                    <div class="flex items-center text-sm text-gray-600">
+                        <i class="fas fa-weight mr-2 text-sage-green"></i>
+                        <span class="font-medium">${product.sizes.map(s => s.label).join(', ')}</span>
                     </div>
-                    <div><i class="fas fa-leaf mr-1 text-green-500"></i>${product.types.join(', ')}</div>
                 </div>
                 
-                <button class="ver-detalles w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition-colors">
+                <!-- Info adicional -->
+                <div class="product-info-section space-y-2 text-sm text-gray-600 mb-6">
+                    <div class="flex items-center">
+                        <i class="fas fa-palette mr-2 text-sage-green"></i>
+                        <span>${product.fragrances.length} fragancias disponibles</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-leaf mr-2 text-green-500"></i>
+                        <span>${product.types.join(', ')}</span>
+                    </div>
+                </div>
+                
+                <button class="ver-detalles w-full bg-gradient-to-r from-dark-green to-sage-green text-white py-3 px-4 rounded-xl hover:from-sage-green hover:to-dark-green transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-semibold">
                     <i class="fas fa-eye mr-2"></i>Ver Detalles
                 </button>
             </div>

@@ -105,6 +105,49 @@
             font-size: 12px;
             pointer-events: none;
         }
+
+        /* Forzar altura uniforme en las tarjetas de productos */
+        #product-grid {
+            display: grid;
+            grid-auto-rows: 1fr;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card .p-6 {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 1.5rem !important;
+            /* Más espaciado */
+        }
+
+        /* Ocultar descripción en las tarjetas */
+        .product-card .product-description {
+            display: none !important;
+        }
+
+        /* Mejorar espaciado entre elementos */
+        .product-card h3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .product-card .price-badge {
+            margin-bottom: 1rem !important;
+        }
+
+        .product-card .space-y-2 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* Espaciado más generoso en la información adicional */
+        .product-info-section {
+            padding: 0.75rem 0;
+        }
     </style>
 </head>
 
@@ -140,7 +183,7 @@
             </nav>
 
             <!-- Botón menú móvil -->
-            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
                 <i class="fa fa-bars"></i>
             </button>
         </div>
@@ -170,7 +213,7 @@
                 </a>
                 <div class="border-t border-gray-200 my-2"></div>
                 <a href="carrito.html"
-                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group bg-transparent">
                     <div class="flex items-center">
                         <i
                             class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
@@ -210,7 +253,7 @@
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                     <div>
-                        <div class="text-3xl font-bold text-dark-green mb-2">5</div>
+                        <div class="text-3xl font-bold text-dark-green mb-2">7</div>
                         <div class="text-gray-600">Productos</div>
                     </div>
                     <div>
@@ -275,7 +318,7 @@
                 <!-- Resultados -->
                 <div class="flex justify-between items-center">
                     <div class="text-gray-600">
-                        <span id="results-count">5</span> productos encontrados
+                        <span id="results-count">7</span> productos encontrados
                     </div>
                     <button id="reset-filters" class="text-sage-green hover:text-dark-green font-medium">
                         <i class="fas fa-undo mr-1"></i>Limpiar Filtros
@@ -287,211 +330,10 @@
         <!-- Grid de Productos -->
         <section class="py-12 bg-white">
             <div class="max-w-6xl mx-auto px-6">
-                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-                    <!-- Producto 1: Flor Escondida -->
-                    <div class="product-card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer"
-                        data-product='{"id":1,"title":"Flor Escondida","category":"Vela","description":"Una elegante vela con un diseño de flor de loto, perfecta para ambientar tu hogar con una sensación de paz y tranquilidad.","image":"../images/vela-starlight-rosas.jpeg","types":["Soya","Parafina"],"sizes":[{"label":"50 gr","price":75}],"fragrances":["Rosas Especiales","Lavanda","Vainilla","Canela","Fresa","Frutos Rojos","Blue Berry","Cereza","Manzana-Canela","Pitaya","Flores Hawaianas","Citricos","Coco","Menta","Sandalo"]}'>
-                        <div class="relative overflow-hidden">
-                            <img src="../images/vela-starlight-rosas.jpeg" alt="Flor Escondida"
-                                class="w-full h-64 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold">⭐
-                                    Destacado</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span
-                                    class="bg-sage-green text-white px-3 py-1 rounded-full text-xs font-semibold">Vela</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-serif text-xl font-bold text-dark-green mb-2">Flor Escondida</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Una elegante vela con un diseño de flor
-                                de loto, perfecta para ambientar tu hogar.</p>
-
-                            <!-- Precio -->
-                            <div class="mb-4">
-                                <div class="price-badge text-white px-4 py-2 rounded-lg inline-block">
-                                    <span class="text-sm opacity-90">desde</span>
-                                    <div class="text-lg font-bold">$75 MXN</div>
-                                </div>
-                            </div>
-
-                            <!-- Info adicional -->
-                            <div class="space-y-2 text-xs text-gray-500 mb-4">
-                                <div class="flex justify-between">
-                                    <span><i class="fas fa-palette mr-1"></i>15 fragancias</span>
-                                    <span><i class="fas fa-weight mr-1"></i>50 gr</span>
-                                </div>
-                                <div><i class="fas fa-leaf mr-1 text-green-500"></i>Soya, Parafina</div>
-                            </div>
-
-                            <button
-                                class="ver-detalles w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition-colors">
-                                <i class="fas fa-eye mr-2"></i>Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Producto 2: Ángel de la Calma -->
-                    <div class="product-card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer"
-                        data-product='{"id":2,"title":"Ángel de la Calma","category":"Vela","description":"Una delicada vela con la figura de un angelito en su base, que brinda un aroma puro y etéreo.","image":"../images/vela-starlight-angeles.jpeg","types":["Soya","Parafina"],"sizes":[{"label":"50 gr","price":75}],"fragrances":["Lavanda","Vainilla","Canela","Fresa","Frutos Rojos","Blue Berry","Cereza","Manzana-Canela","Pitaya","Rosas Especiales","Flores Hawaianas","Citricos","Coco","Menta","Sandalo"]}'>
-                        <div class="relative overflow-hidden">
-                            <img src="../images/vela-starlight-angeles.jpeg" alt="Ángel de la Calma"
-                                class="w-full h-64 object-cover">
-                            <div class="absolute top-3 right-3">
-                                <span
-                                    class="bg-sage-green text-white px-3 py-1 rounded-full text-xs font-semibold">Vela</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-serif text-xl font-bold text-dark-green mb-2">Ángel de la Calma</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Una delicada vela con la figura de un
-                                angelito en su base, que brinda un aroma puro y etéreo.</p>
-
-                            <div class="mb-4">
-                                <div class="price-badge text-white px-4 py-2 rounded-lg inline-block">
-                                    <span class="text-sm opacity-90">desde</span>
-                                    <div class="text-lg font-bold">$75 MXN</div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-2 text-xs text-gray-500 mb-4">
-                                <div class="flex justify-between">
-                                    <span><i class="fas fa-palette mr-1"></i>15 fragancias</span>
-                                    <span><i class="fas fa-weight mr-1"></i>50 gr</span>
-                                </div>
-                                <div><i class="fas fa-leaf mr-1 text-green-500"></i>Soya, Parafina</div>
-                            </div>
-
-                            <button
-                                class="ver-detalles w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition-colors">
-                                <i class="fas fa-eye mr-2"></i>Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Producto 3: Vela Pino Navideño -->
-                    <div class="product-card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer"
-                        data-product='{"id":3,"title":"Vela Pino Navideño","category":"Vela","description":"Una vela con forma de pino navideño, perfecta para crear un ambiente festivo y acogedor durante las fiestas.","image":"../images/vela-starlight-pino.jpeg","types":["Soya","Parafina"],"sizes":[{"label":"100 gr","price":120}],"fragrances":["Pino Fresco","Canela","Manzana-Canela","Menta","Sándalo"]}'>
-                        <div class="relative overflow-hidden">
-                            <img src="../images/vela-starlight-pino.jpeg" alt="Vela Pino Navideño"
-                                class="w-full h-64 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold">⭐
-                                    Destacado</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span
-                                    class="bg-sage-green text-white px-3 py-1 rounded-full text-xs font-semibold">Vela</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-serif text-xl font-bold text-dark-green mb-2">Vela Pino Navideño</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Una vela con forma de pino navideño,
-                                perfecta para crear un ambiente festivo y acogedor.</p>
-
-                            <div class="mb-4">
-                                <div class="price-badge text-white px-4 py-2 rounded-lg inline-block">
-                                    <span class="text-sm opacity-90">desde</span>
-                                    <div class="text-lg font-bold">$120 MXN</div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-2 text-xs text-gray-500 mb-4">
-                                <div class="flex justify-between">
-                                    <span><i class="fas fa-palette mr-1"></i>5 fragancias</span>
-                                    <span><i class="fas fa-weight mr-1"></i>100 gr</span>
-                                </div>
-                                <div><i class="fas fa-leaf mr-1 text-green-500"></i>Soya, Parafina</div>
-                            </div>
-
-                            <button
-                                class="ver-detalles w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition-colors">
-                                <i class="fas fa-eye mr-2"></i>Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Producto 4: Vela Muela -->
-                    <div class="product-card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer"
-                        data-product='{"id":4,"title":"Vela Muela","category":"Vela","description":"Una vela con un diseño único en forma de muela, perfecta para celebrar a dentistas y estudiantes de odontología.","image":"../images/vela-starlight-muela.jpeg","types":["Soya","Parafina"],"sizes":[{"label":"150 gr","price":150}],"fragrances":["Menta","Eucalipto","Vainilla","Lavanda","Frutos Rojos"]}'>
-                        <div class="relative overflow-hidden">
-                            <img src="../images/vela-starlight-muela.jpeg" alt="Vela Muela"
-                                class="w-full h-64 object-cover">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">🆕
-                                    Nuevo</span>
-                            </div>
-                            <div class="absolute top-3 right-3">
-                                <span
-                                    class="bg-sage-green text-white px-3 py-1 rounded-full text-xs font-semibold">Vela</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-serif text-xl font-bold text-dark-green mb-2">Vela Muela</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Una vela con un diseño único en forma de
-                                muela, perfecta para celebrar a dentistas.</p>
-
-                            <div class="mb-4">
-                                <div class="price-badge text-white px-4 py-2 rounded-lg inline-block">
-                                    <span class="text-sm opacity-90">desde</span>
-                                    <div class="text-lg font-bold">$150 MXN</div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-2 text-xs text-gray-500 mb-4">
-                                <div class="flex justify-between">
-                                    <span><i class="fas fa-palette mr-1"></i>5 fragancias</span>
-                                    <span><i class="fas fa-weight mr-1"></i>150 gr</span>
-                                </div>
-                                <div><i class="fas fa-leaf mr-1 text-green-500"></i>Soya, Parafina</div>
-                            </div>
-
-                            <button
-                                class="ver-detalles w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition-colors">
-                                <i class="fas fa-eye mr-2"></i>Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Producto 5: Vela Flor de Cempasúchil -->
-                    <div class="product-card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer"
-                        data-product='{"id":5,"title":"Vela Flor de Cempasúchil","category":"Vela","description":"Celebra el Día de Muertos con esta hermosa vela en forma de flor de Cempasúchil, símbolo de la tradición.","image":"../images/vela-flor-cempasuchil.jpeg","types":["Soya","Parafina"],"sizes":[{"label":"50 gr","price":80}],"fragrances":["Cempasúchil","Incienso","Copal"]}'>
-                        <div class="relative overflow-hidden">
-                            <img src="../images/vela-flor-cempasuchil.jpeg" alt="Vela Flor de Cempasúchil"
-                                class="w-full h-64 object-cover">
-                            <div class="absolute top-3 right-3">
-                                <span
-                                    class="bg-sage-green text-white px-3 py-1 rounded-full text-xs font-semibold">Vela</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-serif text-xl font-bold text-dark-green mb-2">Vela Flor de Cempasúchil</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Celebra el Día de Muertos con esta
-                                hermosa vela en forma de flor de Cempasúchil.</p>
-
-                            <div class="mb-4">
-                                <div class="price-badge text-white px-4 py-2 rounded-lg inline-block">
-                                    <span class="text-sm opacity-90">desde</span>
-                                    <div class="text-lg font-bold">$80 MXN</div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-2 text-xs text-gray-500 mb-4">
-                                <div class="flex justify-between">
-                                    <span><i class="fas fa-palette mr-1"></i>3 fragancias</span>
-                                    <span><i class="fas fa-weight mr-1"></i>50 gr</span>
-                                </div>
-                                <div><i class="fas fa-leaf mr-1 text-green-500"></i>Soya, Parafina</div>
-                            </div>
-
-                            <button
-                                class="ver-detalles w-full bg-dark-green text-white py-3 rounded-lg hover:bg-sage-green transition-colors">
-                                <i class="fas fa-eye mr-2"></i>Ver Detalles
-                            </button>
-                        </div>
-                    </div>
+                <!-- Contenedor de productos - se llena dinámicamente con JavaScript -->
+                <div id="product-grid"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+                    <!-- Los productos se generan automáticamente aquí -->
                 </div>
 
                 <!-- Mensaje de no resultados -->
@@ -607,11 +449,7 @@
                                     <i
                                         class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
                                 </a></li>
-                            <li><a href="politicas.html"
-                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
-                                    <i
-                                        class="fa fa-shield-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>Políticas
-                                </a></li>
+
                         </ul>
                     </div>
 
@@ -628,10 +466,6 @@
                             <div class="flex items-center space-x-3">
                                 <i class="fa fa-phone text-white"></i>
                                 <span>5564682112</span>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fa fa-map-marker-alt text-white"></i>
-                                <span>123 Artisan Street, Ciudad</span>
                             </div>
                         </div>
 
@@ -671,7 +505,7 @@
                         <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
                     </div>
                     <div class="flex items-center space-x-6 text-sm text-gray-300">
-                        <a href="politicas.html" class="hover:text-white transition-colors duration-300">Términos
+                        <a href="terminos.html" class="hover:text-white transition-colors duration-300">Términos
                             y Condiciones</a>
                         <span class="text-gray-500">|</span>
                         <a href="politicas.html" class="hover:text-white transition-colors duration-300">Política
@@ -692,7 +526,8 @@
         <div class="modal-backdrop fixed inset-0" id="modal-backdrop"></div>
 
         <div class="flex min-h-screen items-center justify-center p-4">
-            <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[95vh] overflow-y-auto">
+            <div
+                class="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl lg:max-w-3xl max-h-[90vh] overflow-y-auto">
 
                 <!-- Botón cerrar -->
                 <button id="close-modal"
@@ -704,12 +539,12 @@
 
                     <!-- Sección de imagen -->
                     <div
-                        class="lg:w-1/2 bg-gradient-to-br from-beige-almond to-warm-cream p-8 flex items-center justify-center">
+                        class="lg:w-1/2 bg-gradient-to-br from-beige-almond to-warm-cream p-6 flex items-center justify-center">
                         <div class="relative">
                             <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg cursor-zoom-in"
-                                id="image-container">
+                                id="image-container" style="pointer-events: auto;">
                                 <img id="modal-image" src="" alt="Producto"
-                                    class="w-full h-80 lg:h-96 object-cover transition-transform duration-300"
+                                    class="w-full h-64 lg:h-80 object-cover transition-transform duration-300"
                                     style="transform-origin: center center;">
 
                                 <div class="absolute top-4 left-4">
@@ -722,23 +557,15 @@
                                     <span id="zoom-level">100%</span>
                                 </div>
 
-                                <!-- Controles de zoom -->
-                                <div class="absolute bottom-4 right-4 flex space-x-2">
-                                    <button id="zoom-in"
-                                        class="zoom-control bg-dark-green/80 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-dark-green transition-colors"
-                                        title="Acercar (Rueda del mouse o doble clic)">
-                                        <i class="fas fa-search-plus"></i>
-                                    </button>
-                                    <button id="zoom-out"
-                                        class="zoom-control hidden bg-dark-green/80 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-dark-green transition-colors"
-                                        title="Alejar">
-                                        <i class="fas fa-search-minus"></i>
-                                    </button>
-                                    <button id="zoom-reset"
-                                        class="zoom-control hidden bg-dark-green/80 backdrop-blur-sm text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-dark-green transition-colors"
-                                        title="Restablecer zoom">
-                                        <i class="fas fa-compress"></i>
-                                    </button>
+                                <!-- Descripción de zoom -->
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <div
+                                        class="bg-dark-green/80 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-center">
+                                        <p class="text-xs opacity-90">
+                                            <i class="fas fa-search-plus mr-1"></i>
+                                            Doble clic para hacer zoom
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -758,7 +585,7 @@
                     </div>
 
                     <!-- Sección de información -->
-                    <div class="lg:w-1/2 p-8 overflow-y-auto max-h-[90vh]">
+                    <div class="lg:w-1/2 p-6 overflow-y-auto max-h-[85vh]">
 
                         <!-- Header del producto -->
                         <div class="mb-6">
@@ -829,17 +656,7 @@
                                 <i class="fas fa-cart-plus mr-3 text-xl"></i>Agregar al Carrito
                             </button>
 
-                            <!-- Información adicional -->
-                            <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600">
-                                <div class="flex items-center justify-between mb-2">
-                                    <span><i class="fas fa-truck mr-2"></i>Envío gratis</span>
-                                    <span class="text-green-600 font-semibold">En pedidos +$500</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span><i class="fas fa-shield-alt mr-2"></i>Garantía</span>
-                                    <span class="text-blue-600 font-semibold">30 días</span>
-                                </div>
-                            </div>
+
                         </div>
 
                     </div>
@@ -880,12 +697,46 @@
             // Menú móvil
             const menuToggle = document.getElementById('menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = menuToggle.querySelector('i');
 
-            if (menuToggle && mobileMenu) {
-                menuToggle.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
+            menuToggle.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    // Mostrar menú
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+                        mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                    }, 10);
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    // Ocultar menú
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', (e) => {
+                if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                        mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                }
+            });
 
             // Búsqueda
             if (searchInput) {
@@ -1019,6 +870,12 @@
             function openModal(product) {
                 currentProduct = product;
 
+                // Resetear zoom al abrir modal
+                currentZoom = 1;
+                translateX = 0;
+                translateY = 0;
+                isZoomOperation = false; // Asegurar que no esté bloqueado al abrir
+
                 // Llenar información básica
                 document.getElementById('modal-title').textContent = product.title;
                 document.getElementById('modal-description').textContent = product.description;
@@ -1088,13 +945,23 @@
                 modal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
 
-                // Verificar que el botón de agregar al carrito esté visible
-                const addToCartBtn = document.getElementById('add-to-cart-btn');
-                if (addToCartBtn) {
-                    console.log('✅ Botón agregar al carrito encontrado y visible');
-                } else {
-                    console.error('❌ Botón agregar al carrito NO encontrado');
-                }
+                // Inicializar controles de zoom
+                updateZoomControls();
+                updateImageTransform();
+
+                // Configurar controles de zoom (cada vez que se abre el modal)
+                setupZoomControls();
+
+                // Bloquear eventos en el área de imagen
+                blockImageAreaEvents();
+
+                // Interceptar TODOS los clics en el modal
+                interceptModalClicks();
+
+                // Configurar event listener del botón agregar al carrito
+                setupAddToCartListener();
+
+                console.log('✅ Botón agregar al carrito configurado correctamente');
 
                 console.log('✅ Modal abierto correctamente para:', product.title);
             }
@@ -1122,8 +989,39 @@
                 input.value = Math.max(1, quantity);
             });
 
+            // Event listener único para el botón agregar al carrito
+            function setupAddToCartListener() {
+                const addToCartBtn = document.getElementById('add-to-cart-btn');
+                if (addToCartBtn) {
+                    // Usar onclick directo para mayor control
+                    addToCartBtn.onclick = function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Verificar si hay operación de zoom en progreso
+                        if (isZoomOperation) {
+                            console.log('🚫 Clic en carrito bloqueado - zoom en progreso');
+                            return false;
+                        }
+
+                        console.log('🛒 Clic VÁLIDO en botón agregar al carrito');
+                        addToCart();
+                        return false;
+                    };
+                }
+            }
+
+            // Variable para bloquear temporalmente el carrito durante zoom
+            let isZoomOperation = false;
+
             // Función para agregar al carrito
             function addToCart() {
+                // Bloquear si se está haciendo zoom
+                if (isZoomOperation) {
+                    console.log('🚫 Operación de carrito bloqueada - zoom en progreso');
+                    return;
+                }
+
                 console.log('🛒 Función agregar al carrito ejecutada');
 
                 if (!currentProduct) {
@@ -1165,13 +1063,7 @@
                 }
             }
 
-            // Event listener para el botón agregar al carrito
-            document.getElementById('add-to-cart-btn').addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('🛒 Clic en botón agregar al carrito detectado');
-                addToCart();
-            });
+
 
             // Función para mostrar notificaciones
             function showNotification(message, type = 'info') {
@@ -1252,97 +1144,140 @@
 
             const modalImage = document.getElementById('modal-image');
             const imageContainer = document.getElementById('image-container');
-            const zoomInBtn = document.getElementById('zoom-in');
-            const zoomOutBtn = document.getElementById('zoom-out');
-            const zoomResetBtn = document.getElementById('zoom-reset');
 
-            // Zoom con botones - configuración única
-            if (zoomInBtn) {
-                zoomInBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.stopImmediatePropagation();
-                    console.log('🔍 Zoom In activado');
-                    zoomImage(0.3);
-                    return false;
-                });
+            // Función para interceptar TODOS los clics en el modal
+            function interceptModalClicks() {
+                const modal = document.getElementById('product-modal');
+                if (modal) {
+                    // Interceptar en la fase de captura (antes que cualquier otro listener)
+                    modal.addEventListener('click', function (e) {
+                        // Si el clic viene de un control de zoom, bloquear inmediatamente
+                        if (e.target.closest('#zoom-in-new') ||
+                            e.target.closest('#zoom-out-new') ||
+                            e.target.closest('#zoom-reset-new') ||
+                            e.target.closest('.zoom-control') ||
+                            e.target.closest('#zoom-controls-container')) {
+
+                            console.log('🚫 INTERCEPTADO: Clic en control de zoom - BLOQUEANDO TODO');
+                            isZoomOperation = true;
+
+                            // Bloquear completamente la propagación
+                            e.preventDefault();
+                            e.stopPropagation();
+                            e.stopImmediatePropagation();
+
+                            // Desbloquear después de 1 segundo
+                            setTimeout(() => {
+                                isZoomOperation = false;
+                                console.log('🔓 Desbloqueando después de interceptación');
+                            }, 1000);
+
+                            return false;
+                        }
+                    }, true); // Usar capture phase para interceptar ANTES que otros listeners
+                }
             }
 
-            if (zoomOutBtn) {
-                zoomOutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.stopImmediatePropagation();
-                    console.log('🔍 Zoom Out activado');
-                    zoomImage(-0.3);
-                    return false;
-                });
+            // Función para bloquear eventos en el área de imagen
+            function blockImageAreaEvents() {
+                const imageContainer = document.getElementById('image-container');
+                if (imageContainer) {
+                    // Bloquear todos los eventos que puedan interferir
+                    ['click', 'mousedown', 'mouseup', 'touchstart', 'touchend'].forEach(eventType => {
+                        imageContainer.addEventListener(eventType, function (e) {
+                            // Solo permitir eventos en controles de zoom
+                            if (e.target.closest('.zoom-control') || e.target.closest('#zoom-controls-container')) {
+                                return; // Permitir eventos de zoom
+                            }
+
+                            // Bloquear otros eventos que puedan activar el carrito
+                            if (!e.target.closest('#modal-image')) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                e.stopImmediatePropagation();
+                                console.log('🚫 Evento bloqueado en área de imagen:', eventType);
+                                return false;
+                            }
+                        }, true);
+                    });
+                }
             }
 
-            if (zoomResetBtn) {
-                zoomResetBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.stopImmediatePropagation();
-                    console.log('🔍 Zoom Reset activado');
-                    resetZoom();
-                    return false;
-                });
+            // Zoom con botones - REEMPLAZO COMPLETO para evitar conflictos
+            function setupZoomControls() {
+                console.log('🔧 Configurando zoom con doble clic...');
+
+                const modalImage = document.getElementById('modal-image');
+                if (modalImage) {
+                    // Configurar doble clic para zoom
+                    modalImage.addEventListener('dblclick', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        isZoomOperation = true;
+                        console.log('🔍 Doble clic detectado - haciendo zoom');
+
+                        if (currentZoom === 1) {
+                            zoomImage(1); // Zoom in
+                        } else {
+                            resetZoom(); // Reset zoom
+                        }
+                    });
+
+                    // Configurar doble tap para móvil
+                    let lastTap = 0;
+                    modalImage.addEventListener('touchend', function (e) {
+                        const currentTime = new Date().getTime();
+                        const tapLength = currentTime - lastTap;
+                        if (tapLength < 500 && tapLength > 0) {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            isZoomOperation = true;
+                            console.log('🔍 Doble tap detectado - haciendo zoom');
+
+                            if (currentZoom === 1) {
+                                zoomImage(1); // Zoom in
+                            } else {
+                                resetZoom(); // Reset zoom
+                            }
+                        }
+                        lastTap = currentTime;
+                    });
+
+                    console.log('✅ Zoom con doble clic/tap configurado');
+                }
             }
 
             // Zoom con rueda del mouse
-            imageContainer.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                const zoomDelta = e.deltaY > 0 ? -0.1 : 0.1;
-                zoomImage(zoomDelta);
-            });
+            if (imageContainer) {
+                imageContainer.addEventListener('wheel', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const zoomDelta = e.deltaY > 0 ? -0.1 : 0.1;
+                    zoomImage(zoomDelta);
+                });
+            }
 
             // Zoom con doble clic
-            modalImage.addEventListener('dblclick', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (currentZoom === 1) {
-                    zoomImage(1); // Zoom al 200%
-                } else {
-                    resetZoom();
-                }
-            });
+            if (modalImage) {
+                modalImage.addEventListener('dblclick', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (currentZoom === 1) {
+                        zoomImage(1); // Zoom al 200%
+                    } else {
+                        resetZoom();
+                    }
+                });
+            }
 
             // Funcionalidad de arrastrar cuando está en zoom
             modalImage.addEventListener('mousedown', startDrag);
             document.addEventListener('mousemove', drag);
             document.addEventListener('mouseup', endDrag);
 
-            // Event listener global para el modal - manejo centralizado de clics
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    const target = e.target;
-                    const targetId = target.id;
-                    const targetClass = target.className;
 
-                    console.log('🎯 Clic detectado en modal:', targetId, targetClass);
-
-                    // Manejar clics en controles de zoom
-                    if (target.closest('.zoom-control') || targetId.includes('zoom')) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        e.stopImmediatePropagation();
-                        console.log('🔍 Clic en control de zoom - bloqueando propagación');
-                        return false;
-                    }
-
-                    // Manejar clic en botón agregar al carrito
-                    if (targetId === 'add-to-cart-btn' || target.closest('#add-to-cart-btn')) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('🛒 Clic en botón carrito - ejecutando función');
-                        addToCart();
-                        return false;
-                    }
-
-                    // Permitir otros clics normales (tipo de cera, tamaño, etc.)
-                }, true); // Usar capture phase
-            }
 
             // Touch events para móvil
             modalImage.addEventListener('touchstart', startDragTouch);
@@ -1350,7 +1285,12 @@
             modalImage.addEventListener('touchend', endDrag);
 
             function zoomImage(delta) {
+                // Activar bloqueo de carrito durante zoom
+                isZoomOperation = true;
+                console.log('🔍 INICIANDO OPERACIÓN DE ZOOM - BLOQUEANDO CARRITO');
+
                 const newZoom = Math.max(1, Math.min(3, currentZoom + delta));
+                console.log('🔍 Zoom actual:', currentZoom, 'Nuevo zoom:', newZoom);
 
                 if (newZoom !== currentZoom) {
                     currentZoom = newZoom;
@@ -1366,11 +1306,24 @@
                         modalImage.style.cursor = 'zoom-in';
                         imageContainer.classList.remove('cursor-grab');
                         imageContainer.classList.add('cursor-zoom-in');
+                        // Resetear posición cuando volvemos al zoom normal
+                        translateX = 0;
+                        translateY = 0;
                     }
                 }
+
+                // Desactivar bloqueo después de un breve delay
+                setTimeout(() => {
+                    isZoomOperation = false;
+                    console.log('🔍 OPERACIÓN DE ZOOM COMPLETADA - DESBLOQUEANDO CARRITO');
+                }, 500);
             }
 
             function resetZoom() {
+                // Activar bloqueo de carrito durante reset
+                isZoomOperation = true;
+                console.log('🔍 INICIANDO RESET DE ZOOM - BLOQUEANDO CARRITO');
+
                 currentZoom = 1;
                 translateX = 0;
                 translateY = 0;
@@ -1379,6 +1332,12 @@
                 modalImage.style.cursor = 'zoom-in';
                 imageContainer.classList.remove('cursor-grab');
                 imageContainer.classList.add('cursor-zoom-in');
+
+                // Desactivar bloqueo después de un breve delay
+                setTimeout(() => {
+                    isZoomOperation = false;
+                    console.log('🔍 RESET DE ZOOM COMPLETADO - DESBLOQUEANDO CARRITO');
+                }, 500);
             }
 
             function updateImageTransform() {
@@ -1389,27 +1348,36 @@
                 const zoomIndicator = document.getElementById('zoom-indicator');
                 const zoomLevel = document.getElementById('zoom-level');
 
+                // Usar los nuevos IDs de los botones reemplazados
+                const newZoomInBtn = document.getElementById('zoom-in-new');
+                const newZoomOutBtn = document.getElementById('zoom-out-new');
+                const newZoomResetBtn = document.getElementById('zoom-reset-new');
+
                 // Actualizar indicador de zoom
-                zoomLevel.textContent = Math.round(currentZoom * 100) + '%';
+                if (zoomLevel) {
+                    zoomLevel.textContent = Math.round(currentZoom * 100) + '%';
+                }
 
                 // Mostrar/ocultar botones según el zoom
                 if (currentZoom > 1) {
-                    zoomOutBtn.classList.remove('hidden');
-                    zoomResetBtn.classList.remove('hidden');
-                    zoomIndicator.classList.remove('hidden');
+                    if (newZoomOutBtn) newZoomOutBtn.classList.remove('hidden');
+                    if (newZoomResetBtn) newZoomResetBtn.classList.remove('hidden');
+                    if (zoomIndicator) zoomIndicator.classList.remove('hidden');
                 } else {
-                    zoomOutBtn.classList.add('hidden');
-                    zoomResetBtn.classList.add('hidden');
-                    zoomIndicator.classList.add('hidden');
+                    if (newZoomOutBtn) newZoomOutBtn.classList.add('hidden');
+                    if (newZoomResetBtn) newZoomResetBtn.classList.add('hidden');
+                    if (zoomIndicator) zoomIndicator.classList.add('hidden');
                 }
 
                 // Deshabilitar zoom in si está al máximo
-                if (currentZoom >= 3) {
-                    zoomInBtn.style.opacity = '0.5';
-                    zoomInBtn.style.pointerEvents = 'none';
-                } else {
-                    zoomInBtn.style.opacity = '1';
-                    zoomInBtn.style.pointerEvents = 'auto';
+                if (newZoomInBtn) {
+                    if (currentZoom >= 3) {
+                        newZoomInBtn.style.opacity = '0.5';
+                        newZoomInBtn.style.pointerEvents = 'none';
+                    } else {
+                        newZoomInBtn.style.opacity = '1';
+                        newZoomInBtn.style.pointerEvents = 'auto';
+                    }
                 }
             }
 

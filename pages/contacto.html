@@ -93,7 +93,7 @@
       </nav>
 
       <!-- Botón menú móvil -->
-      <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+      <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
         <i class="fa fa-bars"></i>
       </button>
     </div>
@@ -114,7 +114,7 @@
           <span class="font-medium">Contacto</span>
         </a>
         <div class="border-t border-gray-200 my-2"></div>
-        <a href="carrito.html" class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+        <a href="carrito.html" class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group bg-transparent">
           <div class="flex items-center">
             <i class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
             <span class="font-medium">Carrito</span>
@@ -128,10 +128,45 @@
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = menuToggle.querySelector('i');
 
     menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('opacity-100');
+      const isHidden = mobileMenu.classList.contains('hidden');
+
+      if (isHidden) {
+        // Mostrar menú
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+          mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+          mobileMenu.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+      } else {
+        // Ocultar menú
+        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+        mobileMenu.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+      }
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+          mobileMenu.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+          menuIcon.classList.remove('fa-times');
+          menuIcon.classList.add('fa-bars');
+        }
+      }
     });
   </script>
 
@@ -597,9 +632,7 @@
               <li><a href="contacto.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
                 <i class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
               </a></li>
-              <li><a href="politicas.html" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
-                <i class="fa fa-shield-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>Políticas
-              </a></li>
+
             </ul>
           </div>
 
@@ -616,10 +649,6 @@
               <div class="flex items-center space-x-3">
                 <i class="fa fa-phone text-white"></i>
                 <span>5564682112</span>
-              </div>
-              <div class="flex items-center space-x-3">
-                <i class="fa fa-map-marker-alt text-white"></i>
-                <span>123 Artisan Street, Ciudad</span>
               </div>
             </div>
 
@@ -659,7 +688,7 @@
             <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
           </div>
           <div class="flex items-center space-x-6 text-sm text-gray-300">
-            <a href="politicas.html" class="hover:text-white transition-colors duration-300">Términos y Condiciones</a>
+            <a href="terminos.html" class="hover:text-white transition-colors duration-300">Términos y Condiciones</a>
             <span class="text-gray-500">|</span>
             <a href="politicas.html" class="hover:text-white transition-colors duration-300">Política de Privacidad</a>
             <span class="text-gray-500">|</span>

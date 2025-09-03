@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velas Starlight | Elegancia y Belleza</title>
+    <title>Política de Privacidad | Velas Starlight</title>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -93,45 +93,96 @@
             </nav>
 
             <!-- Botón menú móvil -->
-            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none">
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
                 <i class="fa fa-bars"></i>
             </button>
         </div>
 
         <!-- Menú móvil mejorado -->
         <div id="mobile-menu"
-            class="hidden flex-col bg-white shadow-lg absolute top-16 left-0 w-full px-6 py-6 space-y-6 transform transition-all duration-300 ease-in-out">
+            class="hidden md:hidden bg-white shadow-xl border-t border-gray-100 absolute top-full left-0 w-full transform transition-all duration-300 ease-in-out opacity-0 translate-y-2">
 
-            <a href="../index.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-home mr-2 text-sage-green"></i> Inicio
-            </a>
+            <div class="px-6 py-4 space-y-1">
+                <a href="../index.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-home mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Inicio</span>
+                </a>
 
-            <a href="/pages/productos.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-cube mr-2 text-sage-green"></i> Productos
-            </a>
+                <a href="productos.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-cube mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Productos</span>
+                </a>
+                <a href="contacto.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-phone mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Contacto</span>
+                </a>
 
-            <a href="/pages/contacto.html" class="hover:text-sage-green flex items-center text-lg">
-                <i class="fa fa-phone mr-2 text-sage-green"></i> Contacto
-            </a>
+                <!-- Separador -->
+                <div class="border-t border-gray-200 my-2"></div>
 
-            <!-- Carrito móvil -->
-            <a href="carrito.html" class="relative flex items-center text-lg hover:text-sage-green">
-                <i class="fa fa-shopping-cart text-xl mr-2 text-sage-green"></i> Carrito
-                <span id="cart-count-mobile"
-                    class="absolute -top-2 left-20 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                    0
-                </span>
-            </a>
+                <!-- Carrito móvil -->
+                <a href="carrito.html"
+                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group bg-transparent">
+                    <div class="flex items-center">
+                        <i
+                            class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="font-medium">Carrito</span>
+                    </div>
+                    <span id="cart-count-mobile"
+                        class="bg-sage-green text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">0</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuToggle.querySelector('i');
 
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('opacity-100');
+            const isHidden = mobileMenu.classList.contains('hidden');
+
+            if (isHidden) {
+                // Mostrar menú
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                }, 10);
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                // Ocultar menú
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            }
         });
     </script>
 
@@ -142,80 +193,311 @@
         }
     </style>
 
-    <main class="page-content max-w-4xl mx-auto sm:p-8 bg-white rounded-lg shadow-lg">
-        <section data-aos="fade-up" class="text-center mb-8">
-            <h1 class="text-4xl font-serif font-bold text-dark-green mb-4">Políticas de la Tienda</h1>
-            <p class="text-lg text-gray-600 mb-8">Información importante sobre envíos, devoluciones y términos de
-                servicio.</p>
+    <!-- Hero Section -->
+    <section class="page-content bg-gradient-to-br from-sage-green to-dark-green text-white py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
+            <div class="mb-6">
+                <i class="fas fa-shield-alt text-6xl text-beige-almond opacity-80"></i>
+            </div>
+            <h1 class="text-5xl font-serif font-bold mb-6">Política de Privacidad</h1>
+            <p class="text-xl text-beige-almond/90 max-w-2xl mx-auto leading-relaxed">
+                En Velas Starlight, tu privacidad es nuestra prioridad. Conoce cómo protegemos y utilizamos tu
+                información personal.
+            </p>
+            <div class="mt-8 text-sm text-beige-almond/70">
+                <p><i class="fas fa-calendar-alt mr-2"></i>Última actualización: 9 de febrero de 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-16">
+
+        <!-- Introducción -->
+        <section class="mb-12" data-aos="fade-up">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4 border-sage-green">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-4 flex items-center">
+                    <i class="fas fa-info-circle text-sage-green mr-3"></i>
+                    Introducción
+                </h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Esta Política de Privacidad describe cómo <strong>Velas Starlight</strong> recopila, utiliza y
+                    protege
+                    la información personal que nos proporcionas cuando visitas nuestro sitio web o realizas una compra.
+                    Al utilizar nuestros servicios, aceptas las prácticas descritas en esta política.
+                </p>
+            </div>
         </section>
 
-        <section class="space-y-8" data-aos="fade-up" data-aos-delay="100">
-            <div>
-                <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">1. Política de Envíos y Entregas</h2>
-                <p class="text-gray-700">Realizamos envíos a toda la República Mexicana. El tiempo de procesamiento de
-                    tu pedido es de 1 a 2 días hábiles. El tiempo de entrega puede variar de 3 a 7 días hábiles,
-                    dependiendo de tu ubicación. Los costos de envío se calcularán al finalizar la compra.</p>
-            </div>
-
-            <div>
-                <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">2. Política de Cambios y Devoluciones
+        <!-- Información que Recopilamos -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-database text-sage-green mr-3"></i>
+                    Información que Recopilamos
                 </h2>
-                <p class="text-gray-700">Aceptamos cambios y devoluciones dentro de los 15 días posteriores a la
-                    recepción de tu pedido. El producto debe estar en perfectas condiciones y en su empaque original.
-                    Los gastos de envío por devolución corren por cuenta del cliente, a menos que el producto haya
-                    llegado dañado o incorrecto.</p>
-            </div>
 
-            <div>
-                <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">3. Aviso de Privacidad</h2>
-                <p class="text-gray-700">En Velas Starlight, valoramos tu privacidad. Recopilamos tu nombre, dirección,
-                    correo electrónico y teléfono con el único fin de procesar y entregar tu pedido, así como para
-                    enviarte información relevante de tu compra. No compartimos tu información personal con terceros.
-                    Tus datos están seguros con nosotros.</p>
-            </div>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-leaf-green pl-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-2">Información Personal</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Nombre
+                                completo</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Dirección
+                                de correo electrónico</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Número de
+                                teléfono</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Dirección
+                                de envío y facturación</li>
+                        </ul>
+                    </div>
 
-            <div>
-                <h2 class="text-2xl font-serif font-bold text-sage-green mb-2">4. Términos y Condiciones</h2>
-                <p class="text-gray-700">Al utilizar nuestro sitio web, aceptas nuestros términos y condiciones. Todo el
-                    contenido, incluyendo textos, imágenes y diseños, es propiedad de Velas Starlight y está protegido
-                    por derechos de autor. Nos reservamos el derecho de modificar los precios y la disponibilidad de los
-                    productos sin previo aviso.</p>
+                    <div class="border-l-4 border-leaf-green pl-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-2">Información de Navegación</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Dirección
+                                IP</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Tipo de
+                                navegador y dispositivo</li>
+                            <li class="flex items-start"><i class="fas fa-check text-sage-green mr-2 mt-1"></i>Páginas
+                                visitadas y tiempo de navegación</li>
+                            <li class="flex items-start"><i
+                                    class="fas fa-check text-sage-green mr-2 mt-1"></i>Preferencias de productos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cómo Utilizamos tu Información -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-cogs text-sage-green mr-3"></i>
+                    Cómo Utilizamos tu Información
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-beige-almond/30 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-3 flex items-center">
+                            <i class="fas fa-shopping-cart text-leaf-green mr-2"></i>
+                            Procesamiento de Pedidos
+                        </h3>
+                        <p class="text-gray-700 text-sm">
+                            Utilizamos tu información para procesar y entregar tus pedidos,
+                            gestionar pagos y proporcionarte actualizaciones sobre el estado de tu compra.
+                        </p>
+                    </div>
+
+                    <div class="bg-beige-almond/30 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-3 flex items-center">
+                            <i class="fas fa-headset text-leaf-green mr-2"></i>
+                            Atención al Cliente
+                        </h3>
+                        <p class="text-gray-700 text-sm">
+                            Respondemos a tus consultas, brindamos soporte técnico y
+                            resolvemos cualquier problema relacionado con tu experiencia de compra.
+                        </p>
+                    </div>
+
+                    <div class="bg-beige-almond/30 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-3 flex items-center">
+                            <i class="fas fa-envelope text-leaf-green mr-2"></i>
+                            Comunicaciones
+                        </h3>
+                        <p class="text-gray-700 text-sm">
+                            Enviamos confirmaciones de pedidos, actualizaciones de envío y,
+                            con tu consentimiento, ofertas especiales y novedades.
+                        </p>
+                    </div>
+
+                    <div class="bg-beige-almond/30 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-sage-green mb-3 flex items-center">
+                            <i class="fas fa-chart-line text-leaf-green mr-2"></i>
+                            Mejora del Servicio
+                        </h3>
+                        <p class="text-gray-700 text-sm">
+                            Analizamos patrones de uso para mejorar nuestro sitio web,
+                            productos y servicios, siempre de forma anónima y agregada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protección de Datos -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-lock text-sage-green mr-3"></i>
+                    Protección de tus Datos
+                </h2>
+
+                <div class="bg-gradient-to-r from-sage-green/10 to-leaf-green/10 rounded-lg p-6 mb-6">
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Tu seguridad es nuestra prioridad.</strong> Implementamos medidas de seguridad técnicas,
+                        administrativas y físicas para proteger tu información personal contra acceso no autorizado,
+                        alteración, divulgación o destrucción.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="text-center p-4">
+                        <i class="fas fa-shield-alt text-3xl text-sage-green mb-3"></i>
+                        <h4 class="font-semibold text-dark-green mb-2">Encriptación SSL</h4>
+                        <p class="text-sm text-gray-600">Todas las transmisiones están protegidas</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <i class="fas fa-server text-3xl text-sage-green mb-3"></i>
+                        <h4 class="font-semibold text-dark-green mb-2">Servidores Seguros</h4>
+                        <p class="text-sm text-gray-600">Almacenamiento en infraestructura protegida</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <i class="fas fa-user-shield text-3xl text-sage-green mb-3"></i>
+                        <h4 class="font-semibold text-dark-green mb-2">Acceso Limitado</h4>
+                        <p class="text-sm text-gray-600">Solo personal autorizado accede a tus datos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tus Derechos -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-balance-scale text-sage-green mr-3"></i>
+                    Tus Derechos
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-4 p-4 bg-beige-almond/20 rounded-lg">
+                        <i class="fas fa-eye text-sage-green mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-dark-green">Derecho de Acceso</h4>
+                            <p class="text-gray-700 text-sm">Puedes solicitar información sobre los datos personales que
+                                tenemos sobre ti.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 bg-beige-almond/20 rounded-lg">
+                        <i class="fas fa-edit text-sage-green mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-dark-green">Derecho de Rectificación</h4>
+                            <p class="text-gray-700 text-sm">Puedes solicitar la corrección de datos inexactos o
+                                incompletos.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 bg-beige-almond/20 rounded-lg">
+                        <i class="fas fa-trash text-sage-green mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-dark-green">Derecho de Cancelación</h4>
+                            <p class="text-gray-700 text-sm">Puedes solicitar la eliminación de tus datos cuando ya no
+                                sean necesarios.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 bg-beige-almond/20 rounded-lg">
+                        <i class="fas fa-ban text-sage-green mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-dark-green">Derecho de Oposición</h4>
+                            <p class="text-gray-700 text-sm">Puedes oponerte al tratamiento de tus datos para fines
+                                específicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cookies -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="500">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-6 flex items-center">
+                    <i class="fas fa-cookie-bite text-sage-green mr-3"></i>
+                    Uso de Cookies
+                </h2>
+
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    Utilizamos cookies y tecnologías similares para mejorar tu experiencia de navegación,
+                    recordar tus preferencias y analizar el tráfico del sitio web.
+                </p>
+
+                <div class="bg-warm-cream/50 rounded-lg p-6">
+                    <h4 class="font-semibold text-dark-green mb-3">Tipos de cookies que utilizamos:</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start"><i
+                                class="fas fa-circle text-sage-green mr-2 mt-2 text-xs"></i><strong>Esenciales:</strong>
+                            Necesarias para el funcionamiento del sitio</li>
+                        <li class="flex items-start"><i
+                                class="fas fa-circle text-sage-green mr-2 mt-2 text-xs"></i><strong>Funcionales:</strong>
+                            Recuerdan tus preferencias y configuraciones</li>
+                        <li class="flex items-start"><i
+                                class="fas fa-circle text-sage-green mr-2 mt-2 text-xs"></i><strong>Analíticas:</strong>
+                            Nos ayudan a entender cómo usas el sitio</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="600">
+            <div class="bg-gradient-to-r from-sage-green to-dark-green text-white rounded-2xl p-8">
+                <h2 class="text-2xl font-serif font-bold mb-6 flex items-center">
+                    <i class="fas fa-envelope text-beige-almond mr-3"></i>
+                    ¿Tienes Preguntas?
+                </h2>
+
+                <p class="text-beige-almond/90 mb-6 leading-relaxed">
+                    Si tienes alguna pregunta sobre esta Política de Privacidad o deseas ejercer alguno de tus derechos,
+                    no dudes en contactarnos.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-phone text-beige-almond"></i>
+                        <span class="text-beige-almond">5564682112</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-envelope text-beige-almond"></i>
+                        <span class="text-beige-almond">privacidad@velasstarlight.com</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-beige-almond/20">
+                    <p class="text-sm text-beige-almond/70">
+                        Nos comprometemos a responder a tu solicitud en un plazo máximo de 20 días hábiles.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actualizaciones -->
+        <section data-aos="fade-up" data-aos-delay="700">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border-t-4 border-sage-green">
+                <h2 class="text-2xl font-serif font-bold text-dark-green mb-4 flex items-center">
+                    <i class="fas fa-sync-alt text-sage-green mr-3"></i>
+                    Actualizaciones de la Política
+                </h2>
+
+                <p class="text-gray-700 leading-relaxed">
+                    Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento.
+                    Las modificaciones entrarán en vigor inmediatamente después de su publicación en el sitio web.
+                    Te recomendamos revisar periódicamente esta página para mantenerte informado sobre cómo protegemos
+                    tu información.
+                </p>
+
+                <div class="mt-6 p-4 bg-leaf-green/10 rounded-lg">
+                    <p class="text-sm text-gray-600">
+                        <i class="fas fa-info-circle text-sage-green mr-2"></i>
+                        <strong>Última actualización:</strong> 9 de febrero de 2025
+                    </p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-dark-green text-white py-6">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Links -->
-            <div class="flex flex-col space-y-2">
-                <a href="politicas.html" class="hover:text-gray-sand transition">Políticas</a>
-            </div>
-
-            <!-- Redes sociales -->
-            <div class="flex space-x-6 md:justify-end">
-                <a href="https://wa.me/521234567890" target="_blank" aria-label="WhatsApp"
-                    class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.instagram.com/velas_starlight/" target="_blank" aria-label="Instagram"
-                    class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" target="_blank" aria-label="Facebook" class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" target="_blank" aria-label="Tiktok" class="hover:text-gray-sand transition text-xl">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Derechos reservados -->
-        <div class="text-center text-sm mt-6">
-            <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
+    <!-- Footer -->
+    <div id="footer-container"></div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -225,6 +507,16 @@
         });
     </script>
     <script src="../js/main.js"></script>
+
+    <!-- Script para cargar el footer -->
+    <script>
+        fetch('../components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
 
 </body>
 

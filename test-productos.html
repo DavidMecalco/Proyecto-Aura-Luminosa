@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Productos Sin Descripción</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige-almond': '#F6F1E9',
+                        'dark-green': '#2D3E33',
+                        'warm-cream': '#EDE6DA',
+                        'sage-green': '#3A5A40',
+                        'leaf-green': '#A3B18A',
+                        'gray-sand': '#D6CEC3',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .price-badge {
+            background: linear-gradient(135deg, #3A5A40 0%, #2D3E33 100%);
+        }
+        .product-card .p-6 {
+            padding: 1.5rem !important;
+        }
+        .product-card .product-description {
+            display: none !important;
+        }
+        .product-card h3 {
+            margin-bottom: 1rem !important;
+        }
+        .product-card .price-badge {
+            margin-bottom: 1rem !important;
+        }
+        .product-card .space-y-2 {
+            margin-bottom: 1.5rem !important;
+        }
+        .product-info-section {
+            padding: 0.75rem 0;
+        }
+    </style>
+</head>
+<body class="bg-beige-almond">
+    <div class="container mx-auto px-6 py-8">
+        <h1 class="text-3xl font-bold text-dark-green mb-8 text-center">Test - Productos Reorganizados</h1>
+        <p class="text-center text-gray-600 mb-8">Estructura: Título → Precio → Tamaños → Fragancias → Tipos de cera → Botón</p>
+        
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Los productos se generan aquí -->
+        </div>
+    </div>
+
+    <script src="js/productos-data.js"></script>
+    <script src="js/productos-generator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.ProductGenerator && window.productosData) {
+                const productGenerator = new ProductGenerator();
+                productGenerator.init('product-grid', window.productosData);
+                console.log('✅ Productos generados correctamente');
+                console.log('📊 Total de productos:', window.productosData.length);
+            } else {
+                console.error('❌ Error: ProductGenerator o productosData no disponibles');
+            }
+        });
+    </script>
+</body>
+</html>
