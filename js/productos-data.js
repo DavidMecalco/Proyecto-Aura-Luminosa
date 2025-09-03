@@ -9,15 +9,13 @@
 const productosData = [
     {
         id: 1,
-        title: "Flor Escondida",
+        title: "Flor en Cemento",
         category: "Vela",
-        description: "Una elegante vela con un diseño de flor de loto, perfecta para ambientar tu hogar con una sensación de paz y tranquilidad. Ideal para un momento de relajación o meditación.",
+        description: "El aroma del jardín y la calma de la tierra se encuentran en nuestra Vela Flor en Cemento. Cada pieza es una escultura de paz, con una delicada flor que emerge de su sólido recipiente de yeso. Más que una vela, es un momento de pausa, un pequeño refugio para el alma. Ideal para aquellos que aprecian la belleza en la quietud.",
         image: "../images/vela-starlight-rosas.jpeg",
         types: ["Soya", "Parafina"],
         sizes: [
-            { label: "50 gr", price: 75 },
-            { label: "100 gr", price: 120 },
-            { label: "150 gr", price: 180 }
+            { label: "45 gr", price: 60 },
         ],
         fragrances: [
             "Rosas Especiales", "Lavanda", "Vainilla", "Canela",
@@ -25,20 +23,19 @@ const productosData = [
             "Manzana-Canela", "Pitaya", "Flores Hawaianas",
             "Citricos", "Coco", "Menta", "Sandalo"
         ],
-        featured: true,
+        featured: false,
         new: false,
         available: true
     },
     {
         id: 2,
-        title: "Ángel de la Calma",
+        title: "Suspiro de Ángel",
         category: "Vela",
-        description: "Una delicada vela con la figura de un angelito en su base, que brinda un aroma puro y etéreo. Perfecta para crear un ambiente celestial y sereno en cualquier espacio de tu hogar.",
+        description: "Deja que un Suspiro de Ángel ilumine tus momentos. Esta exquisita vela artesanal, con su delicada forma de querubín acunado entre suaves alas, es una invitación a la calma y la serenidad. Más que una luz, es una presencia que infunde paz, consuelo y pureza en cualquier rincón. Perfecta para honrar un recuerdo, celebrar un nuevo comienzo o simplemente rodearte de una atmósfera celestial. ",
         image: "../images/vela-starlight-angeles.jpeg",
         types: ["Soya", "Parafina"],
         sizes: [
-            { label: "50 gr", price: 75 },
-            { label: "80 gr", price: 95 }
+            { label: "120 gr", price: 65 }
         ],
         fragrances: [
             "Lavanda", "Vainilla", "Canela", "Fresa", "Frutos Rojos",
@@ -52,15 +49,13 @@ const productosData = [
     },
     {
         id: 3,
-        title: "Vela Pino Navideño",
+        title: "Bosque Encantado",
         category: "Vela",
-        description: "Una vela con forma de pino navideño, perfecta para crear un ambiente festivo y acogedor durante las fiestas. Su aroma a pino te transportará a un bosque nevado.",
+        description: "Trae la magia de las fiestas a tu hogar con nuestra Vela Bosque Encantado. Esta encantadora vela artesanal captura la esencia de la Navidad en un diseño exquisito: un pequeño árbol festivo que se alza majestuosamente dentro de un elegante vaso de cristal. Perfecta para evocar la alegría de la temporada, su sutil brillo y aroma (personalizable con fragancias navideñas) transformarán cualquier espacio en un refugio festivo.",
         image: "../images/vela-starlight-pino.jpeg",
         types: ["Soya", "Parafina"],
         sizes: [
-            { label: "100 gr", price: 120 },
-            { label: "150 gr", price: 180 },
-            { label: "200 gr", price: 220 }
+            { label: "140 gr", price: 120 }
         ],
         fragrances: ["Pino Fresco", "Canela", "Manzana-Canela", "Menta", "Sándalo"],
         featured: true,
@@ -69,14 +64,13 @@ const productosData = [
     },
     {
         id: 4,
-        title: "Vela Muela",
+        title: "Sonrisa Eterna",
         category: "Vela",
-        description: "Una vela con un diseño único en forma de muela, perfecta para celebrar a dentistas, estudiantes de odontología o a cualquier persona del sector. Ideal como regalo original para decorar un consultorio o simplemente para añadir un toque divertido a cualquier espacio.",
+        description: "Ilumina tu espacio con un toque de originalidad y buen humor con nuestra Vela Sonrisa Eterna. Diseñada con una silueta impecable de muela, esta vela artesanal es el detalle perfecto para profesionales de la odontología, estudiantes, o cualquier persona que aprecie un diseño único y divertido. Colócala en tu consultorio, estudio o en tu hogar para añadir un punto focal inesperado que seguramente iniciará una conversación. Es el regalo ideal para graduaciones, aniversarios de práctica o simplemente para celebrar la pasión por una profesión que trae sonrisas al mundo. ",
         image: "../images/vela-starlight-muela.jpeg",
         types: ["Soya", "Parafina"],
         sizes: [
-            { label: "150 gr", price: 150 },
-            { label: "200 gr", price: 190 }
+            { label: "120 gr", price: 75 }
         ],
         fragrances: ["Menta", "Eucalipto", "Vainilla", "Lavanda", "Frutos Rojos"],
         featured: false,
@@ -85,54 +79,19 @@ const productosData = [
     },
     {
         id: 5,
-        title: "Vela Flor de Cempasúchil",
+        title: "Flor de Cempasúchil",
         category: "Vela",
-        description: "Celebra el Día de Muertos con esta hermosa vela en forma de flor de Cempasúchil, símbolo de la tradición. Ideal para altares y decoración festiva.",
+        description: "Enciende la luz de la tradición con nuestra Vela Flor del Sol, una pieza artesanal que captura la esencia vibrante de la flor de Cempasúchil. Su diseño detallado, con cada pétalo cuidadosamente formado, evoca la calidez y el resplandor de los caminos que guían a nuestros seres queridos de regreso a casa.",
         image: "../images/vela-flor-cempasuchil.jpeg",
-        types: ["Soya", "Parafina"],
+        types: ["Parafina"],
         sizes: [
-            { label: "50 gr", price: 80 },
-            { label: "75 gr", price: 110 }
+            { label: "90 gr", price: 55 }
         ],
         fragrances: ["Cempasúchil", "Incienso", "Copal"],
-        featured: false,
-        new: false,
-        available: true
-    },
-
-    // Productos de Belleza
-    {
-        id: 6,
-        title: "Vela Aromaterapia Relajante",
-        category: "belleza",
-        description: "Vela especialmente diseñada para aromaterapia y relajación. Con aceites esenciales naturales que ayudan a reducir el estrés y crear un ambiente de spa en tu hogar.",
-        image: "../images/vela-starlight-rosas.jpeg", // Usando imagen existente como placeholder
-        types: ["Soya"],
-        sizes: [
-            { label: "75 gr", price: 95 },
-            { label: "150 gr", price: 165 }
-        ],
-        fragrances: ["Eucalipto", "Menta", "Lavanda", "Té Verde", "Hierba Buena", "Aloe Vera"],
-        featured: false,
-        new: true,
-        available: true
-    },
-    {
-        id: 7,
-        title: "Vela Masaje Corporal",
-        category: "belleza",
-        description: "Vela de masaje que se derrite en aceite tibio para masajes relajantes. Perfecta para tratamientos de spa caseros y momentos íntimos de relajación.",
-        image: "../images/vela-starlight-angeles.jpeg", // Usando imagen existente como placeholder
-        types: ["Soya"],
-        sizes: [
-            { label: "100 gr", price: 145 },
-            { label: "200 gr", price: 245 }
-        ],
-        fragrances: ["Vainilla Sensual", "Ylang Ylang", "Jazmín", "Rosa Búlgara", "Sándalo"],
         featured: true,
         new: false,
         available: true
-    }
+    },
 
     // 📝 PLANTILLA PARA AGREGAR NUEVOS PRODUCTOS:
     /*

@@ -33,7 +33,6 @@ class ImprovedShoppingCart {
         this.updateCartCount();
         this.setupEventListeners();
         this.showStep('cart');
-        console.log('🛒 Carrito mejorado inicializado con', this.items.length, 'productos');
     }
 
     /**
@@ -55,7 +54,6 @@ class ImprovedShoppingCart {
     saveCart() {
         try {
             localStorage.setItem('starlight_cart', JSON.stringify(this.items));
-            console.log('💾 Carrito guardado');
         } catch (error) {
             console.error('Error guardando carrito:', error);
         }
@@ -266,7 +264,6 @@ class ImprovedShoppingCart {
     setShippingMethod(method) {
         if (this.shippingCosts[method]) {
             this.shippingMethod = method;
-            console.log(`📦 Método de envío cambiado a: ${method}`);
             
             // Actualizar todos los resúmenes
             this.updateTotals();
@@ -353,7 +350,6 @@ class ImprovedShoppingCart {
         this.updateOrderSummary();
         // Asegurar que el resumen final se actualice
         setTimeout(() => {
-            console.log('🔄 Actualizando resumen final del pedido...');
             this.updateFinalOrderSummary();
         }, 100);
     }
@@ -386,7 +382,6 @@ class ImprovedShoppingCart {
 
         // Si es el paso de pago, actualizar el resumen final
         if (step === 'payment') {
-            console.log('📄 Mostrando paso de pago, actualizando resumen final...');
             setTimeout(() => {
                 this.updateFinalOrderSummary();
             }, 50);
@@ -622,20 +617,12 @@ class ImprovedShoppingCart {
     updateFinalOrderSummary() {
         const container = document.getElementById('final-order-summary');
         if (!container) {
-            console.warn('⚠️ Contenedor final-order-summary no encontrado');
             return;
         }
 
         const subtotal = this.getSubtotal();
         const shipping = this.getShippingCost();
         const total = subtotal + shipping - this.discountAmount;
-        
-        console.log('📊 Actualizando resumen final:', {
-            subtotal: subtotal,
-            shipping: shipping,
-            discount: this.discountAmount,
-            total: total
-        });
 
         let itemsHtml = '';
         this.items.forEach(item => {
@@ -749,26 +736,8 @@ class ImprovedShoppingCart {
  */
 let improvedCart;
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('🚀 Inicializando carrito mejorado');
     improvedCart = new ImprovedShoppingCart();
     
-    // Hacer disponible globalmente para debugging
+    // Hacer disponible globalmente
     window.improvedCart = improvedCart;
-    
-    // Debug: Función para inspeccionar carrito
-    window.debugCart = function() {
-        console.log('🔍 Debug del carrito mejorado:');
-        console.log('📦 Productos:', improvedCart.items);
-        console.log('💰 Subtotal:', improvedCart.getSubtotal());
-        console.log('🔢 Total items:', improvedCart.items.reduce((sum, item) => sum + item.quantity, 0));
-        
-        improvedCart.items.forEach((item, index) => {
-            console.log(`Producto ${index + 1}:`, {
-                title: item.title,
-                price: item.price,
-                quantity: item.quantity,
-                total: (parseFloat(item.price) || 0) * (parseInt(item.quantity) || 1)
-            });
-        });
-    };
 });
