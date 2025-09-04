@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://velasstarlight.com/</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://velasstarlight.com/images/galeria-1.jpg</image:loc>
+      <image:title>Velas Starlight - Velas Artesanales</image:title>
+      <image:caption>Velas artesanales premium de soya y parafina</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Página de Productos -->
+  <url>
+    <loc>https://velasstarlight.com/pages/productos.html</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://velasstarlight.com/images/vela-starlight-rosas.jpeg</image:loc>
+      <image:title>Catálogo de Velas Artesanales</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Página de Contacto -->
+  <url>
+    <loc>https://velasstarlight.com/pages/contacto.html</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página de Carrito -->
+  <url>
+    <loc>https://velasstarlight.com/pages/carrito.html</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Productos Individuales -->
+  <url>
+    <loc>https://velasstarlight.com/pages/productos.html#flor-cemento</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://velasstarlight.com/images/vela-starlight-rosas.jpeg</image:loc>
+      <image:title>Vela Flor en Cemento</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://velasstarlight.com/pages/productos.html#suspiro-angel</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://velasstarlight.com/images/vela-starlight-angeles.jpeg</image:loc>
+      <image:title>Vela Suspiro de Ángel</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://velasstarlight.com/pages/productos.html#bosque-encantado</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://velasstarlight.com/images/vela-starlight-pino.jpeg</image:loc>
+      <image:title>Vela Bosque Encantado</image:title>
+    </image:image>
+  </url>
+  
+</urlset>

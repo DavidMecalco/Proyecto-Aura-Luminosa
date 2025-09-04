@@ -1,0 +1,317 @@
+/**
+ * ========================================
+ * ESTILOS ADICIONALES PARA EL CARRITO
+ * Velas Starlight - Cart Styles
+ * ========================================
+ */
+
+/* Animaciones para elementos del carrito */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Estilos para notificaciones del carrito */
+.cart-notification {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.cart-notification.removing {
+    animation: slideOutRight 0.3s ease-in;
+}
+
+/* Estilos para elementos del carrito */
+.cart-item {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cart-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.cart-item:hover::before {
+    left: 100%;
+}
+
+.cart-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para botones de cantidad */
+.quantity-btn {
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quantity-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.quantity-btn:active {
+    transform: scale(0.95);
+}
+
+/* Animación para el contador del carrito */
+.cart-count-animate {
+    animation: bounceIn 0.5s ease-out;
+}
+
+/* Estilos para el resumen de compra */
+.cart-summary {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e9ecef;
+}
+
+.cart-summary .total-row {
+    background: linear-gradient(135deg, #2D3E33 0%, #3A5A40 100%);
+    color: white;
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    padding: 1.5rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+/* Estilos para códigos de descuento */
+.discount-input {
+    transition: all 0.3s ease;
+}
+
+.discount-input:focus {
+    box-shadow: 0 0 0 3px rgba(45, 62, 51, 0.1);
+    border-color: #2D3E33;
+}
+
+.discount-applied {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+/* Estilos para botones de acción */
+.checkout-btn {
+    background: linear-gradient(135deg, #2D3E33 0%, #3A5A40 100%);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.checkout-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.checkout-btn:hover::before {
+    left: 100%;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45, 62, 51, 0.3);
+}
+
+/* Estilos para carrito vacío */
+.empty-cart {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.empty-cart-icon {
+    color: #dee2e6;
+    animation: pulse 2s infinite;
+}
+
+/* Estilos responsive para el carrito */
+@media (max-width: 768px) {
+    .cart-item {
+        padding: 1rem;
+    }
+    
+    .cart-item .product-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .cart-summary {
+        position: static !important;
+        margin-top: 2rem;
+    }
+    
+    .cart-notification {
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+    }
+}
+
+/* Estilos para loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #2D3E33;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilos para métodos de pago */
+.payment-methods {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.payment-methods i {
+    transition: transform 0.2s ease;
+}
+
+.payment-methods i:hover {
+    transform: scale(1.2);
+}
+
+/* Estilos para badges y etiquetas */
+.cart-badge {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.discount-badge {
+    background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Estilos para transiciones suaves */
+* {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Estilos para focus accessibility */
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid #2D3E33;
+    outline-offset: 2px;
+}
+
+/* Estilos para estados disabled */
+button:disabled,
+input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Estilos para tooltips */
+.tooltip {
+    position: relative;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2D3E33;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}

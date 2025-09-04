@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://velasstarlight.com/sitemap.xml
+
+# Páginas importantes
+Allow: /pages/productos.html
+Allow: /pages/contacto.html
+Allow: /pages/carrito.html
+
+# Archivos CSS y JS
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Bloquear archivos innecesarios
+Disallow: /js/version-control.js
+Disallow: /*.md$
+Disallow: /INSTRUCCIONES-DESPLIEGUE.md
+
+# Crawl-delay para ser amigable con el servidor
+Crawl-delay: 1

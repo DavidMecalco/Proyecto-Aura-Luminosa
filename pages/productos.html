@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Velas Artesanales | Velas Starlight - Soya y Parafina</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explora nuestro catálogo completo de velas artesanales. Velas de soya, parafina, con más de 15 fragancias naturales. Flor en Cemento, Suspiro de Ángel, Bosque Encantado y más.">
+    <meta name="keywords" content="catálogo velas, velas artesanales México, velas soya parafina, fragancias naturales, velas decorativas, comprar velas online, velas aromáticas premium">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Catálogo de Velas Artesanales | Velas Starlight">
+    <meta property="og:description" content="Descubre nuestra colección completa de velas artesanales con fragancias naturales. Desde $55 MXN con envío gratis.">
+    <meta property="og:image" content="https://velasstarlight.com/images/vela-starlight-rosas.jpeg">
+    <meta property="og:url" content="https://velasstarlight.com/pages/productos.html">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://velasstarlight.com/pages/productos.html">
+    
+    <!-- Control de caché para archivos JavaScript -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige-almond': '#F6F1E9',
+                        'dark-green': '#2D3E33',
+                        'warm-cream': '#EDE6DA',
+                        'sage-green': '#3A5A40',
+                        'leaf-green': '#A3B18A',
+                        'gray-sand': '#D6CEC3',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos Personalizados -->
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #2D3E33 0%, #3A5A40 100%);
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(45, 62, 51, 0.15);
+        }
+
+        .filter-active {
+            background: linear-gradient(135deg, #3A5A40 0%, #2D3E33 100%);
+            color: white;
+        }
+
+        .price-badge {
+            background: linear-gradient(135deg, #3A5A40 0%, #2D3E33 100%);
+        }
+
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Estilos para zoom de imagen */
+        .cursor-zoom-in {
+            cursor: zoom-in;
+        }
+
+        .cursor-grab {
+            cursor: grab;
+        }
+
+        .cursor-grabbing {
+            cursor: grabbing;
+        }
+
+        /* Animación suave para zoom */
+        #modal-image {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Indicador de zoom */
+        .zoom-indicator {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        /* Forzar altura uniforme en las tarjetas de productos */
+        #product-grid {
+            display: grid;
+            grid-auto-rows: 1fr;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card .p-6 {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 1.5rem !important;
+            /* Más espaciado */
+        }
+
+        /* Ocultar descripción en las tarjetas */
+        .product-card .product-description {
+            display: none !important;
+        }
+
+        /* Mejorar espaciado entre elementos */
+        .product-card h3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .product-card .price-badge {
+            margin-bottom: 1rem !important;
+        }
+
+        .product-card .space-y-2 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* Espaciado más generoso en la información adicional */
+        .product-info-section {
+            padding: 0.75rem 0;
+        }
+    </style>
+</head>
+
+<body class="bg-beige-almond text-dark-green font-sans">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo -->
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="Velas Starlight Logo" class="h-12 w-auto">
+            </a>
+
+            <!-- Links Desktop -->
+            <nav class="hidden md:flex space-x-8 font-medium text-dark-green items-center">
+                <a href="../index.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
+                    <i class="fa fa-home mr-1"></i>Inicio
+                </a>
+                <a href="productos.html" class="text-sage-green flex items-center transition-colors duration-300">
+                    <i class="fa fa-cube mr-1"></i>Productos
+                </a>
+
+                <a href="contacto.html" class="hover:text-sage-green flex items-center transition-colors duration-300">
+                    <i class="fa fa-phone mr-1"></i>Contacto
+                </a>
+
+                <!-- Carrito Desktop -->
+                <a href="carrito.html" class="relative hover:text-sage-green transition-colors duration-300">
+                    <i class="fa fa-shopping-cart text-xl"></i>
+                    <span id="cart-count"
+                        class="absolute -top-3 -right-3 bg-sage-green text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </a>
+            </nav>
+
+            <!-- Botón menú móvil -->
+            <button id="menu-toggle" class="md:hidden text-dark-green text-2xl focus:outline-none ml-auto">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white shadow-xl border-t border-gray-100 absolute top-full left-0 w-full transform transition-all duration-300 ease-in-out opacity-0 translate-y-2">
+            <div class="px-6 py-4 space-y-1">
+                <a href="../index.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-home mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Inicio</span>
+                </a>
+                <a href="productos.html"
+                    class="flex items-center px-4 py-3 text-sage-green bg-sage-green/10 rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-cube mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Productos</span>
+                </a>
+
+                <a href="contacto.html"
+                    class="flex items-center px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group">
+                    <i
+                        class="fa fa-phone mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                    <span class="font-medium">Contacto</span>
+                </a>
+                <div class="border-t border-gray-200 my-2"></div>
+                <a href="carrito.html"
+                    class="flex items-center justify-between px-4 py-3 text-dark-green hover:bg-sage-green/10 hover:text-sage-green rounded-lg transition-all duration-200 group bg-transparent">
+                    <div class="flex items-center">
+                        <i
+                            class="fa fa-shopping-cart mr-3 text-sage-green group-hover:scale-110 transition-transform duration-200"></i>
+                        <span class="font-medium">Carrito</span>
+                    </div>
+                    <span id="cart-count-mobile"
+                        class="bg-sage-green text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="pt-20">
+
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white py-16">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-6">
+                    <i class="fas fa-fire text-3xl"></i>
+                </div>
+                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6">Nuestros Productos</h1>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto mb-8">
+                    Descubre nuestra colección de velas artesanales. Cada pieza cuenta una historia única de elegancia y
+                    calidez.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <span class="bg-white/20 px-4 py-2 rounded-full">✨ Hechas a mano</span>
+                    <span class="bg-white/20 px-4 py-2 rounded-full">🌿 Ingredientes naturales</span>
+                    <span class="bg-white/20 px-4 py-2 rounded-full">🎨 Diseños únicos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="py-12 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-dark-green mb-2">7</div>
+                        <div class="text-gray-600">Productos</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-dark-green mb-2">15+</div>
+                        <div class="text-gray-600">Fragancias</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-dark-green mb-2">2</div>
+                        <div class="text-gray-600">Tipos de Cera</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-dark-green mb-2">100%</div>
+                        <div class="text-gray-600">Artesanal</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtros -->
+        <section class="py-8 bg-beige-almond">
+            <div class="max-w-6xl mx-auto px-6">
+
+                <!-- Búsqueda -->
+                <div class="mb-8">
+                    <div class="relative max-w-2xl mx-auto">
+                        <input type="text" id="search-input" placeholder="Buscar productos..."
+                            class="w-full pl-12 pr-16 py-4 text-lg border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-sage-green bg-white shadow-lg">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+                        <button id="clear-search"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 hidden">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Categorías -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-dark-green mb-4 text-center">Filtrar por Categoría</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button class="category-btn filter-active px-6 py-3 rounded-full font-medium transition-all"
+                            data-category="all">
+                            <i class="fas fa-th-large mr-2"></i>Todos
+                        </button>
+                        <button
+                            class="category-btn bg-white text-dark-green px-6 py-3 rounded-full font-medium hover:bg-sage-green hover:text-white transition-all"
+                            data-category="Vela">
+                            <i class="fas fa-fire mr-2"></i>Velas
+                        </button>
+                        <button
+                            class="category-btn bg-white text-dark-green px-6 py-3 rounded-full font-medium hover:bg-sage-green hover:text-white transition-all"
+                            data-category="decoracion">
+                            <i class="fas fa-home mr-2"></i>Decoración
+                        </button>
+                        <button
+                            class="category-btn bg-white text-dark-green px-6 py-3 rounded-full font-medium hover:bg-sage-green hover:text-white transition-all"
+                            data-category="belleza">
+                            <i class="fas fa-spa mr-2"></i>Belleza
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                <div class="flex justify-between items-center">
+                    <div class="text-gray-600">
+                        <span id="results-count">7</span> productos encontrados
+                    </div>
+                    <button id="reset-filters" class="text-sage-green hover:text-dark-green font-medium">
+                        <i class="fas fa-undo mr-1"></i>Limpiar Filtros
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Productos -->
+        <section class="py-12 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- Contenedor de productos - se llena dinámicamente con JavaScript -->
+                <div id="product-grid"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+                    <!-- Los productos se generan automáticamente aquí -->
+                </div>
+
+                <!-- Mensaje de no resultados -->
+                <div id="no-results" class="hidden text-center py-16">
+                    <div class="text-6xl mb-4">🔍</div>
+                    <h3 class="text-xl font-semibold text-dark-green mb-2">No se encontraron productos</h3>
+                    <p class="text-gray-600 mb-6">Intenta ajustar tus filtros o buscar con otros términos</p>
+                    <button id="show-all-products"
+                        class="bg-sage-green text-white px-6 py-3 rounded-lg hover:bg-dark-green transition-colors">
+                        <i class="fas fa-eye mr-2"></i>Ver Todos los Productos
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN DE FRAGANCIAS POPULARES
+             ======================================== -->
+        <section class="py-16 bg-beige-almond">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-dark-green mb-4">
+                        Fragancias Más Populares
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Descubre los aromas que más enamoran a nuestros clientes
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div class="bg-white rounded-xl p-4 text-center hover-lift cursor-pointer fragrance-filter"
+                        data-fragrance="Vainilla">
+                        <div class="text-3xl mb-2">🍦</div>
+                        <div class="font-semibold text-dark-green">Vainilla</div>
+                        <div class="text-xs text-gray-500">Dulce y relajante</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 text-center hover-lift cursor-pointer fragrance-filter"
+                        data-fragrance="Lavanda">
+                        <div class="text-3xl mb-2">💜</div>
+                        <div class="font-semibold text-dark-green">Lavanda</div>
+                        <div class="text-xs text-gray-500">Calmante y floral</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 text-center hover-lift cursor-pointer fragrance-filter"
+                        data-fragrance="Rosas Especiales">
+                        <div class="text-3xl mb-2">🌹</div>
+                        <div class="font-semibold text-dark-green">Rosas</div>
+                        <div class="text-xs text-gray-500">Romántico y elegante</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 text-center hover-lift cursor-pointer fragrance-filter"
+                        data-fragrance="Canela">
+                        <div class="text-3xl mb-2">🍂</div>
+                        <div class="font-semibold text-dark-green">Canela</div>
+                        <div class="text-xs text-gray-500">Cálido y acogedor</div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 text-center hover-lift cursor-pointer fragrance-filter"
+                        data-fragrance="Citricos">
+                        <div class="text-3xl mb-2">🍊</div>
+                        <div class="font-semibold text-dark-green">Cítricos</div>
+                        <div class="text-xs text-gray-500">Fresco y energizante</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Rediseñado -->
+    <footer class="bg-gradient-to-br from-dark-green via-dark-green to-sage-green text-white relative overflow-hidden">
+        <!-- Elementos decorativos -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-48 h-48 bg-sage-green rounded-full blur-3xl"></div>
+            <div
+                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-leaf-green rounded-full blur-3xl">
+            </div>
+        </div>
+
+        <div class="relative z-10">
+            <!-- Contenido principal del footer -->
+            <div class="container mx-auto px-6 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Logo y descripción -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <img src="../images/logo.png" alt="Velas Starlight"
+                                class="h-12 w-auto filter brightness-0 invert">
+
+                        </div>
+                        <p class="text-gray-300 leading-relaxed max-w-md">
+                            Creamos experiencias sensoriales únicas con velas artesanales y productos de belleza
+                            natural, elaborados con amor y dedicación para iluminar tu mundo.
+                        </p>
+                    </div>
+
+                    <!-- Enlaces rápidos -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold mb-4 text-white">Enlaces Rápidos</h4>
+                        <ul class="space-y-3">
+                            <li><a href="../index.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-home mr-2 group-hover:scale-110 transition-transform duration-300"></i>Inicio
+                                </a></li>
+                            <li><a href="productos.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-cube mr-2 group-hover:scale-110 transition-transform duration-300"></i>Productos
+                                </a></li>
+
+                            <li><a href="contacto.html"
+                                    class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <i
+                                        class="fa fa-phone mr-2 group-hover:scale-110 transition-transform duration-300"></i>Contacto
+                                </a></li>
+
+                        </ul>
+                    </div>
+
+                    <!-- Contacto y redes sociales -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold mb-4 text-white">Conecta con Nosotros</h4>
+
+                        <!-- Información de contacto -->
+                        <div class="space-y-3 text-gray-300">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa fa-envelope text-white"></i>
+                                <span>ventas@velasstarlight.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa fa-phone text-white"></i>
+                                <span>5564682112</span>
+                            </div>
+                        </div>
+
+                        <!-- Redes sociales -->
+                        <div class="pt-4">
+                            <h5 class="font-medium mb-3">Síguenos</h5>
+                            <div class="flex space-x-4">
+                                <a href="https://wa.me/5564682112" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-whatsapp text-lg group-hover:text-white"></i>
+                                </a>
+                                <a href="https://www.instagram.com/velas_starlight/" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-instagram text-lg group-hover:text-white"></i>
+                                </a>
+                                <a href="#" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-facebook-f text-lg group-hover:text-white"></i>
+                                </a>
+                                <a href="#" target="_blank"
+                                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-sage-green hover:scale-110 transition-all duration-300 group">
+                                    <i class="fab fa-tiktok text-lg group-hover:text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Línea divisoria -->
+            <div class="border-t border-white/20"></div>
+
+            <!-- Copyright y enlaces legales -->
+            <div class="container mx-auto px-6 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-gray-300 text-sm">
+                        <p>&copy; 2025 Velas Starlight. Todos los derechos reservados.</p>
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-300">
+                        <a href="terminos.html" class="hover:text-white transition-colors duration-300">Términos
+                            y Condiciones</a>
+                        <span class="text-gray-500">|</span>
+                        <a href="politicas.html" class="hover:text-white transition-colors duration-300">Política
+                            de Privacidad</a>
+                        <span class="text-gray-500">|</span>
+                        <span class="flex items-center space-x-1">
+                            <i class="fa fa-heart text-red-400"></i>
+                            <span>Hecho con amor</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Producto -->
+    <div id="product-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0" id="modal-backdrop"></div>
+
+        <div class="flex min-h-screen items-center justify-center p-4">
+            <div
+                class="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl lg:max-w-3xl max-h-[90vh] overflow-y-auto">
+
+                <!-- Botón cerrar -->
+                <button id="close-modal"
+                    class="absolute top-4 right-4 z-10 bg-white/90 rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-red-500 transition-colors shadow-lg">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <div class="flex flex-col lg:flex-row">
+
+                    <!-- Sección de imagen -->
+                    <div
+                        class="lg:w-1/2 bg-gradient-to-br from-beige-almond to-warm-cream p-6 flex items-center justify-center">
+                        <div class="relative">
+                            <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg cursor-zoom-in"
+                                id="image-container" style="pointer-events: auto;">
+                                <img id="modal-image" src="" alt="Producto"
+                                    class="w-full h-64 lg:h-80 object-cover transition-transform duration-300"
+                                    style="transform-origin: center center;">
+
+                                <div class="absolute top-4 left-4">
+                                    <span id="modal-category-badge"
+                                        class="bg-sage-green text-white px-3 py-1 rounded-full text-sm font-semibold">Vela</span>
+                                </div>
+
+                                <!-- Indicador de zoom -->
+                                <div id="zoom-indicator" class="zoom-indicator hidden">
+                                    <span id="zoom-level">100%</span>
+                                </div>
+
+                                <!-- Descripción de zoom -->
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <div
+                                        class="bg-dark-green/80 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-center">
+                                        <p class="text-xs opacity-90">
+                                            <i class="fas fa-search-plus mr-1"></i>
+                                            Doble clic para hacer zoom
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Indicadores de calidad -->
+                            <div class="flex justify-center mt-4 space-x-4 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <i class="fas fa-leaf text-green-500 mr-1"></i>Natural
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-hand-sparkles text-blue-500 mr-1"></i>Artesanal
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-heart text-red-500 mr-1"></i>Hecho con amor
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección de información -->
+                    <div class="lg:w-1/2 p-6 overflow-y-auto max-h-[85vh]">
+
+                        <!-- Header del producto -->
+                        <div class="mb-6">
+                            <h2 id="modal-title" class="font-serif text-3xl font-bold text-dark-green mb-3">Nombre del
+                                Producto</h2>
+                            <p id="modal-description" class="text-gray-600 leading-relaxed">Descripción detallada del
+                                producto...</p>
+                        </div>
+
+                        <!-- Precio destacado -->
+                        <div class="mb-6">
+                            <div class="price-badge inline-block text-white px-6 py-3 rounded-xl">
+                                <span class="text-sm opacity-90">Precio desde</span>
+                                <div id="modal-price" class="text-2xl font-bold">$120 MXN</div>
+                            </div>
+                        </div>
+
+                        <!-- Tipos de cera -->
+                        <div id="modal-types" class="mb-6">
+                            <label class="block font-semibold text-dark-green mb-3">
+                                <i class="fas fa-leaf mr-2"></i>Tipo de Cera:
+                            </label>
+                            <div class="flex flex-wrap gap-2" id="modal-type-options">
+                                <!-- Se llenarán dinámicamente -->
+                            </div>
+                        </div>
+
+                        <!-- Tamaños disponibles -->
+                        <div id="modal-sizes" class="mb-6">
+                            <label class="block font-semibold text-dark-green mb-3">
+                                <i class="fas fa-ruler mr-2"></i>Tamaño y Precio:
+                            </label>
+                            <div class="space-y-2" id="modal-size-options">
+                                <!-- Se llenarán dinámicamente -->
+                            </div>
+                        </div>
+
+                        <!-- Fragancias -->
+                        <div class="mb-6">
+                            <label class="block font-semibold text-dark-green mb-3">
+                                <i class="fas fa-spa mr-2"></i>Fragancia:
+                            </label>
+                            <select id="modal-fragrance"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-sage-green">
+                                <option>Selecciona una fragancia</option>
+                            </select>
+                        </div>
+
+                        <!-- Cantidad -->
+                        <div class="mb-8">
+                            <label class="block font-semibold text-dark-green mb-3">
+                                <i class="fas fa-calculator mr-2"></i>Cantidad:
+                            </label>
+                            <div class="flex items-center space-x-4">
+                                <button id="decrease-qty"
+                                    class="bg-gray-200 hover:bg-gray-300 text-dark-green w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl">−</button>
+                                <input id="modal-quantity" type="number" value="1" min="1" max="99"
+                                    class="w-20 text-center text-xl font-bold border-2 border-gray-200 rounded-xl py-3 focus:outline-none focus:border-sage-green">
+                                <button id="increase-qty"
+                                    class="bg-gray-200 hover:bg-gray-300 text-dark-green w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Botones de acción -->
+                        <div class="space-y-4">
+                            <button id="add-to-cart-btn"
+                                class="w-full gradient-bg text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all flex items-center justify-center">
+                                <i class="fas fa-cart-plus mr-3 text-xl"></i>Agregar al Carrito
+                            </button>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/cart-system.js?v=1.0"></script>
+    <script src="../js/productos-data.js?v=1.1"></script>
+    <script src="../js/productos-generator.js?v=1.0"></script>
+
+    <script>
+        // Inicializar AOS
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 800, once: true });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Variables
+            const searchInput = document.getElementById('search-input');
+            const clearSearch = document.getElementById('clear-search');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            const resetBtn = document.getElementById('reset-filters');
+            const modal = document.getElementById('product-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+
+            let currentProduct = null;
+            let currentZoom = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // Menú móvil
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = menuToggle.querySelector('i');
+
+            menuToggle.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    // Mostrar menú
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0', 'translate-y-2');
+                        mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                    }, 10);
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    // Ocultar menú
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', (e) => {
+                if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                        mobileMenu.classList.add('opacity-0', 'translate-y-2');
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        menuIcon.classList.remove('fa-times');
+                        menuIcon.classList.add('fa-bars');
+                    }
+                }
+            });
+
+            // Búsqueda
+            if (searchInput) {
+                searchInput.addEventListener('input', function (e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    clearSearch.classList.toggle('hidden', !searchTerm);
+
+                    if (window.productGenerator) {
+                        window.productGenerator.searchProducts(searchTerm);
+                    } else {
+                        // Fallback para productos hardcoded
+                        const productCards = document.querySelectorAll('.product-card');
+                        productCards.forEach(card => {
+                            const title = card.querySelector('h3').textContent.toLowerCase();
+                            const description = card.querySelector('p').textContent.toLowerCase();
+                            const matches = title.includes(searchTerm) || description.includes(searchTerm);
+                            card.style.display = matches ? 'block' : 'none';
+                        });
+                        updateResultsCount();
+                    }
+                });
+            }
+
+            // Limpiar búsqueda
+            if (clearSearch) {
+                clearSearch.addEventListener('click', function () {
+                    searchInput.value = '';
+                    clearSearch.classList.add('hidden');
+                    productCards.forEach(card => card.style.display = 'block');
+                    updateResultsCount();
+                });
+            }
+
+            // Filtros de categoría
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Actualizar botones activos
+                    categoryBtns.forEach(b => {
+                        b.classList.remove('filter-active');
+                        b.classList.add('bg-white', 'text-dark-green');
+                    });
+                    this.classList.add('filter-active');
+                    this.classList.remove('bg-white', 'text-dark-green');
+
+                    // Filtrar productos usando el generador
+                    const category = this.dataset.category;
+                    if (window.productGenerator) {
+                        window.productGenerator.filterByCategory(category);
+                    } else {
+                        // Fallback para productos hardcoded
+                        const productCards = document.querySelectorAll('.product-card');
+                        productCards.forEach(card => {
+                            const productData = JSON.parse(card.dataset.product);
+                            if (category === 'all' || productData.category === category) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                        updateResultsCount();
+                    }
+                });
+            });
+
+            // Reset filtros
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function () {
+                    searchInput.value = '';
+                    clearSearch.classList.add('hidden');
+
+                    // Reset categorías
+                    categoryBtns.forEach(btn => {
+                        btn.classList.remove('filter-active');
+                        btn.classList.add('bg-white', 'text-dark-green');
+                    });
+                    document.querySelector('[data-category="all"]').classList.add('filter-active');
+
+                    // Mostrar todos los productos usando el generador
+                    if (window.productGenerator) {
+                        window.productGenerator.generateAllProducts();
+                    } else {
+                        // Fallback
+                        const productCards = document.querySelectorAll('.product-card');
+                        productCards.forEach(card => card.style.display = 'block');
+                        updateResultsCount();
+                    }
+                });
+            }
+
+            // Actualizar contador de resultados
+            function updateResultsCount(count = null) {
+                let visibleCount = count;
+
+                if (visibleCount === null) {
+                    const productCards = document.querySelectorAll('.product-card');
+                    visibleCount = Array.from(productCards).filter(card =>
+                        card.style.display !== 'none'
+                    ).length;
+                }
+
+                document.getElementById('results-count').textContent = visibleCount;
+
+                // Mostrar/ocultar mensaje de no resultados
+                const noResults = document.getElementById('no-results');
+                if (visibleCount === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+            }
+
+            // Hacer disponible globalmente
+            window.updateResultsCount = updateResultsCount;
+
+            // Abrir modal
+            productCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const productData = JSON.parse(this.dataset.product);
+                    openModal(productData);
+                });
+            });
+
+            // Cerrar modal
+            [closeModalBtn, modalBackdrop].forEach(element => {
+                element.addEventListener('click', () => {
+                    closeModal();
+                });
+            });
+
+            // Función para abrir modal
+            function openModal(product) {
+                currentProduct = product;
+
+                // Resetear zoom al abrir modal
+                currentZoom = 1;
+                translateX = 0;
+                translateY = 0;
+                isZoomOperation = false; // Asegurar que no esté bloqueado al abrir
+
+                // Llenar información básica
+                document.getElementById('modal-title').textContent = product.title;
+                document.getElementById('modal-description').textContent = product.description;
+                document.getElementById('modal-image').src = product.image;
+                document.getElementById('modal-category-badge').textContent = product.category;
+
+                // Tipos de cera
+                const typeContainer = document.getElementById('modal-type-options');
+                typeContainer.innerHTML = '';
+                product.types.forEach((type, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = `type-btn px-4 py-2 border-2 rounded-xl font-semibold transition-all ${i === 0 ? 'border-sage-green bg-sage-green text-white' : 'border-gray-300 text-gray-700 hover:border-sage-green'}`;
+                    btn.textContent = type;
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.type-btn').forEach(b => {
+                            b.classList.remove('border-sage-green', 'bg-sage-green', 'text-white');
+                            b.classList.add('border-gray-300', 'text-gray-700');
+                        });
+                        btn.classList.add('border-sage-green', 'bg-sage-green', 'text-white');
+                        btn.classList.remove('border-gray-300', 'text-gray-700');
+                    });
+                    typeContainer.appendChild(btn);
+                });
+
+                // Tamaños
+                const sizeContainer = document.getElementById('modal-size-options');
+                sizeContainer.innerHTML = '';
+                product.sizes.forEach((size, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = `size-btn w-full px-4 py-3 border-2 rounded-xl font-semibold transition-all text-left ${i === 0 ? 'border-sage-green bg-sage-green text-white' : 'border-gray-300 text-gray-700 hover:border-sage-green'}`;
+                    btn.innerHTML = `
+                        <div class="flex justify-between items-center">
+                            <span>${size.label}</span>
+                            <span class="font-bold">$${size.price} MXN</span>
+                        </div>
+                    `;
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.size-btn').forEach(b => {
+                            b.classList.remove('border-sage-green', 'bg-sage-green', 'text-white');
+                            b.classList.add('border-gray-300', 'text-gray-700');
+                        });
+                        btn.classList.add('border-sage-green', 'bg-sage-green', 'text-white');
+                        btn.classList.remove('border-gray-300', 'text-gray-700');
+                        document.getElementById('modal-price').textContent = `$${size.price} MXN`;
+                    });
+                    sizeContainer.appendChild(btn);
+                });
+
+                // Precio inicial
+                document.getElementById('modal-price').textContent = `$${product.sizes[0].price} MXN`;
+
+                // Fragancias
+                const fragranceSelect = document.getElementById('modal-fragrance');
+                fragranceSelect.innerHTML = '<option>Selecciona una fragancia</option>';
+                product.fragrances.forEach(fragrance => {
+                    const option = document.createElement('option');
+                    option.value = fragrance;
+                    option.textContent = fragrance;
+                    fragranceSelect.appendChild(option);
+                });
+
+                // Reset cantidad y zoom
+                document.getElementById('modal-quantity').value = 1;
+                resetZoom();
+
+                // Mostrar modal
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+
+                // Inicializar controles de zoom
+                updateZoomControls();
+                updateImageTransform();
+
+                // Configurar controles de zoom (cada vez que se abre el modal)
+                setupZoomControls();
+
+                // Bloquear eventos en el área de imagen
+                blockImageAreaEvents();
+
+                // Interceptar TODOS los clics en el modal
+                interceptModalClicks();
+
+                // Configurar event listener del botón agregar al carrito
+                setupAddToCartListener();
+
+                console.log('✅ Botón agregar al carrito configurado correctamente');
+
+                console.log('✅ Modal abierto correctamente para:', product.title);
+            }
+
+            // Hacer disponible globalmente
+            window.openModal = openModal;
+
+            // Función para cerrar modal
+            function closeModal() {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                currentProduct = null;
+            }
+
+            // Controles de cantidad
+            document.getElementById('increase-qty').addEventListener('click', () => {
+                const input = document.getElementById('modal-quantity');
+                let quantity = parseInt(input.value) + 1;
+                input.value = Math.min(99, quantity);
+            });
+
+            document.getElementById('decrease-qty').addEventListener('click', () => {
+                const input = document.getElementById('modal-quantity');
+                let quantity = parseInt(input.value) - 1;
+                input.value = Math.max(1, quantity);
+            });
+
+            // Event listener único para el botón agregar al carrito
+            function setupAddToCartListener() {
+                const addToCartBtn = document.getElementById('add-to-cart-btn');
+                if (addToCartBtn) {
+                    // Usar onclick directo para mayor control
+                    addToCartBtn.onclick = function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Verificar si hay operación de zoom en progreso
+                        if (isZoomOperation) {
+                            console.log('🚫 Clic en carrito bloqueado - zoom en progreso');
+                            return false;
+                        }
+
+                        console.log('🛒 Clic VÁLIDO en botón agregar al carrito');
+                        addToCart();
+                        return false;
+                    };
+                }
+            }
+
+            // Variable para bloquear temporalmente el carrito durante zoom
+            let isZoomOperation = false;
+
+            // Función para agregar al carrito
+            function addToCart() {
+                // Bloquear si se está haciendo zoom
+                if (isZoomOperation) {
+                    console.log('🚫 Operación de carrito bloqueada - zoom en progreso');
+                    return;
+                }
+
+                console.log('🛒 Función agregar al carrito ejecutada');
+
+                if (!currentProduct) {
+                    console.error('❌ No hay producto seleccionado');
+                    return;
+                }
+
+                const selectedType = document.querySelector('.type-btn.bg-sage-green')?.textContent || currentProduct.types[0];
+                const selectedSizeBtn = document.querySelector('.size-btn.bg-sage-green');
+                const selectedSize = selectedSizeBtn ? selectedSizeBtn.querySelector('span').textContent : currentProduct.sizes[0].label;
+                const selectedFragrance = document.getElementById('modal-fragrance').value;
+                const quantity = parseInt(document.getElementById('modal-quantity').value);
+                const price = parseInt(document.getElementById('modal-price').textContent.match(/\d+/)[0]);
+
+                if (!selectedFragrance || selectedFragrance === 'Selecciona una fragancia') {
+                    showNotification('Por favor selecciona una fragancia', 'warning');
+                    return;
+                }
+
+                const options = {
+                    type: selectedType,
+                    size: selectedSize,
+                    fragrance: selectedFragrance,
+                    price: price,
+                    quantity: quantity
+                };
+
+                console.log('📦 Producto a agregar:', currentProduct.title);
+                console.log('⚙️ Opciones seleccionadas:', options);
+
+                // Usar el sistema de carrito existente
+                if (window.cartManager) {
+                    window.cartManager.addProduct(currentProduct, options);
+                    showNotification(`${currentProduct.title} agregado al carrito`, 'success');
+                    closeModal();
+                } else {
+                    console.warn('Sistema de carrito no disponible');
+                    showNotification('Error al agregar al carrito', 'error');
+                }
+            }
+
+
+
+            // Función para mostrar notificaciones
+            function showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `fixed top-24 right-6 z-50 px-6 py-4 rounded-xl shadow-lg text-white transform transition-all duration-300 translate-x-full max-w-sm`;
+
+                const styles = {
+                    success: 'bg-green-500',
+                    error: 'bg-red-500',
+                    warning: 'bg-yellow-500',
+                    info: 'bg-blue-500'
+                };
+
+                const icons = {
+                    success: 'check-circle',
+                    error: 'exclamation-triangle',
+                    warning: 'exclamation-triangle',
+                    info: 'info-circle'
+                };
+
+                notification.classList.add(styles[type] || styles.info);
+                notification.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-${icons[type] || icons.info} text-lg"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+
+                document.body.appendChild(notification);
+
+                // Animar entrada
+                setTimeout(() => notification.classList.remove('translate-x-full'), 100);
+
+                // Remover después de 3 segundos
+                setTimeout(() => {
+                    notification.classList.add('translate-x-full');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+
+            // Actualizar contador del carrito
+            function updateCartCount() {
+                if (window.cartManager) {
+                    const count = window.cartManager.getTotalItems();
+                    document.getElementById('cart-count').textContent = count;
+                    document.getElementById('cart-count-mobile').textContent = count;
+                }
+            }
+
+            // Filtros de fragancia
+            document.querySelectorAll('.fragrance-filter').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const fragrance = this.dataset.fragrance;
+                    if (window.productGenerator) {
+                        // Filtrar por fragancia usando el generador
+                        const filteredProducts = window.productosData.filter(product =>
+                            product.fragrances.includes(fragrance)
+                        );
+                        window.productGenerator.renderProducts(filteredProducts);
+                    }
+
+                    // Scroll al grid
+                    document.getElementById('product-grid').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Mostrar notificación
+                    showNotification(`Mostrando productos con fragancia: ${fragrance}`, 'info');
+                });
+            });
+
+            // Actualizar contador cada segundo
+            setInterval(updateCartCount, 1000);
+
+            // ========================================
+            // FUNCIONALIDAD DE ZOOM DE IMAGEN
+            // ========================================
+
+            const modalImage = document.getElementById('modal-image');
+            const imageContainer = document.getElementById('image-container');
+
+            // Función para interceptar TODOS los clics en el modal
+            function interceptModalClicks() {
+                const modal = document.getElementById('product-modal');
+                if (modal) {
+                    // Interceptar en la fase de captura (antes que cualquier otro listener)
+                    modal.addEventListener('click', function (e) {
+                        // Si el clic viene de un control de zoom, bloquear inmediatamente
+                        if (e.target.closest('#zoom-in-new') ||
+                            e.target.closest('#zoom-out-new') ||
+                            e.target.closest('#zoom-reset-new') ||
+                            e.target.closest('.zoom-control') ||
+                            e.target.closest('#zoom-controls-container')) {
+
+                            console.log('🚫 INTERCEPTADO: Clic en control de zoom - BLOQUEANDO TODO');
+                            isZoomOperation = true;
+
+                            // Bloquear completamente la propagación
+                            e.preventDefault();
+                            e.stopPropagation();
+                            e.stopImmediatePropagation();
+
+                            // Desbloquear después de 1 segundo
+                            setTimeout(() => {
+                                isZoomOperation = false;
+                                console.log('🔓 Desbloqueando después de interceptación');
+                            }, 1000);
+
+                            return false;
+                        }
+                    }, true); // Usar capture phase para interceptar ANTES que otros listeners
+                }
+            }
+
+            // Función para bloquear eventos en el área de imagen
+            function blockImageAreaEvents() {
+                const imageContainer = document.getElementById('image-container');
+                if (imageContainer) {
+                    // Bloquear todos los eventos que puedan interferir
+                    ['click', 'mousedown', 'mouseup', 'touchstart', 'touchend'].forEach(eventType => {
+                        imageContainer.addEventListener(eventType, function (e) {
+                            // Solo permitir eventos en controles de zoom
+                            if (e.target.closest('.zoom-control') || e.target.closest('#zoom-controls-container')) {
+                                return; // Permitir eventos de zoom
+                            }
+
+                            // Bloquear otros eventos que puedan activar el carrito
+                            if (!e.target.closest('#modal-image')) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                e.stopImmediatePropagation();
+                                console.log('🚫 Evento bloqueado en área de imagen:', eventType);
+                                return false;
+                            }
+                        }, true);
+                    });
+                }
+            }
+
+            // Zoom con botones - REEMPLAZO COMPLETO para evitar conflictos
+            function setupZoomControls() {
+                console.log('🔧 Configurando zoom con doble clic...');
+
+                const modalImage = document.getElementById('modal-image');
+                if (modalImage) {
+                    // Configurar doble clic para zoom
+                    modalImage.addEventListener('dblclick', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        isZoomOperation = true;
+                        console.log('🔍 Doble clic detectado - haciendo zoom');
+
+                        if (currentZoom === 1) {
+                            zoomImage(1); // Zoom in
+                        } else {
+                            resetZoom(); // Reset zoom
+                        }
+                    });
+
+                    // Configurar doble tap para móvil
+                    let lastTap = 0;
+                    modalImage.addEventListener('touchend', function (e) {
+                        const currentTime = new Date().getTime();
+                        const tapLength = currentTime - lastTap;
+                        if (tapLength < 500 && tapLength > 0) {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            isZoomOperation = true;
+                            console.log('🔍 Doble tap detectado - haciendo zoom');
+
+                            if (currentZoom === 1) {
+                                zoomImage(1); // Zoom in
+                            } else {
+                                resetZoom(); // Reset zoom
+                            }
+                        }
+                        lastTap = currentTime;
+                    });
+
+                    console.log('✅ Zoom con doble clic/tap configurado');
+                }
+            }
+
+            // Zoom con rueda del mouse
+            if (imageContainer) {
+                imageContainer.addEventListener('wheel', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const zoomDelta = e.deltaY > 0 ? -0.1 : 0.1;
+                    zoomImage(zoomDelta);
+                });
+            }
+
+            // Zoom con doble clic
+            if (modalImage) {
+                modalImage.addEventListener('dblclick', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (currentZoom === 1) {
+                        zoomImage(1); // Zoom al 200%
+                    } else {
+                        resetZoom();
+                    }
+                });
+            }
+
+            // Funcionalidad de arrastrar cuando está en zoom
+            modalImage.addEventListener('mousedown', startDrag);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', endDrag);
+
+
+
+            // Touch events para móvil
+            modalImage.addEventListener('touchstart', startDragTouch);
+            modalImage.addEventListener('touchmove', dragTouch);
+            modalImage.addEventListener('touchend', endDrag);
+
+            function zoomImage(delta) {
+                // Activar bloqueo de carrito durante zoom
+                isZoomOperation = true;
+                console.log('🔍 INICIANDO OPERACIÓN DE ZOOM - BLOQUEANDO CARRITO');
+
+                const newZoom = Math.max(1, Math.min(3, currentZoom + delta));
+                console.log('🔍 Zoom actual:', currentZoom, 'Nuevo zoom:', newZoom);
+
+                if (newZoom !== currentZoom) {
+                    currentZoom = newZoom;
+                    updateImageTransform();
+                    updateZoomControls();
+
+                    // Cambiar cursor
+                    if (currentZoom > 1) {
+                        modalImage.style.cursor = 'grab';
+                        imageContainer.classList.remove('cursor-zoom-in');
+                        imageContainer.classList.add('cursor-grab');
+                    } else {
+                        modalImage.style.cursor = 'zoom-in';
+                        imageContainer.classList.remove('cursor-grab');
+                        imageContainer.classList.add('cursor-zoom-in');
+                        // Resetear posición cuando volvemos al zoom normal
+                        translateX = 0;
+                        translateY = 0;
+                    }
+                }
+
+                // Desactivar bloqueo después de un breve delay
+                setTimeout(() => {
+                    isZoomOperation = false;
+                    console.log('🔍 OPERACIÓN DE ZOOM COMPLETADA - DESBLOQUEANDO CARRITO');
+                }, 500);
+            }
+
+            function resetZoom() {
+                // Activar bloqueo de carrito durante reset
+                isZoomOperation = true;
+                console.log('🔍 INICIANDO RESET DE ZOOM - BLOQUEANDO CARRITO');
+
+                currentZoom = 1;
+                translateX = 0;
+                translateY = 0;
+                updateImageTransform();
+                updateZoomControls();
+                modalImage.style.cursor = 'zoom-in';
+                imageContainer.classList.remove('cursor-grab');
+                imageContainer.classList.add('cursor-zoom-in');
+
+                // Desactivar bloqueo después de un breve delay
+                setTimeout(() => {
+                    isZoomOperation = false;
+                    console.log('🔍 RESET DE ZOOM COMPLETADO - DESBLOQUEANDO CARRITO');
+                }, 500);
+            }
+
+            function updateImageTransform() {
+                modalImage.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+            }
+
+            function updateZoomControls() {
+                const zoomIndicator = document.getElementById('zoom-indicator');
+                const zoomLevel = document.getElementById('zoom-level');
+
+                // Usar los nuevos IDs de los botones reemplazados
+                const newZoomInBtn = document.getElementById('zoom-in-new');
+                const newZoomOutBtn = document.getElementById('zoom-out-new');
+                const newZoomResetBtn = document.getElementById('zoom-reset-new');
+
+                // Actualizar indicador de zoom
+                if (zoomLevel) {
+                    zoomLevel.textContent = Math.round(currentZoom * 100) + '%';
+                }
+
+                // Mostrar/ocultar botones según el zoom
+                if (currentZoom > 1) {
+                    if (newZoomOutBtn) newZoomOutBtn.classList.remove('hidden');
+                    if (newZoomResetBtn) newZoomResetBtn.classList.remove('hidden');
+                    if (zoomIndicator) zoomIndicator.classList.remove('hidden');
+                } else {
+                    if (newZoomOutBtn) newZoomOutBtn.classList.add('hidden');
+                    if (newZoomResetBtn) newZoomResetBtn.classList.add('hidden');
+                    if (zoomIndicator) zoomIndicator.classList.add('hidden');
+                }
+
+                // Deshabilitar zoom in si está al máximo
+                if (newZoomInBtn) {
+                    if (currentZoom >= 3) {
+                        newZoomInBtn.style.opacity = '0.5';
+                        newZoomInBtn.style.pointerEvents = 'none';
+                    } else {
+                        newZoomInBtn.style.opacity = '1';
+                        newZoomInBtn.style.pointerEvents = 'auto';
+                    }
+                }
+            }
+
+            function startDrag(e) {
+                if (currentZoom <= 1) return;
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                modalImage.style.cursor = 'grabbing';
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            function drag(e) {
+                if (!isDragging || currentZoom <= 1) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+
+                // Limitar el arrastre para que la imagen no se salga demasiado
+                const maxTranslate = 100;
+                translateX = Math.max(-maxTranslate, Math.min(maxTranslate, translateX));
+                translateY = Math.max(-maxTranslate, Math.min(maxTranslate, translateY));
+
+                updateImageTransform();
+            }
+
+            function endDrag(e) {
+                if (isDragging) {
+                    isDragging = false;
+                    if (currentZoom > 1) {
+                        modalImage.style.cursor = 'grab';
+                    }
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }
+            }
+
+            function startDragTouch(e) {
+                if (currentZoom <= 1) return;
+
+                isDragging = true;
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            function dragTouch(e) {
+                if (!isDragging || currentZoom <= 1) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+
+                // Limitar el arrastre
+                const maxTranslate = 100;
+                translateX = Math.max(-maxTranslate, Math.min(maxTranslate, translateX));
+                translateY = Math.max(-maxTranslate, Math.min(maxTranslate, translateY));
+
+                updateImageTransform();
+            }
+
+            // ========================================
+            // INICIALIZAR GENERADOR AUTOMÁTICO
+            // ========================================
+
+            // Crear instancia del generador
+            if (window.ProductGenerator && window.productosData) {
+                const productGenerator = new ProductGenerator();
+                productGenerator.init('product-grid', window.productosData);
+
+                // Hacer disponible globalmente
+                window.productGenerator = productGenerator;
+
+                // Actualizar estadísticas
+                const stats = productGenerator.getStats();
+                const totalProductsElement = document.getElementById('total-products');
+                if (totalProductsElement) {
+                    totalProductsElement.textContent = stats.available;
+                }
+
+                console.log('🛍️ Generador automático inicializado');
+                console.log(`📦 ${stats.available} productos cargados`);
+                console.log(`🏷️ Categorías: ${stats.categories.join(', ')}`);
+            } else {
+                console.warn('⚠️ Generador automático no disponible, usando productos hardcoded');
+            }
+
+            // Verificar que el sistema de carrito esté disponible
+            if (window.cartManager) {
+                console.log('🛒 Sistema de carrito disponible');
+            } else {
+                console.warn('⚠️ Sistema de carrito no disponible');
+            }
+
+            console.log('✅ Página de productos cargada correctamente');
+            console.log('🔍 Funcionalidad de zoom habilitada');
+            console.log('🎯 Función openModal disponible globalmente:', typeof window.openModal);
+
+            // Test de funcionalidad del modal (temporal)
+            setTimeout(() => {
+                console.log('🧪 Ejecutando test de funcionalidad...');
+
+                // Verificar que los elementos del modal existen
+                const modalElements = [
+                    'product-modal', 'modal-title', 'modal-description',
+                    'modal-image', 'add-to-cart-btn', 'modal-fragrance'
+                ];
+
+                modalElements.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        console.log(`✅ Elemento ${id} encontrado`);
+                    } else {
+                        console.error(`❌ Elemento ${id} NO encontrado`);
+                    }
+                });
+
+                // Verificar que los productos tienen event listeners
+                const productCards = document.querySelectorAll('.product-card');
+                console.log(`📦 ${productCards.length} tarjetas de producto encontradas`);
+
+                if (productCards.length > 0) {
+                    console.log('✅ Test completado - Todo parece estar funcionando');
+
+                    // Test del primer producto
+                    if (productCards.length > 0) {
+                        console.log('🧪 Probando apertura del modal con el primer producto...');
+                        setTimeout(() => {
+                            const firstProduct = JSON.parse(productCards[0].dataset.product);
+                            console.log('🎯 Abriendo modal de prueba para:', firstProduct.title);
+                            // No abrir automáticamente, solo verificar que la función existe
+                            if (typeof window.openModal === 'function') {
+                                console.log('✅ Función openModal disponible');
+                            } else {
+                                console.error('❌ Función openModal NO disponible');
+                            }
+                        }, 500);
+                    }
+                } else {
+                    console.error('❌ No se encontraron tarjetas de producto');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
